@@ -9,9 +9,9 @@
 #import "LxmWebViewController.h"
 #import <WebKit/WebKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-@interface LxmWebViewController ()<WKNavigationDelegate,UIWebViewDelegate,WKScriptMessageHandler>
+@interface LxmWebViewController ()<WKNavigationDelegate,WKScriptMessageHandler>
 {
-    UIWebView *_webView;
+    
     
     UIProgressView * _progress;
     WKWebView * _wkWebView;
@@ -72,9 +72,7 @@
     _wkWebView.navigationDelegate=self;
     [self.view addSubview:_wkWebView];
     [[_wkWebView configuration].userContentController addScriptMessageHandler:self name:@"completeFn"];
-    [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.leading.trailing.bottom.equalTo(self.view);
-    }];
+
     
     _progress = [[UIProgressView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height-1.5, self.view.bounds.size.width, 1.5)];
     _progress.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
@@ -113,19 +111,6 @@
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    _activityView.hidden=YES;
-    //核心方法如下
-    JSContext *content = [_wkWebView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    //此处的completeFn和JS方法中的completeFn名称一致.
-    content[@"completeFn"] = ^() {
-        NSArray *arguments = [JSContext currentArguments];
-        for (JSValue *jsValue in arguments) {
-            NSLog(@"=======%@",jsValue);
-        }
-    };
-}
-
 //WKScriptMessageHandler协议方法
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     //code
@@ -139,28 +124,6 @@
 }
 
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    //获取点击页面加载的url
-    NSString *url = request.URL.absoluteString;
-    NSLog(@"%@",url);
-    if ([url rangeOfString:@"此处是想拦截的字符串"].location != NSNotFound) {
-        return NO;
-    }
-    return YES;
-}
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    _activityView.hidden=NO;
-    [_activityView startAnimating];
-}
-
-//- (void)webViewDidFinishLoad:(UIWebView *)webView
-//{
-//    _activityView.hidden=YES;
-//}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    _activityView.hidden=YES;
-}
 
 @end
