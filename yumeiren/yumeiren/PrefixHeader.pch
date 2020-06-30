@@ -1,0 +1,70 @@
+//
+//  PrefixHeader.pch
+//  yumeiren
+//
+//  Created by 李晓满 on 2019/7/9.
+//  Copyright © 2019 李晓满. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "IQKeyboardManager.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+#import "Masonry.h"
+#import "SVProgressHUD.h"
+#import "SDImageCache.h"
+#import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
+#import "LxmHeader.h"
+#import "AFNetworking.h"
+
+#define kDevice_Is_iPhoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+
+#define TableViewBottomSpace (kDevice_Is_iPhoneX ? 34 : 0)
+
+#define NavigationSpace (kDevice_Is_iPhoneX ? 88 : 64)
+
+//文字三种颜色
+#define CharacterDarkColor [UIColor colorWithRed:56/255.0 green:56/255.0 blue:56/255.0 alpha:1]
+#define CharacterGrayColor [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
+#define CharacterLightGrayColor [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]
+
+#define ISLOGIN [LxmTool ShareTool].isLogin
+#define SESSION_TOKEN [LxmTool ShareTool].session_token
+
+/**
+ 屏幕的长宽
+ */
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+#define StateBarH [UIApplication sharedApplication].statusBarFrame.size.height
+
+/**
+ 分割线
+ */
+#define  LineColor [UIColor colorWithRed:190/255.0 green:190/255.0 blue:190/255.0 alpha:1]
+
+/**
+ 背景两种颜色
+ */
+#define BGGrayColor [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1]
+
+#define  PinkColor [UIColor colorWithRed:238/255.0 green:192/255.0 blue:189/255.0 alpha:1]
+
+/**
+ 主色调
+ */
+#define MainColor [UIColor colorWithRed:253/255.0 green:58/255.0 blue:88/255.0 alpha:1]
+
+#define WeakObj(_obj)    __weak typeof(_obj) _obj##Weak = _obj;
+#define StrongObj(_obj)  typeof(_obj##Weak) _obj = _obj##Weak;
+#endif /* PrefixHeader_pch */

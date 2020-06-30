@@ -1,0 +1,82 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - AMap2DMap-NO-IDFA (5.6.1):
+    - AMapFoundation-NO-IDFA (~> 1.4)
+  - AMapFoundation-NO-IDFA (1.5.7)
+  - AMapLocation-NO-IDFA (2.6.2):
+    - AMapFoundation-NO-IDFA (~> 1.4)
+  - AMapSearch-NO-IDFA (6.9.0):
+    - AMapFoundation-NO-IDFA (~> 1.4)
+  - IQKeyboardManager (5.0.8)
+  - Masonry (1.1.0)
+  - MJExtension (3.0.17)
+  - MJRefresh (3.2.0)
+  - SDCycleScrollView (1.80):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.0.6):
+    - SDWebImage/Core (= 5.0.6)
+  - SDWebImage/Core (5.0.6)
+  - SVProgressHUD-0.8.1 (0.8)
+  - TYPagerController (2.1.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AMap2DMap-NO-IDFA
+  - AMapLocation-NO-IDFA
+  - AMapSearch-NO-IDFA
+  - IQKeyboardManager (~> 5.0.7)
+  - Masonry
+  - MJExtension
+  - MJRefresh
+  - SDCycleScrollView (~> 1.80)
+  - SVProgressHUD-0.8.1
+  - TYPagerController
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - AMap2DMap-NO-IDFA
+    - AMapFoundation-NO-IDFA
+    - AMapLocation-NO-IDFA
+    - AMapSearch-NO-IDFA
+    - IQKeyboardManager
+    - Masonry
+    - MJExtension
+    - MJRefresh
+    - SDCycleScrollView
+    - SDWebImage
+    - SVProgressHUD-0.8.1
+    - TYPagerController
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AMap2DMap-NO-IDFA: ccecb3e2a044c17e6badb9b91c950e709368be20
+  AMapFoundation-NO-IDFA: 9088085827c831811bb0fd3afd96b99963a7cf71
+  AMapLocation-NO-IDFA: d7792c8c516f415e186f1bc25946f1a58ca6a583
+  AMapSearch-NO-IDFA: 264999e6c149383a8f164c2fe49b51513e93d674
+  IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
+  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
+  TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
+
+PODFILE CHECKSUM: f467dc5b92dd60414f7cf82862d43bb8849df55e
+
+COCOAPODS: 1.7.5
