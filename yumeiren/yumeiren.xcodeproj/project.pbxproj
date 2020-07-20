@@ -359,7 +359,7 @@
 		4072561123166DAB00AEB259 /* LxmRegistXieYiAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmRegistXieYiAlertView.m; sourceTree = "<group>"; };
 		4076385F233C466D0051D0DC /* LxmShenQingReasonAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmShenQingReasonAlertView.h; sourceTree = "<group>"; };
 		40763860233C466D0051D0DC /* LxmShenQingReasonAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmShenQingReasonAlertView.m; sourceTree = "<group>"; };
-		4078923D22D4440B00716C1C /* 涵曦测试.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "涵曦测试.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4078923D22D4440B00716C1C /* 虞美人.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "虞美人.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4078924022D4440C00716C1C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4078924122D4440C00716C1C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4078924322D4440C00716C1C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -764,7 +764,7 @@
 		4078923E22D4440C00716C1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4078923D22D4440B00716C1C /* 涵曦测试.app */,
+				4078923D22D4440B00716C1C /* 虞美人.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1615,7 +1615,7 @@
 			);
 			name = yumeiren;
 			productName = yumeiren;
-			productReference = 4078923D22D4440B00716C1C /* 涵曦测试.app */;
+			productReference = 4078923D22D4440B00716C1C /* 虞美人.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2085,8 +2085,8 @@
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
 				);
 				MARKETING_VERSION = 2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren333;
-				PRODUCT_NAME = "涵曦测试";
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
+				PRODUCT_NAME = "虞美人";
 				PROVISIONING_PROFILE_SPECIFIER = comxxxxx;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2128,8 +2128,8 @@
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
 				);
 				MARKETING_VERSION = 2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren333;
-				PRODUCT_NAME = "涵曦测试";
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
+				PRODUCT_NAME = "虞美人";
 				PROVISIONING_PROFILE_SPECIFIER = ymr_dis_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
