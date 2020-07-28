@@ -130,6 +130,7 @@
         if (!cell) {
             cell = [[LxmJieSuanPeiSongGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmJieSuanPeiSongGoodsCell"];
         }
+        cell.isHaoCai = self.isHaoCai;
         cell.orderModel = self.dataArr[indexPath.section].sub2[indexPath.row - 1];
         return cell;
     }
@@ -186,6 +187,11 @@
             }
         } else {
             dict[@"status"] = self.status;
+        }
+        if (self.isHaoCai) {
+            dict[@"noVip"] = @"2";
+        }else {
+            dict[@"noVip"] = @"1";
         }
         dict[@"type"] = self.type;
         [LxmNetworking networkingPOST:order_list parameters:dict returnClass:LxmShopCenterOrderRootModel.class success:^(NSURLSessionDataTask *task, LxmShopCenterOrderRootModel *responseObject) {

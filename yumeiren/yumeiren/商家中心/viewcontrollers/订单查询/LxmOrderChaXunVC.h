@@ -9,6 +9,6 @@
 #import "BaseTableViewController.h"
 
 @interface LxmOrderChaXunVC : BaseViewController
-
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
 @end
 

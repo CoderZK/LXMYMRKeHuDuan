@@ -32,6 +32,8 @@
 
 @property (nonatomic, copy) void(^modifyCarSuccess)(LxmShopCarModel *model);
 
+@property(nonatomic,assign)BOOL isHaoCao;
+
 @end
 
 //购物车底部view

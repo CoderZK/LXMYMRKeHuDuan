@@ -27,7 +27,7 @@
 #import "LxmShengjiGouWuVC.h"
 
 #import "LxmRenZhengProtocolVC.h"
-
+#import "LxmJiFenShopFatherVC.h"
 
 @interface LxmMineVC ()
 
@@ -209,9 +209,15 @@
         }
             break;
         case 6: {
-            LxmSettingVC *vc = [LxmSettingVC new];
+            
+            LxmJiFenShopFatherVC * vc =[[LxmJiFenShopFatherVC alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+            
+            return;
+//            LxmSettingVC *vc = [LxmSettingVC new];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
 

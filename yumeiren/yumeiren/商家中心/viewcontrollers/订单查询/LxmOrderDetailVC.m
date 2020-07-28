@@ -50,6 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -141,7 +142,7 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         self.timeCell = cell;
-        cell.backgroundColor = [UIColor colorWithRed:241/255.0 green:182/255.0 blue:191/255.0 alpha:1];
+        cell.backgroundColor = MainColor;
         cell.textLabel.textColor = UIColor.whiteColor;
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -159,6 +160,11 @@
             if (!cell) {
                 cell = [[LxmJieSuanPeiSongGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmJieSuanPeiSongGoodsCell"];
             }
+            if ([self.detailModel.map.no_vip isEqualToString:@"2"]) {
+                cell.isHaoCai = YES;
+            }else {
+                cell.isHaoCai = NO;
+            }
             cell.orderDetailGoodsModel = self.detailModel.map.sub[indexPath.row];
             return cell;
         }
@@ -166,6 +172,11 @@
         LxmJieSuanPeiSongGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LxmJieSuanPeiSongGoodsCell"];
         if (!cell) {
             cell = [[LxmJieSuanPeiSongGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmJieSuanPeiSongGoodsCell"];
+        }
+        if ([self.detailModel.map.no_vip isEqualToString:@"2"]) {
+            cell.isHaoCai = YES;
+        }else {
+            cell.isHaoCai = NO;
         }
         cell.orderDetailGoodsModel = self.xiajiGoodsArr[indexPath.row];
         return cell;
@@ -378,9 +389,9 @@
 
 -(void)onTimer1 {
     NSString *timeStr = [NSString durationTimeStringWithDuration:_time--];
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"请在" attributes:@{NSForegroundColorAttributeName:CharacterGrayColor}];
-    NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:timeStr attributes:@{NSForegroundColorAttributeName:MainColor}];
-    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"内完成付款,否则订单会被系统取消" attributes:@{NSForegroundColorAttributeName:CharacterGrayColor}];
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"请在" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:timeStr attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"内完成付款,否则订单会被系统取消" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [att appendAttributedString:str1];
     [att appendAttributedString:str2];
     self.timeCell.textLabel.attributedText = att;

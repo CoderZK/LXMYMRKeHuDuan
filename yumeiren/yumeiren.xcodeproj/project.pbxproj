@@ -224,6 +224,8 @@
 		40F4BF0F22E85C9F00C48BA2 /* LxmTuanDuiSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4BF0E22E85C9F00C48BA2 /* LxmTuanDuiSearchVC.m */; };
 		40F7EE2D2315341000DF3E18 /* LxmSelectAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F7EE2C2315341000DF3E18 /* LxmSelectAreaVC.m */; };
 		40FA4F6F2406025500F10B72 /* LxmJianFeiShengJiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FA4F6E2406025500F10B72 /* LxmJianFeiShengJiVC.m */; };
+		5885884E24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5885884D24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m */; };
+		5885885124CEA7ED00847BBA /* LxmJiFenShopSubVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5885885024CEA7ED00847BBA /* LxmJiFenShopSubVC.m */; };
 		5F38F6922428E20A00AE62E9 /* LxmPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F38F6912428E20A00AE62E9 /* LxmPlayer.m */; };
 /* End PBXBuildFile section */
 
@@ -649,6 +651,10 @@
 		40F7EE2C2315341000DF3E18 /* LxmSelectAreaVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmSelectAreaVC.m; sourceTree = "<group>"; };
 		40FA4F6D2406025500F10B72 /* LxmJianFeiShengJiVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJianFeiShengJiVC.h; sourceTree = "<group>"; };
 		40FA4F6E2406025500F10B72 /* LxmJianFeiShengJiVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJianFeiShengJiVC.m; sourceTree = "<group>"; };
+		5885884C24CEA7CA00847BBA /* LxmJiFenShopFatherVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJiFenShopFatherVC.h; sourceTree = "<group>"; };
+		5885884D24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJiFenShopFatherVC.m; sourceTree = "<group>"; };
+		5885884F24CEA7ED00847BBA /* LxmJiFenShopSubVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJiFenShopSubVC.h; sourceTree = "<group>"; };
+		5885885024CEA7ED00847BBA /* LxmJiFenShopSubVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJiFenShopSubVC.m; sourceTree = "<group>"; };
 		589848F524A9EED1004059FC /* 涵曦测试Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "涵曦测试Debug.entitlements"; sourceTree = "<group>"; };
 		5F38F6902428E20A00AE62E9 /* LxmPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmPlayer.h; sourceTree = "<group>"; };
 		5F38F6912428E20A00AE62E9 /* LxmPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmPlayer.m; sourceTree = "<group>"; };
@@ -1012,6 +1018,7 @@
 		4078928922D4691D00716C1C /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				5885884924CEA76F00847BBA /* 积分商城 */,
 				40D7F27323FFDD64005D4CC0 /* 培训课堂 */,
 				4015E99C22E5E45B00B91764 /* 投诉中心 */,
 				4061A81922E2EC79004D127C /* 接单平台 */,
@@ -1577,6 +1584,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5885884924CEA76F00847BBA /* 积分商城 */ = {
+			isa = PBXGroup;
+			children = (
+				5885884B24CEA79100847BBA /* views */,
+				5885884A24CEA78500847BBA /* VCS */,
+			);
+			path = "积分商城";
+			sourceTree = "<group>";
+		};
+		5885884A24CEA78500847BBA /* VCS */ = {
+			isa = PBXGroup;
+			children = (
+				5885884C24CEA7CA00847BBA /* LxmJiFenShopFatherVC.h */,
+				5885884D24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m */,
+				5885884F24CEA7ED00847BBA /* LxmJiFenShopSubVC.h */,
+				5885885024CEA7ED00847BBA /* LxmJiFenShopSubVC.m */,
+			);
+			path = VCS;
+			sourceTree = "<group>";
+		};
+		5885884B24CEA79100847BBA /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		5F38F68F2428E1F300AE62E9 /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -1830,6 +1864,7 @@
 				40E484C9230A87C2007793DB /* WXApiRequestHandler.m in Sources */,
 				40D7F27923FFDFA5005D4CC0 /* LxmSubInfoClassVC.m in Sources */,
 				40B3267622F4266300F7DA81 /* LxmJiaJiaAlertView.m in Sources */,
+				5885884E24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m in Sources */,
 				40CC3C3323137C4700D380F1 /* LxmPublishSuccessAlertView.m in Sources */,
 				400C83D422F1336200AB2874 /* MLYPhotoBrowserView.m in Sources */,
 				407892BA22D47DB700716C1C /* LxmShopCarModel.m in Sources */,
@@ -1884,6 +1919,7 @@
 				4052B71B23321D520041596E /* LxmKuCunBuZuAletView.m in Sources */,
 				400158B9230F8EBF00AC5BA3 /* LxmBuHuoDetailVC.m in Sources */,
 				40C3A23622EAE1D300F3E510 /* MXImageGroupController.m in Sources */,
+				5885885124CEA7ED00847BBA /* LxmJiFenShopSubVC.m in Sources */,
 				40810023244FD97B0043F9D6 /* LxmNianDuKaoHeVC.m in Sources */,
 				40F4BEFC22E8292300C48BA2 /* LxmSubCaiGouAndXiaoShouVC.m in Sources */,
 				407892A522D47CF200716C1C /* LxmMineVC.m in Sources */,

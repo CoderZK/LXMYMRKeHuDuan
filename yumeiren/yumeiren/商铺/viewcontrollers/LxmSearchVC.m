@@ -255,6 +255,7 @@
         vc.roleType = self.roleType;
         vc.goodsID = self.dataArr1[indexPath.item].id;
         vc.isAddLocolGoods = self.isAddLocolGoods;
+        vc.isHaoCai = self.isHaoCai;
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         LxmClassInfoDetailVC *vc = [LxmClassInfoDetailVC new];
@@ -416,6 +417,11 @@
     if (self.keywords.isValid) {
         dict[@"keyword"] = self.keywords;
     }
+    if (self.isHaoCai) {
+        dict[@"noVip"] = @"2";
+    }else {
+        dict[@"noVip"] = @"1";
+    }
     WeakObj(self);
     [LxmNetworking networkingPOST:group_good_list parameters:dict returnClass:LxmShopListRootModel.class success:^(NSURLSessionDataTask *task, LxmShopListRootModel *responseObject) {
         StrongObj(self);
@@ -487,7 +493,7 @@
 }
 
 /**
- 添加购物车 如果没有角色 需要先升级 最少是高级门店才能购买货物
+ 添加购物车 如果没有角色 需要先升级 最少是经理才能购买货物
  */
 - (void)addCarClick:(LxmHomeGoodsModel *)goodModel {
     if (self.shengjiModel) {
@@ -530,69 +536,95 @@
               }
           }
 
-       if ([LxmTool ShareTool].userModel.roleType.intValue == -1) {//没有身份 不能进行购买商品
-           if ([LxmTool ShareTool].userModel.shopStatus.intValue == 2 || [LxmTool ShareTool].userModel.shopStatus.intValue == 6 ) {
-               [self addCar:goodModel];
-//               addCarBlock();
-           } else {
-               if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
-                   if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
-                       LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
-                       vc.hidesBottomBarWhenPushed = YES;
-                       [self.navigationController pushViewController:vc animated:YES];
-                   } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
-                       //未读 跳转协议界面
-                       LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
-                       vc.hidesBottomBarWhenPushed = YES;
-                       [self.navigationController pushViewController:vc animated:YES];
+    if (self.isHaoCai) {
+        [self addCar:goodModel];
+    }else {
+        if ([LxmTool ShareTool].userModel.roleType.intValue == -1) {//没有身份 不能进行购买商品
+                   if ([LxmTool ShareTool].userModel.shopStatus.intValue == 2 || [LxmTool ShareTool].userModel.shopStatus.intValue == 6 ) {
+                       [self addCar:goodModel];
+        //               addCarBlock();
+                   } else {
+                       if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
+                           if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
+                               LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                               vc.hidesBottomBarWhenPushed = YES;
+                               [self.navigationController pushViewController:vc animated:YES];
+                           } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
+                               //未读 跳转协议界面
+                               LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
+                               vc.hidesBottomBarWhenPushed = YES;
+                               [self.navigationController pushViewController:vc animated:YES];
+                           }
+                           
+                       } else {
+                           LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
+                           vc.hidesBottomBarWhenPushed = YES;
+                           vc.isnext = YES;
+                           [self.navigationController pushViewController:vc animated:YES];
+                       }
                    }
-                   
                } else {
-                   LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
-                   vc.hidesBottomBarWhenPushed = YES;
-                   vc.isnext = YES;
-                   [self.navigationController pushViewController:vc animated:YES];
+                   [self addCar:goodModel];
+        //           addCarBlock();
                }
-           }
-       } else {
-           [self addCar:goodModel];
-//           addCarBlock();
-       }
+    }
+    
+       
 }
 
 - (void)addCar:(LxmHomeGoodsModel *)goodModel {
-    NSInteger shopStatus = LxmTool.ShareTool.userModel.shopStatus.intValue;
-       if (shopStatus == 0 || shopStatus == 1 || shopStatus == 2 || shopStatus == 4 || shopStatus == 5) {//有升级中的状态 不能直接加入购物车 要提示进入升级通道
-           UIAlertController * alertView = [UIAlertController alertControllerWithTitle:@"进入升级通道,下单更便宜哦!" message:@"是否进入升级通道?" preferredStyle:UIAlertControllerStyleAlert];
-           [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-           [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-              LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
-              vc.hidesBottomBarWhenPushed = YES;
-              [self.navigationController pushViewController:vc animated:YES];
-           }]];
-           [self.navigationController presentViewController:alertView animated:YES completion:nil];
-           
-       } else {
-           NSDictionary *dict = @{
-                                  @"token" : SESSION_TOKEN,
-                                  @"goodId" : goodModel.id,
-                                  @"num" : @1
-                                  };
-           [SVProgressHUD show];
-           [LxmNetworking networkingPOST:add_cart parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-               [SVProgressHUD dismiss];
-               if ([responseObject[@"key"] integerValue] == 1000) {
-                   [SVProgressHUD showSuccessWithStatus:@"添加成功!"];
-                   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                       [LxmEventBus sendEvent:@"addCarSuccess" data:nil];
-                   });
-               } else {
-                   [UIAlertController showAlertWithmessage:responseObject[@"message"]];
-               }
-           } failure:^(NSURLSessionDataTask *task, NSError *error) {
-               [SVProgressHUD dismiss];
-           }];
-       }
+    
+    
+    WeakObj(self);
+    void(^addCar)(void) = ^{
+      
+        NSMutableDictionary *dict = @{
+                               @"token" : SESSION_TOKEN,
+                               @"goodId" : goodModel.id,
+                               @"num" : @1
+        }.mutableCopy;
+//        if ((LxmTool.ShareTool.userModel.roleType.intValue == 2 || LxmTool.ShareTool.userModel.roleType.intValue == 3) && self.isHaoCai == NO) {
+//            dict[@"num"] = goodModel.buy_num;
+//        }
+        [SVProgressHUD show];
+        [LxmNetworking networkingPOST:add_cart parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            [SVProgressHUD dismiss];
+            if ([responseObject[@"key"] integerValue] == 1000) {
+                [SVProgressHUD showSuccessWithStatus:@"添加成功!"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [LxmEventBus sendEvent:@"addCarSuccess" data:nil];
+                });
+            } else {
+                [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [SVProgressHUD dismiss];
+        }];
+        
+    };
+    
+    if (selfWeak.isHaoCai) {
+        //耗材
+        addCar();
+    }else {
+        NSInteger shopStatus = LxmTool.ShareTool.userModel.shopStatus.intValue;
+        if (shopStatus == 0 || shopStatus == 1 || shopStatus == 2 || shopStatus == 4 || shopStatus == 5) {//有升级中的状态 不能直接加入购物车 要提示进入升级通道
+               UIAlertController * alertView = [UIAlertController alertControllerWithTitle:@"进入升级通道,下单更便宜哦!" message:@"是否进入升级通道?" preferredStyle:UIAlertControllerStyleAlert];
+               [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+               [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                  LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                  vc.hidesBottomBarWhenPushed = YES;
+                  [self.navigationController pushViewController:vc animated:YES];
+               }]];
+               [self.navigationController presentViewController:alertView animated:YES completion:nil];
+               
+           } else {
+               addCar();
+           }
+    }
+    
+    
+    
 }
 
 

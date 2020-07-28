@@ -25,6 +25,11 @@
 
 @implementation LxmMyOrderVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc] init];
@@ -153,6 +158,7 @@
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
     LxmSubOrderChaXunVC *vc = [[LxmSubOrderChaXunVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmSubOrderChaXunVC_type_userCenter];
+    vc.isHaoCai = self.isHaoCai;
     if (index == 0) {
         vc.status = @0;
     } else if (index == 1){

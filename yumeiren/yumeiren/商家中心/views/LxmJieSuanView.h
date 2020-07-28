@@ -44,6 +44,8 @@
 
 @property (nonatomic, strong) LxmShopCenterOrderGoodsModel *orderModel;//商家中心 发货订单
 
+@property (nonatomic, assign) BOOL isHaoCai;
+
 @end
 
 /**

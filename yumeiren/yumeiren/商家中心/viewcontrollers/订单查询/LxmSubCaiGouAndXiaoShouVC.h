@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSNumber *status;
 
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
+
 @end
 
 NS_ASSUME_NONNULL_END

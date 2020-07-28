@@ -368,6 +368,9 @@
 
 @property (nonatomic, strong) NSString *give_pic;//赠送商品显示的图片
 
+@property (nonatomic, strong) NSString* buy_num;//根据身份必须最低购买量
+
+
 @end
 
 

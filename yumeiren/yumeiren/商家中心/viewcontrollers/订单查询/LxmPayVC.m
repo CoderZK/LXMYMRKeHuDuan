@@ -135,6 +135,7 @@
     self = [super initWithTableViewStyle:style];
     if (self) {
         self.type = type;
+        
     }
     return self;
 }
@@ -239,7 +240,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LxmPayCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LxmPayCell"];
@@ -286,7 +287,7 @@
                 headerView = [[LxmDaoJishiView alloc] initWithReuseIdentifier:@"LxmDaoJishiView"];
             }
             self.daojishiView = headerView;
-            headerView.contentView.backgroundColor = [UIColor colorWithRed:241/255.0 green:182/255.0 blue:191/255.0 alpha:1];
+            headerView.contentView.backgroundColor = MainColor;
             if (self.type == LxmPayVC_type_shengjigouwu || self.type == LxmPayVC_type_yjbh) {
                 NSString *time = self.creatTime;
                 if (time.length > 10) {
@@ -325,9 +326,9 @@
 
 -(void)onTimer1 {
     NSString *timeStr = [NSString durationTimeStringWithDuration:_time--];
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"请在" attributes:@{NSForegroundColorAttributeName:CharacterGrayColor}];
-    NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:timeStr attributes:@{NSForegroundColorAttributeName:MainColor}];
-    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"内完成付款,否则订单会被系统取消" attributes:@{NSForegroundColorAttributeName:CharacterGrayColor}];
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"请在" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:timeStr attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"内完成付款,否则订单会被系统取消" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [att appendAttributedString:str1];
     [att appendAttributedString:str2];
     self.daojishiView.daojishiLabel.attributedText = att;

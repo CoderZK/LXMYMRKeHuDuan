@@ -12,6 +12,6 @@
 @interface LxmMyOrderVC : BaseTableViewController
 
 @property (nonatomic, assign) NSInteger selectIndex;
-
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
 @end
 

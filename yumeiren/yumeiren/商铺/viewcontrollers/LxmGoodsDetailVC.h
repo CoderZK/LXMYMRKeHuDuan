@@ -18,6 +18,8 @@
 
 @property (nonatomic, assign) BOOL isAddLocolGoods;//是否是添加到本地商品
 
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
+
 @end
 
 

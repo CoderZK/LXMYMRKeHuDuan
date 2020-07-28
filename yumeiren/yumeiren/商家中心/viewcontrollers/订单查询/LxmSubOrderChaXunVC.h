@@ -19,6 +19,8 @@ typedef NS_ENUM(NSInteger, LxmSubOrderChaXunVC_type) {
 
 @property (nonatomic, strong) NSNumber *status;//0-全部，1：待支付，2：待发货，3：待确认收货，4：已完成，5：已取消
 
+@property(nonatomic,assign)BOOL isHaoCai;
+
 @end
 
 /**

@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger info_type;
 
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
+
 @end
 
 @interface LxmSearchPageReusableView : UICollectionReusableView

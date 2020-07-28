@@ -185,6 +185,11 @@
         dict[@"pageSize"] = @10;
         dict[@"status"] = self.status;
         dict[@"type"] = @1;
+        if (self.isHaoCai) {
+            dict[@"noVip"] = @"2";
+        }else {
+            dict[@"noVip"] = @"1";
+        }
         [LxmNetworking networkingPOST:order_list parameters:dict returnClass:LxmShopCenterOrderRootModel.class success:^(NSURLSessionDataTask *task, LxmShopCenterOrderRootModel *responseObject) {
             [self endRefrish];
             if (responseObject.key.intValue == 1000) {

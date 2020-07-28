@@ -16,7 +16,7 @@
 #import "LxmPayVC.h"
 #import "WXApi.h"
 #import "LxmYiJianBuHuoVC1.h"
-
+#import "LxmShengjiGouWuVC.h"
 #import "LxmShengjiGouWuVC.h"
 
 #import "LxmRenZhengProtocolVC.h"
@@ -340,25 +340,25 @@
  */
 - (void)shareAtIndex:(NSInteger)index {
     switch (index) {
-        case 0: {
-            [self shareWXPYQTitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"https://app.hkymr.com/shareGood.html?good_id=%@",self.detailModel.good.id] ok:nil error:nil];
-        }
-            break;
-        case 1:{
-            [self shareWeChatTitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"https://app.hkymr.com/shareGood.html?good_id=%@",self.detailModel.good.id] ok:nil error:nil];
-        }
-            break;
-        case 2:{
-            [self shareQQTitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"https://app.hkymr.com/shareGood.html?good_id=%@",self.detailModel.good.id] ok:nil error:nil];
-        }
-            break;
-        case 3:{
-            [self shareQQZoneitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"https://app.hkymr.com/shareGood.html?good_id=%@",self.detailModel.good.id] ok:nil error:nil];
-        }
-            break;
-        case 4:{//复制链接
-            [UIPasteboard generalPasteboard].string = [NSString stringWithFormat:@"https://app.hkymr.com/shareGood.html?good_id=%@",self.detailModel.good.id];
-        }
+         case 0: {
+                   [self shareWXPYQTitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"%@/shareGood.html?good_id=%@",Base_URL,self.detailModel.good.id] ok:nil error:nil];
+               }
+                   break;
+               case 1:{
+                   [self shareWeChatTitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"%@/shareGood.html?good_id=%@",Base_URL,self.detailModel.good.id] ok:nil error:nil];
+               }
+                   break;
+               case 2:{
+                   [self shareQQTitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"%@/shareGood.html?good_id=%@",Base_URL,self.detailModel.good.id] ok:nil error:nil];
+               }
+                   break;
+               case 3:{
+                   [self shareQQZoneitle:self.detailModel.good.goodName content:self.detailModel.good.goodName pic:self.detailModel.good.listPic url:[NSString stringWithFormat:@"%@/shareGood.html?good_id=%@",Base_URL,self.detailModel.good.id] ok:nil error:nil];
+               }
+                   break;
+               case 4:{//复制链接
+                   [UIPasteboard generalPasteboard].string = [NSString stringWithFormat:@"%@/shareGood.html?good_id=%@",Base_URL,self.detailModel.good.id];
+               }
             break;
             
         default:

@@ -177,8 +177,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.titleView = self.titleButton;
-    self.titleArray = @[@"全部",@"待发货",@"待收货",@"待自提",@"已收货",@"已自提",@"已取消"];
+    
+    
+    if (self.isHaoCai) {
+        self.navigationItem.title = @"我的订单";
+        _tabBar.layout.cellWidth = floor((ScreenW -  60)/4.0);
+        _tabBar.layout.cellSpacing = 20;
+        self.titleArray = @[@"全部",@"待支付",@"已完成",@"已取消"];
+        self.titleIndex = 3;
+        self.selectedView.currentIndex = 2;
+    }else {
+        self.navigationItem.titleView = self.titleButton;
+        self.titleArray = @[@"全部",@"待发货",@"待收货",@"待自提",@"已收货",@"已自提",@"已取消"];
+    }
+    
+    
     [self initSubviews];
 }
 
@@ -190,6 +203,9 @@
     [self addChildViewController:self.pagerController];
     [self.view addSubview:self.pagerController.view];
     self.titleIndex = 1;//发货订单
+    if (self.isHaoCai) {
+        self.titleIndex = 3;
+    }
     [self.tabBar reloadData];
     [self.pagerController reloadData];
     
@@ -242,10 +258,13 @@
     }
     LxmSubCaiGouAndXiaoShouVC *vc = [[LxmSubCaiGouAndXiaoShouVC alloc] init];
     vc.type = @(self.titleIndex);
+    vc.status = @(index);
     if (index == 2) {
         vc.status = @4;
+    }else if (index == 3) {
+        vc.status = @5;
     }
-    vc.status = @(index);
+    vc.isHaoCai = self.isHaoCai;
     return vc;
 }
 

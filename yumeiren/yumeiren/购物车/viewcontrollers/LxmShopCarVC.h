@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LxmShopCarVC : BaseTableViewController
 
 @property (nonatomic, assign) BOOL isDeep;
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
 
 @end
 
