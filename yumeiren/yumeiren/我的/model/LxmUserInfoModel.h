@@ -66,6 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) NSString *cashMoney;// 提现最低金额
 
 @property (nonatomic , strong) NSString *inMoney;// 销售收入
+@property (nonatomic , strong) NSString *sendScore;// 积分
 
 @property (nonatomic , strong) NSString *shopStatus;// 0:未付保证金，1：已付保证金，2：已填信息,4：申请省级中，5：后台通过省长审核待升级 6-可以购买， 7-不可以购买，需要先升级
 

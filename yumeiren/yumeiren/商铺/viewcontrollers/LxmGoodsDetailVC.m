@@ -387,6 +387,7 @@
             }
         } else {
             LxmShopCarVC *vc = [[LxmShopCarVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            vc.isHaoCai = self.isHaoCai;
             [self.navigationController pushViewController:vc animated:YES];
         }
         
@@ -395,6 +396,8 @@
     } else {//立即购买
         LxmPayVC *vc = [[LxmPayVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPayVC_type_zjgm];
         vc.zhijieGoumaiMoney = self.detailModel.good.goodPrice;
+        vc.shiFuJiFen = self.detailModel.good.scorePrice;
+        vc.isHaoCai = self.isHaoCai;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -403,6 +406,12 @@
  添加购物车 如果没有角色 需要先升级 最少是高级门店才能购买货物
  */
 - (void)addCarClick {
+    
+    if (self.isHaoCai) {
+         [self addgoodsAction];
+        return;
+    }
+    
     
     if (self.shengjiModel) {
         if (([self.roleType isEqualToString:@"-0.5"] || [self.roleType isEqualToString:@"-0.4"] || [self.roleType isEqualToString:@"-0.3"] || [self.roleType isEqualToString:@"1.1"] || [self.roleType isEqualToString:@"2.1"] || [self.roleType isEqualToString:@"3.1"]) && self.detailModel.good.specialType.intValue != 2) {
@@ -524,33 +533,41 @@
         [self.navigationController presentViewController:alertView animated:YES completion:nil];
         
     }  else {
-        NSDictionary *dict = @{
-                                  @"token" : SESSION_TOKEN,
-                                  @"goodId" : self.detailModel.good.id,
-                                  @"num" : @1
-                                  };
-           [SVProgressHUD show];
-           WeakObj(self);
-           [LxmNetworking networkingPOST:add_cart parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-               [SVProgressHUD dismiss];
-               StrongObj(self);
-               if ([responseObject[@"key"] integerValue] == 1000) {
-                   [SVProgressHUD showSuccessWithStatus:@"添加成功!"];
-                   NSInteger num = self.detailModel.cartNum.integerValue;
-                   num++;
-                   self.detailModel.cartNum = @(num).stringValue;
-                   self.bottomView.carButton.num = self.detailModel.cartNum;
-                   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                       [LxmEventBus sendEvent:@"addCarSuccess" data:nil];
-                   });
-               } else {
-                   [UIAlertController showAlertWithmessage:responseObject[@"message"]];
-               }
-           } failure:^(NSURLSessionDataTask *task, NSError *error) {
-               [SVProgressHUD dismiss];
-           }];
+        [self addgoodsAction];
     }
 }
+
+- (void)addgoodsAction {
+    
+    NSMutableDictionary *dict = @{
+        @"token" : SESSION_TOKEN,
+        @"goodId" : self.detailModel.good.id,
+        @"num" : @1
+    }.mutableCopy;
+    [SVProgressHUD show];
+    WeakObj(self);
+    [LxmNetworking networkingPOST:add_cart parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        StrongObj(self);
+        if ([responseObject[@"key"] integerValue] == 1000) {
+            [SVProgressHUD showSuccessWithStatus:@"添加成功!"];
+            NSInteger num = self.detailModel.cartNum.integerValue;
+            num++;
+            self.detailModel.cartNum = @(num).stringValue;
+            self.bottomView.carButton.num = self.detailModel.cartNum;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [LxmEventBus sendEvent:@"addCarSuccess" data:nil];
+            });
+        } else {
+            [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
+    
+    
+}
+
+
 @end
 
 

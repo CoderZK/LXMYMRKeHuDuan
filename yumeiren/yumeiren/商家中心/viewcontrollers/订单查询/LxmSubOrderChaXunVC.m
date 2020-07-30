@@ -109,6 +109,7 @@
         if (!cell) {
             cell = [[LxmSubBuHuoOrderPriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmSubBuHuoOrderPriceCell"];
         }
+        cell.isHaoCai = self.isHaoCai;
         cell.orderModel = self.dataArr[indexPath.section];
         return cell;
     } else if (indexPath.row == self.dataArr[indexPath.section].sub.count + 4 - 1){
@@ -127,6 +128,7 @@
         if (!cell) {
             cell = [[LxmJieSuanPeiSongGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmJieSuanPeiSongGoodsCell"];
         }
+        cell.isHaoCai = self.isHaoCai;
         cell.orderModel = self.dataArr[indexPath.section].sub[indexPath.row - 2];
         return cell;
     }

@@ -348,10 +348,35 @@
     CGFloat f = _carModel.proxy_price.floatValue;
     NSInteger d = _carModel.proxy_price.integerValue;
     
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:d == f ? [NSString stringWithFormat:@"¥%ld ",(long)d] : [NSString stringWithFormat:@"¥%.2f ",f] attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15],NSForegroundColorAttributeName:MainColor}];
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:d1 == f1 ? [NSString stringWithFormat:@"¥%ld ",(long)d1] : [NSString stringWithFormat:@"¥%.2f ",f1]  attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:CharacterLightGrayColor,NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle | NSUnderlinePatternSolid)}];
-    [att appendAttributedString:str];
-    self.moneyLabel.attributedText = att;
+    
+    
+    if (self.isHaoCao) {
+        //
+//        NSString * str = @"";
+//        if (carModel.good_price.doubleValue == 0) {
+//                   
+//            str = [NSString stringWithFormat:@"%@积分",[carModel.score_price getPriceStr]];
+//                   
+//        }else {
+//            if (carModel.score_price.doubleValue == 0) {
+//                       str = [NSString stringWithFormat:@"¥%@",[carModel.good_price getPriceStr]];
+//        }else {
+//            str = [NSString stringWithFormat:@"¥%@+%@积分",[carModel.good_price getPriceStr],[carModel.score_price getPriceStr]];
+//                   }
+//        }
+//        self.moneyLabel.attributedText = [str getMutableAttributeStringWithFont:14 lineSpace:0 textColor:MainColor fontTwo:12 nsrange:[str rangeOfString:@"¥"] fontThtree:12 nsrangethree:[str rangeOfString:@"积分"]];
+        
+       self.moneyLabel.attributedText =  [@"" getjiFenOrMoneyWithPrice:carModel.good_price withSorce:carModel.score_price];
+        
+    }else {
+       
+        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:d == f ? [NSString stringWithFormat:@"¥%ld ",(long)d] : [NSString stringWithFormat:@"¥%.2f ",f] attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15],NSForegroundColorAttributeName:MainColor}];
+        NSAttributedString *str = [[NSAttributedString alloc] initWithString:d1 == f1 ? [NSString stringWithFormat:@"¥%ld ",(long)d1] : [NSString stringWithFormat:@"¥%.2f ",f1]  attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:CharacterLightGrayColor,NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle | NSUnderlinePatternSolid)}];
+        [att appendAttributedString:str];
+        self.moneyLabel.attributedText = att;
+        
+    }
+    
     _numView.numTF.text = _carModel.num;
 }
 

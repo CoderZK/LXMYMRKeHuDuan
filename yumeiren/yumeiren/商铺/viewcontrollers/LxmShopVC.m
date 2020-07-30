@@ -302,11 +302,12 @@
 - (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated {
     [_tabBar scrollToItemFromIndex:fromIndex toIndex:toIndex animate:animated];
     [self.topBgView sd_setImageWithURL:[NSURL URLWithString:self.model.result.list[toIndex].mainPic] placeholderImage:[UIImage imageNamed:@"tupian"]];
+
 }
 
 -(void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
     [_tabBar scrollToItemFromIndex:fromIndex toIndex:toIndex progress:progress];
-    [self.topBgView sd_setImageWithURL:[NSURL URLWithString:self.model.result.list[toIndex].mainPic] placeholderImage:[UIImage imageNamed:@"tupian"]];
+//    [self.topBgView sd_setImageWithURL:[NSURL URLWithString:self.model.result.list[toIndex].mainPic] placeholderImage:[UIImage imageNamed:@"tupian"]];
 }
 
 /**

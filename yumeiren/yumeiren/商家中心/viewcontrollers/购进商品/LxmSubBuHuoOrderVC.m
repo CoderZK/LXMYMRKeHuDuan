@@ -478,21 +478,45 @@
 //    for (LxmShopCenterOrderGoodsModel *m in _orderModel.sub2) {
 //        f += m.proxy_price.floatValue;
 //    }
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"商品总计： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%.2f",_orderModel.total_money.doubleValue] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:MainColor}];
-    [att appendAttributedString:str];
-    _priceLabel.attributedText = att;
+    
+    if (self.isHaoCai) {
+        
+         NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"商品总计： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
+        NSMutableAttributedString * att2 = [@"" getjiFenOrMoneyWithPrice:_orderModel.total_money withSorce:_orderModel.score_price];
+        [att appendAttributedString:att2];
+         _priceLabel.attributedText = att;
+        
+    }else {
+        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"商品总计： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
+        NSAttributedString *str = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%.2f",_orderModel.total_money.doubleValue] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:MainColor}];
+        [att appendAttributedString:str];
+        _priceLabel.attributedText = att;
+    }
+    
+    
 }
 
 //订单查询 详情
 - (void)setShifujineMoney:(NSString *)shifujineMoney {
     _shifujineMoney = shifujineMoney;
-    CGFloat f = _shifujineMoney.floatValue;
-    NSInteger d = _shifujineMoney.integerValue;
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:self.isDaiBuHuo ? @"待补货金额： " : @"实付金额： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString: d==f ? [NSString stringWithFormat:@"¥%ld",d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:MainColor}];
-    [att appendAttributedString:str];
-    _priceLabel.attributedText = att;
+    
+    if (self.isHaoCai) {
+        
+        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:self.isDaiBuHuo ? @"待补货金额： " : @"实付金额： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
+        NSMutableAttributedString * att2 = [@"" getjiFenOrMoneyWithPrice:shifujineMoney withSorce:self.shifujiFen];
+        [att appendAttributedString:att2];
+         _priceLabel.attributedText = att;
+        
+    }else {
+        CGFloat f = _shifujineMoney.floatValue;
+        NSInteger d = _shifujineMoney.integerValue;
+        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:self.isDaiBuHuo ? @"待补货金额： " : @"实付金额： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
+        NSAttributedString *str = [[NSAttributedString alloc] initWithString: d==f ? [NSString stringWithFormat:@"¥%ld",d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:MainColor}];
+        [att appendAttributedString:str];
+        _priceLabel.attributedText = att;
+    }
+    
+    
 }
 
 

@@ -95,8 +95,30 @@
 
 - (void)setDetailModel:(LxmGoodsDetailModel *)detailModel {
     _detailModel = detailModel;
-    self.priceLabel.text = [NSString stringWithFormat:@"¥%@",_detailModel.goodPrice];
+   
     self.nameLabel.text = _detailModel.goodName;
+    
+    if ([detailModel.noVip isEqualToString:@"2"]) {
+//        NSString * str = @"";
+//               if (detailModel.goodPrice.doubleValue == 0) {
+//
+//                   str = [NSString stringWithFormat:@"%@积分",[detailModel.scorePrice getPriceStr]];
+//
+//               }else {
+//                   if (detailModel.scorePrice.doubleValue == 0) {
+//                       str = [NSString stringWithFormat:@"¥%@",[detailModel.goodPrice getPriceStr]];
+//                   }else {
+//                       str = [NSString stringWithFormat:@"¥%@+%@积分",[detailModel.goodPrice getPriceStr],[detailModel.scorePrice getPriceStr]];
+//                   }
+//               }
+                
+//               self.priceLabel.attributedText = [str getMutableAttributeStringWithFont:14 lineSpace:0 textColor:MainColor fontTwo:12 nsrange:[str rangeOfString:@"¥"] fontThtree:12 nsrangethree:[str rangeOfString:@"积分"]];
+        
+      self.priceLabel.attributedText =  [@"" getjiFenOrMoneyWithPrice:detailModel.goodPrice withSorce:detailModel.scorePrice];
+    }else {
+         self.priceLabel.text = [NSString stringWithFormat:@"¥%@",_detailModel.goodPrice];
+    }
+    
 }
 
 @end

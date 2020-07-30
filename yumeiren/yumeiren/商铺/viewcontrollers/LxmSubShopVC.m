@@ -70,6 +70,7 @@
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LxmHomeGoodsItem *itemCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LxmHomeGoodsItem" forIndexPath:indexPath];
+    itemCell.isHaoCai = self.isHaoCai;
     itemCell.goodsModel = self.dataArr[indexPath.item];
     WeakObj(self);
     itemCell.addCardClickBlock = ^(LxmHomeGoodsModel *goodsModel) {
@@ -82,6 +83,11 @@
  添加购物车 如果没有角色 需要先升级 最少是经理才能购买货物
  */
 - (void)addCarClick:(LxmHomeGoodsModel *)goodModel {
+    
+    if (self.isHaoCai) {
+        [self addCar:goodModel];
+        return;
+    }
     if (self.shengjiModel) {
         if ( ([self.roleType isEqualToString:@"-0.5"] || [self.roleType isEqualToString:@"-0.4"] || [self.roleType isEqualToString:@"-0.3"] || [self.roleType isEqualToString:@"1.1"] || [self.roleType isEqualToString:@"2.1"] || [self.roleType isEqualToString:@"3.1"]) && goodModel.special_type.intValue != 2) {
             [SVProgressHUD showErrorWithStatus:@"不属于减肥单项商品，无法购买"];

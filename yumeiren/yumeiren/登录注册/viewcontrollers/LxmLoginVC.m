@@ -284,7 +284,6 @@
                            @"password" : password,
                            };
     [SVProgressHUD show];
-    self.loginButton.userInteractionEnabled = NO;
     WeakObj(self);
     [LxmNetworking networkingPOST:app_login parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];

@@ -44,6 +44,7 @@
 
 @interface LxmHomeGoodsItem : UICollectionViewCell
 
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
 @property (nonatomic, strong) LxmHomeGoodsModel *goodsModel;
 
 @property (nonatomic, copy) void(^addCardClickBlock)(LxmHomeGoodsModel *goodsModel);

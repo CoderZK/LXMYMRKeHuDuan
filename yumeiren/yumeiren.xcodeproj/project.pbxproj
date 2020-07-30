@@ -224,6 +224,11 @@
 		40F4BF0F22E85C9F00C48BA2 /* LxmTuanDuiSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4BF0E22E85C9F00C48BA2 /* LxmTuanDuiSearchVC.m */; };
 		40F7EE2D2315341000DF3E18 /* LxmSelectAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F7EE2C2315341000DF3E18 /* LxmSelectAreaVC.m */; };
 		40FA4F6F2406025500F10B72 /* LxmJianFeiShengJiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FA4F6E2406025500F10B72 /* LxmJianFeiShengJiVC.m */; };
+		584CDC2324CFCBCB00C32A75 /* LxmMineJiFenTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 584CDC2224CFCBCB00C32A75 /* LxmMineJiFenTVC.m */; };
+		584CDC2724CFD3D500C32A75 /* LxmJiFenOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 584CDC2524CFD3D500C32A75 /* LxmJiFenOneCell.m */; };
+		584CDC2824CFD3D500C32A75 /* LxmJiFenOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 584CDC2624CFD3D500C32A75 /* LxmJiFenOneCell.xib */; };
+		584CDC2C24CFD47500C32A75 /* LxmJiFenTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 584CDC2A24CFD47500C32A75 /* LxmJiFenTwoCell.m */; };
+		584CDC2D24CFD47500C32A75 /* LxmJiFenTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 584CDC2B24CFD47500C32A75 /* LxmJiFenTwoCell.xib */; };
 		5885884E24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5885884D24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m */; };
 		5885885124CEA7ED00847BBA /* LxmJiFenShopSubVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5885885024CEA7ED00847BBA /* LxmJiFenShopSubVC.m */; };
 		5F38F6922428E20A00AE62E9 /* LxmPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F38F6912428E20A00AE62E9 /* LxmPlayer.m */; };
@@ -361,7 +366,7 @@
 		4072561123166DAB00AEB259 /* LxmRegistXieYiAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmRegistXieYiAlertView.m; sourceTree = "<group>"; };
 		4076385F233C466D0051D0DC /* LxmShenQingReasonAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmShenQingReasonAlertView.h; sourceTree = "<group>"; };
 		40763860233C466D0051D0DC /* LxmShenQingReasonAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmShenQingReasonAlertView.m; sourceTree = "<group>"; };
-		4078923D22D4440B00716C1C /* 虞美人.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "虞美人.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4078923D22D4440B00716C1C /* 煜美人ce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "煜美人ce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4078924022D4440C00716C1C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4078924122D4440C00716C1C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4078924322D4440C00716C1C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -651,6 +656,14 @@
 		40F7EE2C2315341000DF3E18 /* LxmSelectAreaVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmSelectAreaVC.m; sourceTree = "<group>"; };
 		40FA4F6D2406025500F10B72 /* LxmJianFeiShengJiVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJianFeiShengJiVC.h; sourceTree = "<group>"; };
 		40FA4F6E2406025500F10B72 /* LxmJianFeiShengJiVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJianFeiShengJiVC.m; sourceTree = "<group>"; };
+		584CDC2124CFCBCB00C32A75 /* LxmMineJiFenTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmMineJiFenTVC.h; sourceTree = "<group>"; };
+		584CDC2224CFCBCB00C32A75 /* LxmMineJiFenTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmMineJiFenTVC.m; sourceTree = "<group>"; };
+		584CDC2424CFD3D500C32A75 /* LxmJiFenOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJiFenOneCell.h; sourceTree = "<group>"; };
+		584CDC2524CFD3D500C32A75 /* LxmJiFenOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJiFenOneCell.m; sourceTree = "<group>"; };
+		584CDC2624CFD3D500C32A75 /* LxmJiFenOneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LxmJiFenOneCell.xib; sourceTree = "<group>"; };
+		584CDC2924CFD47500C32A75 /* LxmJiFenTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJiFenTwoCell.h; sourceTree = "<group>"; };
+		584CDC2A24CFD47500C32A75 /* LxmJiFenTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJiFenTwoCell.m; sourceTree = "<group>"; };
+		584CDC2B24CFD47500C32A75 /* LxmJiFenTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LxmJiFenTwoCell.xib; sourceTree = "<group>"; };
 		5885884C24CEA7CA00847BBA /* LxmJiFenShopFatherVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJiFenShopFatherVC.h; sourceTree = "<group>"; };
 		5885884D24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJiFenShopFatherVC.m; sourceTree = "<group>"; };
 		5885884F24CEA7ED00847BBA /* LxmJiFenShopSubVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJiFenShopSubVC.h; sourceTree = "<group>"; };
@@ -770,7 +783,7 @@
 		4078923E22D4440C00716C1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4078923D22D4440B00716C1C /* 虞美人.app */,
+				4078923D22D4440B00716C1C /* 煜美人ce.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1090,6 +1103,8 @@
 				40F1AF1F22E554A400D78186 /* LxmKuCunVC.m */,
 				4019530C22FC09690093ABF0 /* LxmFaceBookVC.h */,
 				4019530D22FC09690093ABF0 /* LxmFaceBookVC.m */,
+				584CDC2124CFCBCB00C32A75 /* LxmMineJiFenTVC.h */,
+				584CDC2224CFCBCB00C32A75 /* LxmMineJiFenTVC.m */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -1112,6 +1127,12 @@
 				407892BF22D47DDF00716C1C /* LxmMineView.m */,
 				4061A82F22E33ED3004D127C /* LxmMyKefuAlertView.h */,
 				4061A83022E33ED3004D127C /* LxmMyKefuAlertView.m */,
+				584CDC2424CFD3D500C32A75 /* LxmJiFenOneCell.h */,
+				584CDC2524CFD3D500C32A75 /* LxmJiFenOneCell.m */,
+				584CDC2624CFD3D500C32A75 /* LxmJiFenOneCell.xib */,
+				584CDC2924CFD47500C32A75 /* LxmJiFenTwoCell.h */,
+				584CDC2A24CFD47500C32A75 /* LxmJiFenTwoCell.m */,
+				584CDC2B24CFD47500C32A75 /* LxmJiFenTwoCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1649,7 +1670,7 @@
 			);
 			name = yumeiren;
 			productName = yumeiren;
-			productReference = 4078923D22D4440B00716C1C /* 虞美人.app */;
+			productReference = 4078923D22D4440B00716C1C /* 煜美人ce.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1711,8 +1732,10 @@
 				400158BD230FD0DE00AC5BA3 /* mx_pic_selected_yes@2x.png in Resources */,
 				40C3A23022EAE1D300F3E510 /* mx_picker_back_image@2x.png in Resources */,
 				40E484C6230A87C2007793DB /* README.txt in Resources */,
+				584CDC2824CFD3D500C32A75 /* LxmJiFenOneCell.xib in Resources */,
 				400158BB230FD0CE00AC5BA3 /* mx_pic_selected_no@2x.png in Resources */,
 				40E48498230A70A8007793DB /* icon_sliderImage@3x.png in Resources */,
+				584CDC2D24CFD47500C32A75 /* LxmJiFenTwoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1780,6 +1803,7 @@
 				40D7F27623FFDDED005D4CC0 /* LxmInfoClassVC.m in Sources */,
 				4078927322D466DC00716C1C /* BaseViewController.m in Sources */,
 				40E431A02317879600B1AE41 /* LxmZhuanYuEVC.m in Sources */,
+				584CDC2324CFCBCB00C32A75 /* LxmMineJiFenTVC.m in Sources */,
 				40DC053B22E98BE900570241 /* LxmTiXianVC.m in Sources */,
 				4015E9A522E5F5F600B91764 /* LxmPublishTouSuVC.m in Sources */,
 				400C6C7822E04D6C008C59C9 /* LxmAboutUSVC.m in Sources */,
@@ -1807,6 +1831,7 @@
 				4019530522FBC64B0093ABF0 /* LxmEmptyView.m in Sources */,
 				4022D5D822D730CC00E7462D /* LxmSubShopVC.m in Sources */,
 				40F1AF3722E58C5000D78186 /* LxmKuCunJiLuVC.m in Sources */,
+				584CDC2724CFD3D500C32A75 /* LxmJiFenOneCell.m in Sources */,
 				404391E92334BC8600099137 /* LxmRenZhengProtocolVC.m in Sources */,
 				402F935122E6FE7B009F5E06 /* LxmAddAddressVC.m in Sources */,
 				40BDB80722E03DAC00FBFE70 /* LxmLoginVC.m in Sources */,
@@ -1893,6 +1918,7 @@
 				40F4BF0F22E85C9F00C48BA2 /* LxmTuanDuiSearchVC.m in Sources */,
 				40DC053522E978D500570241 /* LxmQianBaoVC.m in Sources */,
 				405A8E7022E1BE9F00D5CA3A /* LxmRegistVC.m in Sources */,
+				584CDC2C24CFD47500C32A75 /* LxmJiFenTwoCell.m in Sources */,
 				40DC053122E95F9800570241 /* LxmDingDanMessageVC.m in Sources */,
 				40DC2F5D22E06A4D00ED2FF4 /* LxmSubFenLeiVC.m in Sources */,
 				40B4F24022F27EA40077823C /* SNYAlertView.m in Sources */,
@@ -2121,8 +2147,8 @@
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
 				);
 				MARKETING_VERSION = 2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
-				PRODUCT_NAME = "虞美人";
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren222;
+				PRODUCT_NAME = "煜美人ce";
 				PROVISIONING_PROFILE_SPECIFIER = comxxxxx;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2164,8 +2190,8 @@
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
 				);
 				MARKETING_VERSION = 2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
-				PRODUCT_NAME = "虞美人";
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren222;
+				PRODUCT_NAME = "煜美人ce";
 				PROVISIONING_PROFILE_SPECIFIER = ymr_dis_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

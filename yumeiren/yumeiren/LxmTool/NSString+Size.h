@@ -87,4 +87,13 @@
 
 + (BOOL)checkEmail:(NSString *)email;
 
+
+- (NSMutableAttributedString *)getMutableAttributeStringWithFont:(int)fontSize lineSpace:(int)lineSpace textColor:(UIColor *)color fontTwo:(int)fontTwo nsrange:(NSRange )range fontThtree:(int)fontThtree nsrangethree:(NSRange )rangeThree;
+
+- (NSMutableAttributedString * )getjiFenOrMoneyWithPrice:(NSString *)price withSorce:(NSString *)sorce;
+
+- (NSMutableAttributedString * )getAttributedString;
+
+- (NSString *)getPriceStr;
+
 @end

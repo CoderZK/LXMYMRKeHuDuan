@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *give_pic;/* 商品图片 */
 
 @property (nonatomic, strong) NSString *good_price;/* 商品原价 */
+@property (nonatomic, strong) NSString *score_price;// 积分
 
 @property (nonatomic, strong) NSString *proxy_price;/* 商品代理价 */
 

@@ -20,6 +20,8 @@
 
 @property (nonatomic, assign) BOOL isShengji;//无身份 升级中的单子
 
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
+
 @end
 
 

@@ -370,6 +370,8 @@
 
 @property (nonatomic, strong) NSString* buy_num;//根据身份必须最低购买量
 
+@property (nonatomic, strong) NSString*score_price;// 积分价格
+
 
 @end
 
@@ -397,6 +399,10 @@
 @property (nonatomic, strong) NSString *info_type;/*1：商品详情*/
 
 @property (nonatomic, strong) NSString *content;/* 富文本 */
+
+@property (nonatomic, strong) NSString *score_price;//积分
+
+@property (nonatomic, strong) NSString *create_time;//时间
 
 @end
 

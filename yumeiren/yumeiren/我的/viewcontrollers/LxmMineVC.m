@@ -28,6 +28,7 @@
 
 #import "LxmRenZhengProtocolVC.h"
 #import "LxmJiFenShopFatherVC.h"
+#import "LxmMineJiFenTVC.h"
 
 @interface LxmMineVC ()
 
@@ -127,7 +128,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section == 0 ? 1 : 7;
+    return section == 0 ? 1 : 8;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
@@ -150,6 +151,10 @@
     }
     cell.index = indexPath.row;
     cell.infoModel = [LxmTool ShareTool].userModel;
+//    cell.clipsToBounds = YES;
+    
+ 
+    
     return cell;
 }
 
@@ -174,7 +179,26 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 3: {//实名认证
+         
+            case 3: {//小晞
+                
+                LxmMineJiFenTVC * vc =[[LxmMineJiFenTVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                vc.hidesBottomBarWhenPushed = YES;
+                vc.jifenStr = [LxmTool ShareTool].userModel.sendScore;
+                [self.navigationController pushViewController:vc animated:YES];  
+                
+                //                LxmMineJifenMingXiTVC * vc =[[LxmMineJifenMingXiTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+                //                vc.hidesBottomBarWhenPushed = YES;
+                //                [self.navigationController pushViewController:vc animated:YES];
+                
+//                LxmMineJiFenXiaJiTVC * vc =[[LxmMineJiFenXiaJiTVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                vc.jifenModel = self.jiFenModel;
+//                [self.navigationController pushViewController:vc animated:YES];
+                
+            }
+             break;
+        case 4: {//实名认证
             if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
                 if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
                     //已认证
@@ -196,28 +220,26 @@
             }
         }
             break;
-        case 4: {
+        case 5: {
             LxmMenDianChaXunVC *vc = [[LxmMenDianChaXunVC alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 5: {
+        case 6: {
             LxmMyKefuAlertView *alertView = [[LxmMyKefuAlertView alloc] initWithFrame:UIScreen.mainScreen.bounds];
             alertView.code = [LxmTool ShareTool].userModel.serviceName;
             [alertView show];
         }
             break;
-        case 6: {
+        case 7: {
             
-            LxmJiFenShopFatherVC * vc =[[LxmJiFenShopFatherVC alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            
-            return;
-//            LxmSettingVC *vc = [LxmSettingVC new];
+//            LxmJiFenShopFatherVC * vc =[[LxmJiFenShopFatherVC alloc] init];
 //            vc.hidesBottomBarWhenPushed = YES;
 //            [self.navigationController pushViewController:vc animated:YES];
+            LxmSettingVC *vc = [LxmSettingVC new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
 
@@ -231,12 +253,18 @@
         return 180;
     } else {
         NSString *roleType = LxmTool.ShareTool.userModel.roleType;
-        if (indexPath.row == 1 || indexPath.row == 2) {//我的红包 保证金
+        if (indexPath.row == 1 || indexPath.row == 2 ) {//我的红包 保证金
             if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"]) {
                 return 0.01;
             }
             return 60;
-        } else if (indexPath.row == 4) {//门店查询
+        }else if (indexPath.row == 3) {
+            if (roleType.floatValue >-1) {
+                return 60;;
+            }else {
+                return 0;
+            }
+        } else if (indexPath.row == 5) {//门店查询
             if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"] || [roleType isEqualToString:@"2.1"] || [roleType isEqualToString:@"3.1"]) {
                 return 0.01;
             }

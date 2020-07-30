@@ -277,7 +277,13 @@
 //YYYY-MM-dd HH:mm:ss
 - (NSString *)getIntervalToZHXLongTime {
     //将对象类型的时间转换为NSDate类型
+    
+   
+    
     NSDate * myDate = [NSDate dateWithTimeIntervalSince1970:self.doubleValue];
+    if (self.length > 10) {
+        myDate = [NSDate dateWithTimeIntervalSince1970:self.doubleValue/1000.0];
+    }
     //设置时间格式
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
@@ -388,6 +394,86 @@
     NSString *regex = @"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [emailTest evaluateWithObject:email];
+}
+
+- (NSString *)getPriceStr {
+    
+    NSString * str =  [NSString stringWithFormat:@"%.2f",self.doubleValue];;
+    
+    if ([[str substringFromIndex:str.length-2] isEqualToString:@"00"]){
+        return [str substringToIndex:str.length-3];
+    }
+    
+    if ([[str substringFromIndex:str.length - 1] isEqualToString:@"0"]) {
+        str = [str substringToIndex:str.length-1];
+    }
+
+    return str;
+
+    
+    
+    
+    
+    
+}
+
+- (NSMutableAttributedString *)getMutableAttributeStringWithFont:(int)fontSize lineSpace:(int)lineSpace textColor:(UIColor *)color fontTwo:(int)fontTwo nsrange:(NSRange )range fontThtree:(int)fontThtree nsrangethree:(NSRange )rangeThree {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:fontSize] range:NSMakeRange(0, self.length - range.length)];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:fontTwo] range:range];
+     [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:fontThtree] range:rangeThree];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, self.length)];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:lineSpace];//调整行间距
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, self.length)];
+    return attributedString;
+}
+
+- (NSMutableAttributedString * )getjiFenOrMoneyWithPrice:(NSString *)price withSorce:(NSString *)sorce {
+    
+    
+    NSString * str = @"";
+           if (price.doubleValue == 0) {
+               str = [NSString stringWithFormat:@"%@积分",[sorce getPriceStr]];
+           }else {
+               if (sorce.doubleValue == 0) {
+                   str = [NSString stringWithFormat:@"¥%@",[price getPriceStr]];
+               }else {
+                   str = [NSString stringWithFormat:@"¥%@+%@积分",[price getPriceStr],[sorce getPriceStr]];
+               }
+           }
+           
+    
+    
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:NSMakeRange(0, str.length)];
+    
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:[str rangeOfString:@"¥"]];
+     [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:[str rangeOfString:@"积分"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:MainColor range:NSMakeRange(0, str.length)];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:0];//调整行间距
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, str.length)];
+    return attributedString;
+    
+    
+    
+}
+
+- (NSMutableAttributedString * )getAttributedString{
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:NSMakeRange(0, self.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:CharacterLightGrayColor range:NSMakeRange(0, self.length)];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:0];//调整行间距
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, self.length)];
+    return attributedString;
+    
 }
 
 @end

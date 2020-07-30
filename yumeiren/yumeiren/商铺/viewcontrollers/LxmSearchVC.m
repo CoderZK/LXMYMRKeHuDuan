@@ -208,6 +208,7 @@
 
     } else if (collectionView == _collectionView1){
         LxmHomeGoodsItem *buttonItem = [collectionView dequeueReusableCellWithReuseIdentifier:@"LxmHomeGoodsItem" forIndexPath:indexPath];
+        buttonItem.isHaoCai = self.isHaoCai;
         buttonItem.goodsModel = self.dataArr1[indexPath.item];
         WeakObj(self);
         buttonItem.addCardClickBlock = ^(LxmHomeGoodsModel *goodsModel) {

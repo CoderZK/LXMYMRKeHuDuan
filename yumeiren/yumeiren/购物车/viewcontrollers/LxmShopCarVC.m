@@ -26,6 +26,7 @@
 @property (nonatomic, assign) NSInteger allPageNum;
 
 @property (nonatomic, assign) CGFloat allPrice;//总价
+@property (nonatomic, assign) CGFloat allScorePrice;//积分总价
 
 @property (nonatomic, assign) CGFloat proxyPrice;//代理总价
 
@@ -193,9 +194,11 @@
         
         if (carModel.isSelected) {
             selfWeak.allPrice += carModel.good_price.doubleValue * carModel.num.intValue;
+            selfWeak.allScorePrice += carModel.score_price.doubleValue*carModel.num.intValue;
             selfWeak.proxyPrice += carModel.proxy_price.doubleValue * carModel.num.intValue;
         }else {
             selfWeak.allPrice -= carModel.good_price.doubleValue * carModel.num.intValue;
+            selfWeak.allScorePrice -= carModel.score_price.doubleValue*carModel.num.intValue;
             selfWeak.proxyPrice -= carModel.proxy_price.doubleValue * carModel.num.intValue;
         }
         [selfWeak.tableView reloadData];
@@ -214,15 +217,28 @@
         
         
         self.bottomView.yuanPrice.attributedText = att;
-        self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+       
+        if (self.isHaoCai) {
+            NSMutableAttributedString * at1 = [@"零售总价 " getAttributedString];
+            NSMutableAttributedString * at2 = [@"" getjiFenOrMoneyWithPrice:[NSString stringWithFormat:@"%f",self.allPrice] withSorce:[NSString stringWithFormat:@"%f",self.allScorePrice]];
+            [at1 appendAttributedString:at2];
+            self.bottomView.vipPrice.attributedText = at1;
+        }else {
+             self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+        }
+        
+   
+        
     };
     cell.modifyCarSuccess = ^(LxmShopCarModel *model) {
         selfWeak.allPrice = 0;
         selfWeak.proxyPrice = 0;
+        selfWeak.allScorePrice = 0;
         NSInteger count = 0;
         for (LxmShopCarModel *model in self.dataArr) {
             if (model.isSelected) {
                 selfWeak.allPrice += model.good_price.doubleValue * model.num.intValue;
+                selfWeak.allScorePrice += model.score_price.doubleValue*model.num.intValue;
                 selfWeak.proxyPrice += model.proxy_price.doubleValue * model.num.intValue;
                 count ++;
             }
@@ -236,7 +252,14 @@
         
         
         self.bottomView.yuanPrice.attributedText = att;
-        self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+        if (self.isHaoCai) {
+            NSMutableAttributedString * at1 = [@"零售总价 " getAttributedString];
+            NSMutableAttributedString * at2 = [@"" getjiFenOrMoneyWithPrice:[NSString stringWithFormat:@"%f",self.allPrice] withSorce:[NSString stringWithFormat:@"%f",self.allScorePrice]];
+            [at1 appendAttributedString:at2];
+            self.bottomView.vipPrice.attributedText = at1;
+        }else {
+             self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+        }
     };
     return cell;
 }
@@ -309,6 +332,7 @@
                 }
                 WeakObj(self);
                 selfWeak.allPrice = 0;
+                selfWeak.allScorePrice = 0;
                 selfWeak.proxyPrice = 0;
                 NSInteger count = 0;
                 for (LxmShopCarModel *model in self.dataArr) {
@@ -316,6 +340,7 @@
                         model.isSelected = [self.isSelectedDictionary[model.id] boolValue];
                         if (model.isSelected) {
                             selfWeak.allPrice += model.good_price.doubleValue * model.num.intValue;
+                            selfWeak.allScorePrice += model.score_price.doubleValue*model.num.intValue;
                             selfWeak.proxyPrice += model.proxy_price.doubleValue * model.num.intValue;
                             count ++;
                         }
@@ -325,7 +350,14 @@
                         
                         
                         self.bottomView.yuanPrice.attributedText = att;
-                        self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+                        if (self.isHaoCai) {
+                            NSMutableAttributedString * at1 = [@"零售总价 " getAttributedString];
+                            NSMutableAttributedString * at2 = [@"" getjiFenOrMoneyWithPrice:[NSString stringWithFormat:@"%f",self.allPrice] withSorce:[NSString stringWithFormat:@"%f",self.allScorePrice]];
+                            [at1 appendAttributedString:at2];
+                            self.bottomView.vipPrice.attributedText = at1;
+                        }else {
+                             self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+                        }
                         self.bottomView.allImgView.image = [UIImage imageNamed:count == selfWeak.dataArr.count ? @"xuanzhong_y" : @"xuanzhong_n"];
                     }
                 }
@@ -350,12 +382,14 @@
     self.bottomView.allImgView.image = [UIImage imageNamed:btn.selected ? @"xuanzhong_y" : @"xuanzhong_n"];
     WeakObj(self);
     self.allPrice = 0;
+    self.allScorePrice = 0;
     self.proxyPrice = 0;
     NSInteger count = 0;
     for (LxmShopCarModel *model in self.dataArr) {
         if (btn.selected) {
             model.isSelected = YES;
             selfWeak.allPrice += model.good_price.doubleValue * model.num.intValue;
+            selfWeak.allScorePrice += model.score_price.doubleValue*model.num.intValue;
             selfWeak.proxyPrice += model.proxy_price.doubleValue * model.num.intValue;
             count ++;
         }else {
@@ -370,7 +404,14 @@
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"零售总价: " attributes:@{NSForegroundColorAttributeName:CharacterDarkColor}];
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%.2f", self.allPrice] attributes:@{NSForegroundColorAttributeName:MainColor}];
     [att appendAttributedString:str];
-    self.bottomView.vipPrice.attributedText = att;
+    if (self.isHaoCai) {
+        NSMutableAttributedString * at1 = [@"零售总价 " getAttributedString];
+        NSMutableAttributedString * at2 = [@"" getjiFenOrMoneyWithPrice:[NSString stringWithFormat:@"%f",self.allPrice] withSorce:[NSString stringWithFormat:@"%f",self.allScorePrice]];
+        [at1 appendAttributedString:at2];
+        self.bottomView.vipPrice.attributedText = at1;
+    }else {
+         self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+    }
     self.bottomView.yuanPrice.text = [NSString stringWithFormat:@"代理总价: ¥%.2f",self.proxyPrice];
 }
 
@@ -596,6 +637,13 @@
  购物车结算下单
  */
 - (void)settleCarOrder:(NSString *)ids goods:(NSArray *)goods {
+    
+    
+    if ([LxmTool ShareTool].userModel.sendScore.doubleValue < self.allScorePrice) {
+        [SVProgressHUD showErrorWithStatus:@"积分不足"];
+        return;
+    }
+    
     [SVProgressHUD show];
     WeakObj(self);
     NSMutableDictionary *dict = @{@"token":SESSION_TOKEN,@"cartIds":ids}.mutableCopy;
@@ -645,7 +693,14 @@
             [att appendAttributedString:str];
             
             self.bottomView.yuanPrice.attributedText = att;
-            self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+            if (self.isHaoCai) {
+                NSMutableAttributedString * at1 = [@"零售总价 " getAttributedString];
+                NSMutableAttributedString * at2 = [@"" getjiFenOrMoneyWithPrice:[NSString stringWithFormat:@"%f",self.allPrice] withSorce:[NSString stringWithFormat:@"%f",self.allScorePrice]];
+                [at1 appendAttributedString:at2];
+                self.bottomView.vipPrice.attributedText = at1;
+            }else {
+                 self.bottomView.vipPrice.text = [NSString stringWithFormat:@"零售总价: ¥%.2f",self.allPrice];
+            }
             model.num = model.maxNum;
             [selfWeak.tableView reloadData];
         }
@@ -686,6 +741,8 @@
     LxmPayVC *vc = [[LxmPayVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPayVC_type_gwcJieSuan];
     vc.orderModel = model;
     vc.hidesBottomBarWhenPushed = YES;
+    vc.isHaoCai = self.isHaoCai;
+    vc.shiFuJiFen = [NSString stringWithFormat:@"%f",self.allScorePrice];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

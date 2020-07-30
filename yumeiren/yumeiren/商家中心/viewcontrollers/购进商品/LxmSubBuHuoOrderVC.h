@@ -30,6 +30,10 @@
 @property (nonatomic, assign) BOOL isDaiBuHuo;
 
 @property (nonatomic, strong) NSString *shifujineMoney;//订单查询 详情
+@property (nonatomic, strong) NSString *shifujiFen;//订单查询积分
+
+@property(nonatomic,assign)BOOL isHaoCai;
+
 
 @end
 

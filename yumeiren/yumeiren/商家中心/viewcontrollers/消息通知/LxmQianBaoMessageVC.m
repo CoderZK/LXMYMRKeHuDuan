@@ -292,6 +292,13 @@
                     [selfWeak readorno:model isChai:NO view:nil];
                 };
                 [self.navigationController pushViewController:vc animated:YES];
+            }else if (model.second_type.intValue == 85 || model.second_type.intValue == 86) {//跳转购进订单详情
+                LxmOrderDetailVC *vc = [[LxmOrderDetailVC alloc] init];
+                vc.orderID = model.info_id;
+                vc.readBlock = ^{
+                    [selfWeak readorno:model isChai:NO view:nil];
+                };
+                [self.navigationController pushViewController:vc animated:YES];
             } else if (model.second_type.intValue == 40) {//保证金退回到余额
                 LxmMyBaoZhengJinVC *vc = [[LxmMyBaoZhengJinVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 vc.readBlock = ^{

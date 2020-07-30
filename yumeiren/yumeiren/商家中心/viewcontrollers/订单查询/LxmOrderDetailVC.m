@@ -20,7 +20,11 @@
 
 @property (nonatomic, assign) CGFloat lingshiTotalPrice;/* 商品零售总价 */
 
+@property (nonatomic, assign) CGFloat lingshiTotalScorePrice;/* 商品零售积分 */
+
 @property (nonatomic, assign) CGFloat shangpinTotalPrice;/* 商品总价 */
+
+@property (nonatomic, assign) CGFloat shangpinTotalScorePrice;/* 商品积分 */
 
 @property (nonatomic, assign) NSInteger count;//商品件数
 
@@ -160,11 +164,7 @@
             if (!cell) {
                 cell = [[LxmJieSuanPeiSongGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmJieSuanPeiSongGoodsCell"];
             }
-            if ([self.detailModel.map.no_vip isEqualToString:@"2"]) {
-                cell.isHaoCai = YES;
-            }else {
-                cell.isHaoCai = NO;
-            }
+            cell.isHaoCai = self.isHaoCai;
             cell.orderDetailGoodsModel = self.detailModel.map.sub[indexPath.row];
             return cell;
         }
@@ -173,11 +173,7 @@
         if (!cell) {
             cell = [[LxmJieSuanPeiSongGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmJieSuanPeiSongGoodsCell"];
         }
-        if ([self.detailModel.map.no_vip isEqualToString:@"2"]) {
-            cell.isHaoCai = YES;
-        }else {
-            cell.isHaoCai = NO;
-        }
+        cell.isHaoCai = self.isHaoCai;
         cell.orderDetailGoodsModel = self.xiajiGoodsArr[indexPath.row];
         return cell;
     } else if (indexPath.section == 3) {
@@ -194,6 +190,8 @@
             if (!cell) {
                 cell = [[LxmSubBuHuoOrderPriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmSubBuHuoOrderPriceCell"];
             }
+            cell.isHaoCai = self.isHaoCai;
+            cell.shifujiFen =  [NSString stringWithFormat:@"%lf",self.shangpinTotalScorePrice];
             cell.shifujineMoney = [NSString stringWithFormat:@"%lf",self.shangpinTotalPrice];
             return cell;
         }
@@ -207,16 +205,28 @@
             cell.detailLabel.text = [NSString stringWithFormat:@"%ld件",(long)self.count];
         } else if (indexPath.row == 2){
             cell.titleLabel.text = @"商品零售总价";
-            cell.detailLabel.textColor = CharacterDarkColor;
-            CGFloat f = self.lingshiTotalPrice;
-            NSInteger d = self.lingshiTotalPrice;
-            cell.detailLabel.text = f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f];
+            if (self.isHaoCai) {
+                cell.detailLabel.attributedText = [@"" getjiFenOrMoneyWithPrice:[NSString stringWithFormat:@"%f",self.lingshiTotalPrice] withSorce:[NSString stringWithFormat:@"%f",self.lingshiTotalScorePrice]];
+            }else {
+                cell.detailLabel.textColor = CharacterDarkColor;
+                CGFloat f = self.lingshiTotalPrice;
+                NSInteger d = self.lingshiTotalPrice;
+                cell.detailLabel.text = f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f];
+            }
+            
         } else if (indexPath.row == 3){
             cell.titleLabel.text = @"商品总额";
             cell.detailLabel.textColor = MainColor;
-            CGFloat f = self.shangpinTotalPrice;
-            NSInteger d = self.shangpinTotalPrice;
-            cell.detailLabel.text = f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f];
+            
+            if (self.isHaoCai) {
+                cell.detailLabel.attributedText = [@"" getjiFenOrMoneyWithPrice:[NSString stringWithFormat:@"%f",self.shangpinTotalPrice] withSorce:[NSString stringWithFormat:@"%f",self.shangpinTotalScorePrice]];
+            }else {
+                CGFloat f = self.shangpinTotalPrice;
+                NSInteger d = self.shangpinTotalPrice;
+                cell.detailLabel.text = f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f];
+            }
+            
+            
         } else if (indexPath.row == 4){
             cell.titleLabel.text = @"运费";
             cell.detailLabel.textColor = MainColor;
@@ -297,8 +307,15 @@
         if (responseObject.key.integerValue == 1000) {
             _bottomView.hidden = NO;
             selfWeak.detailModel = responseObject.result;
+            if (selfWeak.detailModel.map.no_vip.integerValue == 1) {
+                selfWeak.isHaoCai = NO;
+            }else {
+                selfWeak.isHaoCai = YES;
+            }
             selfWeak.lingshiTotalPrice = 0;
+            selfWeak.lingshiTotalScorePrice = 0;
             selfWeak.shangpinTotalPrice = 0;
+            selfWeak.shangpinTotalScorePrice = 0;
             [selfWeak.xiajiGoodsArr removeAllObjects];
             for (LxmShopCenterOrderModel *orders in selfWeak.detailModel.map.orders) {
                 for (LxmShopCenterOrderGoodsModel *goods in orders.sub) {
@@ -312,7 +329,9 @@
             for (LxmShopCenterOrderGoodsModel *goods in tempArr) {
                 selfWeak.count += goods.num.integerValue;
                 selfWeak.lingshiTotalPrice += goods.good_price.doubleValue * goods.num.intValue;
+                selfWeak.lingshiTotalScorePrice += goods.score_price.doubleValue * goods.num.intValue;
                 selfWeak.shangpinTotalPrice += goods.proxy_price.doubleValue * goods.num.intValue;
+                selfWeak.shangpinTotalScorePrice += goods.score_price.doubleValue * goods.num.intValue;
             }
             if (selfWeak.isShengji) {
                 selfWeak.bottomView.leftButton.hidden = NO;
@@ -420,6 +439,8 @@
         vc.creatTime = self.detailModel.map.create_time;
         vc.orderID = self.orderID;
         vc.isShengji = YES;
+        vc.isHaoCai = self.isHaoCai;
+        vc.shiFuJiFen = @(self.shangpinTotalScorePrice).stringValue;
         vc.shifuMoney = @(self.shangpinTotalPrice).stringValue;
         [self.navigationController pushViewController:vc animated:YES];
     } else {
@@ -434,6 +455,8 @@
             vc.isDDcxDetail = YES;
             vc.orderID = self.detailModel.map.id;
             vc.shifuMoney = @(self.shangpinTotalPrice).stringValue;
+            vc.isHaoCai = self.isHaoCai;
+            vc.shiFuJiFen = @(self.shangpinTotalScorePrice).stringValue;
             [self.navigationController pushViewController:vc animated:YES];
           
         } else if (status == 2) {//申请退单

@@ -284,6 +284,10 @@
                 vc.iscaiGouandXiaoshou = YES;
                 vc.orderID = model.infoId;
                 [nav pushViewController:vc animated:YES];
+            }else if (model.secondType.intValue == 85 || model.secondType.intValue == 86) {//跳转购进订单详情
+                LxmOrderDetailVC *vc = [[LxmOrderDetailVC alloc] init];
+                vc.orderID = model.infoId;
+                [nav pushViewController:vc animated:YES];
             } else if (model.secondType.intValue == 40) {//保证金退回到余额
                 LxmMyBaoZhengJinVC *vc = [[LxmMyBaoZhengJinVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 [nav pushViewController:vc animated:YES];

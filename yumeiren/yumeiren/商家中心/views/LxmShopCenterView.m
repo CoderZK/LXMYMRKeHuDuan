@@ -444,7 +444,7 @@
 }
 
 - (void)buttonClick: (UIButton *)btn {
-    btn.selected = !btn.selected;
+//    btn.selected = !btn.selected;
     if (btn == _leftButton) {
         _rightButton.selected = !btn.selected;
         if (btn.selected) {
@@ -864,22 +864,49 @@
 - (void)setShopInfoModel:(LxmShopCenterUserInfoModel *)shopInfoModel {
     _shopInfoModel = shopInfoModel;
     if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
-        self.titleArr = @[
-                          @"我的店铺",
-                          @"购进商品",
-                          @"订单查询",
-                          @"我要升级",
-                          @"年度考核",
-                          @"消息通知"
-                          ];
-        self.iconArr = @[
-                         @"wddp",
-                         @"goujinshangpin",
-                         @"dingdanchaxun",
-                         @"woyaoshengji",
-                         @"niandukaohe",
-                         @"xiaoxitongzhi"
-                         ];
+        
+        if (self.shopInfoModel.roleType.floatValue > -1) {
+            self.titleArr = @[
+                              @"我的店铺",
+                              @"购进商品",
+                              @"订单查询",
+                              @"我要升级",
+                              @"年度考核",
+                              @"积分兑换",
+                              @"消息通知"
+                              ];
+            self.iconArr = @[
+                             @"wddp",
+                             @"goujinshangpin",
+                             @"dingdanchaxun",
+                             @"woyaoshengji",
+                             @"niandukaohe",
+                             @"kkjifen",
+                             @"xiaoxitongzhi"
+                             ];
+        }else {
+            self.titleArr = @[
+                              @"我的店铺",
+                              @"购进商品",
+                              @"订单查询",
+                              @"我要升级",
+                              @"年度考核",
+                              @"积分兑换",
+                              @"消息通知"
+                              ];
+            self.iconArr = @[
+                             @"wddp",
+                             @"goujinshangpin",
+                             @"dingdanchaxun",
+                             @"woyaoshengji",
+                             @"niandukaohe",
+                             @"kkjifen",
+                             @"xiaoxitongzhi"
+                             ];
+        }
+        
+        
+        
     } else {
         self.titleArr = @[
                           @"我的店铺",
@@ -889,6 +916,7 @@
                           @"我的业绩",
                           @"我要升级",
                           @"年度考核",
+                          @"积分兑换",
                           @"消息通知"
                           ];
         self.iconArr = @[
@@ -899,6 +927,7 @@
                          @"wodeyeji",
                          @"woyaoshengji",
                          @"niandukaohe",
+                         @"kkjifen",
                          @"xiaoxitongzhi"
                          ];
     }

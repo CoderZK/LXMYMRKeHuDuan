@@ -28,4 +28,5 @@
 #import "LxmShopCarModel.h"
 #import "NSMutableAttributedString+CheckSetColor.h"
 #import "YYWeakProxy.h"
+#import "LxmHomeModel.h"
 #endif /* LxmHeader_h */

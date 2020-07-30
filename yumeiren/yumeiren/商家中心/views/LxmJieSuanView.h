@@ -76,6 +76,9 @@
 @property (nonatomic, strong) LxmAcGoodsModel *model;
 
 @property (nonatomic, strong) LxmShopCenterAcGoodsModel *detailGoodsModel;
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
+
+
 
 @end
 

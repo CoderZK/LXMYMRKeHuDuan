@@ -18,38 +18,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8F8079CA-D217-4E84-936C-CDA9BB464241"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "549"
-            endingLineNumber = "549"
-            landmarkName = "-bottomViewAction"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "98E845FB-BD3B-428B-82F1-491EDE605F7F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
-            landmarkName = "-bottomViewAction"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "087C1A26-0DBD-493D-A664-5E8FC2CEE9AD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -57,166 +25,10 @@
             filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "559"
+            endingLineNumber = "559"
             landmarkName = "-bottomViewAction"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0252466-89A9-4A74-AF53-6FF4B534C87B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531"
-            landmarkName = "-bottomViewAction"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B0252466-89A9-4A74-AF53-6FF4B534C87B - f310ffa2bbeb1206"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__32-[LxmShopCarVC bottomViewAction]_block_invoke"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "535"
-                  endingLineNumber = "535"
-                  offsetFromSymbolStart = "2058">
-               </Location>
-               <Location
-                  uuid = "B0252466-89A9-4A74-AF53-6FF4B534C87B - f310ffa2bbeb1206"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__32-[LxmShopCarVC bottomViewAction]_block_invoke"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "535"
-                  endingLineNumber = "535"
-                  offsetFromSymbolStart = "6794">
-               </Location>
-               <Location
-                  uuid = "B0252466-89A9-4A74-AF53-6FF4B534C87B - f310ffa2bbeb1206"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__32-[LxmShopCarVC bottomViewAction]_block_invoke"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "535"
-                  endingLineNumber = "535"
-                  offsetFromSymbolStart = "8215">
-               </Location>
-               <Location
-                  uuid = "B0252466-89A9-4A74-AF53-6FF4B534C87B - f310ffa2bbeb1206"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__32-[LxmShopCarVC bottomViewAction]_block_invoke"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "535"
-                  endingLineNumber = "535"
-                  offsetFromSymbolStart = "9057">
-               </Location>
-               <Location
-                  uuid = "B0252466-89A9-4A74-AF53-6FF4B534C87B - f310ffa2bbeb1206"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__32-[LxmShopCarVC bottomViewAction]_block_invoke"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "535"
-                  endingLineNumber = "535"
-                  offsetFromSymbolStart = "9095">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DB45BCB4-A027-427A-93C5-43CE8B62F4BB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
-            landmarkName = "-bottomViewAction"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DB45BCB4-A027-427A-93C5-43CE8B62F4BB - 813a9c1b49c48cea"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LxmShopCarVC bottomViewAction]"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "537"
-                  endingLineNumber = "537"
-                  offsetFromSymbolStart = "270">
-               </Location>
-               <Location
-                  uuid = "DB45BCB4-A027-427A-93C5-43CE8B62F4BB - 20f6ef0407b5c138"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__32-[LxmShopCarVC bottomViewAction]_block_invoke.448"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "537"
-                  endingLineNumber = "537"
-                  offsetFromSymbolStart = "15">
-               </Location>
-               <Location
-                  uuid = "DB45BCB4-A027-427A-93C5-43CE8B62F4BB - cc0dcda05223eb99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_e8_32s40s48w"
-                  moduleName = "&#x865e;&#x7f8e;&#x4eba;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E8%B4%AD%E7%89%A9%E8%BD%A6/viewcontrollers/LxmShopCarVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "537"
-                  endingLineNumber = "537"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -229,9 +41,217 @@
             filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
             landmarkName = "-bottomViewAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3EF0541-D66C-41D0-86FA-DC6F8EE8E6C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x6211;&#x7684;/viewcontrollers/LxmMineVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A243A5E-E9F6-4F44-A33B-4EF362338B2A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x94fa;/viewcontrollers/LxmSubShopVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-addCar:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B8C77123-84F0-4FCA-AD2B-A91209E3E7D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x8ba2;&#x5355;&#x67e5;&#x8be2;/LxmSubOrderChaXunVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "787723C7-A8D8-4499-B613-089E31F3E2BE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x8ba2;&#x5355;&#x67e5;&#x8be2;/LxmOrderChaXunVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-initWithFrame:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF6A5AA1-353B-4CE4-B893-348AF3AA3C71"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
+            landmarkName = "-gotoPay:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "691EFA56-442B-4A98-9B77-031462CFBE7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x8ba2;&#x5355;&#x67e5;&#x8be2;/LxmOrderDetailVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2CD4C6B1-66FB-466F-945B-52E5F48850FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x6211;&#x7684;&#x5e97;&#x94fa;/LxmZiTiJieSuanVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AAF2299E-6A24-4C3D-A4B1-5AE3F5FCF2FC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x8d2d;&#x8fdb;&#x5546;&#x54c1;/LxmSubBuHuoOrderVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "512"
+            endingLineNumber = "512"
+            landmarkName = "-setShifujineMoney:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B99C0E89-538F-4EFF-ACCC-1E7077CD79B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x8d2d;&#x8fdb;&#x5546;&#x54c1;/LxmSubBuHuoOrderVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
+            landmarkName = "-setShifujineMoney:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2BE7F38-DCED-4BF0-ADD9-47C16A4E54AC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x8d2d;&#x8fdb;&#x5546;&#x54c1;/LxmYiJianBuHuoVC1.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BCD2ABD3-B4BB-4ADE-B55D-01AE9BDFB69B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/viewcontrollers/&#x8d2d;&#x8fdb;&#x5546;&#x54c1;/LxmYiJianBuHuoVC1.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0AC3B1E4-8074-4F67-A806-39B46C5AF6B6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x5bb6;&#x4e2d;&#x5fc3;/views/LxmJieSuanView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-moneyLabel"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0EF1DB93-9816-4F6B-9631-C1FD40376CCB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x5546;&#x94fa;/viewcontrollers/LxmShopVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "-pagerController:transitionFromIndex:toIndex:progress:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

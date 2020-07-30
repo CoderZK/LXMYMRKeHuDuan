@@ -252,7 +252,7 @@
 }
 
 -(void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
-    self.currentIndex = toIndex + 1;
+//    self.currentIndex = toIndex + 1;
     [_tabBar scrollToItemFromIndex:fromIndex toIndex:toIndex progress:progress];
 }
 

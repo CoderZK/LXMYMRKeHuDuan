@@ -168,22 +168,52 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self initSubviews];
     self.currentIndex = 0;
-    
     if (self.type == LxmPayVC_type_jiaobaozhengjin) {
         CGFloat money = self.shengjiModel.deposit.doubleValue - LxmTool.ShareTool.userModel.deposit.doubleValue;
         [_payButton setTitle:[NSString stringWithFormat:@"支付%.2f元",money] forState:UIControlStateNormal];
     } else if (self.type == LxmPayVC_type_bujiaobaozhengjin) {
         [_payButton setTitle:[NSString stringWithFormat:@"支付%@元", LxmTool.ShareTool.userModel.depositMoney] forState:UIControlStateNormal];
     }  else if (self.type == LxmPayVC_type_gwcJieSuan) {
-        [_payButton setTitle:[NSString stringWithFormat:@"支付%@元",self.orderModel.price] forState:UIControlStateNormal];
+        
+        
+        if (self.isHaoCai) {
+            NSMutableAttributedString * att = [@"支付 " getAttributedString];
+            NSMutableAttributedString * att2 = [@"" getjiFenOrMoneyWithPrice:self.orderModel.price withSorce:self.shiFuJiFen];
+            self.shifuMoney = self.orderModel.price;
+            [att appendAttributedString:att2];
+            [att addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, att.length)];
+            [_payButton setAttributedTitle:att forState:UIControlStateNormal];
+        }else {
+            [_payButton setTitle:[NSString stringWithFormat:@"支付%@元",self.orderModel.price] forState:UIControlStateNormal];
+        }
+        
+        
     } else if (self.type == LxmPayVC_type_ddcx) {
-        CGFloat f = self.shifuMoney.doubleValue;
-        NSInteger d = self.shifuMoney.integerValue;
-        [_payButton setTitle:d == f ? [NSString stringWithFormat:@"支付%ld元",(long)d] : [NSString stringWithFormat:@"支付%.2f元",f] forState:UIControlStateNormal];
+        if (self.isHaoCai) {
+            NSMutableAttributedString * att = [@"支付 " getAttributedString];
+            NSMutableAttributedString * att2 = [@"" getjiFenOrMoneyWithPrice:self.shifuMoney withSorce:self.shiFuJiFen];
+            [att appendAttributedString:att2];
+            [att addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, att.length)];
+            [_payButton setAttributedTitle:att forState:UIControlStateNormal];
+        }else {
+            CGFloat f = self.shifuMoney.doubleValue;
+            NSInteger d = self.shifuMoney.integerValue;
+            [_payButton setTitle:d == f ? [NSString stringWithFormat:@"支付%ld元",(long)d] : [NSString stringWithFormat:@"支付%.2f元",f] forState:UIControlStateNormal];
+        }
     } else if (self.type == LxmPayVC_type_zjgm) {
-        CGFloat f = self.zhijieGoumaiMoney.doubleValue;
-        NSInteger d = self.zhijieGoumaiMoney.integerValue;
-        [_payButton setTitle:d == f ? [NSString stringWithFormat:@"支付%ld元",(long)d] : [NSString stringWithFormat:@"支付%.2f元",f] forState:UIControlStateNormal];
+        
+        if (self.isHaoCai) {
+            NSMutableAttributedString * att = [@"支付 " getAttributedString];
+            NSMutableAttributedString * att2 = [@"" getjiFenOrMoneyWithPrice:self.zhijieGoumaiMoney withSorce:self.shiFuJiFen];
+            self.shifuMoney = self.zhijieGoumaiMoney;
+            [att appendAttributedString:att2];
+            [att addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, att.length)];
+            [_payButton setAttributedTitle:att forState:UIControlStateNormal];
+        }else {
+            CGFloat f = self.zhijieGoumaiMoney.doubleValue;
+            NSInteger d = self.zhijieGoumaiMoney.integerValue;
+            [_payButton setTitle:d == f ? [NSString stringWithFormat:@"支付%ld元",(long)d] : [NSString stringWithFormat:@"支付%.2f元",f] forState:UIControlStateNormal];
+        }
     } else if (self.type == LxmPayVC_type_yjbh) {
         CGFloat f = self.buhuoModel.price.doubleValue;
         NSInteger d = self.buhuoModel.price.integerValue;
@@ -202,9 +232,18 @@
             NSInteger d = self.shengjiGouwuModel.price.integerValue;
             [_payButton setTitle:d == f ? [NSString stringWithFormat:@"支付%ld元",(long)d] : [NSString stringWithFormat:@"支付%.2f元",f] forState:UIControlStateNormal];
         } else {
-            CGFloat f = self.shifuMoney.doubleValue;
-            NSInteger d = self.shifuMoney.integerValue;
-            [_payButton setTitle:d == f ? [NSString stringWithFormat:@"支付%ld元",(long)d] : [NSString stringWithFormat:@"支付%.2f元",f] forState:UIControlStateNormal];
+            
+            if (self.isHaoCai) {
+                NSMutableAttributedString * att = [@"支付 " getAttributedString];
+                NSMutableAttributedString * att2 = [@"" getjiFenOrMoneyWithPrice:self.shifuMoney withSorce:self.shiFuJiFen];
+                [att appendAttributedString:att2];
+                [att addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, att.length)];
+                [_payButton setAttributedTitle:att forState:UIControlStateNormal];
+            }else {
+                CGFloat f = self.shifuMoney.doubleValue;
+                NSInteger d = self.shifuMoney.integerValue;
+                [_payButton setTitle:d == f ? [NSString stringWithFormat:@"支付%ld元",(long)d] : [NSString stringWithFormat:@"支付%.2f元",f] forState:UIControlStateNormal];
+            }
         }
         
     } else{
@@ -240,7 +279,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    if (self.shifuMoney.doubleValue == 0 && self.isHaoCai) {
+        return 1;
+    }else {
+        return 3;
+    }
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LxmPayCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LxmPayCell"];
@@ -250,14 +294,30 @@
     cell.selectImgView.image = [UIImage imageNamed:self.currentIndex == indexPath.row ? @"xuanzhong_y" : @"xuanzhong_n"] ;
     if (indexPath.row == 0) {
         
-        CGFloat f = [LxmTool ShareTool].userModel.balance.doubleValue;
-        NSInteger d = [LxmTool ShareTool].userModel.balance.integerValue;
+        if (self.isHaoCai && self.shifuMoney.doubleValue == 0) {
+            CGFloat f = [LxmTool ShareTool].userModel.sendScore.doubleValue;
+            NSInteger d = [LxmTool ShareTool].userModel.sendScore.integerValue;
+            
+            cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
+            NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"积分支付"];
+            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
+            [att appendAttributedString:str];
+            cell.titleLabel.attributedText = att;
+        }else {
+            CGFloat f = [LxmTool ShareTool].userModel.balance.doubleValue;
+            NSInteger d = [LxmTool ShareTool].userModel.balance.integerValue;
+            
+            cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
+            NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"余额支付"];
+            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
+            [att appendAttributedString:str];
+            cell.titleLabel.attributedText = att;
+        }
         
-        cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
-        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"余额支付"];
-        NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
-        [att appendAttributedString:str];
-        cell.titleLabel.attributedText = att;
+        
+        
+        
+        
     } else if (indexPath.row == 1) {
         cell.iconImgView.image = [UIImage imageNamed:@"alipay_pay"];
         cell.titleLabel.text = @"支付宝支付";
@@ -358,17 +418,17 @@
 
 
 - (void)popvc {
-//    BOOL isJump = NO;
-//    for (UIViewController *vc in self.navigationController.viewControllers) {
-//        if ([vc isKindOfClass:[LxmShopVC class]]) {
-//            isJump = YES;
-//            [self.navigationController popToViewController:vc animated:YES];
-//            break;
-//        }
-//    }
-//    if (!isJump) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-//    }
+    //    BOOL isJump = NO;
+    //    for (UIViewController *vc in self.navigationController.viewControllers) {
+    //        if ([vc isKindOfClass:[LxmShopVC class]]) {
+    //            isJump = YES;
+    //            [self.navigationController popToViewController:vc animated:YES];
+    //            break;
+    //        }
+    //    }
+    //    if (!isJump) {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    //    }
 }
 
 /**
@@ -384,7 +444,7 @@
         if (self.recommend_code.isValid) {
             dic[@"recommend_code"] = self.recommend_code;
         }
-      
+        
         [SVProgressHUD show];
         
         WeakObj(self);
@@ -428,7 +488,7 @@
                     [WXApi sendReq:req];
                 }
                 
-               
+                
             } else {
                 [UIAlertController showAlertWithmessage:responseObject[@"message"]];
             }
@@ -438,9 +498,9 @@
         }];
     } else if (self.type == LxmPayVC_type_bujiaobaozhengjin) {
         NSDictionary *dic = @{
-                              @"token" : SESSION_TOKEN,
-                              @"pay_type" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
-                              };
+            @"token" : SESSION_TOKEN,
+            @"pay_type" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
+        };
         [SVProgressHUD show];
         WeakObj(self);
         selfWeak.payButton.userInteractionEnabled = NO;
@@ -456,7 +516,7 @@
                             [selfWeak.navigationController popViewControllerAnimated:YES];
                         }];
                     });
-                   
+                    
                 } else if (selfWeak.currentIndex == 1) {//支付宝
                     NSString *payStr = responseObject[@"result"][@"data"];
                     if (payStr.isValid) {
@@ -487,10 +547,10 @@
         }];
     }  else if (self.type == LxmPayVC_type_gwcJieSuan) {
         NSDictionary *dic = @{
-                              @"token" : SESSION_TOKEN,
-                              @"orderId" : self.orderModel.orderId,
-                              @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
-                              };
+            @"token" : SESSION_TOKEN,
+            @"orderId" : self.orderModel.orderId,
+            @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
+        };
         [SVProgressHUD show];
         WeakObj(self);
         selfWeak.payButton.userInteractionEnabled = NO;
@@ -542,10 +602,10 @@
         }];
     } else if (self.type == LxmPayVC_type_ddcx) {
         NSDictionary *dic = @{
-                              @"token" : SESSION_TOKEN,
-                              @"orderId" : self.orderID,
-                              @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
-                              };
+            @"token" : SESSION_TOKEN,
+            @"orderId" : self.orderID,
+            @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
+        };
         [SVProgressHUD show];
         WeakObj(self);
         selfWeak.payButton.userInteractionEnabled = NO;
@@ -566,16 +626,16 @@
                                 }
                             }
                         } else {
-                             if (self.isDDcxDetail) {
-                               for (UIViewController *vc in self.navigationController.viewControllers) {
-                                   if ([vc isKindOfClass:[LxmOrderChaXunVC class]]) {
-                                       [self.navigationController popToViewController:vc animated:NO];
-                                       break;
-                                   }
-                               }
-                           } else {
-                               [self.navigationController popViewControllerAnimated:YES];
-                           }
+                            if (self.isDDcxDetail) {
+                                for (UIViewController *vc in self.navigationController.viewControllers) {
+                                    if ([vc isKindOfClass:[LxmOrderChaXunVC class]]) {
+                                        [self.navigationController popToViewController:vc animated:NO];
+                                        break;
+                                    }
+                                }
+                            } else {
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }
                         }
                     });
                 } else if (selfWeak.currentIndex == 1) {//支付宝
@@ -614,10 +674,10 @@
         }];
     } else if (self.type == LxmPayVC_type_wfbd) {
         NSDictionary *dic = @{
-                              @"token" : SESSION_TOKEN,
-                              @"id" : self.wfbdID,
-                              @"pay_type" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
-                              };
+            @"token" : SESSION_TOKEN,
+            @"id" : self.wfbdID,
+            @"pay_type" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
+        };
         [SVProgressHUD show];
         WeakObj(self);
         selfWeak.payButton.userInteractionEnabled = NO;
@@ -672,10 +732,10 @@
             }
         }
         NSDictionary *dic = @{
-                              @"token" : SESSION_TOKEN,
-                              @"id" : self.buhuoModel.orderId,
-                              @"pay_type" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
-                              };
+            @"token" : SESSION_TOKEN,
+            @"id" : self.buhuoModel.orderId,
+            @"pay_type" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
+        };
         [SVProgressHUD show];
         WeakObj(self);
         selfWeak.payButton.userInteractionEnabled = NO;
@@ -779,16 +839,16 @@
         NSDictionary *dic = nil;
         if (self.shengjiGouwuModel.orderId) {
             dic = @{
-                                  @"token" : SESSION_TOKEN,
-                                  @"orderId" : self.shengjiGouwuModel.orderId,
-                                  @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
-                                  };
+                @"token" : SESSION_TOKEN,
+                @"orderId" : self.shengjiGouwuModel.orderId,
+                @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
+            };
         } else if(self.orderID) {
             dic = @{
-                                  @"token" : SESSION_TOKEN,
-                                  @"orderId" : self.orderID,
-                                  @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
-                                  };
+                @"token" : SESSION_TOKEN,
+                @"orderId" : self.orderID,
+                @"payType" : self.currentIndex == 0 ? @3 : @(self.currentIndex)
+            };
         } else {
             return;
         }
@@ -869,7 +929,7 @@
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         }else if (self.type == LxmPayVC_type_gwcJieSuan) {
-           [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         } else if (self.type == LxmPayVC_type_ddcx) {
             [LxmEventBus sendEvent:@"jiesuanSuccess" data:nil];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -883,15 +943,15 @@
                     }
                 } else {
                     if (self.isDDcxDetail) {
-                       for (UIViewController *vc in self.navigationController.viewControllers) {
-                           if ([vc isKindOfClass:[LxmOrderChaXunVC class]]) {
-                               [self.navigationController popToViewController:vc animated:NO];
-                               break;
-                           }
-                       }
-                   } else {
-                       [self.navigationController popViewControllerAnimated:YES];
-                   }
+                        for (UIViewController *vc in self.navigationController.viewControllers) {
+                            if ([vc isKindOfClass:[LxmOrderChaXunVC class]]) {
+                                [self.navigationController popToViewController:vc animated:NO];
+                                break;
+                            }
+                        }
+                    } else {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
                 }
             });
         } else if (self.type == LxmPayVC_type_wfbd) {
@@ -927,7 +987,7 @@
             [LxmEventBus sendEvent:@"jiesuanSuccess" data:nil];
             [self popvc];
         } else{
-           
+            
         }
         
     } else {
@@ -1023,7 +1083,7 @@
 
 /**
  库存不足弹窗
-
+ 
  @param index 600 重新选货 601等待库存
  */
 - (void)alertViewClickAction:(NSInteger)index {
@@ -1076,16 +1136,16 @@
                 }
             }
         } else {
-             if (self.isDDcxDetail) {
-               for (UIViewController *vc in self.navigationController.viewControllers) {
-                   if ([vc isKindOfClass:[LxmOrderChaXunVC class]]) {
-                       [self.navigationController popToViewController:vc animated:NO];
-                       break;
-                   }
+            if (self.isDDcxDetail) {
+                for (UIViewController *vc in self.navigationController.viewControllers) {
+                    if ([vc isKindOfClass:[LxmOrderChaXunVC class]]) {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        break;
+                    }
                 }
-               } else {
-                   [self.navigationController popViewControllerAnimated:YES];
-               }
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }
     } else if (self.type == LxmPayVC_type_yjbh) {//self.buhuoModel.orderId
         for (UIViewController *vc in self.navigationController.viewControllers) {

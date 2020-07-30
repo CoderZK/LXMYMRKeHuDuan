@@ -277,6 +277,7 @@
             LxmPayVC *vc = [[LxmPayVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPayVC_type_wfbd];
             vc.wfbdID = model.id;
             vc.wfbdMoney = model.servicePrice;
+            
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

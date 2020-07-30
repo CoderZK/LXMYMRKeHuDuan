@@ -318,11 +318,14 @@
     NSInteger d1 = _orderModel.proxy_price.integerValue;
     
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:f1==d1 ? [NSString stringWithFormat:@"¥%ld ",d1] : [NSString stringWithFormat:@"¥%.2f ",f1] attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15],NSForegroundColorAttributeName:MainColor}];
-    if (!self.isHaoCai) {
+    if (self.isHaoCai) {
+        _moneyLabel.attributedText = [@"" getjiFenOrMoneyWithPrice:_orderModel.good_price withSorce:_orderModel.score_price];
+    }else {
         NSAttributedString *str = [[NSAttributedString alloc] initWithString:f==d ? [NSString stringWithFormat:@"¥%ld ",d] : [NSString stringWithFormat:@"¥%.2f ",f] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:CharacterLightGrayColor,NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle | NSUnderlinePatternSolid)}];
-           [att appendAttributedString:str];
+        [att appendAttributedString:str];
+        _moneyLabel.attributedText = att;
     }
-    _moneyLabel.attributedText = att;
+    
     _numLabel.text = [NSString stringWithFormat:@"X%@", _orderModel.num];
     
 }
@@ -343,11 +346,14 @@
     
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:f1==d1 ? [NSString stringWithFormat:@"¥%ld ",d1] : [NSString stringWithFormat:@"¥%.2f ",f1] attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15],NSForegroundColorAttributeName:MainColor}];
     
-    if (!self.isHaoCai) {
+    if (self.isHaoCai) {
+        _moneyLabel.attributedText =  [@"" getjiFenOrMoneyWithPrice:_orderDetailGoodsModel.good_price withSorce:_orderDetailGoodsModel.score_price];
+    }else {
         NSAttributedString *str = [[NSAttributedString alloc] initWithString:f==d ? [NSString stringWithFormat:@"¥%ld ",d] : [NSString stringWithFormat:@"¥%.2f ",f] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:CharacterLightGrayColor,NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle | NSUnderlinePatternSolid)}];
-          [att appendAttributedString:str];
+        [att appendAttributedString:str];
+       _moneyLabel.attributedText = att;
     }
-    _moneyLabel.attributedText = att;
+    
     _numLabel.text = [NSString stringWithFormat:@"X%@", _orderDetailGoodsModel.num];
 }
 

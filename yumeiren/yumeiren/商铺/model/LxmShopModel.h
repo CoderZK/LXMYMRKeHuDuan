@@ -67,6 +67,10 @@
 
 @property (nonatomic, strong) NSString *comNum;//公司库存数量
 
+@property (nonatomic, strong) NSString *noVip;//2 是耗材
+
+@property (nonatomic, strong) NSString *scorePrice;
+
 @end
 
 

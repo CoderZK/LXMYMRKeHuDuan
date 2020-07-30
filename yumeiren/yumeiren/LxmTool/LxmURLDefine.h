@@ -11,11 +11,11 @@
 #define ISLOGIN [LxmTool ShareTool].isLogin
 #define TOKEN [LxmTool ShareTool].session_token
 //测试
-//#define Base_URL @"http://app.hkymr.com:8989"
+#define Base_URL @"http://app.hkymr.com:8989"
 //正式
 //#define Base_URL @"http://106.15.91.60"
 
-#define Base_URL @"https://app.hkymr.com"
+//#define Base_URL @"https://app.hkymr.com"
 
 #define Base_RESOURSE_URL @"https://vedio.hkymr.com"
 
@@ -514,6 +514,12 @@
  我的年度考核团队
  */
 #define year_group_list  Base_URL"/app/user/year_group_list"
+
+/**
+ 我的积分明细
+ */
+#define send_score_record_list  Base_URL"/app/user/send_score_record_list"
+
 
 /**
  获取图片地址

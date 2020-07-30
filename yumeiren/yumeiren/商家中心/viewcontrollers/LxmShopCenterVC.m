@@ -75,7 +75,7 @@
     self.tableView.backgroundColor = UIColor.whiteColor;
     self.tableView.tableHeaderView = self.topView;
     self.dataArr = [NSMutableArray array];
-    WeakObj(self);    
+    WeakObj(self);
     [LxmEventBus registerEvent:@"yitongyi" block:^(id data) {
         LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
@@ -120,29 +120,29 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-     if (indexPath.section == 0) {
-           if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
-               return 0.01;
-           }
-           return 150;
-       }
-    if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
+    if (indexPath.section == 0) {
+        if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
+            return 0.01;
+        }
+        return 150;
+    }
+    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]) {
         return 80*ceil(6/3.0) + 60;
     }
     return 80*ceil(7/3.0) + 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    if (indexPath.section == 0) {
-//        LxmMineYeJiKaoTVC * vc =[[LxmMineYeJiKaoTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        if (self.shopInfoModel.roleType.intValue == 2) {
-//            vc.isJingLi = YES;
-//        }
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+    //    if (indexPath.section == 0) {
+    //        LxmMineYeJiKaoTVC * vc =[[LxmMineYeJiKaoTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+    //        vc.hidesBottomBarWhenPushed = YES;
+    //        if (self.shopInfoModel.roleType.intValue == 2) {
+    //            vc.isJingLi = YES;
+    //        }
+    //        [self.navigationController pushViewController:vc animated:YES];
+    //    }
     
 }
 
@@ -150,7 +150,7 @@
  跳转到相应模块儿
  */
 - (void)pageToItem:(NSInteger)index {
-    if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
+    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]|| [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
         switch (index) {
             case 0: {// 我的店铺
                 LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
@@ -202,22 +202,45 @@
                 break;
             case 4: {//年度考核
                 
-                LxmShopVC *vc = [[LxmShopVC alloc] init];
-                vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
-                vc.shengjiModel = nil;
-                vc.isDeep = YES;
-                vc.isHaoCai = YES;
-                vc.isAddLocolGoods = NO;
-                vc.isGotoGouwuChe = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                
-                //                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
-                //                vc.shopInfoModel = self.shopInfoModel;
-                //                vc.hidesBottomBarWhenPushed = YES;
+                //                LxmShopVC *vc = [[LxmShopVC alloc] init];
+                //                vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
+                //                vc.shengjiModel = nil;
+                //                vc.isDeep = YES;
+                //                vc.isHaoCai = YES;
+                //                vc.isAddLocolGoods = NO;
+                //                vc.isGotoGouwuChe = YES;
                 //                [self.navigationController pushViewController:vc animated:YES];
+                
+                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
+                vc.shopInfoModel = self.shopInfoModel;
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
+                
             case 5: {//消息通知
+                
+                if ([self.shopInfoModel.roleType isEqualToString:@"-1"]) {
+                    LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }else {
+                    LxmShopVC *vc = [[LxmShopVC alloc] init];
+                    vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
+                    vc.shengjiModel = nil;
+                    vc.isDeep = YES;
+                    vc.isHaoCai = YES;
+                    vc.isAddLocolGoods = NO;
+                    vc.isGotoGouwuChe = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                
+                
+                
+            }
+                break;
+                
+            case 6: {//消息通知
                 LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
@@ -281,6 +304,15 @@
                 break;
             case 6: {//年度考核
                 
+                
+                
+                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
+                vc.shopInfoModel = self.shopInfoModel;
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 7: {//积分商城
                 LxmShopVC *vc = [[LxmShopVC alloc] init];
                 vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
                 vc.shengjiModel = nil;
@@ -289,14 +321,11 @@
                 vc.isAddLocolGoods = NO;
                 vc.isGotoGouwuChe = YES;
                 [self.navigationController pushViewController:vc animated:YES];
-                
-                //                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
-                //                vc.shopInfoModel = self.shopInfoModel;
-                //                vc.hidesBottomBarWhenPushed = YES;
-                //                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
-            case 7: {//消息通知
+                
+                
+            case 8: {//消息通知
                 LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];

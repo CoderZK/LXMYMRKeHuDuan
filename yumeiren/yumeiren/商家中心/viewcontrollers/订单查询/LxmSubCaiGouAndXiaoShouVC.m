@@ -103,6 +103,7 @@
         if (!cell) {
             cell = [[LxmSubBuHuoOrderPriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmSubBuHuoOrderPriceCell"];
         }
+        cell.isHaoCai = self.isHaoCai;
         cell.orderModel = self.dataArr[indexPath.section];
         return cell;
     } else if (indexPath.row == self.dataArr[indexPath.section].sub2.count + 3 - 1){
@@ -164,6 +165,7 @@
     LxmOrderDetailVC *vc = [[LxmOrderDetailVC alloc] init];
     vc.iscaiGouandXiaoshou = YES;
     vc.orderID = model.id;
+    vc.isHaoCai = self.isHaoCai;
     [UIViewController.topViewController.navigationController pushViewController:vc animated:YES];
 }
 
@@ -222,6 +224,8 @@
         LxmPayVC *vc = [[LxmPayVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPayVC_type_ddcx];
         vc.orderID = model.id;
         vc.shifuMoney = model.total_money;
+        vc.shiFuJiFen = model.score_price;
+        vc.isHaoCai = self.isHaoCai;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

@@ -188,7 +188,7 @@
 @interface LxmShopCenterOrderGoodsModel : NSObject
 
 @property (nonatomic, strong) NSString *good_price;/* 商品价格 */
-
+@property (nonatomic, strong) NSString *score_price;/* 积分价格 */
 @property (nonatomic, strong) NSString *good_id;/* 商品id */
 
 @property (nonatomic, strong) NSString *good_name;/* 商品名称 */
@@ -225,7 +225,7 @@
 @property (nonatomic, strong) NSString *status;/* 1：待支付，2：待发货，3：待补货，4：已完成，5：已取消 */
 
 @property (nonatomic, strong) NSString *total_money;/* 订单金额 */
-
+@property (nonatomic, strong) NSString *score_price;
 @property (nonatomic, strong) NSString *province;/* 省 */
 
 @property (nonatomic, strong) NSString *postage_type;/* 1：自提，2：快递 */

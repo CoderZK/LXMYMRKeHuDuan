@@ -220,12 +220,12 @@
 
 -(void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
     [_tabBar scrollToItemFromIndex:fromIndex toIndex:toIndex progress:progress];
-    self.type = toIndex + 1;
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:toIndex == 0 ? @"本月直属业绩总计： " : @"本月非直属业绩总计： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2f",self.teamModel.saleTotal.doubleValue] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:MainColor}];
-    [att appendAttributedString:str];
-    self.yejiLabel.attributedText = att;
-    [self loadData];
+//    self.type = toIndex + 1;
+//    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:toIndex == 0 ? @"本月直属业绩总计： " : @"本月非直属业绩总计： " attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:CharacterDarkColor}];
+//    NSAttributedString *str = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2f",self.teamModel.saleTotal.doubleValue] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:MainColor}];
+//    [att appendAttributedString:str];
+//    self.yejiLabel.attributedText = att;
+//    [self loadData];
 }
 
 /**

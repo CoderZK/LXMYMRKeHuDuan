@@ -410,7 +410,29 @@
     _goodsModel = goodsModel;
     [_goodsImgView sd_setImageWithURL:[NSURL URLWithString:_goodsModel.list_pic] placeholderImage:[UIImage imageNamed:@"tupian"]];
     _bottmView.titleLabel.text = _goodsModel.good_name;
-    _bottmView.moneyLabel.text = [NSString stringWithFormat:@"¥%@",_goodsModel.good_price];
+   
+    if (self.isHaoCai) {
+//        NSString * str = @"";
+//        if (goodsModel.good_price.doubleValue == 0) {
+//
+//            str = [NSString stringWithFormat:@"%@积分",[goodsModel.score_price getPriceStr]];
+//
+//        }else {
+//            if (goodsModel.score_price.doubleValue == 0) {
+//                str = [NSString stringWithFormat:@"¥%@",[goodsModel.good_price getPriceStr]];
+//            }else {
+//                str = [NSString stringWithFormat:@"¥%@+%@积分",[goodsModel.good_price getPriceStr],[goodsModel.score_price getPriceStr]];
+//            }
+//        }
+//
+//        _bottmView.moneyLabel.attributedText = [str getMutableAttributeStringWithFont:14 lineSpace:0 textColor:MainColor fontTwo:12 nsrange:[str rangeOfString:@"¥"] fontThtree:12 nsrangethree:[str rangeOfString:@"积分"]];
+        
+        _bottmView.moneyLabel.attributedText = [@"" getjiFenOrMoneyWithPrice:goodsModel.good_price withSorce:goodsModel.score_price];
+        
+    }else {
+        _bottmView.moneyLabel.text = [NSString stringWithFormat:@"¥%@",_goodsModel.good_price];
+    }
+    
 }
 
 /**

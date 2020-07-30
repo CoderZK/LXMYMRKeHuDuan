@@ -59,6 +59,7 @@ typedef NS_ENUM(NSInteger, LxmPayVC_type) {
 @property (nonatomic, strong) LxmShopCarOrderModel *orderModel;//购物车结算model
 
 @property (nonatomic, strong) NSString *shifuMoney;//订单查询 实付金额
+@property (nonatomic, strong) NSString *shiFuJiFen;//订单查询 实付积分
 
 @property (nonatomic, strong) NSString *orderID;
 
@@ -69,6 +70,9 @@ typedef NS_ENUM(NSInteger, LxmPayVC_type) {
 @property (nonatomic, strong) LxmBuHuoModel *shengjiGouwuModel;//升级购物需要支付的钱数
 
 - (instancetype)initWithTableViewStyle:(UITableViewStyle)style type:(LxmPayVC_type)type;
+
+@property(nonatomic,assign)BOOL isHaoCai; //是否是耗材
+
 
 @end
 
