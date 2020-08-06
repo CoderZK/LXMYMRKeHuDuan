@@ -300,7 +300,7 @@
             
             cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
             NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"积分支付"];
-            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
+            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld ",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
             [att appendAttributedString:str];
             cell.titleLabel.attributedText = att;
         }else {
@@ -309,7 +309,7 @@
             
             cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
             NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"余额支付"];
-            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
+            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld + %@积分",(long)d,[LxmTool ShareTool].userModel.sendScore.getPriceStr] : [NSString stringWithFormat:@"¥%.2f  + %@积分",f,[LxmTool ShareTool].userModel.sendScore.getPriceStr] attributes:@{NSForegroundColorAttributeName:MainColor}];
             [att appendAttributedString:str];
             cell.titleLabel.attributedText = att;
         }

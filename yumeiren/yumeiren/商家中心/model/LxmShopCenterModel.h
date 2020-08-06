@@ -215,6 +215,7 @@
 @property (nonatomic, strong) NSString *role_type;/* 等级*/
 
 @property (nonatomic, strong) NSString *order_code;/* 订单号 */
+@property (nonatomic, strong) NSString *r_create_time;
 
 @property (nonatomic, strong) NSString *t_name;/* 补货人姓名 */
 
@@ -263,6 +264,8 @@
 @property (nonatomic, assign) BOOL isShiFu;/* 是否是实付的金额 */
 
 @property (nonatomic, strong) NSString *order_info;/* 备注 */
+
+
 
 @property (nonatomic, assign) CGFloat orderHeight;/* 备注高度 */
 

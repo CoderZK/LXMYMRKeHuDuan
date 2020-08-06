@@ -693,7 +693,7 @@
     }
     
     //市级及以上有 提现 转账按钮
-    if ([LxmTool ShareTool].userModel.roleType.intValue < 2) {
+    if ([LxmTool ShareTool].userModel.roleType.doubleValue < 1.1  ) {
         _bottomView2.leftButton.hidden = YES;
         _bottomView2.rightButton.hidden = YES;
         _bottomView2.centerButton.imgView.image = [UIImage imageNamed:@"wdqb_cz"];

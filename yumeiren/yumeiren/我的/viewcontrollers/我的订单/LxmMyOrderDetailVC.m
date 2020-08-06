@@ -324,10 +324,12 @@
         }
         if (indexPath.row == 0) {
             cell.titleLabel.text = @"订单编号";
-            cell.detailLabel.text = @"123456789987654321";
+            cell.detailLabel.text = self.detailModel.map.order_code;
         } else {
             cell.titleLabel.text = @"下单时间";
-            cell.detailLabel.text = @"2019-04-20 11:20:20";
+           
+            cell.detailLabel.text = self.detailModel.map.r_create_time;;
+            
         }
         return cell;
     }

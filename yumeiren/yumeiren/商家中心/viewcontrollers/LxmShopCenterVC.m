@@ -150,7 +150,7 @@
  跳转到相应模块儿
  */
 - (void)pageToItem:(NSInteger)index {
-    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]|| [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
+    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]|| [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
         switch (index) {
             case 0: {// 我的店铺
                 LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
@@ -293,7 +293,6 @@
                         vc.hidesBottomBarWhenPushed = YES;
                         [self.navigationController pushViewController:vc animated:YES];
                     }
-                    
                 } else {
                     LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
                     vc.hidesBottomBarWhenPushed = YES;

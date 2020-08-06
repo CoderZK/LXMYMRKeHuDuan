@@ -69,7 +69,7 @@
     
     
     //市级及以上有 提现 转账按钮
-    if ([LxmTool ShareTool].userModel.roleType.intValue < 2) {
+    if ([LxmTool ShareTool].userModel.roleType.doubleValue < 1.1 ) {
         [self.topView.bottomView2.centerButton addTarget:self action:@selector(chongzhiClick) forControlEvents:UIControlEventTouchUpInside];
     } else {
         [self.topView.bottomView2.leftButton addTarget:self action:@selector(chongzhiClick) forControlEvents:UIControlEventTouchUpInside];
@@ -169,7 +169,7 @@
  提现
  */
 - (void)tixianClick {
-    if ([LxmTool ShareTool].userModel.roleType.intValue >= 2) {
+    if ([LxmTool ShareTool].userModel.roleType.doubleValue >= 1.1) {
         LxmTiXianVC *vc = [[LxmTiXianVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     } else {
