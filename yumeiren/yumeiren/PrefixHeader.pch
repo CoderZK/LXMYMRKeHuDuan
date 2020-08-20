@@ -48,6 +48,9 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define ScreenH [UIScreen mainScreen].bounds.size.height
 #define StateBarH [UIApplication sharedApplication].statusBarFrame.size.height
 
+
+#define RGB(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
+
 /**
  分割线
  */

@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface LxmUserInfoModel : NSObject<NSCoding>
-
+@property (nonatomic , strong) NSString *top_name;//上级的名字
 @property (nonatomic , strong) NSString *username;//姓名
 
 @property (nonatomic , strong) NSString *sex;//姓别
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString *inMoney;// 销售收入
 @property (nonatomic , strong) NSString *sendScore;// 积分
-
+@property (nonatomic , strong) NSString *my_score; //小溪
 @property (nonatomic , strong) NSString *shopStatus;// 0:未付保证金，1：已付保证金，2：已填信息,4：申请省级中，5：后台通过省长审核待升级 6-可以购买， 7-不可以购买，需要先升级
 
 @property (nonatomic, strong) NSString *chatStatus;//1:未绑定，2-已绑定
@@ -93,6 +93,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) NSString *thirdStatus;//1-已同意，2-未同意
 
 @property (nonatomic , strong) NSString *idCode;//身份证号
+
+@property (nonatomic , strong) NSString *direct_score;//直属小晞
+
+@property (nonatomic , strong) NSString *group_score;//团队待转小晞
+
+@property (nonatomic , strong) NSString *top_status;//1-顶头的，2-不是顶头的
+
+@property (nonatomic , strong) NSString *rank;//排名 如果返回-1，就不显示同级别排名
 
 
 

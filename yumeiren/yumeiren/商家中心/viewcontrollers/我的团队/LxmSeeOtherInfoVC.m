@@ -216,7 +216,7 @@
 - (void)loadUserInfo {
     [SVProgressHUD show];
     WeakObj(self);
-    [LxmNetworking networkingPOST:other_info parameters:@{@"token":SESSION_TOKEN,@"userId":self.model.id} returnClass:LxmSeeOtherInfoRootModel.class success:^(NSURLSessionDataTask *task, LxmSeeOtherInfoRootModel *responseObject) {
+    [LxmNetworking networkingPOST:other_infoTTT parameters:@{@"token":SESSION_TOKEN,@"userId":self.model.id} returnClass:LxmSeeOtherInfoRootModel.class success:^(NSURLSessionDataTask *task, LxmSeeOtherInfoRootModel *responseObject) {
         [SVProgressHUD dismiss];
         if (responseObject.key.integerValue == 1000) {
             selfWeak.infoModel = responseObject.result.map;

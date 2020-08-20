@@ -96,4 +96,8 @@
 
 - (NSString *)getPriceStr;
 
+//MM月dd日 HH:mm
+- (NSString *)getIntervalToMMdd;
+
+
 @end

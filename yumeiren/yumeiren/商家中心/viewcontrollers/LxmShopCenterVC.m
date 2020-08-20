@@ -22,7 +22,7 @@
 #import "LxmSafeAutherVC.h"
 #import "LxmRenZhengProtocolVC.h"
 #import "LxmNianDuKaoHeVC.h"
-
+#import "LxmMineYeJiKaoTVC.h"
 
 @interface LxmShopCenterVC ()
 
@@ -134,6 +134,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+         LxmMineYeJiKaoTVC * vc =[[LxmMineYeJiKaoTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+         vc.hidesBottomBarWhenPushed = YES;
+         if (self.shopInfoModel.roleType.intValue == 2) {
+             vc.isJingLi = YES;
+         }
+         [self.navigationController pushViewController:vc animated:YES];
+     }
+    
     
     //    if (indexPath.section == 0) {
     //        LxmMineYeJiKaoTVC * vc =[[LxmMineYeJiKaoTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];

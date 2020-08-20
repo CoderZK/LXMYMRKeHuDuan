@@ -753,6 +753,7 @@
         _shifuLabel.textColor = MainColor;
         _shifuLabel.text = @"实付";
         _shifuLabel.hidden = YES;
+        
     }
     return _shifuLabel;
 }

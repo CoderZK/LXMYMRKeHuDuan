@@ -29,12 +29,15 @@
 #import "LxmRenZhengProtocolVC.h"
 #import "LxmJiFenShopFatherVC.h"
 #import "LxmMineJiFenTVC.h"
+#import "LxmMineJiFenXiaJiTVC.h"
 
 @interface LxmMineVC ()
 
 @property (nonatomic, strong) LxmShopCenterTopView *topView;
 
 @property (nonatomic, strong) UIButton *rightButton;//导航栏右侧按钮
+
+@property(nonatomic,strong)LxmUserInfoModel *jiFenModel;
 
 @end
 
@@ -76,9 +79,36 @@
     WeakObj(self);
     [self loadMyUserInfoWithOkBlock:^{
         selfWeak.topView.infoModel = [LxmTool ShareTool].userModel;
-        [selfWeak.tableView reloadData];
+        
+        if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"3"]) {
+            [self getScoreData];
+        }else {
+            [selfWeak.tableView reloadData];
+        }
+        
+        
     }];
 }
+
+//获取小晞
+- (void)getScoreData {
+    
+    //获取个人信息
+    [LxmNetworking networkingPOST:my_inner_score parameters:@{@"token":TOKEN} returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"key"] integerValue] == 1000) {
+            
+            if (responseObject[@"result"] != nil && [[responseObject[@"result"] allKeys] containsObject:@"map"]) {
+                self.jiFenModel  = [LxmUserInfoModel mj_objectWithKeyValues:responseObject[@"result"][@"map"]];
+                [self.tableView reloadData];
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -128,7 +158,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section == 0 ? 1 : 8;
+    return section == 0 ? 1 : 9;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
@@ -151,9 +181,11 @@
     }
     cell.index = indexPath.row;
     cell.infoModel = [LxmTool ShareTool].userModel;
-//    cell.clipsToBounds = YES;
+    //    cell.clipsToBounds = YES;
     
- 
+    if (indexPath.row == 4) {
+        cell.detaillabel.text = [[NSString stringWithFormat:@"%0.2f",self.jiFenModel.my_score.doubleValue] getPriceStr];
+    }
     
     return cell;
 }
@@ -179,26 +211,40 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-         
+        
             case 3: {//小晞
-                
-                LxmMineJiFenTVC * vc =[[LxmMineJiFenTVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-                vc.hidesBottomBarWhenPushed = YES;
-                vc.jifenStr = [LxmTool ShareTool].userModel.sendScore;
-                [self.navigationController pushViewController:vc animated:YES];  
                 
                 //                LxmMineJifenMingXiTVC * vc =[[LxmMineJifenMingXiTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
                 //                vc.hidesBottomBarWhenPushed = YES;
                 //                [self.navigationController pushViewController:vc animated:YES];
                 
-//                LxmMineJiFenXiaJiTVC * vc =[[LxmMineJiFenXiaJiTVC alloc] init];
-//                vc.hidesBottomBarWhenPushed = YES;
-//                vc.jifenModel = self.jiFenModel;
-//                [self.navigationController pushViewController:vc animated:YES];
+                LxmMineJiFenXiaJiTVC * vc =[[LxmMineJiFenXiaJiTVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                vc.jifenModel = self.jiFenModel;
+                [self.navigationController pushViewController:vc animated:YES];
                 
             }
-             break;
-        case 4: {//实名认证
+                break;
+            
+        case 4: {//积分
+            
+            LxmMineJiFenTVC * vc =[[LxmMineJiFenTVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.jifenStr = [LxmTool ShareTool].userModel.sendScore;
+            [self.navigationController pushViewController:vc animated:YES];  
+            
+            //                LxmMineJifenMingXiTVC * vc =[[LxmMineJifenMingXiTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+            //                vc.hidesBottomBarWhenPushed = YES;
+            //                [self.navigationController pushViewController:vc animated:YES];
+            
+            //                LxmMineJiFenXiaJiTVC * vc =[[LxmMineJiFenXiaJiTVC alloc] init];
+            //                vc.hidesBottomBarWhenPushed = YES;
+            //                vc.jifenModel = self.jiFenModel;
+            //                [self.navigationController pushViewController:vc animated:YES];
+            
+        }
+            break;
+        case 5: {//实名认证
             if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
                 if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
                     //已认证
@@ -220,29 +266,29 @@
             }
         }
             break;
-        case 5: {
+        case 6: {
             LxmMenDianChaXunVC *vc = [[LxmMenDianChaXunVC alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 6: {
+        case 7: {
             LxmMyKefuAlertView *alertView = [[LxmMyKefuAlertView alloc] initWithFrame:UIScreen.mainScreen.bounds];
             alertView.code = [LxmTool ShareTool].userModel.serviceName;
             [alertView show];
         }
             break;
-        case 7: {
+        case 8: {
             
-//            LxmJiFenShopFatherVC * vc =[[LxmJiFenShopFatherVC alloc] init];
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
+            //            LxmJiFenShopFatherVC * vc =[[LxmJiFenShopFatherVC alloc] init];
+            //            vc.hidesBottomBarWhenPushed = YES;
+            //            [self.navigationController pushViewController:vc animated:YES];
             LxmSettingVC *vc = [LxmSettingVC new];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-
+            
         default:
             break;
     }
@@ -259,12 +305,18 @@
             }
             return 60;
         }else if (indexPath.row == 3) {
+            if ([roleType isEqualToString:@"3"]) {
+                return 60;
+            }else {
+                return 0;
+            }
+        }else if (indexPath.row == 4) {
             if (roleType.floatValue >-1) {
                 return 60;;
             }else {
                 return 0;
             }
-        } else if (indexPath.row == 5) {//门店查询
+        } else if (indexPath.row == 6) {//门店查询
             if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"] || [roleType isEqualToString:@"2.1"] || [roleType isEqualToString:@"3.1"]) {
                 return 0.01;
             }

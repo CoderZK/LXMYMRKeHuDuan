@@ -469,6 +469,14 @@
 
 @property (nonatomic, strong) NSString *firstN;/* 直属数量 */
 
+@property (nonatomic, strong) NSString *in_money;
+@property (nonatomic, strong) NSString *direct_score;
+@property (nonatomic, strong) NSString *user_head;
+@property (nonatomic, strong) NSString *role_type;
+@property (nonatomic, strong) NSString *one_base_in_money;
+@property (nonatomic, strong) NSString *group_score;
+@property (nonatomic, strong) NSString *telephone;
+@property (nonatomic, strong) NSString *sex;
 
 @end
 

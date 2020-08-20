@@ -9,7 +9,7 @@
 #import "LxmTiXianZhongVC.h"
 #import "LxmMineVC.h"
 #import "LxmQianBaoVC.h"
-
+#import "LxmMineJiFenXiaJiTVC.h"
 @interface LxmTiXianZhongVC ()
 
 @property (nonatomic, strong) LxmQianBaoButton *tixianButton;
@@ -67,12 +67,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"提现";
+    
     self.tableView.tableHeaderView = self.headerView;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(1);
         make.leading.trailing.bottom.equalTo(self.view);
     }];
     [self initHeaderView];
+    
+    if (self.isJiFen) {
+        self.navigationItem.title = @"提取";
+        self.tixianButton.textLabel.text = @"提取中";
+    }
+    if (self.isChongZhi) {
+        self.navigationItem.title = @"充值";
+        self.tixianButton.textLabel.text = @"充值中";
+    }
 }
 /**
  添加子视图
@@ -97,12 +107,25 @@
  完成
  */
 - (void)finishButtonClick {
-    for (UIViewController *vc in self.navigationController.viewControllers) {
-        if ([vc isKindOfClass:[LxmQianBaoVC class]]) {
-            [self.navigationController popToViewController:vc animated:YES];
-            break;
+    
+    if (self.isChongZhi) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else {
+        for (UIViewController *vc in self.navigationController.viewControllers) {
+            if ([vc isKindOfClass:[LxmQianBaoVC class]]) {
+                [self.navigationController popToViewController:vc animated:YES];
+                break;
+            }
+            if ([vc isKindOfClass:[LxmMineJiFenXiaJiTVC class]]) {
+                    
+                [self.navigationController popToViewController:vc animated:YES];
+            
+                break;
+            }
         }
     }
+    
+    
 }
 
 @end

@@ -581,6 +581,7 @@
     [self.bgView addSubview:self.bottomView];
     [self.bottomView addSubview:self.leftButton];
     [self.bottomView addSubview:self.rightButton];
+    self.leftButton.userInteractionEnabled = self.rightButton.userInteractionEnabled = NO;
     [self.bottomView addSubview:self.lineView];
 }
 

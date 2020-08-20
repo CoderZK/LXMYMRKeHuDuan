@@ -299,7 +299,7 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;//标题
 
-@property (nonatomic, strong) UILabel *detaillabel;//详情信息
+
 
 @property (nonatomic, strong) UIImageView *accImgView;//箭头
 
@@ -425,7 +425,16 @@
             self.detaillabel.text = @"¥500";
         }
             break;
+            
         case 3: {
+            self.iconImgView.image = [UIImage imageNamed:@"kk935"];
+            self.detaillabel.hidden = YES;
+            self.titleLabel.text = @"我的小晞";
+            self.detaillabel.text = @"500";
+        }
+            break;
+            
+        case 4: {
             self.iconImgView.image = [UIImage imageNamed:@"kk935"];
             self.detaillabel.hidden = YES;
             self.titleLabel.text = @"我的积分";
@@ -433,26 +442,26 @@
         }
             break;
             
-        case 4: {
+        case 5: {
             self.iconImgView.image = [UIImage imageNamed:@"wodeshimingzhi"];
             self.detaillabel.hidden = NO;
             self.titleLabel.text = @"实名认证";
             self.detaillabel.text = @"已认证";
         }
             break;
-        case 5: {
+        case 6: {
             self.iconImgView.image = [UIImage imageNamed:@"wd_mdcx"];
             self.titleLabel.text = @"门店查询";
             self.detaillabel.hidden = YES;
         }
             break;
-        case 6: {
+        case 7: {
             self.iconImgView.image = [UIImage imageNamed:@"kfzx"];
             self.detaillabel.hidden = YES;
             self.titleLabel.text = @"客服中心";
         }
             break;
-        case 7: {
+        case 8: {
             self.iconImgView.image = [UIImage imageNamed:@"shezhi"];
             self.detaillabel.hidden = YES;
             self.titleLabel.text = @"设置";
@@ -526,16 +535,16 @@
         }
             break;
             
-        case 3: {
+        case 4: {
             self.detaillabel.text = [self.infoModel.sendScore getPriceStr];
         }
             break;
             
-        case 4: {
+        case 5: {
             self.detaillabel.text = (_infoModel.idCode.isValid && _infoModel.thirdStatus.integerValue == 1) ? @"已认证" : @"未认证";
         }
             break;
-        case 5: {
+        case 6: {
             if (_infoModel.roleType.integerValue == -1) {
                 self.titleLabel.hidden = YES;
                 self.detaillabel.hidden = YES;

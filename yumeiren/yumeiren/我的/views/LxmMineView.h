@@ -32,4 +32,6 @@
 
 @property (nonatomic, strong) LxmUserInfoModel *infoModel;
 
+@property (nonatomic, strong) UILabel *detaillabel;//详情信息
+
 @end

@@ -11,7 +11,9 @@
 #define ISLOGIN [LxmTool ShareTool].isLogin
 #define TOKEN [LxmTool ShareTool].session_token
 //测试
-#define Base_URL @"http://app.hkymr.com:8989"
+//#define Base_URL @"http://app.hkymr.com:8989"
+//涵曦的测试
+#define Base_URL @"http://app.chaoci666.com:8989"
 //正式
 //#define Base_URL @"http://106.15.91.60"
 
@@ -331,7 +333,7 @@
 /**
  查看他人信息
  */
-#define other_info  Base_URL"/app/user/other_info"
+#define other_infoTTT  Base_URL"/app/user/other_info"
 /**
  我的仓库-汇总
  */
@@ -520,6 +522,62 @@
  */
 #define send_score_record_list  Base_URL"/app/user/send_score_record_list"
 
+
+
+#pragma mark ----- 小溪部分 ------
+
+/**
+  业绩考核
+ */
+#define check_detail  Base_URL"/app/user/check_detail"
+/**
+   我的小晞
+ */
+#define my_inner_score  Base_URL"/app/user/my_inner_score"
+
+/**
+ 新增接口 按月-查看直属小晞 提现和收入汇总
+ */
+#define month_total_direct_score Base_URL"/app/user/month_total_direct_score"
+/**
+ 小晞明细
+ */
+#define score_record_detail  Base_URL"/app/user/score_record_detail"
+
+/**
+  小晞提现
+ */
+#define apply_cash_out  Base_URL"/app/user/apply_cash_out"
+
+/**
+团队成员列表
+ */
+#define score_record_list  Base_URL"/app/user/score_record_list"
+
+/**
+ 确认收到小晞接口
+ */
+#define confirm_score  Base_URL"/app/user/confirm_score"
+
+/**
+团队成员列表
+ */
+#define score_user_list  Base_URL"/app/user/score_user_list"
+
+/**
+  小晞转出
+ */
+#define give_score  Base_URL"/app/user/give_score"
+
+/**
+ 新增接口 获取历史团队小晞
+ */
+#define month_total_group_score Base_URL"/app/user/month_total_group_score"
+
+/**
+ 确认收到小晞接口
+ */
+#define my_group_total_sale  Base_URL"/app/user/my_group_total_sale"
 
 /**
  获取图片地址
