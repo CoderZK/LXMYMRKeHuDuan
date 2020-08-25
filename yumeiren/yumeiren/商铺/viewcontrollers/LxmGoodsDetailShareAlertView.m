@@ -130,10 +130,10 @@
         buttonItem.itemLabel.text = @"微信好友";
     } else if (indexPath.item == 2) {
         buttonItem.itemImgView.image = [UIImage imageNamed:@"qqkj"];
-        buttonItem.itemLabel.text = @"QQ空间";
+        buttonItem.itemLabel.text = @"手机QQ";
     } else if (indexPath.item == 3) {
         buttonItem.itemImgView.image = [UIImage imageNamed:@"qqhy"];
-        buttonItem.itemLabel.text = @"手机QQ";
+        buttonItem.itemLabel.text = @"QQ空间";
     } else {
         buttonItem.itemImgView.image = [UIImage imageNamed:@"fzlj"];
         buttonItem.itemLabel.text = @"复制链接";

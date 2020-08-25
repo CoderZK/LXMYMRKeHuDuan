@@ -11,9 +11,11 @@
 #define ISLOGIN [LxmTool ShareTool].isLogin
 #define TOKEN [LxmTool ShareTool].session_token
 //测试
-//#define Base_URL @"http://app.hkymr.com:8989"
+//#define Base_URL @"http://192.168.3.6:8839"
+//测试
+#define Base_URL @"http://app.hkymr.com:8989"
 //涵曦的测试
-#define Base_URL @"http://app.chaoci666.com:8989"
+//#define Base_URL @"http://app.chaoci666.com:8989"
 //正式
 //#define Base_URL @"http://106.15.91.60"
 

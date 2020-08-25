@@ -26,6 +26,8 @@
 @property(nonatomic,strong)UIView  *redV;
 @property(nonatomic,strong)UIView *btView;
 @property(nonatomic,strong)LxmMineJiFenXiaJiSubTVC *subTVC;
+@property(nonatomic,strong)UIView *bottomV;
+@property(nonatomic,strong)UILabel *allXiaoXiLB,*monthXiaoXiLB;
 
 
 
@@ -70,6 +72,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initBottomV];
     
     if  (self.jifenModel != nil) {
            [self addNavTitleV];
@@ -78,7 +81,7 @@
     }else {
         [self getScoreData];
     }
-    
+    [self loadGroupData];
    
     
      WeakObj(self);
@@ -457,15 +460,117 @@
         make.bottom.right.left.equalTo(self.btView);
     }];
     
-    [self.subTVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.headViewOne.mas_bottom);
+     
+      [self.subTVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+          make.left.right.equalTo(self.view);
+          make.bottom.equalTo(self.bottomV.mas_top);
+          make.top.equalTo(self.headViewOne.mas_bottom);
+      }];
+    
+    
+}
+
+- (void)initBottomV {
+    
+    self.bottomV = [[UIView alloc] init];
+    self.bottomV.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.bottomV];
+    [self.bottomV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        if (StateBarH >20) {
+            make.bottom.equalTo(self.view).offset(-34);
+        }else {
+            make.bottom.equalTo(self.view);
+        }
+        make.height.equalTo(@50);
     }];
+    self.bottomV.layer.shadowColor = CharacterDarkColor.CGColor;
+    self.bottomV.layer.shadowOpacity = 0.1;
+    self.bottomV.layer.shadowRadius = 3;
+    
+    
+    
+//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.right.equalTo(self.view);
+//        make.bottom.equalTo(self.bottomV.mas_top);
+//    }];
+    
+    UILabel * lb1  =[[UILabel alloc] init];
+    lb1.font = [UIFont systemFontOfSize:13];
+    lb1.text = @"当月团队总业绩: ";
+    lb1.textColor = CharacterDarkColor;
+    [self.bottomV addSubview:lb1];
+    [lb1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.bottomV);
+        make.height.equalTo(@20);
+        make.left.equalTo(self.bottomV).offset(15);
+    }];
+    
+    
+    UILabel * lb2  =[[UILabel alloc] init];
+    lb2.font = [UIFont systemFontOfSize:14];
+    lb2.text = @"";
+    lb2.textColor = MainColor;
+    [self.bottomV addSubview:lb2];
+    [lb2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.bottomV);
+        make.height.equalTo(@20);
+        make.left.equalTo(lb1.mas_right).offset(15);
+    }];
+    self.allXiaoXiLB = lb2;
+    
+    
+    
+    
+    
+//    UILabel * lb4  =[[UILabel alloc] init];
+//    lb4.font = [UIFont systemFontOfSize:14];
+//    lb4.text = @"2000";
+//    lb4.textColor = MainColor;
+//    [self.bottomV addSubview:lb4];
+//    [lb4 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.bottomV);
+//        make.height.equalTo(@20);
+//        make.right.equalTo(self.bottomV).offset(-15);
+//    }];
+//    self.monthXiaoXiLB = lb4;
+//
+//
+//    UILabel * lb3  =[[UILabel alloc] init];
+//    lb3.font = [UIFont systemFontOfSize:13];
+//    lb3.text = @"当月提取小晞: ";
+//    lb3.textColor = CharacterDarkColor;
+//    [self.bottomV addSubview:lb3];
+//    [lb3 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.bottomV);
+//        make.height.equalTo(@20);
+//        make.right.equalTo(self.monthXiaoXiLB.mas_left).offset(-10);
+//    }];
     
     
 }
 
 
+- (void)loadGroupData {
+    
+    
+    [SVProgressHUD show];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = SESSION_TOKEN;
+    dict[@"id"] =  [LxmTool ShareTool].userModel.id;
+  
+    [LxmNetworking networkingPOST:my_group_total_sale parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+      
+        if ([responseObject[@"key"] intValue] == 1000) {
+            self.allXiaoXiLB.text = [[NSString stringWithFormat:@"%@",responseObject[@"result"][@"map"][@"group_sale"]] getPriceStr];
+        } else {
+            [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+       
+    }];
+    
+}
 
 - (void)addheadViewTwo {
     

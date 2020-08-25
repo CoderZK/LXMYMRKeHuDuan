@@ -27,6 +27,7 @@
 
 #import "LxmMyBaoZhengJinVC.h"
 #import "LxmMyHongBaoVC.h"
+#import "LxmJiFenDeatilOneTVC.h"
 
 @interface LxmQianBaoMessageVC ()
 
@@ -306,6 +307,15 @@
                     [selfWeak readorno:model isChai:NO view:nil];
                 };
                 [self.navigationController pushViewController:vc animated:YES];
+            }else if (model.second_type.intValue == 92 || model.second_type.intValue == 91) {
+             
+                
+                LxmJiFenDeatilOneTVC * vc =[[LxmJiFenDeatilOneTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+                vc.hidesBottomBarWhenPushed = YES;
+                vc.ID = model.info_id;
+                [self readorno:model isChai:NO view:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+                
             } else if (model.second_type.intValue == 40 || model.second_type.intValue == 35) {//保证金退回到余额
                 LxmMyBaoZhengJinVC *vc = [[LxmMyBaoZhengJinVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 vc.readBlock = ^{

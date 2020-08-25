@@ -37,6 +37,7 @@
 #import "LxmBuHuoDetailVC.h"
 
 #import "LxmMyBaoZhengJinVC.h"
+#import "LxmMineJiFenXiaJiTVC.h"
 
 //role_province和role_ceo  申请省代申请CEO,加个字段up_message，申请理由
 
@@ -290,7 +291,12 @@
                 LxmOrderDetailVC *vc = [[LxmOrderDetailVC alloc] init];
                 vc.orderID = model.infoId;
                 [nav pushViewController:vc animated:YES];
-            } else if (model.secondType.intValue == 40) {//保证金退回到余额
+            }else if (model.secondType.intValue == 91 || model.secondType.intValue == 92) {
+                LxmMineJiFenXiaJiTVC * vc =[[LxmMineJiFenXiaJiTVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [nav pushViewController:vc animated:YES];
+                
+            }else if (model.secondType.intValue == 40) {//保证金退回到余额
                 LxmMyBaoZhengJinVC *vc = [[LxmMyBaoZhengJinVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 [nav pushViewController:vc animated:YES];
             } else {

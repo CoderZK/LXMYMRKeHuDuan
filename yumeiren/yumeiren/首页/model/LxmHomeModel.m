@@ -34,6 +34,7 @@
     return @{@"list" : @"LxmTouSuListModel"};
 }
 
+
 @end
 
 @implementation LxmTouSuListRootModel

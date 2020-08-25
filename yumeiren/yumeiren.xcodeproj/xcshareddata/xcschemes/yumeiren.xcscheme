@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4078923C22D4440B00716C1C"
-               BuildableName = "&#x715c;&#x7f8e;&#x4eba;ce.app"
+               BuildableName = "&#x6d4b;&#x8bd5;.app"
                BlueprintName = "yumeiren"
                ReferencedContainer = "container:yumeiren.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4078923C22D4440B00716C1C"
-            BuildableName = "&#x715c;&#x7f8e;&#x4eba;ce.app"
+            BuildableName = "&#x6d4b;&#x8bd5;.app"
             BlueprintName = "yumeiren"
             ReferencedContainer = "container:yumeiren.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4078923C22D4440B00716C1C"
-            BuildableName = "&#x715c;&#x7f8e;&#x4eba;ce.app"
+            BuildableName = "&#x6d4b;&#x8bd5;.app"
             BlueprintName = "yumeiren"
             ReferencedContainer = "container:yumeiren.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4078923C22D4440B00716C1C"
-            BuildableName = "&#x715c;&#x7f8e;&#x4eba;ce.app"
+            BuildableName = "&#x6d4b;&#x8bd5;.app"
             BlueprintName = "yumeiren"
             ReferencedContainer = "container:yumeiren.xcodeproj">
          </BuildableReference>

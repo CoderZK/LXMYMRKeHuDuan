@@ -294,22 +294,36 @@
     cell.selectImgView.image = [UIImage imageNamed:self.currentIndex == indexPath.row ? @"xuanzhong_y" : @"xuanzhong_n"] ;
     if (indexPath.row == 0) {
         
-        if (self.isHaoCai && self.shifuMoney.doubleValue == 0) {
+        if (self.isHaoCai ) {
             CGFloat f = [LxmTool ShareTool].userModel.sendScore.doubleValue;
             NSInteger d = [LxmTool ShareTool].userModel.sendScore.integerValue;
+            if (self.shifuMoney.doubleValue == 0) {
             
-            cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
-            NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"积分支付"];
-            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld ",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
-            [att appendAttributedString:str];
-            cell.titleLabel.attributedText = att;
+                
+                cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
+                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"积分支付"];
+                NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld ",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
+                [att appendAttributedString:str];
+                cell.titleLabel.attributedText = att;
+            }else {
+                cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
+                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"余额支付"];
+                NSAttributedString *str = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%@ + %@积分",[[LxmTool ShareTool].userModel.balance getPriceStr],[[LxmTool ShareTool].userModel.sendScore getPriceStr]] attributes:@{NSForegroundColorAttributeName:MainColor}];
+                [att appendAttributedString:str];
+                cell.titleLabel.attributedText = att;
+            }
+            
+            
         }else {
+            
+            
+            
             CGFloat f = [LxmTool ShareTool].userModel.balance.doubleValue;
             NSInteger d = [LxmTool ShareTool].userModel.balance.integerValue;
             
             cell.iconImgView.image = [UIImage imageNamed:@"yue_pay"];
             NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"余额支付"];
-            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld + %@积分",(long)d,[LxmTool ShareTool].userModel.sendScore.getPriceStr] : [NSString stringWithFormat:@"¥%.2f  + %@积分",f,[LxmTool ShareTool].userModel.sendScore.getPriceStr] attributes:@{NSForegroundColorAttributeName:MainColor}];
+            NSAttributedString *str = [[NSAttributedString alloc] initWithString:f == d ? [NSString stringWithFormat:@"¥%ld",(long)d] : [NSString stringWithFormat:@"¥%.2f",f] attributes:@{NSForegroundColorAttributeName:MainColor}];
             [att appendAttributedString:str];
             cell.titleLabel.attributedText = att;
         }

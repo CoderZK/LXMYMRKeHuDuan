@@ -278,7 +278,7 @@
     cell.rightTwoLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.targetMoney] getPriceStr];
     cell.numberOneLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.finishMoney] getPriceStr];
     cell.numberTwoLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.inviteUserNum] getPriceStr];
-    cell.desLB.text = [NSString stringWithFormat:@"总完成箱数 = 完成箱数+新增统计直属 (1个同级直属 = %ld箱)",(long)self.dataModel.inviteToBox];
+    cell.desLB.text = [NSString stringWithFormat:@"总完成金额 = 完成金额+新增统计直属 (1个同级直属 = %ld元)",(long)self.dataModel.inviteToBox];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.isJingLi = self.isJingLi;
     return cell;

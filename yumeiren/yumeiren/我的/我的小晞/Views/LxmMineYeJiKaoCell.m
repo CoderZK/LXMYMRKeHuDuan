@@ -27,14 +27,14 @@
 - (void)setType:(NSInteger)type {
     _type = type;
     if (type == 100) {
-        self.leftOneLB.text = @"当月总完成(箱)";
-        self.rightOneLB.text = @"当月目标(箱)";
-        self.leftThreeLB.text = @"当月完成(箱)";
+        self.leftOneLB.text = @"当月总完成(元)";
+        self.rightOneLB.text = @"当月目标(元)";
+        self.leftThreeLB.text = @"当月完成(元)";
         self.leftFourLB.text = @"当月新增同级直属(人)";
     }else {
-       self.leftOneLB.text = @"当季总完成(箱)";
-        self.rightOneLB.text = @"当季目标(箱)";
-        self.leftThreeLB.text = @"当季完成(箱)";
+       self.leftOneLB.text = @"当季总完成(元)";
+        self.rightOneLB.text = @"当季目标(元)";
+        self.leftThreeLB.text = @"当季完成(元)";
         self.leftFourLB.text = @"当季新增同级直属(人)";
     }
 }
