@@ -156,7 +156,7 @@
         _rankLabel.textColor = MainColor;
         _rankLabel.layer.cornerRadius = 3;
         _rankLabel.layer.borderWidth = 0.5;
-        _rankLabel.text = @" 董事 ";
+        _rankLabel.text = @" 积分 ";
         _rankLabel.layer.borderColor = MainColor.CGColor;
     }
     return _rankLabel;
@@ -251,9 +251,9 @@
     } else if ([_model.role_type isEqualToString:@"-0.3"]) {
         self.rankLabel.text = @" 减肥单项-荣誉会员 ";
     } else if ([_model.role_type isEqualToString:@"1.1"]) {
-        self.rankLabel.text = @" 减肥单项-总经理 ";
+        self.rankLabel.text = @" 减肥单项-市代 ";
     } else if ([_model.role_type isEqualToString:@"2.1"]) {
-        self.rankLabel.text = @" 减肥单项-董事 ";
+        self.rankLabel.text = @" 减肥单项-省代 ";
     } else if ([_model.role_type isEqualToString:@"3.1"]) {
         self.rankLabel.text = @" 减肥单项-CEO ";
     }  else {
@@ -265,13 +265,13 @@
                 self.rankLabel.text = @" 无身份 ";
                 break;
             case 1:
-                self.rankLabel.text = @" 经理 ";
+                self.rankLabel.text = @" VIP ";
                 break;
             case 2:
-                self.rankLabel.text = @" 总经理 ";
+                self.rankLabel.text = @" 市代 ";
                 break;
             case 3:
-                self.rankLabel.text = @" 董事 ";
+                self.rankLabel.text = @" 省代 ";
                 break;
             case 4:
                 self.rankLabel.text = @" CEO ";
@@ -282,7 +282,7 @@
         }
     }
     
-    self.codeLabel.text = [NSString stringWithFormat:@"剩余小晞: %@",[_model.group_score getPriceStr]];
+    self.codeLabel.text = [NSString stringWithFormat:@"剩余小煜: %@",[_model.group_score getPriceStr]];
     self.memberNumLabel.text = [NSString stringWithFormat:@"本月业绩: ￥%@",_model.one_base_in_money];
 }
 

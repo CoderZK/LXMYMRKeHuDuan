@@ -18,4 +18,12 @@ pod 'AMap2DMap-NO-IDFA'
 pod 'AMapSearch-NO-IDFA'
 pod 'AMapLocation-NO-IDFA'
 
+pod 'AlipaySDK-iOS'
+pod 'WechatOpenSDK'
+pod 'UMCCommon'
+pod 'UMCCommonLog'
+pod 'UMCShare/Social/ReducedWeChat'
+pod 'UMCShare/Social/ReducedQQ'
+pod 'UMCPush'
+
 end

@@ -166,7 +166,7 @@
     imageV.backgroundColor = [UIColor redColor];
     
     UILabel * lb  = [[UILabel alloc] initWithFrame:CGRectMake(50, StateBarH, ScreenW - 100, 44)];
-    lb.text = @"团队小晞明细";
+    lb.text = @"团队小煜明细";
     lb.textAlignment = NSTextAlignmentCenter;
     lb.font = [UIFont systemFontOfSize:18];
     lb.textColor = [UIColor whiteColor];
@@ -207,7 +207,7 @@
     UILabel * leftOneLB = [[UILabel alloc] init];
     leftOneLB.textColor = CharacterLightGrayColor;
     leftOneLB.font = [UIFont systemFontOfSize:14];
-    leftOneLB.text = @"剩余小晞 ";
+    leftOneLB.text = @"剩余小煜 ";
     [whiteV addSubview:leftOneLB];
     
     UILabel * leftTwoLB = [[UILabel alloc] init];
@@ -326,11 +326,11 @@
     if ([self.jifenModel.role_type isEqualToString:@"0"]) {
         roleLB.text = @"  无身份  ";
     }else if ([self.jifenModel.role_type isEqualToString:@"1"]) {
-        roleLB.text = @"  经理  ";
+        roleLB.text = @"  VIP  ";
     }else if ([self.jifenModel.role_type isEqualToString:@"2"]) {
-        roleLB.text = @"  总经理  ";
+        roleLB.text = @"  市代  ";
     }else if ([self.jifenModel.role_type isEqualToString:@"3"]) {
-        roleLB.text = @"  董事  ";
+        roleLB.text = @"  省代  ";
     }
     nameLB.text = self.jifenModel.username;
     leftTwoLB.text = [self.jifenModel.group_score getPriceStr];

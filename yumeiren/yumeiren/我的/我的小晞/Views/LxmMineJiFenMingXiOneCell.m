@@ -37,8 +37,8 @@
     
     
     if (type == 1) {
-        self.titleLB.text = [NSString stringWithFormat:@" 来自-%@直属业绩小晞%@",model.by_name,@""];
-        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score];
+        self.titleLB.text = [NSString stringWithFormat:@" 来自-%@直属业绩小煜%@",model.by_name,@""];
+        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score.getPriceStr];
          [self.typeBt setTitleColor:RGB(255, 134, 62) forState:UIControlStateNormal];
         [self.typeBt setImage:[UIImage imageNamed:@"kk940"] forState:UIControlStateNormal];
         self.typeBt.titleLabel.font = [UIFont systemFontOfSize:10];
@@ -48,7 +48,7 @@
     }else if (type == 2) {
         
         self.titleLB.text = [NSString stringWithFormat:@"转出-转给%@",model.by_name];
-        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score];
+        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score.getPriceStr];
         
         if (status == 1) {
                   [self.typeBt setBackgroundImage:[UIImage imageNamed:@"deepPink"] forState:UIControlStateNormal];
@@ -66,27 +66,27 @@
         
     }else if (type == 3) {
         self.titleLB.text = [NSString stringWithFormat:@"转入-来自%@",model.by_name];
-        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score];
+        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score.getPriceStr];
       
     }else if (type == 4) {
         self.titleLB.text = [NSString stringWithFormat:@"提取%@",@""];
-        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score];
+        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score.getPriceStr];
     }else if (type == 5) {
         
         self.titleLB.text = [NSString stringWithFormat:@"收入-团队销售业绩%@",model.sale_money];
-        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score];
+        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score.getPriceStr];
          [self.typeBt setTitleColor:RGB(255, 134, 62) forState:UIControlStateNormal];
         [self.typeBt setImage:[UIImage imageNamed:@"kk940"] forState:UIControlStateNormal];
         self.typeBt.titleLabel.font = [UIFont systemFontOfSize:10];
-        [self.typeBt setTitle:[NSString stringWithFormat:@" 收入小晞 = 销售业绩 x %0.1f%% - 下级分配",model.sale_rate.doubleValue * 100] forState:UIControlStateNormal];
+        [self.typeBt setTitle:[NSString stringWithFormat:@" 收入小煜 = 销售业绩 x %0.1f%% - 下级分配",model.sale_rate.doubleValue * 100] forState:UIControlStateNormal];
         
     }else if (type == 6) {
         self.titleLB.text = [NSString stringWithFormat:@"转入-来自%@",model.by_name];
-        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score];
+        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score.getPriceStr];
       
     }else if (type == 7 ) {
         self.titleLB.text = [NSString stringWithFormat:@"转出-转给%@",model.by_name];
-        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score];
+        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score.getPriceStr];
         
         if (status == 1) {
                   [self.typeBt setBackgroundImage:[UIImage imageNamed:@"deepPink"] forState:UIControlStateNormal];
@@ -103,7 +103,7 @@
         
     }else if (type == 8) {
         self.titleLB.text = [NSString stringWithFormat:@"提取%@",@""];
-        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score];
+        self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score.getPriceStr];
     }
     
     if (model.create_time.length > 3) {

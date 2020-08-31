@@ -94,9 +94,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString *idCode;//身份证号
 
-@property (nonatomic , strong) NSString *direct_score;//直属小晞
+@property (nonatomic , strong) NSString *direct_score;//直属小煜
 
-@property (nonatomic , strong) NSString *group_score;//团队待转小晞
+@property (nonatomic , strong) NSString *group_score;//团队待转小煜
 
 @property (nonatomic , strong) NSString *top_status;//1-顶头的，2-不是顶头的
 

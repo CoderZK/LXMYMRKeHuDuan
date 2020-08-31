@@ -10,19 +10,18 @@
 
 #define ISLOGIN [LxmTool ShareTool].isLogin
 #define TOKEN [LxmTool ShareTool].session_token
-//测试
-//#define Base_URL @"http://192.168.3.6:8839"
-//测试
-#define Base_URL @"http://app.hkymr.com:8989"
-//涵曦的测试
-//#define Base_URL @"http://app.chaoci666.com:8989"
-//正式
-//#define Base_URL @"http://106.15.91.60"
 
-//#define Base_URL @"https://app.hkymr.com"
+
+//测试
+//#define Base_URL @"http://app.hkymr.com:8666"
+
+//正式
+#define Base_URL @"https://appnew.hkymr.com"
+
+
+
 
 #define Base_RESOURSE_URL @"https://vedio.hkymr.com"
-
 /**
  单张图片上传 或视频上传
  */
@@ -533,21 +532,21 @@
  */
 #define check_detail  Base_URL"/app/user/check_detail"
 /**
-   我的小晞
+   我的小煜
  */
 #define my_inner_score  Base_URL"/app/user/my_inner_score"
 
 /**
- 新增接口 按月-查看直属小晞 提现和收入汇总
+ 新增接口 按月-查看直属小煜 提现和收入汇总
  */
 #define month_total_direct_score Base_URL"/app/user/month_total_direct_score"
 /**
- 小晞明细
+ 小煜明细
  */
 #define score_record_detail  Base_URL"/app/user/score_record_detail"
 
 /**
-  小晞提现
+  小煜提现
  */
 #define apply_cash_out  Base_URL"/app/user/apply_cash_out"
 
@@ -557,7 +556,7 @@
 #define score_record_list  Base_URL"/app/user/score_record_list"
 
 /**
- 确认收到小晞接口
+ 确认收到小煜接口
  */
 #define confirm_score  Base_URL"/app/user/confirm_score"
 
@@ -567,17 +566,17 @@
 #define score_user_list  Base_URL"/app/user/score_user_list"
 
 /**
-  小晞转出
+  小煜转出
  */
 #define give_score  Base_URL"/app/user/give_score"
 
 /**
- 新增接口 获取历史团队小晞
+ 新增接口 获取历史团队小煜
  */
 #define month_total_group_score Base_URL"/app/user/month_total_group_score"
 
 /**
- 确认收到小晞接口
+ 确认收到小煜接口
  */
 #define my_group_total_sale  Base_URL"/app/user/my_group_total_sale"
 

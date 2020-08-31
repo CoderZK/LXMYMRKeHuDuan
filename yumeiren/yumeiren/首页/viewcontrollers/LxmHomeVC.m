@@ -218,7 +218,7 @@
         case 0: {//关于我们
             LxmWebViewController *vc = [[LxmWebViewController alloc] init];
             vc.navigationItem.title = @"关于我们";
-            vc.loadUrl = [NSURL URLWithString:@"https://app.hkymr.com/aboutMe.html"];
+            vc.loadUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Base_URL,@"/aboutMe.html"]];
             [self.navigationController pushViewController:vc animated:YES];
         }
         break;

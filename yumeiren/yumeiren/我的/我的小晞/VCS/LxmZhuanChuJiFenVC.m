@@ -19,19 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title  = @"转出小晞";
+    self.navigationItem.title  = @"转出小煜";
     self.confirmBt.layer.cornerRadius = 5;
     self.nameLB.text = [NSString stringWithFormat:@"转给: %@",self.top_name];
     self.confirmBt.clipsToBounds = YES;
 }
 - (IBAction)confirmBt:(id)sender {
     if (self.TF.text.length  ==0 ){
-        [SVProgressHUD showErrorWithStatus:@"请输入转出小晞"];
+        [SVProgressHUD showErrorWithStatus:@"请输入转出小煜"];
         return;
     }
     
     if (self.TF.text.doubleValue > self.jifen) {
-        [SVProgressHUD showErrorWithStatus:@"小晞不足!"];
+        [SVProgressHUD showErrorWithStatus:@"小煜不足!"];
         return;
     }
     
@@ -44,7 +44,7 @@
            [SVProgressHUD dismiss];
            if ([responseObject[@"key"] integerValue] == 1000) {
                [LxmEventBus sendEvent:@"jifentiqu" data:@{@"scoreType":@(2),@"money":self.TF.text}];
-               [SVProgressHUD showSuccessWithStatus:@"申请转出小晞成功!"];
+               [SVProgressHUD showSuccessWithStatus:@"申请转出小煜成功!"];
                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                    [self.navigationController popViewControllerAnimated:YES];
                });

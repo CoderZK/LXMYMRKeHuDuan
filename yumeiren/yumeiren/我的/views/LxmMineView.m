@@ -411,34 +411,34 @@
             self.detaillabel.text = @"¥2888";
         }
             break;
-        case 1: {
+        case 3: {
             self.iconImgView.image = [UIImage imageNamed:@"wodehongbao"];
             self.detaillabel.hidden = NO;
             self.titleLabel.text = @"我的红包";
-            self.detaillabel.text = @"¥500";
+            self.detaillabel.text = @"";
         }
             break;
-        case 2: {
+        case 4: {
             self.iconImgView.image = [UIImage imageNamed:@"baozhengjin"];
             self.detaillabel.hidden = NO;
             self.titleLabel.text = @"保证金";
-            self.detaillabel.text = @"¥500";
+            self.detaillabel.text = @"";
         }
             break;
             
-        case 3: {
+        case 1: {
             self.iconImgView.image = [UIImage imageNamed:@"kk935"];
             self.detaillabel.hidden = YES;
-            self.titleLabel.text = @"我的小晞";
-            self.detaillabel.text = @"500";
+            self.titleLabel.text = @"我的小煜";
+            self.detaillabel.text = @"";
         }
             break;
             
-        case 4: {
+        case 2: {
             self.iconImgView.image = [UIImage imageNamed:@"kk935"];
             self.detaillabel.hidden = YES;
             self.titleLabel.text = @"我的积分";
-            self.detaillabel.text = @"500";
+            self.detaillabel.text = @"";
         }
             break;
             
@@ -492,28 +492,29 @@
             
         }
             break;
-        case 1: {
+        case 3: {
             CGFloat f = _infoModel.redBalance.doubleValue;
-            NSInteger d = _infoModel.redBalance.integerValue;
-            if (f == d) {
-                self.detaillabel.text = [NSString stringWithFormat:@"¥%ld",(long)d];
-            } else {
-                self.detaillabel.text = [NSString stringWithFormat:@"¥%.2f",f];
-            }
-            if (_infoModel.roleType.integerValue < 2) {
-                self.titleLabel.hidden = YES;
-                self.detaillabel.hidden = YES;
-                self.iconImgView.hidden = YES;
-                self.accImgView.hidden = YES;
-            } else {
-                self.titleLabel.hidden = NO;
-                self.detaillabel.hidden = NO;
-                self.iconImgView.hidden = NO;
-                self.accImgView.hidden = NO;
-            }
+                          NSInteger d = _infoModel.redBalance.integerValue;
+                          if (f == d) {
+                              self.detaillabel.text = [NSString stringWithFormat:@"¥%ld",(long)d];
+                          } else {
+                              self.detaillabel.text = [NSString stringWithFormat:@"¥%.2f",f];
+                          }
+                          if (_infoModel.roleType.integerValue < 2) {
+                              self.titleLabel.hidden = YES;
+                              self.detaillabel.hidden = YES;
+                              self.iconImgView.hidden = YES;
+                              self.accImgView.hidden = YES;
+                          } else {
+                              self.titleLabel.hidden = NO;
+                              self.detaillabel.hidden = NO;
+                              self.iconImgView.hidden = NO;
+                              self.accImgView.hidden = NO;
+                          }
         }
             break;
-        case 2: {
+        case 4: {
+            
             CGFloat f = _infoModel.deposit.doubleValue;
             NSInteger d = _infoModel.deposit.integerValue;
             if (f == d) {
@@ -532,14 +533,18 @@
                 self.iconImgView.hidden = NO;
                 self.accImgView.hidden = NO;
             }
+            
+          
+            
+            
         }
             break;
-            case 3: {
-               
+            case 1: {
+              
             }
             break;
-        case 4: {
-            self.detaillabel.text = [self.infoModel.sendScore getPriceStr];
+        case 2: {
+              self.detaillabel.text = [self.infoModel.sendScore getPriceStr];
         }
             break;
             

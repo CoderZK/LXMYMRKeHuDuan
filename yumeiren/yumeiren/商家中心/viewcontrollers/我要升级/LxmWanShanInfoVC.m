@@ -80,6 +80,8 @@
         }
     }
     return _phoneCell;
+    
+    
 }
 
 - (LxmAddAddressSelectCell *)detailCell {

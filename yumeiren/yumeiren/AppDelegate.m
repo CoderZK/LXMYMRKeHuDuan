@@ -10,7 +10,7 @@
 #import "LxmTabBarVC.h"
 #import "LxmLoginVC.h"
 #import <AlipaySDK/AlipaySDK.h>
-#import "WXApiManager.h"
+#import <WXApi.h>
 
 #import <UMPush/UMessage.h>
 #import <UMShare/UMShare.h>
@@ -90,7 +90,8 @@
 
 - (void)initPush {
     //向微信注册,发起支付必须注册
-    [WXApi registerApp:WXAppID enableMTA:NO];
+//    [WXApi registerApp:WXAppID enableMTA:NO];
+    [WXApi registerApp:WXAppID universalLink:@"https://hkymr/app/"];
     
     /* 设置微信的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WXAppID appSecret:WXAppSecret redirectURL:@"http://mobile.umeng.com/social"];

@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.month = 0;
-    self.navigationItem.title = @"历史小晞";
+    self.navigationItem.title = @"历史小煜";
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton * leftBt  = [[UIButton alloc] init];
@@ -198,7 +198,7 @@
     
     
     UIButton  * mingXiBt = [[UIButton alloc] init];
-    [mingXiBt setTitle:@"团队小晞" forState:UIControlStateNormal];
+    [mingXiBt setTitle:@"团队小煜" forState:UIControlStateNormal];
     [mingXiBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     mingXiBt.titleLabel.font = [UIFont systemFontOfSize:13];
     mingXiBt.userInteractionEnabled = NO;
@@ -217,7 +217,7 @@
     
     
     UIButton  * mingXiBtTwo = [[UIButton alloc] init];
-    [mingXiBtTwo setTitle:@"我的小晞" forState:UIControlStateNormal];
+    [mingXiBtTwo setTitle:@"我的小煜" forState:UIControlStateNormal];
     [mingXiBtTwo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     mingXiBtTwo.titleLabel.font = [UIFont systemFontOfSize:13];
     [imageV addSubview:mingXiBtTwo];

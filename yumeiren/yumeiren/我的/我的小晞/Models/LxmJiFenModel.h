@@ -11,11 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LxmJiFenModel : NSObject
-@property (nonatomic , strong) NSString *score;// 小晞
+@property (nonatomic , strong) NSString *score;// 小煜
 
 @property (nonatomic , strong) NSString *status;//1：审核中，2：审核成功，3：审核失败
 
-@property (nonatomic , strong) NSString *score_type;//1：直属小晞，2：团队返利小晞
+@property (nonatomic , strong) NSString *score_type;//1：直属小煜，2：团队返利小煜
 
 @property (nonatomic , strong) NSString *second_type;//1：返利获得直属转入，2：直属转给上级，3：下级转入直属,4：提现转出直属，5：获得团队返利，6：下级转入返利，7：转给上级返利，8：提现转出返利
 @property (nonatomic , strong) NSString *create_time;//创建时间

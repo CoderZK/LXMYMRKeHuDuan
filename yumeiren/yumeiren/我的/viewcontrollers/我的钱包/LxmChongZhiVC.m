@@ -9,9 +9,7 @@
 #import "LxmChongZhiVC.h"
 #import "LxmPayVC.h"
 #import <AlipaySDK/AlipaySDK.h>
-#import "WXApiRequestHandler.h"
-#import "WXApiManager.h"
-#import "WechatAuthSDK.h"
+#import <WXApi.h>
 
 @interface LxmChongZhiHeaderView : UIView
 
@@ -307,7 +305,7 @@
                 req.timeStamp           = stamp.intValue;
                 req.package             = [dict objectForKey:@"package"];
                 req.sign                = [dict objectForKey:@"sign"];
-                [WXApi sendReq:req];
+                [WXApi sendReq:req completion:nil];
             }
             
         } else {

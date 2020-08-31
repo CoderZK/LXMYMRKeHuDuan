@@ -238,7 +238,7 @@
 - (void)seeProtoclClick:(UIButton *)btn {
     LxmWebViewController *vc = [[LxmWebViewController alloc] init];
     vc.navigationItem.title = @"注册协议";
-    vc.loadUrl = [NSURL URLWithString:@"https://app.hkymr.com/submitRule.html"];
+    vc.loadUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Base_URL,@"/submitRule.html"]];
     [self.navigationController pushViewController:vc animated:YES];
     
 //    LxmRegistXieYiAlertView *alertView = [[LxmRegistXieYiAlertView alloc] initWithFrame:UIScreen.mainScreen.bounds];

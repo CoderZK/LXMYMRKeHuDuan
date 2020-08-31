@@ -43,7 +43,7 @@
         [_leftButton setTitleColor:UIColor.whiteColor forState:UIControlStateSelected];
         [_leftButton setBackgroundImage:[UIImage imageNamed:@"white"] forState:UIControlStateNormal];
         [_leftButton setBackgroundImage:[UIImage imageNamed:@"pink"] forState:UIControlStateSelected];
-        [_leftButton setTitle:@"我的小晞" forState:UIControlStateNormal];
+        [_leftButton setTitle:@"我的小煜" forState:UIControlStateNormal];
         _leftButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [_leftButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         _leftButton.selected = YES;
@@ -59,7 +59,7 @@
         [_rightButton setTitleColor:UIColor.whiteColor forState:UIControlStateSelected];
         [_rightButton setBackgroundImage:[UIImage imageNamed:@"white"] forState:UIControlStateNormal];
         [_rightButton setBackgroundImage:[UIImage imageNamed:@"pink"] forState:UIControlStateSelected];
-        [_rightButton setTitle:@"直属推荐小晞" forState:UIControlStateNormal];
+        [_rightButton setTitle:@"直属推荐小煜" forState:UIControlStateNormal];
         _rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [_rightButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         _rightButton.tag = 444;
@@ -116,7 +116,7 @@
 }
 
 
-//获取小晞
+//获取小煜
 - (void)getScoreData {
     
     //获取个人信息
@@ -172,7 +172,7 @@
     
     
     self.liShiXiaoXiBt  = [[UIButton alloc] init];
-    [self.liShiXiaoXiBt setTitle:@"历史小晞 >" forState:UIControlStateNormal];
+    [self.liShiXiaoXiBt setTitle:@"历史小煜 >" forState:UIControlStateNormal];
     [self.liShiXiaoXiBt setTitleColor:MainColor forState:UIControlStateNormal];
     self.liShiXiaoXiBt.titleLabel.font = [UIFont systemFontOfSize:13];
     [self.headViewOne addSubview:self.liShiXiaoXiBt];
@@ -201,7 +201,7 @@
     
     UILabel * tuanDuiJiFendes  = [[UILabel alloc] init];
     tuanDuiJiFendes.font = [UIFont systemFontOfSize:14];
-    tuanDuiJiFendes.text = @"团队小晞";
+    tuanDuiJiFendes.text = @"团队小煜";
     tuanDuiJiFendes.textAlignment = NSTextAlignmentCenter;
     tuanDuiJiFendes.textColor = [UIColor whiteColor];
     [imageV  addSubview:tuanDuiJiFendes];
@@ -220,7 +220,7 @@
     
     
     UIButton  * mingXiBt = [[UIButton alloc] init];
-    [mingXiBt setTitle:@"我的小晞 >" forState:UIControlStateNormal];
+    [mingXiBt setTitle:@"我的小煜 >" forState:UIControlStateNormal];
     [mingXiBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     mingXiBt.titleLabel.font = [UIFont systemFontOfSize:13];
     mingXiBt.userInteractionEnabled = NO;
@@ -243,7 +243,7 @@
     
     
     UIButton  * mingXiBtTwo = [[UIButton alloc] init];
-    [mingXiBtTwo setTitle:@"剩余待转小晞 >" forState:UIControlStateNormal];
+    [mingXiBtTwo setTitle:@"剩余待转小煜 >" forState:UIControlStateNormal];
     [mingXiBtTwo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     mingXiBtTwo.titleLabel.font = [UIFont systemFontOfSize:13];
     [imageV addSubview:mingXiBtTwo];
@@ -538,7 +538,7 @@
 //
 //    UILabel * lb3  =[[UILabel alloc] init];
 //    lb3.font = [UIFont systemFontOfSize:13];
-//    lb3.text = @"当月提取小晞: ";
+//    lb3.text = @"当月提取小煜: ";
 //    lb3.textColor = CharacterDarkColor;
 //    [self.bottomV addSubview:lb3];
 //    [lb3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -626,7 +626,7 @@
     
     UILabel * tuiJianJifen  = [[UILabel alloc] init];
     tuiJianJifen.font = [UIFont systemFontOfSize:15];
-    tuiJianJifen.text = @"直属推荐小晞";
+    tuiJianJifen.text = @"直属推荐小煜";
     tuiJianJifen.textAlignment = NSTextAlignmentCenter;
     [self.headViewTwo  addSubview:tuiJianJifen];
     
@@ -698,14 +698,14 @@
         self.headViewTwo.hidden = YES;
         self.headViewOne.hidden = NO;
         self.subTVC.view.hidden = NO;
-        
+        self.bottomV.hidden = NO;
     }else {
         self.leftButton.selected = NO;
         self.rightButton.selected = YES;
         self.headViewTwo.hidden = NO;
         self.headViewOne.hidden = YES;
         self.subTVC.view.hidden = YES;
-        
+        self.bottomV.hidden = YES;
         
     }
     
@@ -733,7 +733,7 @@
     
 }
 
-// 100 我的小晞 101 剩余待转小晞 102 提现(或者转出小晞) 103 明细 104 申请提现
+// 100 我的小煜 101 剩余待转小煜 102 提现(或者转出小煜) 103 明细 104 申请提现
 - (void)jifenAction:(UIButton *)button {
     if (button.tag == 100) {
         

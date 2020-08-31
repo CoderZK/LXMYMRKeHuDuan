@@ -9,9 +9,7 @@
 #import "LxmPayVC.h"
 #import "LxmBuHuoOrderVC.h"
 #import <AlipaySDK/AlipaySDK.h>
-#import "WXApiRequestHandler.h"
-#import "WXApiManager.h"
-#import "WechatAuthSDK.h"
+#import <WXApi.h>
 #import "LxmShengJiVC.h"
 #import "LxmShopVC.h"
 
@@ -499,7 +497,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
                 
@@ -549,7 +547,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
             } else {
@@ -597,7 +595,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
             } else if ([responseObject[@"key"] integerValue] == 9100){//库存不足 重新选货 等待支付
@@ -670,7 +668,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
             } else if ([responseObject[@"key"] integerValue] == 9100){//库存不足 重新选货 等待支付
@@ -728,7 +726,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
             } else {
@@ -789,7 +787,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
             } else if ([responseObject[@"key"] integerValue] == 9100){//库存不足 重新选货 等待支付
@@ -839,7 +837,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
             } else {
@@ -898,7 +896,7 @@
                     req.timeStamp           = stamp.intValue;
                     req.package             = [dict objectForKey:@"package"];
                     req.sign                = [dict objectForKey:@"sign"];
-                    [WXApi sendReq:req];
+                    [WXApi sendReq:req completion:nil];
                 }
                 
             } else if ([responseObject[@"key"] integerValue] == 9100){//库存不足 重新选货 等待支付

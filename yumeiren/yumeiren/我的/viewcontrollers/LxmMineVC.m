@@ -90,7 +90,7 @@
     }];
 }
 
-//获取小晞
+//获取小煜
 - (void)getScoreData {
     
     //获取个人信息
@@ -183,7 +183,7 @@
     cell.infoModel = [LxmTool ShareTool].userModel;
     //    cell.clipsToBounds = YES;
     
-    if (indexPath.row == 3) {
+    if (indexPath.row == 1) {
         cell.detaillabel.text = [[NSString stringWithFormat:@"%0.2f",self.jiFenModel.my_score.doubleValue] getPriceStr];
     }
     
@@ -199,20 +199,20 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 1: {//我的红包
+        case 3: {//我的红包
             LxmMyHongBaoVC *vc = [[LxmMyHongBaoVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 2: {//保证金
+        case 4: {//保证金
             LxmMyBaoZhengJinVC *vc = [[LxmMyBaoZhengJinVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         
-            case 3: {//小晞
+            case 1: {//小煜
                 
                 //                LxmMineJifenMingXiTVC * vc =[[LxmMineJifenMingXiTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
                 //                vc.hidesBottomBarWhenPushed = YES;
@@ -226,7 +226,7 @@
             }
                 break;
             
-        case 4: {//积分
+        case 2: {//积分
             
             LxmMineJiFenTVC * vc =[[LxmMineJiFenTVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             vc.hidesBottomBarWhenPushed = YES;
@@ -299,18 +299,18 @@
         return 180;
     } else {
         NSString *roleType = LxmTool.ShareTool.userModel.roleType;
-        if (indexPath.row == 1 || indexPath.row == 2 ) {//我的红包 保证金
+        if (indexPath.row == 3 || indexPath.row == 4 ) {//我的红包 保证金
             if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"]) {
                 return 0.01;
             }
             return 60;
-        }else if (indexPath.row == 3) {
+        }else if (indexPath.row == 1) {
             if ([roleType isEqualToString:@"3"]) {
                 return 60;
             }else {
                 return 0;
             }
-        }else if (indexPath.row == 4) {
+        }else if (indexPath.row == 2) {
             if (roleType.floatValue >-1) {
                 return 60;;
             }else {

@@ -87,7 +87,7 @@
     if (!_webView) {
         _webView = [[WKWebView alloc] init];
         
-        NSString *url = [NSString stringWithFormat:@"%@?username=%@&idCode=%@",@"https://app.hkymr.com/submitRule.html",LxmTool.ShareTool.userModel.username,LxmTool.ShareTool.userModel.idCode];
+        NSString *url = [NSString stringWithFormat:@"%@%@?username=%@&idCode=%@",Base_URL,@"/submitRule.html",LxmTool.ShareTool.userModel.username,LxmTool.ShareTool.userModel.idCode];
         NSString *version = [UIDevice currentDevice].systemVersion;
         if (version.doubleValue >= 9.0) {
             // 针对 9.0 以上的iOS系统进行处理

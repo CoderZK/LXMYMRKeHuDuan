@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *typeBt;
 @property(nonatomic,strong)LxmJiFenModel *model;
 
-@property(nonatomic,assign)NSInteger type; // 0 团队小晞明细 , 1 直属小晞明细 
+@property(nonatomic,assign)NSInteger type; // 0 团队小煜明细 , 1 直属小煜明细 
 
 
 @end

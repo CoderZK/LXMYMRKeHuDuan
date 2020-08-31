@@ -175,7 +175,7 @@
         if (self.type == 0) {
             return [NSString stringWithFormat:@"%ld",row+1];
         }else {
-            return @[@"第一季度(1-3月)",@"第二季度(4-6月)",@"第三季度(7-9月)",@"第四季度(10-12月)"][row];
+            return @[@"第一季度",@"第二季度",@"第三季度",@"第四季度"][row];
         }
     }
     
@@ -240,7 +240,7 @@
     if (self.type == 0) {
         str = [NSString stringWithFormat:@"%ld年%ld月",year,month + 1];
     }else {
-        str = [NSString stringWithFormat:@"%ld年%@",year,@[@"第一季度(1-3月)",@"第二季度(4-6月)",@"第三季度(7-9月)",@"第四季度(10-12月)"][self.selectMonth]];
+        str = [NSString stringWithFormat:@"%ld年%@",year,@[@"第一季度",@"第二季度",@"第三季度",@"第四季度"][self.selectMonth]];
     }
     if (self.confirmBlock != nil) {
         if (self.type == 1) {

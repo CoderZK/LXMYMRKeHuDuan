@@ -48,28 +48,28 @@
             self.dataModel = [LxmJiFenModel mj_objectWithKeyValues:responseObject[@"result"][@"map"]];
             
             if (self.dataModel.second_type.intValue == 1) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score];
+                self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score.getPriceStr];
                 self.typeLB.text = @"直属推荐奖励";
                }else if (self.dataModel.second_type.intValue == 2) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"-%@",self.dataModel.score];
+                   self.moneyLB.text = [NSString stringWithFormat:@"-%@",self.dataModel.score.getPriceStr];
                    self.typeLB.text = @"转出";
                }else if (self.dataModel.second_type.intValue == 3) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score];
+                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score.getPriceStr];
                    self.typeLB.text = @"转入";
                }else if (self.dataModel.second_type.intValue == 4) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"-%@",self.dataModel.score];
+                   self.moneyLB.text = [NSString stringWithFormat:@"-%@",self.dataModel.score.getPriceStr];
                    self.typeLB.text = @"提取";
                }else if (self.dataModel.second_type.intValue == 5) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score];
+                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score.getPriceStr];
                    self.typeLB.text = @"团队销售业绩收入";
                }else if (self.dataModel.second_type.intValue == 6) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score];
+                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score.getPriceStr];
                     self.typeLB.text = @"转入";
                }else if (self.dataModel.second_type.intValue == 7) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"-%@",self.dataModel.score];
+                   self.moneyLB.text = [NSString stringWithFormat:@"-%@",self.dataModel.score.getPriceStr];
                    self.typeLB.text = @"转出";
                }else if (self.dataModel.second_type.intValue == 8) {
-                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score];
+                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score.getPriceStr];
                     self.typeLB.text = @"提取";
                }
 
@@ -150,7 +150,7 @@
     
     UILabel * lb =[[UILabel alloc] initWithFrame:CGRectMake(0, 1, ScreenW, 38)];
     lb.textAlignment = NSTextAlignmentCenter;
-    lb.text = @"-直属分配小晞-";
+    lb.text = @"-直属分配小煜-";
     lb.font = [UIFont systemFontOfSize:14];
     lb.textColor = CharacterGrayColor;
     [view addSubview:lb];
@@ -181,6 +181,7 @@
 - (void)clickAction:(UIButton *)button {
     LxmOrderDetailVC *orderVC = [[LxmOrderDetailVC alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     orderVC.orderID = self.dataModel.order_id;
+    orderVC.sale_money = self.dataModel.sale_money;
     [self.navigationController pushViewController:orderVC animated:YES];
 }
 
@@ -197,7 +198,7 @@
             cell.leftLB.text = @"订单号";
             cell.rightLB.text = self.dataModel.order_code;
         }else if (row == 2) {
-            cell.leftLB.text = @"小晞比例";
+            cell.leftLB.text = @"小煜比例";
             cell.rightLB.text = [NSString stringWithFormat:@"%0.2f%%",self.dataModel.sale_rate.doubleValue * 100 ];
         }else if (row == 3) {
             cell.leftLB.text = @"时间";
@@ -227,7 +228,7 @@
             cell.leftLB.text = @"销售业绩";
             cell.rightLB.text = self.dataModel.sale_money;
         }else if (row == 1) {
-            cell.leftLB.text = @"小晞比例";
+            cell.leftLB.text = @"小煜比例";
             cell.rightLB.text = [NSString stringWithFormat:@"%0.2f%%",self.dataModel.sale_rate.doubleValue * 100 ];
         }else if (row == 2) {
             cell.leftLB.text = @"收入时间";
@@ -253,7 +254,7 @@
         cell.rightLB.textColor = CharacterDarkColor;
         
         if (row == 0) {
-            cell.leftLB.text = @"提取小晞";
+            cell.leftLB.text = @"提取小煜";
             cell.rightLB.text = self.dataModel.score;
         }else if (row == 1) {
             cell.leftLB.text = @"提取时间";

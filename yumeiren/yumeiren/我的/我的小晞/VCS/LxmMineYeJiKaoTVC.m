@@ -17,40 +17,47 @@
 @property(nonatomic,strong)UILabel *titelLB ;
 @property(nonatomic,strong)NSString *yueStr,*jiStr;
 @property(nonatomic,strong)LxmJiFenModel *dataModel;
+@property(nonatomic,strong)NSArray *arr1,*arr2,*arr3,*arr4;
 @end
 
 @implementation LxmMineYeJiKaoTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     self.navigationItem.title = @"业绩考核";
     [self.tableView registerNib:[UINib nibWithNibName:@"LxmMineYeJiKaoCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 40;
     self.type = 0;
-          // 获取当前日期
-            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        // 获取当前日期
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     //
     //        NSDateFormatter * ff = [[NSDateFormatter alloc] init];
     //        [ff setDateFormat:@"yyyy-MM-dd"];
     //        NSDate * dt = [ff dateFromString:@"2020-03-20"];
-            
-             NSDate* dt = [NSDate date];
-            
-                // 定义一个时间字段的旗标，指定将会获取指定年、月、日、时、分、秒的信息
-            
-             unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth ;
-              // 获取不同时间字段的信息
-             NSDateComponents* comp = [gregorian components: unitFlags fromDate:dt];
-            self.month = comp.month;
-            self.jiMonth = comp.month;
-            self.year = comp.year;
-      NSInteger fromMonth = (self.jiMonth / 3  + (self.jiMonth % 3 > 0 ? 1 : 0) - 1) * 3 + 1;
+    
+     NSDate* dt = [NSDate date];
+    
+        // 定义一个时间字段的旗标，指定将会获取指定年、月、日、时、分、秒的信息
+    
+     unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth ;
+      // 获取不同时间字段的信息
+     NSDateComponents* comp = [gregorian components: unitFlags fromDate:dt];
+    self.month = comp.month;
+    self.jiMonth = comp.month;
+    self.year = comp.year;
+    NSInteger fromMonth = (self.jiMonth / 3  + (self.jiMonth % 3 > 0 ? 1 : 0) - 1) * 3 + 1;
     NSInteger ji = self.jiMonth / 3 + (self.jiMonth % 3 > 0 ? 1:0) - 1;
-     self.jiStr = [NSString stringWithFormat:@"%ld%@",self.year,@[@"第一季度(1-3月)",@"第二季度(4-6月)",@"第三季度(7-9月)",@"第四季度(10-12月)"][ji]];
+    self.jiStr = [NSString stringWithFormat:@"%ld%@",self.year,@[@"第一季度",@"第二季度",@"第三季度",@"第四季度"][ji]];
     [self getData];
     [self addHeadV];
+    
+    self.arr1 = @[@12,@1,@2];
+    self.arr2 = @[@3,@4,@5];
+    self.arr3 = @[@6,@7,@8];
+    self.arr4 = @[@9,@10,@11];
+    
     
 }
 
@@ -63,25 +70,45 @@
     if (self.type == 1) {
         //季
         
-        NSInteger fromMonth = (self.jiMonth / 3  + (self.jiMonth % 3 > 0 ? 1 : 0) - 1) * 3 + 1;
         
-        dict[@"fromMonth"] = @(fromMonth);
-        dict[@"endMonth"] = @(fromMonth + 2);
+        
+        if ([self.arr1 containsObject:@(self.jiMonth)]) {
+            dict[@"fromMonth"] = [self.arr1 firstObject];
+            dict[@"endMonth"] = [self.arr1 lastObject];
+            
+        }
+        if ([self.arr2 containsObject:@(self.jiMonth)]) {
+            dict[@"fromMonth"] = [self.arr2 firstObject];
+            dict[@"endMonth"] = [self.arr2 lastObject];
+            
+        }
+        if ([self.arr3 containsObject:@(self.jiMonth)]) {
+            dict[@"fromMonth"] = [self.arr3 firstObject];
+            dict[@"endMonth"] = [self.arr3 lastObject];
+            
+        }
+        if ([self.arr4 containsObject:@(self.jiMonth)]) {
+            dict[@"fromMonth"] = [self.arr4 firstObject];
+            dict[@"endMonth"] = [self.arr4 lastObject];
+            
+        }
+        
+        
     }else {
         //
         dict[@"fromMonth"] = @(self.month);
     }
     [LxmNetworking networkingPOST:check_detail parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-              [SVProgressHUD dismiss];
-              if ([responseObject[@"key"] integerValue] == 1000) {
-                  self.dataModel = [LxmJiFenModel mj_objectWithKeyValues:responseObject[@"result"][@"data"]];
-                  [self.tableView reloadData];
-              }  else {
-                  [UIAlertController showAlertWithmessage:responseObject[@"message"]];
-              }
-          } failure:^(NSURLSessionDataTask *task, NSError *error) {
-              [SVProgressHUD dismiss];
-          }];
+        [SVProgressHUD dismiss];
+        if ([responseObject[@"key"] integerValue] == 1000) {
+            self.dataModel = [LxmJiFenModel mj_objectWithKeyValues:responseObject[@"result"][@"data"]];
+            [self.tableView reloadData];
+        }  else {
+            [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
     
     
 }
@@ -102,7 +129,7 @@
     [forMatter setDateFormat:@"yyyy年MM月"];
     LB2.text = [forMatter stringFromDate:[NSDate date]];
     self.yueStr =  [forMatter stringFromDate:[NSDate date]];
-
+    
     
     self.titelLB = LB2;
     LB2.textColor = MainColor;
@@ -216,7 +243,7 @@
         self.yjView.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"yjleft"]];
         [self.leftBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.rightBt setTitleColor:CharacterGrayColor forState:UIControlStateNormal];
-       
+        
         [self getData];
         self.titelLB.text = self.yueStr;
         
@@ -226,7 +253,7 @@
         self.yjView.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"yjright"]];
         [self.rightBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.leftBt setTitleColor:CharacterGrayColor forState:UIControlStateNormal];
-       self.titelLB.text = self.jiStr;
+        self.titelLB.text = self.jiStr;
         
         [self getData];
         
@@ -234,7 +261,7 @@
         //点击选择时间
         
         LxmYeJiKaoHeView * view  =[[LxmYeJiKaoHeView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH) withType:self.type];
-//        view.type = self.type;
+        //        view.type = self.type;
         WeakObj(self);
         view.confirmBlock = ^(NSInteger year, NSInteger month, NSString * _Nonnull titleStr) {
             if (selfWeak.type == 0) {

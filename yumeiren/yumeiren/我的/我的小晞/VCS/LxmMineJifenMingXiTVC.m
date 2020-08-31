@@ -49,7 +49,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的小晞明细";
+    self.navigationItem.title = @"我的小煜明细";
     
     
     [self.view addSubview:self.emptyView];
@@ -73,7 +73,7 @@
     self.dataArr = [NSMutableArray array];
     
     if (self.scoreType == 1) {
-        self.navigationItem.title = @"我的直属小晞";
+        self.navigationItem.title = @"我的直属小煜";
         [self initBottomV];
         [self getJiFenData];
     }
@@ -156,7 +156,7 @@
     
     UILabel * lb1  =[[UILabel alloc] init];
     lb1.font = [UIFont systemFontOfSize:13];
-    lb1.text = @"当月总小晞: ";
+    lb1.text = @"当月总小煜: ";
     lb1.textColor = CharacterDarkColor;
     [self.bottomV addSubview:lb1];
     [lb1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -197,7 +197,7 @@
     
     UILabel * lb3  =[[UILabel alloc] init];
     lb3.font = [UIFont systemFontOfSize:13];
-    lb3.text = @"当月提取小晞: ";
+    lb3.text = @"当月提取小煜: ";
     lb3.textColor = CharacterDarkColor;
     [self.bottomV addSubview:lb3];
     [lb3 mas_makeConstraints:^(MASConstraintMaker *make) {

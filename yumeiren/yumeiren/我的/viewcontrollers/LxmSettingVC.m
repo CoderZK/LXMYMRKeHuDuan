@@ -237,7 +237,7 @@
     } else if (indexPath.row == 1) {//关于我们
         LxmWebViewController *vc = [[LxmWebViewController alloc] init];
         vc.navigationItem.title = @"关于煜美人";
-        vc.loadUrl = [NSURL URLWithString:@"https://app.hkymr.com/aboutMe.html"];
+        vc.loadUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Base_URL,@"/aboutMe.html"]];
         [self.navigationController pushViewController:vc animated:YES];
     } else if (indexPath.row == 2) {//意见反馈
         LxmFaceBookVC *vc = [[LxmFaceBookVC alloc] init];

@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AlipaySDK-iOS (15.7.9)
   - AMap2DMap-NO-IDFA (5.6.1):
     - AMapFoundation-NO-IDFA (~> 1.4)
   - AMapFoundation-NO-IDFA (1.5.7)
@@ -32,9 +33,23 @@ PODS:
   - SDWebImage/Core (5.0.6)
   - SVProgressHUD-0.8.1 (0.8)
   - TYPagerController (2.1.2)
+  - UMCCommon (7.1.1)
+  - UMCCommonLog (2.0.0)
+  - UMCPush (3.2.4):
+    - UMCCommon
+  - UMCShare/Core (6.9.10):
+    - UMCCommon
+  - UMCShare/Social/ReducedQQ (6.9.10):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedWeChat (6.9.10):
+    - UMCCommon
+    - UMCShare/Core
+  - WechatOpenSDK (1.8.7.1)
 
 DEPENDENCIES:
   - AFNetworking
+  - AlipaySDK-iOS
   - AMap2DMap-NO-IDFA
   - AMapLocation-NO-IDFA
   - AMapSearch-NO-IDFA
@@ -45,9 +60,15 @@ DEPENDENCIES:
   - SDCycleScrollView (~> 1.80)
   - SVProgressHUD-0.8.1
   - TYPagerController
+  - UMCCommon
+  - UMCCommonLog
+  - UMCPush
+  - UMCShare/Social/ReducedQQ
+  - UMCShare/Social/ReducedWeChat
+  - WechatOpenSDK
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - AMap2DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
@@ -61,9 +82,17 @@ SPEC REPOS:
     - SDWebImage
     - SVProgressHUD-0.8.1
     - TYPagerController
+  trunk:
+    - AlipaySDK-iOS
+    - UMCCommon
+    - UMCCommonLog
+    - UMCPush
+    - UMCShare
+    - WechatOpenSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AlipaySDK-iOS: 94ff4c0e17c5e7d126b8207596d5033006534c25
   AMap2DMap-NO-IDFA: ccecb3e2a044c17e6badb9b91c950e709368be20
   AMapFoundation-NO-IDFA: 9088085827c831811bb0fd3afd96b99963a7cf71
   AMapLocation-NO-IDFA: d7792c8c516f415e186f1bc25946f1a58ca6a583
@@ -76,7 +105,12 @@ SPEC CHECKSUMS:
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
   TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
+  UMCCommon: f455f92c125342e360d6ad9eafe484945351eeb5
+  UMCCommonLog: 9b7ddde5d14a52fc1986ba5ac3121b8b2f433638
+  UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
+  UMCShare: a4a95fbdd61ecce5b6751d8c9ed9b519e80fcbc9
+  WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
 
-PODFILE CHECKSUM: f467dc5b92dd60414f7cf82862d43bb8849df55e
+PODFILE CHECKSUM: d91ef0aacc1c1a39495f26e2820c9910ab7604c6
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.3

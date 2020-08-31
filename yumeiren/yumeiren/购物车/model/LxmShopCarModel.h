@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface LxmShopCarModel : NSObject
-
+@property (nonatomic, strong) NSString *way_money; //物流费
 @property (nonatomic, strong) NSString *good_name;/* 商品名称 */
 
 @property (nonatomic, strong) NSString *list_pic;/* 商品图片 */

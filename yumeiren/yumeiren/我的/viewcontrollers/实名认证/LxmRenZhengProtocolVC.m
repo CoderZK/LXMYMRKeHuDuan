@@ -53,7 +53,7 @@
     if (!_webView) {
         _webView = [[WKWebView alloc] init];
         
-        NSString *url = [NSString stringWithFormat:@"%@?username=%@&idCode=%@",@"https://app.hkymr.com/ruleDetailTotal.html",LxmTool.ShareTool.userModel.username,LxmTool.ShareTool.userModel.idCode];
+        NSString *url = [NSString stringWithFormat:@"%@%@?username=%@&idCode=%@",Base_URL,@"/ruleDetailTotal.html",LxmTool.ShareTool.userModel.username,LxmTool.ShareTool.userModel.idCode];
         
         NSString *version = [UIDevice currentDevice].systemVersion;
         if (version.doubleValue >= 9.0) {
