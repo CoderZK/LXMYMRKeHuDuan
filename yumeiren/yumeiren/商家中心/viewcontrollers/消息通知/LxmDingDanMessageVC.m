@@ -215,7 +215,7 @@
  */
 - (void)initSubviews {
     [self addSubview:self.shaowView];
-    [self addSubview:self.bgView];
+    [self.contentView addSubview:self.bgView];
     [self addSubview:self.timeLabel];
     [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.redView];

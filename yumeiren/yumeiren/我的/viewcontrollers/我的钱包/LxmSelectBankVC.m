@@ -28,7 +28,7 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self addSubview:self.titleLabel];
-        [self addSubview:self.rightTF];
+        [self.contentView addSubview:self.rightTF];
         [self addSubview:self.accImgView];
         [self addSubview:self.lineView];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

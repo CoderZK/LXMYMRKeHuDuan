@@ -220,7 +220,11 @@
     AMapGeoPoint *point = [AMapGeoPoint new];
     point.latitude = location.coordinate.latitude;
     point.longitude = location.coordinate.longitude;
+    if (self.keywords.length == 0) {
+        self.request.keywords = @"学校|小区|写字楼|办公室";
+    }
     self.request.location = point;
+    
     [self.search AMapPOIKeywordsSearch:self.request];
     [manager stopUpdatingLocation];
 }

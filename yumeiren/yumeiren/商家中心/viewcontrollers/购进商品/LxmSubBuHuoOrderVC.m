@@ -536,17 +536,17 @@
         self.layer.masksToBounds = YES;
         self.clipsToBounds = YES;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self addSubview:self.buhuoButton];
-        [self addSubview:self.leftButton];
+        [self.contentView addSubview:self.buhuoButton];
+        [self.contentView addSubview:self.leftButton];
         [self.buhuoButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.trailing.equalTo(self).offset(-15);
-            make.centerY.equalTo(self);
+            make.trailing.equalTo(self.contentView).offset(-15);
+            make.centerY.equalTo(self.contentView);
             make.height.equalTo(@30);
             make.width.equalTo(@80);
         }];
         [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.trailing.equalTo(self.buhuoButton.mas_leading).offset(-15);
-            make.centerY.equalTo(self);
+            make.centerY.equalTo(self.contentView);
             make.height.equalTo(@30);
             make.width.equalTo(@80);
         }];

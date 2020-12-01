@@ -261,11 +261,11 @@
  添加视图
  */
 - (void)initSubviews {
-    [self addSubview:self.iconImgView];
-    [self addSubview:self.titleLabel];
-    [self addSubview:self.kucunLabel];
-    [self addSubview:self.moneyLabel];
-    [self addSubview:self.recordButton];
+    [self.contentView addSubview:self.iconImgView];
+    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.kucunLabel];
+    [self.contentView addSubview:self.moneyLabel];
+    [self.contentView addSubview:self.recordButton];
     [self.recordButton addSubview:self.recordLabel];
     [self.recordButton addSubview:self.accImgView];
 }
@@ -275,8 +275,8 @@
  */
 - (void)setConstrains {
     [self.iconImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self).offset(15);
-        make.centerY.equalTo(self);
+        make.leading.equalTo(self.contentView).offset(15);
+        make.centerY.equalTo(self.contentView);
         make.width.height.equalTo(@80);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -286,16 +286,16 @@
     }];
     [self.kucunLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.titleLabel);
-        make.trailing.equalTo(self).offset(-15);
+        make.trailing.equalTo(self.contentView).offset(-15);
     }];
     [self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.iconImgView).offset(-10);
         make.leading.equalTo(self.iconImgView.mas_trailing).offset(15);
-        make.trailing.lessThanOrEqualTo(self).offset(-100);
+        make.trailing.lessThanOrEqualTo(self.contentView).offset(-100);
     }];
     [self.recordButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.moneyLabel);
-        make.trailing.equalTo(self);
+        make.trailing.equalTo(self.contentView);
         make.width.equalTo(@100);
         make.height.equalTo(@40);
     }];

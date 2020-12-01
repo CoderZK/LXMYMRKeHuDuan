@@ -427,7 +427,7 @@
     [self addSubview:self.moneyLabel];
     [self addSubview:self.kucunLabel];
     [self addSubview:self.daibuhuoLabel];
-    [self addSubview:self.numView];
+    [self.contentView addSubview:self.numView];
 }
 
 /**
@@ -461,7 +461,7 @@
     }];
     [self.numView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.moneyLabel);
-        make.trailing.equalTo(self).offset(-15);
+        make.trailing.equalTo(self.contentView).offset(-15);
         make.width.equalTo(@100);
         make.height.equalTo(@26);
     }];

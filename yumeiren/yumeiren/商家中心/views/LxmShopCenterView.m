@@ -172,7 +172,9 @@
            _roleLabel.text = @"   减肥单项-省服务商   ";
     } else if ([_infoModel.roleType isEqualToString:@"3.1"]) {
            _roleLabel.text = @"   减肥单项-CEO   ";
-    } else{
+    }else if ([_infoModel.roleType isEqualToString:@"1.05"]) {
+        _roleLabel.text = @"   优秀门店   ";
+ } else{
         switch (_infoModel.roleType.intValue) {
             case -1: {
                 _roleLabel.text = @"   立刻升级   ";
@@ -191,7 +193,12 @@
             }
                 break;
             case 3: {
-                _roleLabel.text = @"   省服务商   ";
+                if ([LxmTool ShareTool].userModel.topStatus.intValue == 1) {
+                    _roleLabel.text = @"   联合创始人   ";
+                }else {
+                    _roleLabel.text = @"   省服务商   ";
+                }
+                
             }
                 break;
             case 4: {
@@ -246,6 +253,8 @@
         _roleLabel.text = @"   减肥单项-省服务商   ";
     } else if ([_shopInfoModel.roleType isEqualToString:@"3.1"]) {
         _roleLabel.text = @"   减肥单项-CEO   ";
+    }else if ([_shopInfoModel.roleType isEqualToString:@"1.05"]) {
+        _roleLabel.text = @"   优秀门店   ";
     } else {
         switch (_shopInfoModel.roleType.intValue) {
             case -1:
@@ -261,7 +270,12 @@
                 _roleLabel.text = @"   市服务商   ";
                 break;
             case 3:
-                _roleLabel.text = @"   省服务商   ";
+                
+                if ([LxmTool ShareTool].userModel.topStatus.intValue == 1) {
+                    _roleLabel.text = @"   联合创始人   ";
+                }else {
+                    _roleLabel.text = @"   省服务商   ";
+                }
                 break;
             case 4:
                 _roleLabel.text = @"   CEO   ";
@@ -575,8 +589,8 @@
 }
 
 - (void)initSubViews {
-    [self addSubview:self.shadowBgView];
-    [self addSubview:self.bgView];
+    [self.contentView addSubview:self.shadowBgView];
+    [self.contentView addSubview:self.bgView];
     [self.bgView addSubview:self.topView];
     [self.bgView addSubview:self.bottomView];
     [self.bottomView addSubview:self.leftButton];
@@ -710,7 +724,7 @@
 
 - (void)setShopInfoModel:(LxmShopCenterUserInfoModel *)shopInfoModel {
     _shopInfoModel = shopInfoModel;
-    if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
+    if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"] || [self.shopInfoModel.roleType isEqualToString:@"1.05"]) {
         self.hidden = YES;
     } else {
         self.hidden = NO;
@@ -754,6 +768,9 @@
 
 @property (nonatomic, strong) NSArray <NSString *>*iconArr;
 
+
+
+
 @end
 @implementation LxmShopCenterItemCell
 
@@ -786,8 +803,8 @@
 }
 
 - (void)initSubViews {
-    [self addSubview:self.shadowBgView];
-    [self addSubview:self.bgView];
+    [self.contentView addSubview:self.shadowBgView];
+    [self.contentView addSubview:self.bgView];
     [self.bgView addSubview:self.collectionView];
 }
 
@@ -823,8 +840,13 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.selectItemBlock) {
-        self.selectItemBlock(indexPath.item);
+    
+//    if (self.selectItemBlock) {
+//        self.selectItemBlock(indexPath.item);
+//    }
+    
+    if (self.selectItemSendStrBlock != nil) {
+        self.selectItemSendStrBlock(self.titleArr[indexPath.row]);
     }
 }
 
@@ -864,9 +886,51 @@
 
 - (void)setShopInfoModel:(LxmShopCenterUserInfoModel *)shopInfoModel {
     _shopInfoModel = shopInfoModel;
-    if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
+    if ([shopInfoModel.roleType isEqualToString:@"-1"] || [shopInfoModel.roleType isEqualToString:@"-0.5"] || [shopInfoModel.roleType isEqualToString:@"-0.4"] || [shopInfoModel.roleType isEqualToString:@"-0.3"] || [shopInfoModel.roleType isEqualToString:@"1.1"] || [shopInfoModel.roleType isEqualToString:@"2.1"] || [shopInfoModel.roleType isEqualToString:@"3.1"]) {
         
-        if (self.shopInfoModel.roleType.floatValue > -1) {
+        if ([shopInfoModel.roleType isEqualToString:@"1.1"] || [shopInfoModel.roleType isEqualToString:@"2.1"] || [shopInfoModel.roleType isEqualToString:@"3.1"]) {
+            
+            self.titleArr = @[
+                              @"我的店铺",
+                              @"购进商品",
+                              @"订单查询",
+                              @"我的团队",
+                              @"我的业绩",
+                              @"我要升级",
+                              @"积分兑换",
+                              @"消息通知"
+                              ];
+            self.iconArr = @[
+                             @"wddp",
+                             @"goujinshangpin",
+                             @"dingdanchaxun",
+                             @"wodetuandui",
+                             @"wodeyeji",
+                             @"woyaoshengji",
+                             @"kkjifen",
+                             @"xiaoxitongzhi"
+                             ];
+            
+        }else {
+            self.titleArr = @[
+                              @"我的店铺",
+                              @"购进商品",
+                              @"订单查询",
+                              @"我要升级",
+                              @"积分兑换",
+                              @"消息通知"
+                              ];
+            self.iconArr = @[
+                             @"wddp",
+                             @"goujinshangpin",
+                             @"dingdanchaxun",
+                             @"woyaoshengji",
+                             @"kkjifen",
+                             @"xiaoxitongzhi"
+                             ];
+        }
+    } else {
+        if ([shopInfoModel.roleType isEqualToString:@"0"] || [shopInfoModel.roleType isEqualToString:@"1"] ||  [shopInfoModel.roleType isEqualToString:@"1.05"]) {
             self.titleArr = @[
                               @"我的店铺",
                               @"购进商品",
@@ -890,6 +954,8 @@
                               @"我的店铺",
                               @"购进商品",
                               @"订单查询",
+                              @"我的团队",
+                              @"我的业绩",
                               @"我要升级",
                               @"年度考核",
                               @"积分兑换",
@@ -899,6 +965,8 @@
                              @"wddp",
                              @"goujinshangpin",
                              @"dingdanchaxun",
+                             @"wodetuandui",
+                             @"wodeyeji",
                              @"woyaoshengji",
                              @"niandukaohe",
                              @"kkjifen",
@@ -906,31 +974,7 @@
                              ];
         }
         
-        
-        
-    } else {
-        self.titleArr = @[
-                          @"我的店铺",
-                          @"购进商品",
-                          @"订单查询",
-                          @"我的团队",
-                          @"我的业绩",
-                          @"我要升级",
-                          @"年度考核",
-                          @"积分兑换",
-                          @"消息通知"
-                          ];
-        self.iconArr = @[
-                         @"wddp",
-                         @"goujinshangpin",
-                         @"dingdanchaxun",
-                         @"wodetuandui",
-                         @"wodeyeji",
-                         @"woyaoshengji",
-                         @"niandukaohe",
-                         @"kkjifen",
-                         @"xiaoxitongzhi"
-                         ];
+       
     }
     self.collectionView.frame = CGRectMake(0, 0, ScreenW - 30, 80*ceil(self.titleArr.count/3.0) + 30);
     [self.collectionView reloadData];

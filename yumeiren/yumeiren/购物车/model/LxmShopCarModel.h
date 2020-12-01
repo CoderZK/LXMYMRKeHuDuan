@@ -51,6 +51,8 @@
 
 @property (nonatomic, strong) NSString *count;/**总数*/
 
+@property (nonatomic, assign)CGFloat data;/**已购买的价格*/
+
 @property (nonatomic, strong) NSArray  <LxmShopCarModel *>*list;/* 商品列表 */
 
 @end

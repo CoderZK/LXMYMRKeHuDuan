@@ -30,6 +30,7 @@
 @property (nonatomic, assign) CGFloat allPrice;//总价
 
 @property (nonatomic, assign) CGFloat proxyPrice;//代理总价
+//@property (nonatomic, assign) CGFloat yiGouPrice;// 已经购买的商品累计总额
 
 @end
 
@@ -73,6 +74,10 @@
     for (LxmHomeGoodsModel *m in LxmTool.ShareTool.shengjiGoodsList) {
         NSLog(@"%@",m);
     }
+//    if ([LxmTool ShareTool].session_token.length > 0) {
+//        [self loadData];
+//    }
+    
 }
 
 - (UIView *)lineView {
@@ -117,7 +122,58 @@
     }];
     [self setBottomSelectStatus];
     self.emptyView.hidden = LxmTool.ShareTool.shengjiGoodsList.count > 0;
+    
+    [self loadRoleInfo];
 }
+
+
+/**
+ 查看升级状态和升级条件信息
+ */
+- (void)loadRoleInfo {
+    [SVProgressHUD show];
+    WeakObj(self);
+    [LxmNetworking networkingPOST:get_role_info parameters:@{@"token":SESSION_TOKEN} returnClass:LxmShengjiRootModel.class success:^(NSURLSessionDataTask *task, LxmShengjiRootModel *responseObject) {
+        [SVProgressHUD dismiss];
+        if (responseObject.key.intValue == 1000) {
+            
+            for (LxmShengjiModel *m in responseObject.result.list) {
+                if ([m.roleType isEqualToString:self.shengjiModel.roleType]) {
+                    self.shengjiModel.payMoney = m.payMoney;
+                    break;
+                }
+                
+                
+            }
+            
+        } else {
+            [UIAlertController showAlertWithmessage:responseObject.message];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
+}
+
+/**
+ 请求数据.获取已经购买的升级的金额
+ */
+//- (void)loadData {
+//
+//        NSMutableDictionary * dict = @{@"token":SESSION_TOKEN,@"pageNum" : @(1)}.mutableCopy;
+//        dict[@"noVip"] = @"1";
+//
+//        [LxmNetworking networkingPOST:cart_list parameters:dict returnClass:LxmShopCarRootModel.class success:^(NSURLSessionDataTask *task, LxmShopCarRootModel *responseObject) {
+//            [self endRefrish];
+//            if (responseObject.key.intValue == 1000) {
+//
+//                self.yiGouPrice = responseObject.result.data;
+//            }
+//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//            [self endRefrish];
+//        }];
+//
+//}
+
 
 /**
  初始化子视图

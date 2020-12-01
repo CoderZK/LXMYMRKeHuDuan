@@ -53,6 +53,9 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self loadShopCenterData];
+    
+    self.tabBarController.tabBar.hidden = NO;
+    
 }
 
 - (LxmShopCenterTopView *)topView {
@@ -113,23 +116,41 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.shopInfoModel = self.shopInfoModel;
     WeakObj(self);
-    cell.selectItemBlock = ^(NSInteger index) {
-        [selfWeak pageToItem:index];
+//    cell.selectItemBlock = ^(NSInteger index) {
+//        [selfWeak pageToItem:index];
+//    };
+    
+    cell.selectItemSendStrBlock = ^(NSString *titleStr) {
+        [selfWeak pageToItemWithStr:titleStr];
     };
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
+        if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"] || [self.shopInfoModel.roleType isEqualToString:@"1.1"] || [self.shopInfoModel.roleType isEqualToString:@"2.1"] || [self.shopInfoModel.roleType isEqualToString:@"3.1"] || [self.shopInfoModel.roleType isEqualToString:@"1.05"]) {
             return 0.01;
         }
         return 150;
+    }else {
+        
+        //    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]) {
+        //        return 80*ceil(6/3.0) + 60;
+        //    }
+        
+        if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"] ) {
+         
+            return 80*ceil(6/3.0) + 60;
+        }
+        
+            return 80*ceil(7/3.0) + 60;
+        
     }
-    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]) {
-        return 80*ceil(6/3.0) + 60;
-    }
-    return 80*ceil(7/3.0) + 60;
+    
+    
+    
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -155,196 +176,369 @@
     //    }
     
 }
+/*
+@"我的店铺",
+@"购进商品",
+@"订单查询",
+@"我的团队",
+@"我的业绩",
+@"我要升级",
+@"年度考核",
+@"积分兑换",
+@"消息通知"
+*/
 
-/**
- 跳转到相应模块儿
- */
-- (void)pageToItem:(NSInteger)index {
-    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]|| [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"]) {
-        switch (index) {
-            case 0: {// 我的店铺
-                LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 1: {//购进商品
-                if ([LxmTool ShareTool].userModel.roleType.intValue < 2) {
-                    LxmShopVC *vc = [[LxmShopVC alloc] init];
-                    vc.isDeep = YES;
-                    vc.isGotoGouwuChe = YES;
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                } else {
-                    LxmGouJinGoodsVC *vc = [[LxmGouJinGoodsVC alloc] init];
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-            }
-                break;
-            case 2: {//订单查询
-                LxmOrderChaXunVC *vc = [[LxmOrderChaXunVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 3: {//我要升级
-                
-                if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
-                    if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
-                        LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
-                        vc.hidesBottomBarWhenPushed = YES;
-                        [self.navigationController pushViewController:vc animated:YES];
-                    } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
-                        //未读 跳转协议界面
-                        LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
-                        vc.hidesBottomBarWhenPushed = YES;
-                        [self.navigationController pushViewController:vc animated:YES];
-                    }
-                    
-                } else {
-                    LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
-                    vc.hidesBottomBarWhenPushed = YES;
-                    vc.isnext = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-            }
-                break;
-            case 4: {//年度考核
-                
-                //                LxmShopVC *vc = [[LxmShopVC alloc] init];
-                //                vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
-                //                vc.shengjiModel = nil;
-                //                vc.isDeep = YES;
-                //                vc.isHaoCai = YES;
-                //                vc.isAddLocolGoods = NO;
-                //                vc.isGotoGouwuChe = YES;
-                //                [self.navigationController pushViewController:vc animated:YES];
-                
-                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
-                vc.shopInfoModel = self.shopInfoModel;
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-                
-            case 5: {//消息通知
-                
-                if ([self.shopInfoModel.roleType isEqualToString:@"-1"]) {
-                    LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }else {
-                    LxmShopVC *vc = [[LxmShopVC alloc] init];
-                    vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
-                    vc.shengjiModel = nil;
-                    vc.isDeep = YES;
-                    vc.isHaoCai = YES;
-                    vc.isAddLocolGoods = NO;
-                    vc.isGotoGouwuChe = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-                
-                
-                
-            }
-                break;
-                
-            case 6: {//消息通知
-                LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            default:
-                break;
+//跳转到对应的模块
+
+- (void)pageToItemWithStr:(NSString * )titleStr  {
+    
+    
+    if ([titleStr isEqualToString:@"我的店铺"]) {
+        LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([titleStr isEqualToString:@"购进商品"]) {
+        
+        if ([LxmTool ShareTool].userModel.roleType.intValue < 2) {
+            LxmShopVC *vc = [[LxmShopVC alloc] init];
+            vc.isDeep = YES;
+            vc.isGotoGouwuChe = YES;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            LxmGouJinGoodsVC *vc = [[LxmGouJinGoodsVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
-    } else {
-        switch (index) {
-            case 0: {// 我的店铺
-                LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
+    }else if ([titleStr isEqualToString:@"订单查询"]) {
+        LxmOrderChaXunVC *vc = [[LxmOrderChaXunVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([titleStr isEqualToString:@"我的团队"]) {
+        LxmMyTeamVC *vc = [[LxmMyTeamVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([titleStr isEqualToString:@"我的业绩"]) {
+        LxmYeJiVC *vc = [[LxmYeJiVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([titleStr isEqualToString:@"我要升级"]) {
+        if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
+            if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
+                LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
+                //未读 跳转协议界面
+                LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
-                break;
-            case 1: {//购进商品
-                LxmGouJinGoodsVC *vc = [[LxmGouJinGoodsVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 2: {//订单查询
-                LxmOrderChaXunVC *vc = [[LxmOrderChaXunVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 3: {//我的团队
-                LxmMyTeamVC *vc = [[LxmMyTeamVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 4: {//我的业绩
-                LxmYeJiVC *vc = [[LxmYeJiVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 5: {//我要升级
-                if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
-                    if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
-                        LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
-                        vc.hidesBottomBarWhenPushed = YES;
-                        [self.navigationController pushViewController:vc animated:YES];
-                    } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
-                        //未读 跳转协议界面
-                        LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
-                        vc.hidesBottomBarWhenPushed = YES;
-                        [self.navigationController pushViewController:vc animated:YES];
-                    }
-                } else {
-                    LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
-                    vc.hidesBottomBarWhenPushed = YES;
-                    vc.isnext = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-            }
-                break;
-            case 6: {//年度考核
-                
-                
-                
-                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
-                vc.shopInfoModel = self.shopInfoModel;
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 7: {//积分商城
-                LxmShopVC *vc = [[LxmShopVC alloc] init];
-                vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
-                vc.shengjiModel = nil;
-                vc.isDeep = YES;
-                vc.isHaoCai = YES;
-                vc.isAddLocolGoods = NO;
-                vc.isGotoGouwuChe = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-                
-                
-            case 8: {//消息通知
-                LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            default:
-                break;
+        } else {
+            LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.isnext = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
+    }else if ([titleStr isEqualToString:@"年度考核"]) {
+        LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
+        vc.shopInfoModel = self.shopInfoModel;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([titleStr isEqualToString:@"积分兑换"]) {
+        LxmShopVC *vc = [[LxmShopVC alloc] init];
+        vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
+        vc.shengjiModel = nil;
+        vc.isDeep = YES;
+        vc.isHaoCai = YES;
+        vc.isAddLocolGoods = NO;
+        vc.isGotoGouwuChe = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([titleStr isEqualToString:@"消息通知"]) {
+        LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
+
 }
+
+///**
+// 跳转到相应模块儿
+// */
+//- (void)pageToItem:(NSInteger)index {
+//    if ([self.shopInfoModel.roleType isEqualToString:@"-1"] || [self.shopInfoModel.roleType isEqualToString:@"0"] || [self.shopInfoModel.roleType isEqualToString:@"1"] || [self.shopInfoModel.roleType isEqualToString:@"-0.5"] || [self.shopInfoModel.roleType isEqualToString:@"-0.4"] || [self.shopInfoModel.roleType isEqualToString:@"-0.3"] || [self.shopInfoModel.roleType isEqualToString:@"1.1"] || [self.shopInfoModel.roleType isEqualToString:@"2.1"] || [self.shopInfoModel.roleType isEqualToString:@"3.1"]) {
+//
+//        if ([self.shopInfoModel.roleType isEqualToString:@"1.1"] || [self.shopInfoModel.roleType isEqualToString:@"2.1"] || [self.shopInfoModel.roleType isEqualToString:@"3.1"]) {
+//
+//            switch (index) {
+//                case 0: {// 我的店铺
+//                    LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                case 1: {//购进商品
+//                    LxmGouJinGoodsVC *vc = [[LxmGouJinGoodsVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                case 2: {//订单查询
+//                    LxmOrderChaXunVC *vc = [[LxmOrderChaXunVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                case 3: {//我的团队
+//                    LxmMyTeamVC *vc = [[LxmMyTeamVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                case 4: {//我的业绩
+//                    LxmYeJiVC *vc = [[LxmYeJiVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                case 5: {//我要升级
+//                    if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
+//                        if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
+//                            LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+//                            vc.hidesBottomBarWhenPushed = YES;
+//                            [self.navigationController pushViewController:vc animated:YES];
+//                        } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
+//                            //未读 跳转协议界面
+//                            LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
+//                            vc.hidesBottomBarWhenPushed = YES;
+//                            [self.navigationController pushViewController:vc animated:YES];
+//                        }
+//                    } else {
+//                        LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        vc.isnext = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }
+//                }
+//                    break;
+////                case 5: {//年度考核
+////
+////
+////
+////                    LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
+////                    vc.shopInfoModel = self.shopInfoModel;
+////                    vc.hidesBottomBarWhenPushed = YES;
+////                    [self.navigationController pushViewController:vc animated:YES];
+////                }
+////                    break;
+//                case 6: {//积分商城
+//                    LxmShopVC *vc = [[LxmShopVC alloc] init];
+//                    vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
+//                    vc.shengjiModel = nil;
+//                    vc.isDeep = YES;
+//                    vc.isHaoCai = YES;
+//                    vc.isAddLocolGoods = NO;
+//                    vc.isGotoGouwuChe = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//
+//
+//                case 7: {//消息通知
+//                    LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                default:
+//                    break;
+//            }
+//        } else {
+//
+//            switch (index) {
+//                case 0: {// 我的店铺
+//                    LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                case 1: {//购进商品
+//                    if ([LxmTool ShareTool].userModel.roleType.intValue < 2) {
+//                        LxmShopVC *vc = [[LxmShopVC alloc] init];
+//                        vc.isDeep = YES;
+//                        vc.isGotoGouwuChe = YES;
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    } else {
+//                        LxmGouJinGoodsVC *vc = [[LxmGouJinGoodsVC alloc] init];
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }
+//                }
+//                    break;
+//                case 2: {//订单查询
+//                    LxmOrderChaXunVC *vc = [[LxmOrderChaXunVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                case 3: {//我要升级
+//
+//                    if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
+//                        if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
+//                            LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+//                            vc.hidesBottomBarWhenPushed = YES;
+//                            [self.navigationController pushViewController:vc animated:YES];
+//                        } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
+//                            //未读 跳转协议界面
+//                            LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
+//                            vc.hidesBottomBarWhenPushed = YES;
+//                            [self.navigationController pushViewController:vc animated:YES];
+//                        }
+//
+//                    } else {
+//                        LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        vc.isnext = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }
+//                }
+//                    break;
+//    //            case 4: {//年度考核
+//    //
+//    //                //                LxmShopVC *vc = [[LxmShopVC alloc] init];
+//    //                //                vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
+//    //                //                vc.shengjiModel = nil;
+//    //                //                vc.isDeep = YES;
+//    //                //                vc.isHaoCai = YES;
+//    //                //                vc.isAddLocolGoods = NO;
+//    //                //                vc.isGotoGouwuChe = YES;
+//    //                //                [self.navigationController pushViewController:vc animated:YES];
+//    //
+//    //                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
+//    //                vc.shopInfoModel = self.shopInfoModel;
+//    //                vc.hidesBottomBarWhenPushed = YES;
+//    //                [self.navigationController pushViewController:vc animated:YES];
+//    //            }
+//    //                break;
+//
+//                case 4: {//消息通知
+//
+//                    if ([self.shopInfoModel.roleType isEqualToString:@"-1"]) {
+//                        LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }else {
+//                        LxmShopVC *vc = [[LxmShopVC alloc] init];
+//                        vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
+//                        vc.shengjiModel = nil;
+//                        vc.isDeep = YES;
+//                        vc.isHaoCai = YES;
+//                        vc.isAddLocolGoods = NO;
+//                        vc.isGotoGouwuChe = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }
+//
+//                }
+//                    break;
+//
+//                case 5: {//消息通知
+//                    LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//                    break;
+//                default:
+//                    break;
+//            }
+//
+//        }
+//    } else {
+//        switch (index) {
+//            case 0: {// 我的店铺
+//                LxmMyDianPuVC *vc = [[LxmMyDianPuVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//            case 1: {//购进商品
+//                LxmGouJinGoodsVC *vc = [[LxmGouJinGoodsVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//            case 2: {//订单查询
+//                LxmOrderChaXunVC *vc = [[LxmOrderChaXunVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//            case 3: {//我的团队
+//                LxmMyTeamVC *vc = [[LxmMyTeamVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//            case 4: {//我的业绩
+//                LxmYeJiVC *vc = [[LxmYeJiVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//            case 5: {//我要升级
+//                if ([LxmTool ShareTool].userModel.idCode.isValid) {//已实名认证
+//                    if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 1) {//已读
+//                        LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    } else if ([LxmTool ShareTool].userModel.thirdStatus.intValue == 2){
+//                        //未读 跳转协议界面
+//                        LxmRenZhengProtocolVC *vc = [[LxmRenZhengProtocolVC alloc] init];
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }
+//                } else {
+//                    LxmSafeAutherVC *vc = [[LxmSafeAutherVC alloc] init];
+//                    vc.hidesBottomBarWhenPushed = YES;
+//                    vc.isnext = YES;
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//            }
+//                break;
+//            case 6: {//年度考核
+//
+//
+//
+//                LxmNianDuKaoHeVC *vc = [[LxmNianDuKaoHeVC alloc] init];
+//                vc.shopInfoModel = self.shopInfoModel;
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//            case 7: {//积分商城
+//                LxmShopVC *vc = [[LxmShopVC alloc] init];
+//                vc.roleType = [NSString stringWithFormat:@"%@",self.shopInfoModel.roleType];
+//                vc.shengjiModel = nil;
+//                vc.isDeep = YES;
+//                vc.isHaoCai = YES;
+//                vc.isAddLocolGoods = NO;
+//                vc.isGotoGouwuChe = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//
+//
+//            case 8: {//消息通知
+//                LxmNotifyMessageVC *vc = [[LxmNotifyMessageVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+//}
 
 /**
  商铺个人中心信息

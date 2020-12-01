@@ -366,17 +366,17 @@
 }
 
 - (void)initSubviews {
-    [self addSubview:self.resonLabel];
-    [self addSubview:self.collectionView];
+    [self.contentView addSubview:self.resonLabel];
+    [self.contentView addSubview:self.collectionView];
     [self.resonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.leading.equalTo(self).offset(15);
-        make.trailing.equalTo(self).offset(-15);
+        make.top.leading.equalTo(self.contentView).offset(15);
+        make.trailing.equalTo(self.contentView).offset(-15);
     }];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self).offset(15);
-        make.trailing.equalTo(self).offset(-15);
+        make.leading.equalTo(self.contentView).offset(15);
+        make.trailing.equalTo(self.contentView).offset(-15);
         make.top.equalTo(self.resonLabel.mas_bottom).offset(15);
-        make.bottom.equalTo(self).offset(-15);
+        make.bottom.equalTo(self.contentView).offset(-15);
     }];
 }
 

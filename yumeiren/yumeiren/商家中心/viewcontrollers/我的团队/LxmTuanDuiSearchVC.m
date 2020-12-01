@@ -198,7 +198,7 @@
     [self addSubview:self.nameLabel];
     [self addSubview:self.rankLabel];
     [self addSubview:self.codeLabel];
-    [self addSubview:self.recordButton];
+    [self.contentView addSubview:self.recordButton];
     [self.recordButton addSubview:self.recordLabel];
     [self.recordButton addSubview:self.accImgView];
     [self addSubview:self.memberNumLabel];

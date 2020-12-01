@@ -80,6 +80,7 @@
     [self initHeaderView];
     [self initNav];
     [self.view addSubview:self.bottomView];
+    self.bottomView.hidden = YES;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.leading.trailing.equalTo(self.view);
         make.bottom.equalTo(self.bottomView.mas_top);
@@ -273,6 +274,7 @@
             [selfWeak.tupianArr removeAllObjects];
             
             self.detailModel = [LxmGoodsDetailModel1 mj_objectWithKeyValues:responseObject[@"result"][@"map"]];
+            self.bottomView.hidden = NO;
             if (self.roleType.isValid) {
                 LxmGoodsDetailModel *temp = self.detailModel.good;
                 LxmHomeGoodsModel *goodModel = [LxmHomeGoodsModel new];

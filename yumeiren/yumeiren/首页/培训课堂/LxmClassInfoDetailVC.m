@@ -257,7 +257,7 @@
 }
 
 - (void)initSubViews {
-    [self addSubview:self.bgView];
+    [self.contentView addSubview:self.bgView];
     [self.bgView addSubview:self.playButton];
     [self.bgView addSubview:self.progressView];
     [self.bgView addSubview:self.startTimeLabel];
@@ -267,9 +267,9 @@
 
 - (void)setConstrains {
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self);
-        make.leading.equalTo(self).offset(15);
-        make.trailing.equalTo(self).offset(-15);
+        make.top.bottom.equalTo(self.contentView);
+        make.leading.equalTo(self.contentView).offset(15);
+        make.trailing.equalTo(self.contentView).offset(-15);
     }];
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.bgView);
@@ -426,9 +426,9 @@
         _playBtn.layer.masksToBounds = YES;
         [_playBtn setImage:[UIImage imageNamed:@"audio-visual_play"] forState:UIControlStateNormal];
         [_playBtn addTarget:self action:@selector(playClick) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_playBtn];
+        [self.contentView addSubview:_playBtn];
         [_playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self);
+            make.center.equalTo(self.contentView);
             make.width.height.equalTo(@44);
         }];
     }

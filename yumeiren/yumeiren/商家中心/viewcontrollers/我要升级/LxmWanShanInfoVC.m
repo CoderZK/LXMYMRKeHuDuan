@@ -139,6 +139,24 @@
     self.tableView.tableHeaderView = self.headerView;
     [self initHeaderView];
     [self setHeaderViewConstrains];
+    
+//    self.poi = [[AMapPOI alloc] init];
+//    
+//    LxmUserShopInfoModel * model =[LxmTool ShareTool].userModel.shopInfo;
+//    NSString * str = model.latitude;
+//    NSString * str2 = model.longitude;
+//    NSLog(@"%@",@"123456");
+//
+//    
+//    AMapGeoPoint * location = [[AMapGeoPoint alloc] init];
+//    location.latitude = model.latitude.floatValue;
+//    location.longitude = model.longitude.floatValue;
+//    self.poi.location = location;
+//    
+//    CGFloat f = self.poi.location.latitude;
+//    CGFloat ff = self.poi.location.longitude;
+    
+    
 }
 
 /**

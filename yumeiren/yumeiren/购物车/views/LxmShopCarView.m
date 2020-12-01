@@ -124,21 +124,17 @@
  添加视图
  */
 - (void)initSubviews {
-    UIControl *view = [UIControl new];
-    view.userInteractionEnabled = YES;
-    [self addSubview:view];
-    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.trailing.equalTo(self);
-        make.width.equalTo(self.mas_height);
-    }];
 
-    [self addSubview:self.selectButton];
+    
+    
+    [self.contentView addSubview:self.selectButton];
     [self.selectButton addSubview:self.selectImgView];
-    [self addSubview:self.iconImgView];
-    [self addSubview:self.titleLabel];
-    [self addSubview:self.moneyLabel];
-    [self addSubview:self.numView];
-    [self addSubview:self.kucunJinZhangLabel];
+    [self.contentView addSubview:self.iconImgView];
+    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.moneyLabel];
+    [self.contentView addSubview:self.numView];
+    [self.contentView addSubview:self.kucunJinZhangLabel];
+ 
 }
 
 /**

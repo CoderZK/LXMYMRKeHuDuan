@@ -12,8 +12,10 @@
 #define TOKEN [LxmTool ShareTool].session_token
 
 
+
+
 //测试
-//#define Base_URL @"http://app.hkymr.com:8666"
+//#define Base_URL @"http://appnew.hkymr.com:8989"
 
 //正式
 #define Base_URL @"https://appnew.hkymr.com"
@@ -579,6 +581,9 @@
  确认收到小煜接口
  */
 #define my_group_total_sale  Base_URL"/app/user/my_group_total_sale"
+
+
+
 
 /**
  获取图片地址

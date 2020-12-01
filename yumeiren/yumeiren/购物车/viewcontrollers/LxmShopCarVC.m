@@ -12,7 +12,7 @@
 #import "LxmGoodsDetailVC.h"
 #import "LxmTabBarVC.h"
 #import "LxmShengJiVC.h"
-
+#import "YMRTiShiShowView.h"
 @interface LxmShopCarVC ()
 
 @property (nonatomic, strong) UIView *lineView;//线
@@ -25,9 +25,10 @@
 
 @property (nonatomic, assign) NSInteger allPageNum;
 
+@property (nonatomic, assign) CGFloat yiGouPrice;//已经购买的价格
 @property (nonatomic, assign) CGFloat allPrice;//总价
 @property (nonatomic, assign) CGFloat allScorePrice;//积分总价
-
+@property (nonatomic, assign) CGFloat vipmenDianPrice;//vip门店的升级金额 减肥项目跳转用
 @property (nonatomic, assign) CGFloat proxyPrice;//代理总价
 
 @property (nonatomic, strong) NSMutableDictionary *isSelectedDictionary;
@@ -334,6 +335,7 @@
                 selfWeak.allPrice = 0;
                 selfWeak.allScorePrice = 0;
                 selfWeak.proxyPrice = 0;
+                selfWeak.yiGouPrice = responseObject.result.data;
                 NSInteger count = 0;
                 for (LxmShopCarModel *model in self.dataArr) {
                     if (model.id) {
@@ -466,29 +468,58 @@
         }else {
             CGFloat money = LxmTool.ShareTool.userModel.upPayMoney.doubleValue;
             if (money == 0 || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3"]) {
-                if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"0"] ||[LxmTool.ShareTool.userModel.roleType isEqualToString:@"1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"4"]) {//正常角色
+                if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"0"] ||[LxmTool.ShareTool.userModel.roleType isEqualToString:@"1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"4"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1.05"]) {//正常角色
                     CGFloat roletype = LxmTool.ShareTool.userModel.roleType.doubleValue;
                     if (roletype == 3 || roletype == 4) {//ceo直接下单
                        [selfWeak settleCarOrder:[ids componentsJoinedByString:@","] goods:tempArr];
                     }  else {//其他取正常上级的升级金额
-                        static CGFloat shengjiMoney = 0;
+                       __block CGFloat shengjiMoney = 0;
                         [LxmNetworking networkingPOST:get_role_info parameters:@{@"token":SESSION_TOKEN} returnClass:LxmShengjiRootModel.class success:^(NSURLSessionDataTask *task, LxmShengjiRootModel *responseObject) {
                             if (responseObject.key.intValue == 1000) {
                                 for (LxmShengjiModel *m in responseObject.result.list) {
                                     
-                                    if (roletype + 1 == m.roleType.doubleValue) {
+                                    if (m.roleType.doubleValue == 0) {
+                                        selfWeak.vipmenDianPrice = m.payMoney.doubleValue;
+                                    }
+                                    
+                                    if ((roletype == 0 && m.roleType.doubleValue == 1)||(roletype == 1 && m.roleType.doubleValue == 1.05) || (roletype == 1.05 && m.roleType.doubleValue == 2) || (roletype == 2 && m.roleType.doubleValue == 3) || (roletype == 3 && m.roleType.doubleValue == 4) || (roletype == 4 && m.roleType.doubleValue == 5)) {
                                         shengjiMoney = m.payMoney.doubleValue;
-                                        if (selfWeak.proxyPrice >= shengjiMoney) {
-                                        _bottomView.jiesuanButton.userInteractionEnabled = YES;
-                                            UIAlertController * alertView = [UIAlertController alertControllerWithTitle:@"您已达到升级所满足的最低购物金额,进入升级通道,下单更便宜哦!" message:@"是否进入升级通道?" preferredStyle:UIAlertControllerStyleAlert];
-                                            [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-                                            [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                                                    LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
-                                                    vc.hidesBottomBarWhenPushed = YES;
-                                                    [selfWeak.navigationController pushViewController:vc animated:YES];
-                                            }]];
-                                            [selfWeak presentViewController:alertView animated:YES completion:nil];
-                                        } else {
+
+                                    if (selfWeak.proxyPrice >= shengjiMoney-selfWeak.yiGouPrice) {
+                                            //新增
+                                            YMRTiShiShowView * tiShiView = [[YMRTiShiShowView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+                                            NSString * str = @"";
+                                            if (roletype == -0.5) {
+                                                str = @"vip门店";
+                                            }else if (roletype == 0) {
+                                                str = @"高级门店";
+                                            }else if (roletype == 1) {
+                                                str = @"优秀门店";
+                                            }else if (roletype == 1) {
+                                                str = @"市服务商";
+                                            }
+                                            tiShiView.desStr = [NSString stringWithFormat:@"您的下单金额为%0.2f满足%@升级条件是否需要升级?",selfWeak.proxyPrice,str];
+                                            
+                                            [tiShiView show];
+                                            tiShiView.clickShengJiBlock = ^{
+                                                LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                                                vc.hidesBottomBarWhenPushed = YES;
+                                                _bottomView.jiesuanButton.userInteractionEnabled = YES;
+                                                [selfWeak.navigationController pushViewController:vc animated:YES];
+                                                
+                                            };
+
+                                        }else if (selfWeak.proxyPrice >= shengjiMoney) {
+                                            _bottomView.jiesuanButton.userInteractionEnabled = YES;
+                                                UIAlertController * alertView = [UIAlertController alertControllerWithTitle:@"您已达到升级所满足的最低购物金额,进入升级通道,下单更便宜哦!" message:@"是否进入升级通道?" preferredStyle:UIAlertControllerStyleAlert];
+                                                [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+                                                [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                                                        LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                                                        vc.hidesBottomBarWhenPushed = YES;
+                                                        [selfWeak.navigationController pushViewController:vc animated:YES];
+                                                }]];
+                                                [selfWeak presentViewController:alertView animated:YES completion:nil];
+                                            }  else {
                                             [selfWeak settleCarOrder:[ids componentsJoinedByString:@","] goods:tempArr];
                                         }
                                         break;
@@ -507,9 +538,15 @@
                        [selfWeak settleCarOrder:[ids componentsJoinedByString:@","] goods:tempArr];
                     } else {
                         static CGFloat shengjiMoney = 0;
+                        CGFloat roletype = LxmTool.ShareTool.userModel.roleType.doubleValue;
                         [LxmNetworking networkingPOST:get_role_info parameters:@{@"token":SESSION_TOKEN} returnClass:LxmShengjiRootModel.class success:^(NSURLSessionDataTask *task, LxmShengjiRootModel *responseObject) {
                             if (responseObject.key.intValue == 1000) {
                                 for (LxmShengjiModel *m in responseObject.result.list) {
+                                    
+                                    if (m.roleType.doubleValue == 0) {
+                                        selfWeak.vipmenDianPrice = m.payMoney.doubleValue;
+                                    }
+                                    
                                     if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.5"]) {
                                         if ([m.roleType isEqualToString:@"-0.4"]) {
                                             shengjiMoney = m.payMoney.doubleValue;
@@ -530,24 +567,80 @@
                                             shengjiMoney = m.payMoney.doubleValue;
                                             break;
                                         }
-                                    } else if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"2.1"]) {
+                                    }  else if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"2.1"]) {
                                         if ([m.roleType isEqualToString:@"3.1"]) {
                                             shengjiMoney = m.payMoney.doubleValue;
                                             break;
                                         }
                                     }
                                 }
-                                if (selfWeak.proxyPrice >= shengjiMoney) {
-                                     _bottomView.jiesuanButton.userInteractionEnabled = YES;
-                                    UIAlertController * alertView = [UIAlertController alertControllerWithTitle:@"您已达到升级所满足的最低购物金额,进入升级通道,下单更便宜哦!" message:@"是否进入升级通道?" preferredStyle:UIAlertControllerStyleAlert];
-                                    [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-                                    [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                                            LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
-                                            vc.hidesBottomBarWhenPushed = YES;
-                                            [selfWeak.navigationController pushViewController:vc animated:YES];
-                                    }]];
-                                    [selfWeak presentViewController:alertView animated:YES completion:nil];
-                                } else {
+                                if (selfWeak.proxyPrice >= selfWeak.vipmenDianPrice-selfWeak.yiGouPrice) {
+                                    // 金额达到了vip门店的级别
+                                    YMRTiShiShowView * tiShiView = [[YMRTiShiShowView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+                                    NSString * str = @"";
+                                    if (roletype == -0.3) {
+                                        str = @"vip门店";
+                                    }else if (roletype == -0.4) {
+                                        str = @"vip门店";
+                                    }else if (roletype == -0.5) {
+                                        str = @"vip门店";
+                                    }else if (roletype == 1.1) {
+                                        str = @"vip门店";
+                                    }else if (roletype == 2.1) {
+                                        str = @"vip门店";
+                                    }else if (roletype == 3.1) {
+                                        str = @"vip门店";
+                                    }
+                                    tiShiView.desStr = [NSString stringWithFormat:@"您的下单金额为%0.2f满足%@升级条件是否需要升级?",selfWeak.proxyPrice,str];
+                                    
+                                    [tiShiView show];
+                                    tiShiView.clickShengJiBlock = ^{
+                                        LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                                        vc.hidesBottomBarWhenPushed = YES;
+                                        _bottomView.jiesuanButton.userInteractionEnabled = YES;
+                                        [selfWeak.navigationController pushViewController:vc animated:YES];
+                                    };
+                                    
+                                    
+                                    
+                                }else if (selfWeak.proxyPrice >= shengjiMoney-selfWeak.yiGouPrice) {
+                                    //减肥项内部升级操作
+                                    YMRTiShiShowView * tiShiView = [[YMRTiShiShowView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+                                    NSString * str = @"";
+                                    if (roletype == -0.3) {
+                                        str = @"减肥单项-市服务商";
+                                    }else if (roletype == -0.4) {
+                                        str = @"减肥单项-荣誉会员";
+                                    }else if (roletype == -0.5) {
+                                        str = @"减肥单项-高级会员";
+                                    }else if (roletype == 1.1) {
+                                        str = @"减肥单项-省服务商";
+                                    }else if (roletype == 2.1) {
+                                        str = @"减肥单项-CEO";
+                                    }else if (roletype == 3.1) {
+                                        str = @"CEO-vip门店";
+                                    }
+                                    tiShiView.desStr = [NSString stringWithFormat:@"您的下单金额为%0.2f满足%@升级条件是否需要升级?",selfWeak.proxyPrice,str];
+                                    
+                                    [tiShiView show];
+                                    tiShiView.clickShengJiBlock = ^{
+                                        LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                                        vc.hidesBottomBarWhenPushed = YES;
+                                        _bottomView.jiesuanButton.userInteractionEnabled = YES;
+                                        [selfWeak.navigationController pushViewController:vc animated:YES];
+                                    };
+
+                                }else if (selfWeak.proxyPrice >= shengjiMoney) {
+                                    _bottomView.jiesuanButton.userInteractionEnabled = YES;
+                                   UIAlertController * alertView = [UIAlertController alertControllerWithTitle:@"您已达到升级所满足的最低购物金额,进入升级通道,下单更便宜哦!" message:@"是否进入升级通道?" preferredStyle:UIAlertControllerStyleAlert];
+                                   [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+                                   [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                                           LxmShengJiVC *vc = [[LxmShengJiVC alloc] init];
+                                           vc.hidesBottomBarWhenPushed = YES;
+                                           [selfWeak.navigationController pushViewController:vc animated:YES];
+                                   }]];
+                                   [selfWeak presentViewController:alertView animated:YES completion:nil];
+                               }  else {
                                     [selfWeak settleCarOrder:[ids componentsJoinedByString:@","] goods:tempArr];
                                 }
                             }

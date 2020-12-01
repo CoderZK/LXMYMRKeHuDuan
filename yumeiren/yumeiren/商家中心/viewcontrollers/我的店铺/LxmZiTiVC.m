@@ -266,13 +266,13 @@
  添加视图
  */
 - (void)initSubviews {
-    [self addSubview:self.selectButton];
+    [self.contentView addSubview:self.selectButton];
     [self.selectButton addSubview:self.selectImgView];
     [self addSubview:self.iconImgView];
     [self addSubview:self.titleLabel];
     [self addSubview:self.kucunLabel];
     [self addSubview:self.moneyLabel];
-    [self addSubview:self.numView];
+    [self.contentView addSubview:self.numView];
 }
 
 /**
@@ -280,7 +280,7 @@
  */
 - (void)setConstrains {
     [self.selectButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.leading.bottom.equalTo(self);
+        make.top.leading.bottom.equalTo(self.contentView);
         make.width.equalTo(@50);
     }];
     [self.selectImgView mas_makeConstraints:^(MASConstraintMaker *make) {

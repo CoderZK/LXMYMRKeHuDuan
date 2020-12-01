@@ -81,8 +81,14 @@
     [mineVC.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateSelected];
     [mineVC.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:color_n} forState:UIControlStateNormal];
     mineVC.tabBarItem.title = @"我的";
-    BaseNavigationController *nav5 = [[BaseNavigationController alloc] initWithRootViewController:mineVC];
     
+    BaseNavigationController *nav5 = [[BaseNavigationController alloc] initWithRootViewController:mineVC];
+//    nav5.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -5);
+    nav5.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -5);
+    nav4.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -5);
+    nav3.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -5);
+    nav2.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -5);
+    nav1.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -5);
     if ([LxmTool ShareTool].userModel.roleType.integerValue == -1) {
         self.viewControllers = @[nav1,nav2,nav4,nav5];
     } else {

@@ -130,7 +130,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self addSubview:self.collectionView];
+        [self.contentView addSubview:self.collectionView];
     }
     return self;
 }
@@ -470,10 +470,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self addSubview:self.collectionView];
+        [self.contentView addSubview:self.collectionView];
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.leading.trailing.equalTo(self);
-            make.bottom.equalTo(self).offset(-20);
+            make.top.leading.trailing.equalTo(self.contentView);
+            make.bottom.equalTo(self.contentView).offset(-20);
         }];
     }
     return self;

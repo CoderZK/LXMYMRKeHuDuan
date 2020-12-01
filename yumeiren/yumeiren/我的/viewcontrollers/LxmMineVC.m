@@ -300,7 +300,7 @@
     } else {
         NSString *roleType = LxmTool.ShareTool.userModel.roleType;
         if (indexPath.row == 3 || indexPath.row == 4 ) {//我的红包 保证金
-            if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"]) {
+            if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"] || [roleType isEqualToString:@"1.05"]) {
                 return 0.01;
             }
             return 60;
@@ -317,7 +317,7 @@
                 return 0;
             }
         } else if (indexPath.row == 6) {//门店查询
-            if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"] || [roleType isEqualToString:@"2.1"] || [roleType isEqualToString:@"3.1"]) {
+            if ([roleType isEqualToString:@"-1"] || [roleType isEqualToString:@"0"] || [roleType isEqualToString:@"1"] || [roleType isEqualToString:@"-0.3"] || [roleType isEqualToString:@"-0.4"] || [roleType isEqualToString:@"-0.5"] || [roleType isEqualToString:@"1.1"] || [roleType isEqualToString:@"2.1"] || [roleType isEqualToString:@"3.1"] || [roleType isEqualToString:@"1.05"] ) {
                 return 0.01;
             }
             return 60;

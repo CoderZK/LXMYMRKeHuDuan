@@ -817,17 +817,17 @@
 }
 
 - (void)initSubviews {
-    [self addSubview:self.nameLabel];
-    [self addSubview:self.collectionView];
+    [self.contentView addSubview:self.nameLabel];
+    [self.contentView addSubview:self.collectionView];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.top.equalTo(self);
+        make.leading.top.equalTo(self.contentView);
         make.height.equalTo(@24);
         make.width.equalTo(@95);
     }];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.nameLabel.mas_trailing);
-        make.trailing.bottom.equalTo(self);
-        make.top.equalTo(self).offset(5);
+        make.trailing.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.contentView).offset(5);
     }];
 }
 
@@ -1020,24 +1020,24 @@
 }
 
 - (void)initSubviews {
-    [self addSubview:self.lineView];
-    [self addSubview:self.button];
-    [self addSubview:self.button1];
+    [self.contentView addSubview:self.lineView];
+    [self.contentView addSubview:self.button];
+    [self.contentView addSubview:self.button1];
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.leading.trailing.equalTo(self);
+        make.top.leading.trailing.equalTo(self.contentView);
         make.height.equalTo(@0.5);
     }];
     [_button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@80);
         make.height.equalTo(@28);
-        make.trailing.equalTo(self).offset(-15);
-        make.centerY.equalTo(self);
+        make.trailing.equalTo(self.contentView).offset(-15);
+        make.centerY.equalTo(self.contentView);
     }];
     [_button1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@80);
         make.height.equalTo(@28);
         make.trailing.equalTo(self.button.mas_leading).offset(-15);
-        make.centerY.equalTo(self);
+        make.centerY.equalTo(self.contentView);
     }];
 }
 

@@ -109,6 +109,8 @@
 
 @property (nonatomic, strong) NSString *sex;/* 0-未设置，1-男，2-女 */
 
+@property (nonatomic, strong) NSString *top_status;
+
 @end
 
 

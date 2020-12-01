@@ -47,6 +47,9 @@
 
 @property (nonatomic, copy) void(^selectItemBlock)(NSInteger index);
 
+@property (nonatomic, copy) void(^selectItemSendStrBlock)(NSString * titleStr);
+
+
 @end
 
 //年度考核view

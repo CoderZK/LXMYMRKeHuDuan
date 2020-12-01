@@ -100,6 +100,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString *top_status;//1-顶头的，2-不是顶头的
 
+@property (nonatomic , strong) NSString *topStatus;//1-顶头的，2-不是顶头的
+
 @property (nonatomic , strong) NSString *rank;//排名 如果返回-1，就不显示同级别排名
 
 

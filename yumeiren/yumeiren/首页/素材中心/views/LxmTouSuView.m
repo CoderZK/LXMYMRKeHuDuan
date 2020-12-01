@@ -369,11 +369,11 @@
     if (self) {
         self.dataArr = [NSMutableArray array];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self addSubview:self.collectionView];
+        [self.contentView addSubview:self.collectionView];
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self);
-            make.leading.equalTo(self).offset(15);
-            make.trailing.equalTo(self).offset(-15);
+            make.top.equalTo(self.contentView);
+            make.leading.equalTo(self.contentView).offset(15);
+            make.trailing.equalTo(self.contentView).offset(-15);
             make.height.equalTo(@(ceil(9/3.0) * (floor((ScreenW - 60)/3.0) + 10)));
         }];
     }

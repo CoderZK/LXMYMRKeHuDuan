@@ -24,6 +24,7 @@
 #import "LxmReadProtocolVC.h"
 #import "LxmSafeAutherVC.h"
 #import "LxmInfoClassVC.h"
+#import "YMRShowGengXinView.h"
 
 @interface LxmHomeVC ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
 
@@ -83,6 +84,17 @@
             [alertView show];
         }
     }];
+    
+    
+    if (self.homeModel != nil) {
+        if (self.homeModel.checkV.intValue == 1) {
+            [self showTishi];
+        }
+        
+    }
+    
+//    [self getInxdex];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -116,6 +128,12 @@
         StrongObj(self);
         [self loadIndexData];
     }];
+    
+   
+    
+//    [self updateNewAppWith];
+   
+    
 }
 
 /**
@@ -291,6 +309,9 @@
         [selfWeak endRefrish];
         if ([responseObject[@"key"] integerValue] == 1000) {
             selfWeak.homeModel = [LxmHomeMapModel mj_objectWithKeyValues:responseObject[@"result"][@"map"]];
+            if (selfWeak.homeModel.checkV.intValue == 1) {
+                [self showTishi];
+            }
             NSMutableArray *temp = [NSMutableArray array];
             for (LxmHomeBannerModel *model in selfWeak.homeModel.banners) {
                 [temp addObject:model.pic];
@@ -304,5 +325,110 @@
         [selfWeak endRefrish];
     }];
 }
+
+
+//是否提示
+- (void)showTishi  {
+
+    // 服务器版本
+    NSString * version = [self.homeModel.version stringByReplacingOccurrencesOfString:@"." withString:@""];
+
+    // 本地版本
+    NSString * currentVersion = [[[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleShortVersionString"] stringByReplacingOccurrencesOfString:@"." withString:@""];
+    
+    if (version.intValue > currentVersion.intValue) {
+        //需要更新提示
+        
+        YMRShowGengXinView * view = [[YMRShowGengXinView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+        view.desStr = self.homeModel.versionInfo;
+        [view show];
+        
+    }
+    
+    
+}
+
+// 获取版本信息
+
+- (void)updateNewAppWith {
+    
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",strOfAppid]];
+//
+//    [LxmNetworking networkingPOST:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",strOfAppid] parameters:nil returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//        NSLog(@"%@",responseObject);
+//        if (responseObject) {
+//
+//            NSArray * arr = [responseObject objectForKey:@"results"];
+//            if (arr.count>0)
+//            {
+//                NSDictionary * versionDict = arr.firstObject;
+//
+//                NSString * version = [[versionDict objectForKey:@"version"] stringByReplacingOccurrencesOfString:@"." withString:@""];
+//                NSString * currentVersion = [[[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleShortVersionString"] stringByReplacingOccurrencesOfString:@"." withString:@""];
+//
+//                if ([version integerValue]>[currentVersion integerValue])
+//                {
+//                   // 有新版本
+//                    YMRShowGengXinView * view = [[YMRShowGengXinView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+//                    view.desStr = versionDict[@"releaseNotes"];
+//                    [view show];
+//                }
+//
+//
+//            }
+//
+//        }
+//
+//
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//    }];
+
+    
+    
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [request setHTTPMethod:@"POST"];
+//
+//    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+//                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        [SVProgressHUD dismiss];
+//        if (data)
+//        {
+//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//
+//            if (dic)
+//            {
+//                NSArray * arr = [dic objectForKey:@"results"];
+//                if (arr.count>0)
+//                {
+//                    NSDictionary * versionDict = arr.firstObject;
+//
+//                    NSString * version = [[versionDict objectForKey:@"version"] stringByReplacingOccurrencesOfString:@"." withString:@""];
+//                    NSString * currentVersion = [[[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleShortVersionString"] stringByReplacingOccurrencesOfString:@"." withString:@""];
+//
+//                    if ([version integerValue]>[currentVersion integerValue])
+//                    {
+//
+//                       // 有新版本
+//
+//                        YMRShowGengXinView * view = [[YMRShowGengXinView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+//                        view.desStr = versionDict[@"releaseNotes"];
+//                        [view show];
+//
+//
+//
+//                    }
+//
+//
+//                }
+//            }
+//        }
+//    }] resume];
+
+    
+}
+
+
 
 @end

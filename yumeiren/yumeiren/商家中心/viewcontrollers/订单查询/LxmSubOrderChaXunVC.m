@@ -351,7 +351,7 @@
     [self addSubview:self.iconImgView];
     [self addSubview:self.titleLabel];
     [self addSubview:self.addressLabel];
-    [self addSubview:self.modifyButton];
+    [self.contentView addSubview:self.modifyButton];
     [self addSubview:self.lineView];
 }
 
@@ -375,7 +375,7 @@
         make.trailing.equalTo(self.modifyButton.mas_leading);
     }];
     [self.modifyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.trailing.bottom.equalTo(self);
+        make.top.trailing.bottom.equalTo(self.contentView);
         make.width.equalTo(@80);
     }];
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {

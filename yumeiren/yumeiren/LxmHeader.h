@@ -29,4 +29,7 @@
 #import "NSMutableAttributedString+CheckSetColor.h"
 #import "YYWeakProxy.h"
 #import "LxmHomeModel.h"
+
+#import "UITableViewCell+SendTachCellEnent.h"
+
 #endif /* LxmHeader_h */

@@ -128,7 +128,7 @@
     LxmShengjiModel *model = self.otherArr[indexPath.section];
     
     if ([model.roleType isEqualToString:@"-0.5"]) {
-        if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"0"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"4"]) {
+        if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"0"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"4"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1.05"]) {
             return;
         }
         LxmJianFeiShengJiVC *vc = [[LxmJianFeiShengJiVC alloc] init];
@@ -356,19 +356,21 @@
         }
     }
     
-    if (_model.roleType.floatValue == -1) {
+    if (_model.roleType.doubleValue == -1) {
         _roleLabel.text = @"无";
-    } else if (_model.roleType.floatValue == -0.5){
+    } else if (_model.roleType.doubleValue == -0.5){
         _roleLabel.text = @"减肥单项";
-    } else if (_model.roleType.floatValue == 0){
+    } else if (_model.roleType.doubleValue == 0){
         _roleLabel.text = @"vip门店";
-    } else if (_model.roleType.floatValue == 1){
+    } else if (_model.roleType.doubleValue == 1){
         _roleLabel.text = @"高级门店";
-    } else if (_model.roleType.floatValue == 2){
+    }else if (_model.roleType.doubleValue == 1.05){
+        _roleLabel.text = @"优秀门店";
+    } else if (_model.roleType.doubleValue == 2){
         _roleLabel.text = @"市服务商";
-    } else if (_model.roleType.floatValue == 3){
+    } else if (_model.roleType.doubleValue == 3){
         _roleLabel.text = @"省服务商";
-    } else if (_model.roleType.floatValue == 4){
+    } else if (_model.roleType.doubleValue == 4){
         _roleLabel.text = @"CEO";
     }
     

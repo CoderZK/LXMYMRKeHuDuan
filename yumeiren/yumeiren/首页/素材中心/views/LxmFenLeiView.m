@@ -338,12 +338,12 @@
     if (self) {
         self.imgs = [NSMutableArray array];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self addSubview:self.collectionView];
+        [self.contentView addSubview:self.collectionView];
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.equalTo(self).offset(85);
-            make.trailing.equalTo(self).offset(-15);
-            make.top.equalTo(self).offset(10);
-            make.bottom.equalTo(self);
+            make.leading.equalTo(self.contentView).offset(85);
+            make.trailing.equalTo(self.contentView).offset(-15);
+            make.top.equalTo(self.contentView).offset(10);
+            make.bottom.equalTo(self.contentView);
         }];
     }
     return self;
@@ -431,16 +431,16 @@
 }
 
 - (void)initSubviews {
-    [self addSubview:self.playerBaseView];
+    [self.contentView addSubview:self.playerBaseView];
     [self.playerBaseView addSubview:self.playerView];
-    [self addSubview:self.vedioView];
-    [self addSubview:self.playButton];
+    [self.contentView addSubview:self.vedioView];
+    [self.contentView addSubview:self.playButton];
 }
 
 - (void)setConstrains {
     void(^block)(MASConstraintMaker *make) = ^(MASConstraintMaker *make) {
-        make.leading.equalTo(self).offset(85);
-        make.top.equalTo(self).offset(15);
+        make.leading.equalTo(self.contentView).offset(85);
+        make.top.equalTo(self.contentView).offset(15);
         make.width.equalTo(@260);
         make.height.equalTo(@150);
     };
@@ -617,21 +617,21 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self addSubview:self.downloadImgBtn];
-        [self addSubview:self.fuzhiTextBtn];
-        [self addSubview:self.lineView];
+        [self.contentView addSubview:self.downloadImgBtn];
+        [self.contentView addSubview:self.fuzhiTextBtn];
+        [self.contentView addSubview:self.lineView];
         [self.downloadImgBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.equalTo(self).offset(85);
-            make.top.bottom.equalTo(self);
+            make.leading.equalTo(self.contentView).offset(85);
+            make.top.bottom.equalTo(self.contentView);
             make.width.equalTo(@100);
         }];
         [self.fuzhiTextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.equalTo(self.downloadImgBtn.mas_trailing).offset(20);
-            make.top.bottom.equalTo(self);
+            make.top.bottom.equalTo(self.contentView);
             make.width.equalTo(@100);
         }];
         [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.bottom.trailing.equalTo(self);
+            make.leading.bottom.trailing.equalTo(self.contentView);
             make.height.equalTo(@1);
         }];
         

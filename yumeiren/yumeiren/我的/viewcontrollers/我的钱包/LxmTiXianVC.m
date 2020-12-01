@@ -507,7 +507,7 @@
         
         self.textLabel.text = @"提取小煜";
            self.moneyTF.placeholder = [NSString stringWithFormat:@"单笔提取最低%@小煜",LxmTool.ShareTool.userModel.cashMoney];;
-           self.shuomingLabel.text = @"提取说明：提取后将于T+2确认到账结果。其中T日指提取日当天（下午5点以前，下午5点以后为下一交易日），T+2日指T日的第二天，例如T日为周一则T+2为周三，遇周末或法定节假日顺延。";
+           self.shuomingLabel.text = @"";
         self.yuanlabel.text = @"";
         self.textLabel1.text = @"选择提取方式";
         

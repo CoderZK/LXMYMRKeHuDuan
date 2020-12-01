@@ -417,6 +417,9 @@
 
 @property (nonatomic, strong) NSString *depositStatus;/*2：不需要补齐保证金，1：需要*/
 
+@property (nonatomic, strong) NSString *checkV;
+@property (nonatomic, strong) NSString *version,*versionInfo;
+
 @end
 
 //培训课堂model

@@ -223,10 +223,10 @@
             self.headerView.agreeButton.hidden = NO;
         }
     }
-    
+    //0-未付保证金，1：已付保证金，2：已填信息，3：已购买商品,4：申请省级中，5：后台通过省长审核待升级,6-未升级,7-当前已升级，8-已升级
     if (!(state == 0 || state == 4)) {
         self.headerView.isHiddleCancel = YES;
-        if (state == 2 && ([self.model.roleType isEqualToString:@"0"] || [self.model.roleType isEqualToString:@"1"])) {
+        if (state == 2 && ([self.model.roleType isEqualToString:@"0"] || [self.model.roleType isEqualToString:@"1"] ||[self.model.roleType isEqualToString:@"-0.3"] || [self.model.roleType isEqualToString:@"-0.4"]||[self.model.roleType isEqualToString:@"-0.5"] || [self.model.roleType isEqualToString:@"1.05"])) {
             self.headerView.isHiddleCancel = NO;
             [self.headerView.cancelShengjiButton setTitle:@"取消申请" forState:UIControlStateNormal];
         }
@@ -771,9 +771,9 @@
  取消升级
  */
 - (void)cancelShengjiClick:(UIButton *)btn {
-    NSInteger role = self.model.roleType.integerValue;
+//    double role = self.model.roleType.doubleValue;
     NSInteger state = self.model.inStatus.integerValue;
-    if (state == 2 && (role == 0 || role == 1)) {
+    if (state == 2 && ([self.model.roleType isEqualToString:@"0"] || [self.model.roleType isEqualToString:@"1"] || [self.model.roleType isEqualToString:@"-0.3"] || [self.model.roleType isEqualToString:@"-0.4"]||[self.model.roleType isEqualToString:@"-0.5"] || [self.model.roleType isEqualToString:@"1.05"])) {
         //取消申请
         UIAlertController * alertView = [UIAlertController alertControllerWithTitle:nil message:@"您确定要取消申请吗?" preferredStyle:UIAlertControllerStyleAlert];
                [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];

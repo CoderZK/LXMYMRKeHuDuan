@@ -209,8 +209,8 @@
     return self;
 }
 - (void)initSubViews {
-    [self addSubview:self.shadowBgView];
-    [self addSubview:self.bgView];
+    [self.contentView addSubview:self.shadowBgView];
+    [self.contentView addSubview:self.bgView];
     [self.bgView addSubview:self.topView];
     [self.bgView addSubview:self.bottomView];
 }
