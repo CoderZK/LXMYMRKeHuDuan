@@ -542,7 +542,7 @@
                         [LxmNetworking networkingPOST:get_role_info parameters:@{@"token":SESSION_TOKEN} returnClass:LxmShengjiRootModel.class success:^(NSURLSessionDataTask *task, LxmShengjiRootModel *responseObject) {
                             if (responseObject.key.intValue == 1000) {
                                 for (LxmShengjiModel *m in responseObject.result.list) {
-                                    
+                                    NSLog(@"roleType ===  %@",m.roleType);
                                     if (m.roleType.doubleValue == 0) {
                                         selfWeak.vipmenDianPrice = m.payMoney.doubleValue;
                                     }
@@ -550,27 +550,22 @@
                                     if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.5"]) {
                                         if ([m.roleType isEqualToString:@"-0.4"]) {
                                             shengjiMoney = m.payMoney.doubleValue;
-                                            break;
                                         }
                                     } else if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.4"]) {
                                         if ([m.roleType isEqualToString:@"-0.3"]) {
                                             shengjiMoney = m.payMoney.doubleValue;
-                                            break;
                                         }
                                     } else if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.3"]) {
                                         if ([m.roleType isEqualToString:@"1.1"]) {
                                             shengjiMoney = m.payMoney.doubleValue;
-                                            break;
                                         }
                                     } else if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"1.1"]) {
                                         if ([m.roleType isEqualToString:@"2.1"]) {
                                             shengjiMoney = m.payMoney.doubleValue;
-                                            break;
                                         }
                                     }  else if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"2.1"]) {
                                         if ([m.roleType isEqualToString:@"3.1"]) {
                                             shengjiMoney = m.payMoney.doubleValue;
-                                            break;
                                         }
                                     }
                                 }

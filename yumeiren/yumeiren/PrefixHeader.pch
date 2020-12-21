@@ -29,6 +29,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 }\
 (isPhoneX);})
 
+#define strOfAppid @"1475345979"
+
 #define TableViewBottomSpace (kDevice_Is_iPhoneX ? 34 : 0)
 
 #define NavigationSpace (kDevice_Is_iPhoneX ? 88 : 64)

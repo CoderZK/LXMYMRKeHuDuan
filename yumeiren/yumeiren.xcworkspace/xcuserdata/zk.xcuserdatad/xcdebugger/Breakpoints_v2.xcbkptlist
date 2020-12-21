@@ -58,8 +58,8 @@
             filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "577"
-            endingLineNumber = "577"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
             landmarkName = "-bottomViewAction"
             landmarkType = "7">
          </BreakpointContent>
@@ -201,6 +201,22 @@
             startingLineNumber = "164"
             endingLineNumber = "164"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3020A8FF-EE50-4C97-9BCE-54E2EC9EB332"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x8d2d;&#x7269;&#x8f66;/viewcontrollers/LxmShopCarVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
+            landmarkName = "-bottomViewAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
