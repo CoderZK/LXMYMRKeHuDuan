@@ -18,7 +18,7 @@
 
 @property (nonatomic, strong) NSString *orderID;
 
-@property (nonatomic, strong) NSMutableArray <LxmShengjiModel *>*jianfeiArr;//减肥单项数组
+@property (nonatomic, strong) NSMutableArray <LxmShengjiModel *>*jianfeiArr;//小红包系列数组
 
 @property (nonatomic, strong) NSMutableArray <LxmShengjiModel *>*otherArr;//其他等级数组
 
@@ -42,17 +42,17 @@
     void(^roleBlock)(void) = ^(void){
         
         if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]){
-            self.navigationItem.title = @" 当前等级-减肥单项-vip会员 ";
+            self.navigationItem.title = @" 当前等级-小红包系列-vip会员 ";
         } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.4"]) {
-            self.navigationItem.title = @" 当前等级-减肥单项-高级会员 ";
+            self.navigationItem.title = @" 当前等级-小红包系列-高级会员 ";
         } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.3"]) {
-            self.navigationItem.title = @" 当前等级-减肥单项-荣誉会员 ";
+            self.navigationItem.title = @" 当前等级-小红包系列-荣誉会员 ";
         } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"1.1"]) {
-            self.navigationItem.title = @" 当前等级-减肥单项-市服务商 ";
+            self.navigationItem.title = @" 当前等级-小红包系列-市服务商 ";
         } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"2.1"]) {
-            self.navigationItem.title = @" 当前等级-减肥单项-省服务商 ";
+            self.navigationItem.title = @" 当前等级-小红包系列-省服务商 ";
         } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"3.1"]) {
-            self.navigationItem.title = @" 当前等级-减肥单项-CEO";
+            self.navigationItem.title = @" 当前等级-小红包系列-CEO";
         } else {
             if ([LxmTool ShareTool].userModel.roleType.floatValue == -1) {
                 self.navigationItem.title = @"当前等级-无";
@@ -359,7 +359,7 @@
     if (_model.roleType.doubleValue == -1) {
         _roleLabel.text = @"无";
     } else if (_model.roleType.doubleValue == -0.5){
-        _roleLabel.text = @"减肥单项";
+        _roleLabel.text = @"小红包系列";
     } else if (_model.roleType.doubleValue == 0){
         _roleLabel.text = @"vip门店";
     } else if (_model.roleType.doubleValue == 1){

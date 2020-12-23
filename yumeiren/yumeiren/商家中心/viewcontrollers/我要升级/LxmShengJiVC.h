@@ -20,6 +20,6 @@
 
 @property (nonatomic, strong) LxmShengjiModel *model;//升级model
 
-@property (nonatomic, strong) LxmShengjiModel *jianfeiModel;//减肥单项model
+@property (nonatomic, strong) LxmShengjiModel *jianfeiModel;//小红包系列model
 
 @end

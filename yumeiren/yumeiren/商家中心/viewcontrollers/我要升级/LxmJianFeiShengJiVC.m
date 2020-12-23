@@ -49,7 +49,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"减肥单项";
+    self.navigationItem.title = @"小红包系列";
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

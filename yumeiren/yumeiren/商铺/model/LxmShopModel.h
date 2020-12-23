@@ -41,7 +41,7 @@
  */
 @interface LxmGoodsDetailModel : NSObject
 
-@property (nonatomic, strong) NSString *specialType;/**1：不可以，2：可以（减肥单项）*/
+@property (nonatomic, strong) NSString *specialType;/**1：不可以，2：可以（小红包系列）*/
 @property (nonatomic, strong) NSString *givePic;/**赠送商品显示的图片*/
 @property (nonatomic, strong) NSString *id;/**商品id*/
 
@@ -134,6 +134,7 @@
 
 @property (nonatomic, strong) NSString *locStatus;/* 1：申请中，2：成功，3：失败 */
 
+@property (nonatomic, strong) NSString * suType;//生情类型
 
 @end
 

@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) NSString *username;//姓名
 
 @property (nonatomic , strong) NSString *sex;//姓别
-
+@property (nonatomic , strong) NSString *suType; // 是否操作过束宣   
 @property (nonatomic , strong) NSString *userHead;//头像
 
 @property (nonatomic , strong) NSString *chatCode;//微信号

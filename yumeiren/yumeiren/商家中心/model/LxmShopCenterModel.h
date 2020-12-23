@@ -49,7 +49,7 @@
 
 @property (nonatomic, assign) BOOL isBuhuo;/* 是否需要补货 */
 
-@property (nonatomic, strong) NSString *special_type;//1：不可以，2：可以（减肥单项）
+@property (nonatomic, strong) NSString *special_type;//1：不可以，2：可以（小红包系列）
 
 @end
 

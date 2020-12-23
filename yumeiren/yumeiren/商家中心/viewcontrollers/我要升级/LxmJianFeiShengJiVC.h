@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *orderID;
 
-@property (nonatomic, strong) NSMutableArray <LxmShengjiModel *>*jianfeiArr;//减肥单项数组
+@property (nonatomic, strong) NSMutableArray <LxmShengjiModel *>*jianfeiArr;//小红包系列数组
 
 @end
 

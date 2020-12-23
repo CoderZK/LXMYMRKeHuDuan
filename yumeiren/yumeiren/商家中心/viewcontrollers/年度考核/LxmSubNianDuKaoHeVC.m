@@ -356,17 +356,17 @@
     _iconImgView.image = [UIImage imageNamed:_model.in_money.doubleValue >= _model.yearMoney.doubleValue ? @"jiesuo_y" : @"jiesuo_n"];
    
     if ([_model.roleType isEqualToString:@"-0.5"]) {
-        _roleLabel.text = @"   减肥单项-vip会员   ";
+        _roleLabel.text = @"   小红包系列-vip会员   ";
     } else if ([_model.roleType isEqualToString:@"-0.4"]) {
-        _roleLabel.text = @"   减肥单项-高级会员   ";
+        _roleLabel.text = @"   小红包系列-高级会员   ";
     } else if ([_model.roleType isEqualToString:@"-0.3"]) {
-        _roleLabel.text = @"   减肥单项-荣誉会员   ";
+        _roleLabel.text = @"   小红包系列-荣誉会员   ";
     } else if ([_model.roleType isEqualToString:@"1.1"]) {
-        _roleLabel.text = @"   减肥单项-市服务商   ";
+        _roleLabel.text = @"   小红包系列-市服务商   ";
     } else if ([_model.roleType isEqualToString:@"2.1"]) {
-        _roleLabel.text = @"   减肥单项-省服务商   ";
+        _roleLabel.text = @"   小红包系列-省服务商   ";
     } else if ([_model.roleType isEqualToString:@"3.1"]) {
-        _roleLabel.text = @"   减肥单项-CEO   ";
+        _roleLabel.text = @"   小红包系列-CEO   ";
     } else {
         switch (_model.roleType.intValue) {
             case -1:

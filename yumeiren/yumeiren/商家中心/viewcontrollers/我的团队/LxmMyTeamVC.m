@@ -723,17 +723,17 @@
     _bottomView1.detailLabel.text = [NSString stringWithFormat:@"手机号: %@ 授权码:%@",_otherInfoModel.telephone,_otherInfoModel.recommendCode];
     [_bottomView1.headerImgView sd_setImageWithURL:[NSURL URLWithString:_otherInfoModel.userHead] placeholderImage:[UIImage imageNamed:@"moren"]];
     if ([_otherInfoModel.roleType isEqualToString:@"-0.5"]){
-        [_bottomView1.roleButton setTitle:@"减肥单项-vip会员" forState:UIControlStateNormal];
+        [_bottomView1.roleButton setTitle:@"小红包系列-vip会员" forState:UIControlStateNormal];
     } else if ([_otherInfoModel.roleType isEqualToString:@"-0.4"]) {
-        [_bottomView1.roleButton setTitle:@"减肥单项-高级会员" forState:UIControlStateNormal];
+        [_bottomView1.roleButton setTitle:@"小红包系列-高级会员" forState:UIControlStateNormal];
     } else if ([_otherInfoModel.roleType isEqualToString:@"-0.3"]) {
-        [_bottomView1.roleButton setTitle:@"减肥单项-荣誉会员" forState:UIControlStateNormal];
+        [_bottomView1.roleButton setTitle:@"小红包系列-荣誉会员" forState:UIControlStateNormal];
     } else if ([_otherInfoModel.roleType isEqualToString:@"1.1"]) {
-        [_bottomView1.roleButton setTitle:@"减肥单项-市服务商" forState:UIControlStateNormal];
+        [_bottomView1.roleButton setTitle:@"小红包系列-市服务商" forState:UIControlStateNormal];
     } else if ([_otherInfoModel.roleType isEqualToString:@"2.1"]) {
-        [_bottomView1.roleButton setTitle:@"减肥单项-省服务商" forState:UIControlStateNormal];
+        [_bottomView1.roleButton setTitle:@"小红包系列-省服务商" forState:UIControlStateNormal];
     } else if ([_otherInfoModel.roleType isEqualToString:@"3.1"]) {
-        [_bottomView1.roleButton setTitle:@"减肥单项-CEO" forState:UIControlStateNormal];
+        [_bottomView1.roleButton setTitle:@"小红包系列-CEO" forState:UIControlStateNormal];
     } else {
         switch (_otherInfoModel.roleType.intValue) {
             case -1:

@@ -72,16 +72,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initBottomV];
+//    [self initBottomV];
     
     if  (self.jifenModel != nil) {
            [self addNavTitleV];
-           [self addHeadViewOne];
+//           [self addHeadViewOne];
            [self addheadViewTwo];
+        
+        self.leftButton.selected = NO;
+//        self.rightButton.selected = YES;
+        self.headViewTwo.hidden = NO;
+//        self.headViewOne.hidden = YES;
+//        self.subTVC.view.hidden = YES;
+//        self.bottomV.hidden = YES;
+        
     }else {
         [self getScoreData];
     }
-    [self loadGroupData];
+//    [self loadGroupData];
    
     
      WeakObj(self);
@@ -676,17 +684,20 @@
 
 - (void)addNavTitleV {
     
-    self.navTitleV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-    self.navTitleV.layer.cornerRadius = 15;
-    self.navTitleV.clipsToBounds  = YES;
-    self.navTitleV.layer.borderColor = MainColor.CGColor;
-    self.navTitleV.layer.borderWidth = 0.5;
-    [self.navTitleV addSubview:self.leftButton];
-    self.leftButton.frame = CGRectMake(0, 0, 100, 30);
-    [self.navTitleV addSubview:self.rightButton];
-    self.rightButton.frame = CGRectMake(100, 0, 100, 30);
+//    self.navTitleV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
+//    self.navTitleV.layer.cornerRadius = 15;
+//    self.navTitleV.clipsToBounds  = YES;
+//    self.navTitleV.layer.borderColor = MainColor.CGColor;
+//    self.navTitleV.layer.borderWidth = 0.5;
+//    [self.navTitleV addSubview:self.leftButton];
+//    self.leftButton.frame = CGRectMake(0, 0, 100, 30);
+//    [self.navTitleV addSubview:self.rightButton];
+//    self.rightButton.frame = CGRectMake(100, 0, 100, 30);
+//
+//    self.navigationItem.titleView = self.navTitleV;
     
-    self.navigationItem.titleView = self.navTitleV;
+    self.navigationItem.title = @"直属推荐小煜";
+    
 }
 
 

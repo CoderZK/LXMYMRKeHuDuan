@@ -158,11 +158,11 @@
     [_wechatCell addTarget:self action:@selector(wechatClick) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView reloadData];
     if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
-        _yhdjCell.textField.text = @"减肥单项-vip会员";
+        _yhdjCell.textField.text = @"小红包系列-vip会员";
     } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
-        _yhdjCell.textField.text = @"减肥单项-高级会员";
+        _yhdjCell.textField.text = @"小红包系列-高级会员";
     } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
-        _yhdjCell.textField.text = @"减肥单项-荣誉会员";
+        _yhdjCell.textField.text = @"小红包系列-荣誉会员";
     } else {
         switch ([LxmTool ShareTool].userModel.roleType.intValue) {
             case 0: {

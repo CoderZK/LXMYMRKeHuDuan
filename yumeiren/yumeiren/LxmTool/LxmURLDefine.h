@@ -15,10 +15,10 @@
 
 
 //测试
-//#define Base_URL @"http://appnew.hkymr.com:8989"
+#define Base_URL @"http://appnew.hkymr.com:8989"
 
 //正式
-#define Base_URL @"https://appnew.hkymr.com"
+//#define Base_URL @"https://appnew.hkymr.com"
 
 
 
@@ -244,6 +244,12 @@
 #define role_province  Base_URL"/app/user/role_province"
 /**
  完善升级的地址信息
+ 
+ group_good_list 增加请求字段：su_type 1-束宣，2-煜美人, 不传代表查询全部
+ role_address 增加请求字段：su_type 1-束宣，2-煜美人，3-全部
+ select_store 增加请求字段：su_type 1-束宣，2-煜美人,3-全部
+ my_info   suType 
+ 
  */
 #define role_address  Base_URL"/app/user/role_address"
 /**

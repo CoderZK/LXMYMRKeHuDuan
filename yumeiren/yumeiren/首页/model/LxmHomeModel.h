@@ -364,7 +364,7 @@
 
 @property (nonatomic, strong) NSString *com_num;//公司库存数量
 
-@property (nonatomic, strong) NSString *special_type;//1：不可以，2：可以（减肥单项）
+@property (nonatomic, strong) NSString *special_type;//1：不可以，2：可以（小红包系列）
 
 @property (nonatomic, strong) NSString *give_pic;//赠送商品显示的图片
 

@@ -354,17 +354,17 @@
     self.nameLabel.text = _model.username;
     [self.headerImgView sd_setImageWithURL:[NSURL URLWithString:_model.userHead] placeholderImage:[UIImage imageNamed:@"moren"]];
     if ([_model.roleType isEqualToString:@"-0.3"]){
-        self.rankLabel.text = @" 减肥单项-荣誉会员 ";
+        self.rankLabel.text = @" 小红包系列-荣誉会员 ";
     } else if ([_model.roleType isEqualToString:@"-0.4"]) {
-        self.rankLabel.text = @" 减肥单项-高级会员 ";
+        self.rankLabel.text = @" 小红包系列-高级会员 ";
     } else if ([_model.roleType isEqualToString:@"-0.5"]) {
-        self.rankLabel.text = @" 减肥单项-vip会员 ";
+        self.rankLabel.text = @" 小红包系列-vip会员 ";
     } else if ([_model.roleType isEqualToString:@"1.1"]) {
-        self.rankLabel.text = @" 减肥单项-市服务商 ";
+        self.rankLabel.text = @" 小红包系列-市服务商 ";
     } else if ([_model.roleType isEqualToString:@"2.1"]) {
-        self.rankLabel.text = @" 减肥单项-省服务商 ";
+        self.rankLabel.text = @" 小红包系列-省服务商 ";
     } else if ([_model.roleType isEqualToString:@"3.1"]) {
-        self.rankLabel.text = @" 减肥单项-CEO ";
+        self.rankLabel.text = @" 小红包系列-CEO ";
     } else {
         switch (_model.roleType.intValue) {
             case -1:

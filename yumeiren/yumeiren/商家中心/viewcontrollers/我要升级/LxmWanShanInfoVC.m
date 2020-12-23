@@ -15,6 +15,7 @@
 #import "LxmMineVC.h"
 #import "LxmShopCenterVC.h"
 #import "LxmPublishTouSuVC.h"
+#import "LxmTianXieRecommendCodeVC.h"
 
 @interface LxmWanShanInfoVC ()<LxmAddressPickerViewDelegate>
 
@@ -39,6 +40,9 @@
 @property (nonatomic, strong) LxmAddressPickerView * pickerView;
 
 @property (nonatomic, strong) AMapPOI *poi;
+
+@property(nonatomic,assign)BOOL isSuXuan;
+@property(nonatomic,strong)NSString *miYaoStr;
 
 @end
 
@@ -140,21 +144,21 @@
     [self initHeaderView];
     [self setHeaderViewConstrains];
     
-//    self.poi = [[AMapPOI alloc] init];
-//    
-//    LxmUserShopInfoModel * model =[LxmTool ShareTool].userModel.shopInfo;
-//    NSString * str = model.latitude;
-//    NSString * str2 = model.longitude;
-//    NSLog(@"%@",@"123456");
-//
-//    
-//    AMapGeoPoint * location = [[AMapGeoPoint alloc] init];
-//    location.latitude = model.latitude.floatValue;
-//    location.longitude = model.longitude.floatValue;
-//    self.poi.location = location;
-//    
-//    CGFloat f = self.poi.location.latitude;
-//    CGFloat ff = self.poi.location.longitude;
+    //    self.poi = [[AMapPOI alloc] init];
+    //
+    //    LxmUserShopInfoModel * model =[LxmTool ShareTool].userModel.shopInfo;
+    //    NSString * str = model.latitude;
+    //    NSString * str2 = model.longitude;
+    //    NSLog(@"%@",@"123456");
+    //
+    //
+    //    AMapGeoPoint * location = [[AMapGeoPoint alloc] init];
+    //    location.latitude = model.latitude.floatValue;
+    //    location.longitude = model.longitude.floatValue;
+    //    self.poi.location = location;
+    //
+    //    CGFloat f = self.poi.location.latitude;
+    //    CGFloat ff = self.poi.location.longitude;
     
     
 }
@@ -297,7 +301,9 @@
     void(^gotoGouwu)(void) = ^{
         LxmShopVC *vc = [[LxmShopVC alloc] init];
         vc.roleType = [NSString stringWithFormat:@"%@",self.model.roleType];
+        self.model.suType = self.isSuXuan ? @"1":@"2";
         vc.shengjiModel = self.model;
+        
         vc.isDeep = YES;
         vc.isAddLocolGoods = YES;
         vc.isGotoGouwuChe = YES;
@@ -328,9 +334,9 @@
     }
     if (![self.model.roleType isEqualToString:@"-0.5"] && ![self.model.roleType isEqualToString:@"-0.4"] && ![self.model.roleType isEqualToString:@"-0.3"] && ![self.model.roleType isEqualToString:@"1.1"] && ![self.model.roleType isEqualToString:@"2.1"] && ![self.model.roleType isEqualToString:@"3.1"]) {
         if ([self.detailCell.detailLabel.text isEqualToString:@"请选择详细地址"]) {
-               [SVProgressHUD showErrorWithStatus:@"请选择详细地址!"];
-               return;
-           }
+            [SVProgressHUD showErrorWithStatus:@"请选择详细地址!"];
+            return;
+        }
     }
     
     NSMutableDictionary *panduanDict = [NSMutableDictionary dictionary];
@@ -347,6 +353,12 @@
         dict[@"city"] = self.shiCell.detailLabel.text;
         dict[@"district"] = self.quCell.detailLabel.text;
         dict[@"roleType"] = self.model.roleType;
+        if (self.isSuXuan) {
+            dict[@"su_type"] = @"1";
+            dict[@"su_code"] = self.miYaoStr;
+        }else {
+            dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+        }
         if (self.recommend_code.isValid) {
             dict[@"recommend_code"] = self.recommend_code;
         }
@@ -370,93 +382,206 @@
         panduanDict[@"longitude"] = @(self.poi.location.longitude);
         panduanDict[@"latitude"] = @(self.poi.location.latitude);
         panduanDict[@"address_detail"] = self.detailCell.detailLabel.text;
+        if (self.isSuXuan) {
+            panduanDict[@"su_type"] = @"1";
+      
+        }else {
+            panduanDict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+        }
         [SVProgressHUD show];
         WeakObj(self);
         [LxmNetworking networkingPOST:select_store parameters:panduanDict returnClass:LxmMenDianChaXunRootModel.class success:^(NSURLSessionDataTask *task, LxmMenDianChaXunRootModel *responseObject) {
-           [SVProgressHUD dismiss];
-           if (responseObject.key.integerValue == 1000) {
-               NSArray *arr = responseObject.result.list;
-               if (arr.count > 0) {
-                   UIAlertController * alertView = [UIAlertController alertControllerWithTitle:nil message:@"您好，由于区域保护内有其它合作店家，系统无法录入，敬请谅解；是否继续申请代理。?" preferredStyle:UIAlertControllerStyleAlert];
-                   [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-                   [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                       LxmPublishTouSuVC *vc = [[LxmPublishTouSuVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPublishTouSuVC_type_shenqingdaili];
-                       vc.shenqingDailiBlock = ^(NSString *reason, NSString *ids) {
-                           NSLog(@"%@---%@",reason,ids);
-                           NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                           dict[@"reason"] = reason;
-                           dict[@"pics"] = ids;
-                           dict[@"showName"] = self.shopNameCell.textField.text;
-                           dict[@"telephone"] = self.phoneCell.textField.text;
-                           dict[@"token"] = SESSION_TOKEN;
-                           dict[@"province"] = self.shengCell.detailLabel.text;
-                           dict[@"city"] = self.shiCell.detailLabel.text;
-                           dict[@"district"] = self.quCell.detailLabel.text;
-                           dict[@"roleType"] = self.model.roleType;
-                           dict[@"longitude"] = @(self.poi.location.longitude);
-                           dict[@"latitude"] = @(self.poi.location.latitude);
-                           dict[@"addressDetail"] = self.detailCell.detailLabel.text;
-                           if (self.recommend_code.isValid) {
-                               dict[@"recommend_code"] = self.recommend_code;
-                           }
-                           [SVProgressHUD show];
-                           [LxmNetworking networkingPOST:role_address parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                               [SVProgressHUD dismiss];
-                               if ([responseObject[@"key"] integerValue] == 1000) {
-                                   [selfWeak loadMyUserInfoWithOkBlock:nil];
-                                   [SVProgressHUD showSuccessWithStatus:@"申请中.."];
-                                   int index = (int)[[self.navigationController viewControllers] indexOfObject:self];
-                                   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(index - 2)] animated:YES];
-                               } else {
-                                   [UIAlertController showAlertWithmessage:responseObject[@"message"]];
-                               }
-                           } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                               [SVProgressHUD dismiss];
-                           }];
-                       };
-                       [selfWeak.navigationController pushViewController:vc animated:YES];
-                   }]];
-                   [self presentViewController:alertView animated:YES completion:nil];
-               } else {
-                   NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                   dict[@"showName"] = self.shopNameCell.textField.text;
-                   dict[@"telephone"] = self.phoneCell.textField.text;
-                   dict[@"token"] = SESSION_TOKEN;
-                   dict[@"province"] = self.shengCell.detailLabel.text;
-                   dict[@"city"] = self.shiCell.detailLabel.text;
-                   dict[@"district"] = self.quCell.detailLabel.text;
-                   dict[@"roleType"] = self.model.roleType;
-                   dict[@"longitude"] = @(self.poi.location.longitude);
-                   dict[@"latitude"] = @(self.poi.location.latitude);
-                   dict[@"addressDetail"] = self.detailCell.detailLabel.text;
-                   if (self.recommend_code.isValid) {
-                       dict[@"recommend_code"] = self.recommend_code;
-                   }
-                   [SVProgressHUD show];
-                   [LxmNetworking networkingPOST:role_address parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                       [SVProgressHUD dismiss];
-                       if ([responseObject[@"key"] integerValue] == 1000) {
-                           [self loadMyUserInfoWithOkBlock:nil];
-                           [SVProgressHUD showSuccessWithStatus:@"信息已完善!"];
-                           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                               gotoGouwu();
-                           });
-                       } else {
-                           [UIAlertController showAlertWithmessage:responseObject[@"message"]];
-                       }
-                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                       [SVProgressHUD dismiss];
-                   }];
-               }
-               
-           } else {
-               [UIAlertController showAlertWithmessage:responseObject.message];
-           }
+            [SVProgressHUD dismiss];
+            if (responseObject.key.integerValue == 1000) {
+                NSArray *arr = responseObject.result.list;
+                if (arr.count > 0) {
+                    
+                    //                   selfWeak.isQuYuBaoHu = YES;
+                    [selfWeak showTiShi];
+                    
+                    //                   UIAlertController * alertView = [UIAlertController alertControllerWithTitle:nil message:@"您好，由于区域保护内有其它合作店家，系统无法录入，敬请谅解；是否继续申请代理 ?" preferredStyle:UIAlertControllerStyleAlert];
+                    //                   [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+                    //                   [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    //                       LxmPublishTouSuVC *vc = [[LxmPublishTouSuVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPublishTouSuVC_type_shenqingdaili];
+                    //                       vc.shenqingDailiBlock = ^(NSString *reason, NSString *ids) {
+                    //                           NSLog(@"%@---%@",reason,ids);
+                    //                           NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                    //                           dict[@"reason"] = reason;
+                    //                           dict[@"pics"] = ids;
+                    //                           dict[@"showName"] = self.shopNameCell.textField.text;
+                    //                           dict[@"telephone"] = self.phoneCell.textField.text;
+                    //                           dict[@"token"] = SESSION_TOKEN;
+                    //                           dict[@"province"] = self.shengCell.detailLabel.text;
+                    //                           dict[@"city"] = self.shiCell.detailLabel.text;
+                    //                           dict[@"district"] = self.quCell.detailLabel.text;
+                    //                           dict[@"roleType"] = self.model.roleType;
+                    //                           dict[@"longitude"] = @(self.poi.location.longitude);
+                    //                           dict[@"latitude"] = @(self.poi.location.latitude);
+                    //                           dict[@"addressDetail"] = self.detailCell.detailLabel.text;
+                    //                           dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+                    //                           if (self.recommend_code.isValid) {
+                    //                               dict[@"recommend_code"] = self.recommend_code;
+                    //                           }
+                    //                           [SVProgressHUD show];
+                    //                           [LxmNetworking networkingPOST:role_address parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                    //                               [SVProgressHUD dismiss];
+                    //                               if ([responseObject[@"key"] integerValue] == 1000) {
+                    //                                   [selfWeak loadMyUserInfoWithOkBlock:nil];
+                    //                                   [SVProgressHUD showSuccessWithStatus:@"申请中.."];
+                    //                                   int index = (int)[[self.navigationController viewControllers] indexOfObject:self];
+                    //                                   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(index - 2)] animated:YES];
+                    //                               } else {
+                    //                                   [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+                    //                               }
+                    //                           } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                    //                               [SVProgressHUD dismiss];
+                    //                           }];
+                    //                       };
+                    //                       [selfWeak.navigationController pushViewController:vc animated:YES];
+                    //                   }]];
+                    //                   [self presentViewController:alertView animated:YES completion:nil];
+                } else {
+                    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                    dict[@"showName"] = self.shopNameCell.textField.text;
+                    dict[@"telephone"] = self.phoneCell.textField.text;
+                    dict[@"token"] = SESSION_TOKEN;
+                    dict[@"province"] = self.shengCell.detailLabel.text;
+                    dict[@"city"] = self.shiCell.detailLabel.text;
+                    dict[@"district"] = self.quCell.detailLabel.text;
+                    dict[@"roleType"] = self.model.roleType;
+                    dict[@"longitude"] = @(self.poi.location.longitude);
+                    dict[@"latitude"] = @(self.poi.location.latitude);
+                    dict[@"addressDetail"] = self.detailCell.detailLabel.text;
+                    if (selfWeak.isSuXuan) {
+                        dict[@"su_type"] = @"1";
+                        dict[@"su_code"] = self.miYaoStr;
+                    }else {
+                        dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+                    }
+                    if (self.recommend_code.isValid) {
+                        dict[@"recommend_code"] = self.recommend_code;
+                    }
+                    [SVProgressHUD show];
+                    [LxmNetworking networkingPOST:role_address parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                        [SVProgressHUD dismiss];
+                        if ([responseObject[@"key"] integerValue] == 1000) {
+                            [self loadMyUserInfoWithOkBlock:nil];
+                            [SVProgressHUD showSuccessWithStatus:@"信息已完善!"];
+                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                gotoGouwu();
+                            });
+                        } else {
+                            [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+                        }
+                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        [SVProgressHUD dismiss];
+                    }];
+                }
+                
+            } else {
+                [UIAlertController showAlertWithmessage:responseObject.message];
+            }
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-           [SVProgressHUD dismiss];
+            [SVProgressHUD dismiss];
         }];
     }
 }
+
+- (void)showTiShi {
+    
+    WeakObj(self);
+    NSString * str = @"您好，由于区域保护内有其它合作店家，系统无法录入，敬请谅解；是否继续申请代理 ?";
+    if ([LxmTool ShareTool].userModel.suType.intValue == 1 || self.isSuXuan) {
+        //束轩
+        str = @"您好，由于区域保护内有\"束轩\"其它合作店家，系统无法录入，敬请谅解；是否继续申请代理 ?";
+        
+    }
+    
+    UIAlertController * alertView = [UIAlertController alertControllerWithTitle:nil message:str preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alertView addAction:[UIAlertAction actionWithTitle:@"继续申请" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        LxmPublishTouSuVC *vc = [[LxmPublishTouSuVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPublishTouSuVC_type_shenqingdaili];
+        vc.shenqingDailiBlock = ^(NSString *reason, NSString *ids) {
+            NSLog(@"%@---%@",reason,ids);
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            dict[@"reason"] = reason;
+            dict[@"pics"] = ids;
+            dict[@"showName"] = self.shopNameCell.textField.text;
+            dict[@"telephone"] = self.phoneCell.textField.text;
+            dict[@"token"] = SESSION_TOKEN;
+            dict[@"province"] = self.shengCell.detailLabel.text;
+            dict[@"city"] = self.shiCell.detailLabel.text;
+            dict[@"district"] = self.quCell.detailLabel.text;
+            dict[@"roleType"] = self.model.roleType;
+            dict[@"longitude"] = @(self.poi.location.longitude);
+            dict[@"latitude"] = @(self.poi.location.latitude);
+            dict[@"addressDetail"] = self.detailCell.detailLabel.text;
+            if (selfWeak.isSuXuan) {
+                dict[@"su_type"] = @"1";
+                dict[@"su_code"] = self.miYaoStr;
+           
+            }else {
+                dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+            }
+            
+            if (self.recommend_code.isValid) {
+                dict[@"recommend_code"] = self.recommend_code;
+            }
+            [SVProgressHUD show];
+            [LxmNetworking networkingPOST:role_address parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                [SVProgressHUD dismiss];
+                if ([responseObject[@"key"] integerValue] == 1000) {
+                    [selfWeak loadMyUserInfoWithOkBlock:nil];
+                    [SVProgressHUD showSuccessWithStatus:@"申请中.."];
+                    int index = (int)[[self.navigationController viewControllers] indexOfObject:self];
+                    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(index - 2)] animated:YES];
+                } else {
+                    [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+                }
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                [SVProgressHUD dismiss];
+            }];
+        };
+        
+        [selfWeak.navigationController pushViewController:vc animated:YES];
+    }]];
+    if ([LxmTool ShareTool].userModel.suType.intValue == 2 && self.isSuXuan == NO) {
+        [alertView addAction:[UIAlertAction actionWithTitle:@"申请束宣" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.isSuXuan = YES;
+            [self showMiYaoTX];
+            //
+        }]];
+    }
+    [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertView animated:YES completion:nil];
+    
+    
+}
+
+// 弹出输入
+-(void)showMiYaoTX {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"秘钥" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField*userNameTextField = alertController.textFields.firstObject;
+        NSLog(@"支付密码：%@",userNameTextField.text);
+        if (userNameTextField.text.length == 0) {
+            [SVProgressHUD showErrorWithStatus:@"请输入秘钥"];
+            return;
+        }
+        self.miYaoStr = userNameTextField.text;
+
+        [self gotoGouWuButtonClick];
+    
+    }]];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField*_Nonnull textField) {
+        textField.placeholder=@"请输入秘钥";
+    }];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
 
 /**
  地址选择
@@ -530,6 +655,14 @@
     panduanDict[@"latitude"] = @(self.poi.location.latitude);
     panduanDict[@"shop_name"] = self.shopNameCell.textField.text;
     panduanDict[@"address_detail"] = self.detailCell.detailLabel.text;
+    
+    if (self.isSuXuan) {
+        panduanDict[@"su_type"] = @"1";
+        
+    }else {
+        panduanDict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+    }
+    
     [SVProgressHUD show];
     WeakObj(self);
     [LxmNetworking networkingPOST:select_store parameters:panduanDict returnClass:LxmMenDianChaXunRootModel.class success:^(NSURLSessionDataTask *task, LxmMenDianChaXunRootModel *responseObject) {
@@ -537,46 +670,53 @@
         if (responseObject.key.integerValue == 1000) {
             NSArray *arr = responseObject.result.list;
             if (arr.count > 0) {
-                UIAlertController * alertView = [UIAlertController alertControllerWithTitle:nil message:@"您好，由于区域保护内有其它合作店家，系统无法录入，敬请谅解；是否继续申请代理。?" preferredStyle:UIAlertControllerStyleAlert];
-                [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-                [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                    LxmPublishTouSuVC *vc = [[LxmPublishTouSuVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPublishTouSuVC_type_shenqingdaili];
-                    vc.shenqingDailiBlock = ^(NSString *reason, NSString *ids) {
-                        NSLog(@"%@---%@",reason,ids);
-                        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                        dict[@"reason"] = reason;
-                        dict[@"pics"] = ids;
-                        dict[@"showName"] = self.shopNameCell.textField.text;
-                        dict[@"telephone"] = self.phoneCell.textField.text;
-                        dict[@"token"] = SESSION_TOKEN;
-                        dict[@"province"] = self.shengCell.detailLabel.text;
-                        dict[@"city"] = self.shiCell.detailLabel.text;
-                        dict[@"district"] = self.quCell.detailLabel.text;
-                        dict[@"roleType"] = self.model.roleType;
-                        dict[@"longitude"] = @(self.poi.location.longitude);
-                        dict[@"latitude"] = @(self.poi.location.latitude);
-                        dict[@"addressDetail"] = self.detailCell.detailLabel.text;
-                        if (self.recommend_code.isValid) {
-                            dict[@"recommend_code"] = self.recommend_code;
-                        }
-                        [SVProgressHUD show];
-                        [LxmNetworking networkingPOST:role_address parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                            [SVProgressHUD dismiss];
-                            if ([responseObject[@"key"] integerValue] == 1000) {
-                                [selfWeak loadMyUserInfoWithOkBlock:nil];
-                                [SVProgressHUD showSuccessWithStatus:@"申请中.."];
-                                int index = (int)[[self.navigationController viewControllers] indexOfObject:self];
-                                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(index - 2)] animated:YES];
-                            } else {
-                                [UIAlertController showAlertWithmessage:responseObject[@"message"]];
-                            }
-                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                            [SVProgressHUD dismiss];
-                        }];
-                    };
-                    [selfWeak.navigationController pushViewController:vc animated:YES];
-                }]];
-                [self presentViewController:alertView animated:YES completion:nil];
+                
+                
+                
+                //                selfWeak.isQuYuBaoHu = YES;
+                [selfWeak showTiShi];
+                
+                //                UIAlertController * alertView = [UIAlertController alertControllerWithTitle:nil message:@"您好，由于区域保护内有其它合作店家，系统无法录入，敬请谅解；是否继续申请代理 ?" preferredStyle:UIAlertControllerStyleAlert];
+                //                [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+                //                [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                //                    LxmPublishTouSuVC *vc = [[LxmPublishTouSuVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPublishTouSuVC_type_shenqingdaili];
+                //                    vc.shenqingDailiBlock = ^(NSString *reason, NSString *ids) {
+                //                        NSLog(@"%@---%@",reason,ids);
+                //                        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                //                        dict[@"reason"] = reason;
+                //                        dict[@"pics"] = ids;
+                //                        dict[@"showName"] = self.shopNameCell.textField.text;
+                //                        dict[@"telephone"] = self.phoneCell.textField.text;
+                //                        dict[@"token"] = SESSION_TOKEN;
+                //                        dict[@"province"] = self.shengCell.detailLabel.text;
+                //                        dict[@"city"] = self.shiCell.detailLabel.text;
+                //                        dict[@"district"] = self.quCell.detailLabel.text;
+                //                        dict[@"roleType"] = self.model.roleType;
+                //                        dict[@"longitude"] = @(self.poi.location.longitude);
+                //                        dict[@"latitude"] = @(self.poi.location.latitude);
+                //                        dict[@"addressDetail"] = self.detailCell.detailLabel.text;
+                //                        dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+                //                        if (self.recommend_code.isValid) {
+                //                            dict[@"recommend_code"] = self.recommend_code;
+                //                        }
+                //                        [SVProgressHUD show];
+                //                        [LxmNetworking networkingPOST:role_address parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                //                            [SVProgressHUD dismiss];
+                //                            if ([responseObject[@"key"] integerValue] == 1000) {
+                //                                [selfWeak loadMyUserInfoWithOkBlock:nil];
+                //                                [SVProgressHUD showSuccessWithStatus:@"申请中.."];
+                //                                int index = (int)[[self.navigationController viewControllers] indexOfObject:self];
+                //                                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(index - 2)] animated:YES];
+                //                            } else {
+                //                                [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+                //                            }
+                //                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                //                            [SVProgressHUD dismiss];
+                //                        }];
+                //                    };
+                //                    [selfWeak.navigationController pushViewController:vc animated:YES];
+                //                }]];
+                //                [self presentViewController:alertView animated:YES completion:nil];
             }
             
         } else {
