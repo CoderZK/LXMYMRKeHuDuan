@@ -107,6 +107,12 @@
     }else if (type == 9) {
         self.titleLB.text = [NSString stringWithFormat:@" 来自-%@非直属业绩小煜%@",model.by_name,@""];
         self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score.getPriceStr];
+        
+        [self.typeBt setTitleColor:RGB(255, 134, 62) forState:UIControlStateNormal];
+       [self.typeBt setImage:[UIImage imageNamed:@"kk940"] forState:UIControlStateNormal];
+       self.typeBt.titleLabel.font = [UIFont systemFontOfSize:10];
+       [self.typeBt setTitle:[NSString stringWithFormat:@"非直属购进奖励%0.1f%%",model.sale_rate.doubleValue * 100] forState:UIControlStateNormal];
+        
     }
     
     if (model.create_time.length > 3) {

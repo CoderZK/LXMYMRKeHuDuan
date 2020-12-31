@@ -71,6 +71,9 @@
                }else if (self.dataModel.second_type.intValue == 8) {
                    self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score.getPriceStr];
                     self.typeLB.text = @"提取";
+               }else if (self.dataModel.second_type.intValue == 9) {
+                   self.moneyLB.text = [NSString stringWithFormat:@"+%@",self.dataModel.score.getPriceStr];
+                   self.typeLB.text = @"非直属推荐奖励";
                }
 
             [self.tableView reloadData];
@@ -101,7 +104,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        if (self.dataModel.second_type.intValue == 1) {
+        if (self.dataModel.second_type.intValue == 1 || self.dataModel.second_type.intValue == 9) {
             return 4;
         }else if (self.dataModel.second_type.intValue == 2) {
             return 2;
@@ -188,11 +191,14 @@
 - (void)settitelWith:(LxmJiFenDetailOneCell *)cell withType:(NSInteger)secondTyep  withRow:(NSInteger)row{
     
     
-    if (secondTyep == 1) {
+    if (secondTyep == 1  || secondTyep == 9) {
         cell.detailBt.hidden = YES;
         if (row == 0) {
             cell.leftLB.text = @"推荐直属";
             cell.rightLB.text = self.dataModel.by_name;
+            if (secondTyep == 9) {
+                cell.leftLB.text = @"推荐非直属";
+            }
         }else if (row == 1) {
             cell.detailBt.hidden = NO;
             cell.leftLB.text = @"订单号";

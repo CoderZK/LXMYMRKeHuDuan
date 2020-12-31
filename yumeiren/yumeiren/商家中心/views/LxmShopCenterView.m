@@ -1083,6 +1083,27 @@
                              @"kkjifen",
                              @"xiaoxitongzhi"
                              ];
+        }else if ([shopInfoModel.roleType isEqualToString:@"5"]){
+            self.titleArr = @[
+                              @"我的店铺",
+                              @"购进商品",
+                              @"订单查询",
+                              @"我的团队",
+                              @"我的业绩",
+                              @"我要升级",
+                              @"积分兑换",
+                              @"消息通知"
+                              ];
+            self.iconArr = @[
+                             @"wddp",
+                             @"goujinshangpin",
+                             @"dingdanchaxun",
+                             @"wodetuandui",
+                             @"wodeyeji",
+                             @"woyaoshengji",
+                             @"kkjifen",
+                             @"xiaoxitongzhi"
+                             ];
         }else {
             self.titleArr = @[
                               @"我的店铺",
@@ -1107,7 +1128,7 @@
                              @"xiaoxitongzhi"
                              ];
         }
-        
+
        
     }
     self.collectionView.frame = CGRectMake(0, 0, ScreenW - 30, 80*ceil(self.titleArr.count/3.0) + 30);

@@ -199,7 +199,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([titleStr isEqualToString:@"购进商品"]) {
         
-        if ([LxmTool ShareTool].userModel.roleType.intValue < 2) {
+        if ([LxmTool ShareTool].userModel.roleType.doubleValue < 1.1) {
             LxmShopVC *vc = [[LxmShopVC alloc] init];
             vc.isDeep = YES;
             vc.isGotoGouwuChe = YES;
