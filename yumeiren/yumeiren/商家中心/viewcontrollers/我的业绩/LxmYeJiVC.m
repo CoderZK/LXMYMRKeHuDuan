@@ -595,7 +595,7 @@
         _dataPicker = [[LxmYearMonthPickerView alloc] initWithFrame:UIScreen.mainScreen.bounds];
         WeakObj(self);
         _dataPicker.sureBlock = ^(NSString *year, NSString *month) {
-            selfWeak.selectTime = [NSString stringWithFormat:@"%@-%@",year,month];
+            selfWeak.selectTime = [NSString stringWithFormat:@"%@-%02d",year,month.intValue];
             selfWeak.monthView.titleLabel.text = [NSString stringWithFormat:@"%@年%@月",year,month];
             if (selfWeak.selectYearAndMonth) {
                 selfWeak.selectYearAndMonth(selfWeak.selectTime);

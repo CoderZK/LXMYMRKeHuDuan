@@ -165,9 +165,14 @@
         _yhdjCell.textField.text = @"小红包系列-荣誉会员";
     } else {
         switch ([LxmTool ShareTool].userModel.roleType.intValue) {
-            case 0: {
+                
+            case -1: {
                 [self.yhdjCell addTarget:self action:@selector(shengjirightnow) forControlEvents:UIControlEventTouchUpInside];
-                 _yhdjCell.textField.text = @"立刻升级";
+                 _yhdjCell.textField.text = @"立即升级";
+            }
+            case 0: {
+//                [self.yhdjCell addTarget:self action:@selector(shengjirightnow) forControlEvents:UIControlEventTouchUpInside];
+                 _yhdjCell.textField.text = @"vip门店";
             }
                 break;
             case 1:
@@ -182,7 +187,9 @@
             case 4:
                 _yhdjCell.textField.text = @"CEO";
                 break;
-                
+            case 5:
+                _yhdjCell.textField.text = @"总经销商";
+                break;
             default:
                 break;
         }

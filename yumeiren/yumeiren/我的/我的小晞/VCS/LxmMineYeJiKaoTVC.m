@@ -47,16 +47,19 @@
     self.month = comp.month;
     self.jiMonth = comp.month;
     self.year = comp.year;
+//    NSInteger fromMonth = (self.jiMonth / 3  + (self.jiMonth % 3 > 0 ? 1 : 0) - 1) * 3 + 1;
+    
     NSInteger fromMonth = (self.jiMonth / 3  + (self.jiMonth % 3 > 0 ? 1 : 0) - 1) * 3 + 1;
+    
     NSInteger ji = self.jiMonth / 3 + (self.jiMonth % 3 > 0 ? 1:0) - 1;
-    self.jiStr = [NSString stringWithFormat:@"%ld%@",self.year,@[@"第一季度",@"第二季度",@"第三季度",@"第四季度"][ji]];
+    self.jiStr = [NSString stringWithFormat:@"%ld%@",self.year,@[@"第一季度(1~3月)",@"第二季度(4~6月)",@"第三季度(7~9月)",@"第四季度(10~12)"][ji]];
     [self getData];
     [self addHeadV];
     
-    self.arr1 = @[@12,@1,@2];
-    self.arr2 = @[@3,@4,@5];
-    self.arr3 = @[@6,@7,@8];
-    self.arr4 = @[@9,@10,@11];
+    self.arr1 = @[@1,@2,@3];
+    self.arr2 = @[@4,@5,@6];
+    self.arr3 = @[@7,@8,@9];
+    self.arr4 = @[@10,@11,@12];
     
     
 }
@@ -73,35 +76,38 @@
         
         
         if ([self.arr1 containsObject:@(self.jiMonth)]) {
-            dict[@"fromMonth"] = [self.arr1 firstObject];
-            dict[@"endMonth"] = [self.arr1 lastObject];
+            dict[@"fromMonth"] = [NSString stringWithFormat:@"%02ld", [[self.arr1 firstObject] integerValue]] ;
+            dict[@"endMonth"] =  [NSString stringWithFormat:@"%02ld", [[self.arr1 lastObject] integerValue]] ;
             
         }
         if ([self.arr2 containsObject:@(self.jiMonth)]) {
-            dict[@"fromMonth"] = [self.arr2 firstObject];
-            dict[@"endMonth"] = [self.arr2 lastObject];
+            dict[@"fromMonth"] = [NSString stringWithFormat:@"%02ld", [[self.arr2 firstObject] integerValue]] ;
+            dict[@"endMonth"] =  [NSString stringWithFormat:@"%02ld", [[self.arr2 lastObject] integerValue]] ;
             
         }
         if ([self.arr3 containsObject:@(self.jiMonth)]) {
-            dict[@"fromMonth"] = [self.arr3 firstObject];
-            dict[@"endMonth"] = [self.arr3 lastObject];
+            dict[@"fromMonth"] = [NSString stringWithFormat:@"%02ld", [[self.arr3 firstObject] integerValue]] ;
+            dict[@"endMonth"] =  [NSString stringWithFormat:@"%02ld", [[self.arr3 lastObject] integerValue]] ;
             
         }
         if ([self.arr4 containsObject:@(self.jiMonth)]) {
-            dict[@"fromMonth"] = [self.arr4 firstObject];
-            dict[@"endMonth"] = [self.arr4 lastObject];
+            dict[@"fromMonth"] = [NSString stringWithFormat:@"%02ld", [[self.arr4 firstObject] integerValue]];
+            dict[@"endMonth"] = [NSString stringWithFormat:@"%02ld", [[self.arr4 lastObject] integerValue]];;
             
         }
         
         
     }else {
         //
-        dict[@"fromMonth"] = @(self.month);
+        dict[@"fromMonth"] = [NSString stringWithFormat:@"%02ld",(long)self.month];
     }
     [LxmNetworking networkingPOST:check_detail parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         if ([responseObject[@"key"] integerValue] == 1000) {
-            self.dataModel = [LxmJiFenModel mj_objectWithKeyValues:responseObject[@"result"][@"data"]];
+
+            if ([responseObject[@"result"] isKindOfClass:[NSDictionary class]] && [[responseObject[@"result"] allKeys] containsObject:@"data"]) {
+                self.dataModel = [LxmJiFenModel mj_objectWithKeyValues:responseObject[@"result"][@"data"]];
+            }
             [self.tableView reloadData];
         }  else {
             [UIAlertController showAlertWithmessage:responseObject[@"message"]];
@@ -301,11 +307,30 @@
     LxmMineYeJiKaoCell * cell =[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.type = self.type + 100;
     
-    cell.leftTwoLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.finishMoney + self.dataModel.inviteToBox * self.dataModel.inviteUserNum] getPriceStr];
+    cell.leftTwoLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.finishMoney + self.dataModel.inviteToBox * self.dataModel.inviteUserNum + self.dataModel.inviteCeoNum * self.dataModel.inviteToCeoBox] getPriceStr];
     cell.rightTwoLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.targetMoney] getPriceStr];
+    
+    
+    
     cell.numberOneLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.finishMoney] getPriceStr];
     cell.numberTwoLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.inviteUserNum] getPriceStr];
-    cell.desLB.text = [NSString stringWithFormat:@"总完成金额 = 完成金额+新增统计直属 (1个同级直属 = %ld元)",(long)self.dataModel.inviteToBox];
+    cell.leftFiveLB.clipsToBounds = YES;
+    cell.rightNumThreeLB.clipsToBounds = YES;
+    cell.rightNumThreeLB.text = [[NSString stringWithFormat:@"%0.2f",self.dataModel.inviteCeoNum] getPriceStr];
+    NSLog(@"---roletype===%@",[LxmTool ShareTool].userModel.roleType);
+    if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"4"]) {
+        //是CEO 要展示新增CEO一说
+        cell.desLB.text = [NSString stringWithFormat:@"总完成金额 = 完成金额+新增省代 (1个省代 = %0.2f元) + 新增CEO (1个CEO =%0.2f元)",self.dataModel.inviteToBox,self.dataModel.inviteToCeoBox];
+        cell.leftFiveCons.constant = 17;
+        cell.leftFiveYCons.constant = 15;
+    }else {
+        cell.desLB.text = [NSString stringWithFormat:@"总完成金额 = 完成金额+新增省代 (1个省代 = %0.2f元)",self.dataModel.inviteToBox];
+        cell.leftFiveCons.constant = 0;
+        cell.leftFiveYCons.constant = 0;
+    }
+    
+    
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.isJingLi = self.isJingLi;
     return cell;

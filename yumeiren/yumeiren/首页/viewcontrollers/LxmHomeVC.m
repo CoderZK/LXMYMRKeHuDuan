@@ -94,6 +94,7 @@
     }
     
 //    [self getInxdex];
+    [self loadIndexData];
     
 }
 
@@ -113,7 +114,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
-    [self loadIndexData];
+   
     [self.view addSubview:self.rightButton];
     [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(StateBarH + 4);
@@ -182,7 +183,9 @@
     LxmHomeSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"LxmHomeSectionHeaderView"];
     if (!headerView) {
         headerView = [[LxmHomeSectionHeaderView alloc] initWithReuseIdentifier:@"LxmHomeSectionHeaderView"];
+        headerView.clipsToBounds = YES;
     }
+    
     LxmHomeGoodsTypesModel *model = self.homeModel.goodTypes[section - 1];
     [headerView.imgView sd_setImageWithURL:[NSURL URLWithString:model.listPic] placeholderImage:[UIImage imageNamed:@"tupian"]];
     return headerView;
@@ -200,7 +203,15 @@
     if (section == 0) {
         return 0.01;
     }
-    return ScreenW*0.5;
+    
+    LxmHomeGoodsTypesModel * model = self.homeModel.goodTypes[section - 1];
+    if (model.goodList.count == 0) {
+        return 0.01;
+    }else {
+        return ScreenW*0.5;
+    }
+    
+    
 }
 
 /**

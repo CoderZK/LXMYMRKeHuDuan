@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, LxmPublishTouSuVC_type) {
 @property (nonatomic, strong) LxmJieDanListModel *tuidanModel;//申请退单model
 
 @property (nonatomic, copy) void(^shenqingDailiBlock)(NSString *reason, NSString *ids);
-
+@property(nonatomic,copy)void(^backBlock)(void);
 - (instancetype)initWithTableViewStyle:(UITableViewStyle)style type:(LxmPublishTouSuVC_type)type;
 
 @end

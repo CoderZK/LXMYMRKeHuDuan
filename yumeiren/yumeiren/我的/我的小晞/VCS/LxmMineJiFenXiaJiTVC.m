@@ -59,7 +59,7 @@
         [_rightButton setTitleColor:UIColor.whiteColor forState:UIControlStateSelected];
         [_rightButton setBackgroundImage:[UIImage imageNamed:@"white"] forState:UIControlStateNormal];
         [_rightButton setBackgroundImage:[UIImage imageNamed:@"pink"] forState:UIControlStateSelected];
-        [_rightButton setTitle:@"直属推荐小煜" forState:UIControlStateNormal];
+        [_rightButton setTitle:@"我的小煜" forState:UIControlStateNormal];
         _rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [_rightButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         _rightButton.tag = 444;
@@ -74,21 +74,23 @@
     
 //    [self initBottomV];
     
-    if  (self.jifenModel != nil) {
-           [self addNavTitleV];
-//           [self addHeadViewOne];
-           [self addheadViewTwo];
-        
-        self.leftButton.selected = NO;
+    [self getScoreData];
+    
+//    if  (self.jifenModel != nil) {
+//           [self addNavTitleV];
+////           [self addHeadViewOne];
+//           [self addheadViewTwo];
+//
+//        self.leftButton.selected = NO;
 //        self.rightButton.selected = YES;
-        self.headViewTwo.hidden = NO;
-//        self.headViewOne.hidden = YES;
-//        self.subTVC.view.hidden = YES;
-//        self.bottomV.hidden = YES;
-        
-    }else {
-        [self getScoreData];
-    }
+//        self.headViewTwo.hidden = NO;
+////        self.headViewOne.hidden = YES;
+////        self.subTVC.view.hidden = YES;
+////        self.bottomV.hidden = YES;
+//
+//    }else {
+//        [self getScoreData];
+//    }
 //    [self loadGroupData];
    
     
@@ -135,8 +137,11 @@
                 self.jifenModel  = [LxmUserInfoModel mj_objectWithKeyValues:responseObject[@"result"][@"map"]];
               
                 [self addNavTitleV];
-                [self addHeadViewOne];
+//                [self addHeadViewOne];
                 [self addheadViewTwo];
+                self.headViewTwo.hidden = NO;
+                self.leftButton.selected = NO;
+                self.rightButton.selected = YES;
                 
             }
         }
@@ -634,7 +639,7 @@
     
     UILabel * tuiJianJifen  = [[UILabel alloc] init];
     tuiJianJifen.font = [UIFont systemFontOfSize:15];
-    tuiJianJifen.text = @"直属推荐小煜";
+    tuiJianJifen.text = @"我的小煜";
     tuiJianJifen.textAlignment = NSTextAlignmentCenter;
     [self.headViewTwo  addSubview:tuiJianJifen];
     
@@ -696,7 +701,7 @@
 //
 //    self.navigationItem.titleView = self.navTitleV;
     
-    self.navigationItem.title = @"直属推荐小煜";
+    self.navigationItem.title = @"我的小煜";
     
 }
 

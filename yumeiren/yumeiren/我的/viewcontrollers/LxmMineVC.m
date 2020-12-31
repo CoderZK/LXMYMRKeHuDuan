@@ -80,7 +80,7 @@
     [self loadMyUserInfoWithOkBlock:^{
         selfWeak.topView.infoModel = [LxmTool ShareTool].userModel;
         
-        if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"3"]) {
+        if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"3"] || [[LxmTool ShareTool].userModel.roleType isEqualToString:@"4"]) {
             [self getScoreData];
         }else {
             [selfWeak.tableView reloadData];
@@ -184,7 +184,7 @@
     //    cell.clipsToBounds = YES;
     
     if (indexPath.row == 1) {
-        cell.detaillabel.text = [[NSString stringWithFormat:@"%0.2f",self.jiFenModel.my_score.doubleValue] getPriceStr];
+        cell.detaillabel.text = [[NSString stringWithFormat:@"%0.2f",self.jiFenModel.direct_score.doubleValue] getPriceStr];
     }
     
     return cell;
@@ -305,7 +305,7 @@
             }
             return 60;
         }else if (indexPath.row == 1) {
-            if ([roleType isEqualToString:@"3"]) {
+            if ([roleType isEqualToString:@"3"] || [roleType isEqualToString:@"4"]) {
                 return 60;
             }else {
                 return 0;

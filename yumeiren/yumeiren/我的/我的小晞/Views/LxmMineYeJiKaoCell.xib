@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,11 +19,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbo-S0-8Ei">
-                        <rect key="frame" x="15" y="10" width="512" height="194"/>
+                        <rect key="frame" x="15" y="10" width="512" height="226"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vW-X0-0oI">
                                 <rect key="frame" x="256" y="25" width="0.5" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="0.5" id="jE0-my-DL5"/>
                                 </constraints>
@@ -64,7 +65,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydq-yq-75s" userLabel="GV">
-                                <rect key="frame" x="15" y="95" width="482" height="79"/>
+                                <rect key="frame" x="15" y="95" width="482" height="111"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当季完成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLX-25-zre">
                                         <rect key="frame" x="15" y="15" width="58" height="17"/>
@@ -104,24 +105,48 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当季新增同级直属(人)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFz-0f-myA">
+                                        <rect key="frame" x="15" y="79" width="139" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="GzF-V7-v8r"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="NW8-Fe-NW2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gT8-0a-yPd">
+                                        <rect key="frame" x="425" y="79" width="42" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="GaB-E3-tFr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="eFz-0f-myA" secondAttribute="bottom" constant="15" id="31x-P3-ub3"/>
+                                    <constraint firstItem="gT8-0a-yPd" firstAttribute="top" secondItem="eFz-0f-myA" secondAttribute="top" id="35z-OR-YbR"/>
+                                    <constraint firstItem="gT8-0a-yPd" firstAttribute="bottom" secondItem="eFz-0f-myA" secondAttribute="bottom" id="474-7h-tge"/>
                                     <constraint firstItem="EkK-PU-1fK" firstAttribute="top" secondItem="FLX-25-zre" secondAttribute="top" id="Axv-nA-6hk"/>
-                                    <constraint firstAttribute="bottom" secondItem="BPo-bR-tLX" secondAttribute="bottom" constant="15" id="S8R-lS-XWR"/>
+                                    <constraint firstItem="gT8-0a-yPd" firstAttribute="trailing" secondItem="rOf-SO-LJk" secondAttribute="trailing" id="QuR-Dg-vhH"/>
                                     <constraint firstAttribute="trailing" secondItem="EkK-PU-1fK" secondAttribute="trailing" constant="15" id="Uxe-Ke-JtO"/>
                                     <constraint firstItem="rOf-SO-LJk" firstAttribute="bottom" secondItem="BPo-bR-tLX" secondAttribute="bottom" id="aIk-De-MWh"/>
                                     <constraint firstItem="rOf-SO-LJk" firstAttribute="trailing" secondItem="EkK-PU-1fK" secondAttribute="trailing" id="eMo-ev-LeM"/>
                                     <constraint firstItem="rOf-SO-LJk" firstAttribute="top" secondItem="BPo-bR-tLX" secondAttribute="top" id="gcZ-dc-oPZ"/>
+                                    <constraint firstItem="eFz-0f-myA" firstAttribute="top" secondItem="BPo-bR-tLX" secondAttribute="bottom" constant="15" id="i8n-3h-1oi"/>
                                     <constraint firstItem="FLX-25-zre" firstAttribute="leading" secondItem="Ydq-yq-75s" secondAttribute="leading" constant="15" id="oXH-wP-144"/>
                                     <constraint firstItem="EkK-PU-1fK" firstAttribute="bottom" secondItem="FLX-25-zre" secondAttribute="bottom" id="ofL-7N-STb"/>
                                     <constraint firstItem="FLX-25-zre" firstAttribute="top" secondItem="Ydq-yq-75s" secondAttribute="top" constant="15" id="rny-NX-Wel"/>
                                     <constraint firstItem="BPo-bR-tLX" firstAttribute="leading" secondItem="Ydq-yq-75s" secondAttribute="leading" constant="15" id="uTS-Yh-2eR"/>
                                     <constraint firstItem="BPo-bR-tLX" firstAttribute="top" secondItem="FLX-25-zre" secondAttribute="bottom" constant="15" id="vT4-AV-MiB"/>
+                                    <constraint firstItem="eFz-0f-myA" firstAttribute="leading" secondItem="Ydq-yq-75s" secondAttribute="leading" constant="15" id="zwF-aX-qto"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="Crq-8Y-Cvk" firstAttribute="leading" secondItem="zbo-S0-8Ei" secondAttribute="leading" constant="10" id="1EJ-ZI-rpj"/>
                             <constraint firstItem="3vW-X0-0oI" firstAttribute="top" secondItem="Crq-8Y-Cvk" secondAttribute="top" id="4Re-qq-i8h"/>
@@ -146,10 +171,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gII-w9-1AH">
-                        <rect key="frame" x="15" y="204" width="512" height="97"/>
+                        <rect key="frame" x="15" y="236" width="512" height="65"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总完成箱数 = 完成箱数+新增统计直属 (1个同级直属 = 15箱)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52m-Gm-qhe">
-                                <rect key="frame" x="10" y="5" width="492" height="87"/>
+                                <rect key="frame" x="10" y="5" width="492" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="9JL-C1-k0j"/>
                                 </constraints>
@@ -187,7 +212,9 @@
                 <outlet property="bottomV" destination="gII-w9-1AH" id="c4Y-uG-3jT"/>
                 <outlet property="desCon" destination="9JL-C1-k0j" id="KGC-Vk-ExD"/>
                 <outlet property="desLB" destination="52m-Gm-qhe" id="106-ux-aEB"/>
-                <outlet property="leftBottomCon" destination="S8R-lS-XWR" id="sHn-aa-Uml"/>
+                <outlet property="leftFiveCons" destination="GzF-V7-v8r" id="0Wm-8W-Rye"/>
+                <outlet property="leftFiveLB" destination="eFz-0f-myA" id="iX9-tY-Ec9"/>
+                <outlet property="leftFiveYCons" destination="i8n-3h-1oi" id="gbY-rR-gXf"/>
                 <outlet property="leftFourLB" destination="BPo-bR-tLX" id="D49-Mv-FlN"/>
                 <outlet property="leftOneLB" destination="Crq-8Y-Cvk" id="0h1-rL-B7s"/>
                 <outlet property="leftThreeLB" destination="FLX-25-zre" id="ZOZ-rn-Y5g"/>
@@ -195,6 +222,7 @@
                 <outlet property="leftTwoLB" destination="SsT-vs-bUd" id="T7j-PY-5g4"/>
                 <outlet property="numberOneLB" destination="EkK-PU-1fK" id="IUO-Zu-IiC"/>
                 <outlet property="numberTwoLB" destination="rOf-SO-LJk" id="CwZ-RS-rgb"/>
+                <outlet property="rightNumThreeLB" destination="gT8-0a-yPd" id="4aQ-dQ-XSe"/>
                 <outlet property="rightOneLB" destination="Li3-Co-TVM" id="xBb-CF-mjL"/>
                 <outlet property="rightTwoLB" destination="vbB-6E-vgL" id="Ts9-YQ-whb"/>
                 <outlet property="yjView" destination="Ydq-yq-75s" id="Noa-qj-kIu"/>
@@ -202,4 +230,12 @@
             <point key="canvasLocation" x="47.826086956521742" y="61.941964285714285"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

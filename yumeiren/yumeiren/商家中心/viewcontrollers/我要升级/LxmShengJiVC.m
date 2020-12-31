@@ -128,7 +128,7 @@
     LxmShengjiModel *model = self.otherArr[indexPath.section];
     
     if ([model.roleType isEqualToString:@"-0.5"]) {
-        if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"0"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"4"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1.05"]) {
+        if ([LxmTool.ShareTool.userModel.roleType isEqualToString:@"0"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"4"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"5"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1.05"]) {
             return;
         }
         LxmJianFeiShengJiVC *vc = [[LxmJianFeiShengJiVC alloc] init];
@@ -372,6 +372,8 @@
         _roleLabel.text = @"省服务商";
     } else if (_model.roleType.doubleValue == 4){
         _roleLabel.text = @"CEO";
+    } else if (_model.roleType.doubleValue == 5) {
+        _roleLabel.text = @"总经销商";
     }
     
 }

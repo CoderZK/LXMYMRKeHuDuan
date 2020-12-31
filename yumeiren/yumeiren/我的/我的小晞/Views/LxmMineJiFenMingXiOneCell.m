@@ -104,18 +104,15 @@
     }else if (type == 8) {
         self.titleLB.text = [NSString stringWithFormat:@"提取%@",@""];
         self.moneyLB.text = [NSString stringWithFormat:@"-%@",model.score.getPriceStr];
+    }else if (type == 9) {
+        self.titleLB.text = [NSString stringWithFormat:@" 来自-%@非直属业绩小煜%@",model.by_name,@""];
+        self.moneyLB.text = [NSString stringWithFormat:@"+%@",model.score.getPriceStr];
     }
     
     if (model.create_time.length > 3) {
         self.timeLB.text = [[model.create_time substringToIndex:model.create_time.length - 3] getIntervalToMMdd];
     }
-    
-    
-    
-    
-   
-    
-    
+
 }
 
 

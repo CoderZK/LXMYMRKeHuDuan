@@ -387,10 +387,40 @@
             case 4:
                 _roleLabel.text = @"   CEO   ";
                 break;
+            case 5:
+                _roleLabel.text = @"   总经销商   ";
+                break;
                 
             default:
                 break;
         }
+    }
+    
+    NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];
+        
+        //NSTextAttachment可以将要插入的图片作为特殊字符处理
+        NSTextAttachment *messageAttach = [[NSTextAttachment alloc] init];
+        //定义图片内容及位置和大小
+        messageAttach.image = [UIImage imageNamed:@"ss"];
+        messageAttach.bounds = CGRectMake(0, -2.5, 15, 15);
+        //创建带有图片的富文本
+        NSAttributedString *messageImageStr = [NSAttributedString attributedStringWithAttachment:messageAttach];
+//         [messageStr appendAttributedString:messageImageStr];
+        
+        //富文本中的文字
+       NSString *messageText = _roleLabel.text;
+    
+    if (model.suType.intValue == 1) {
+        NSAttributedString *messageTextStr = [[NSAttributedString alloc] initWithString:messageText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:MainColor}];
+        [messageStr appendAttributedString:messageTextStr];
+    
+        if (messageText.length >1) {
+            [messageStr insertAttributedString:messageImageStr atIndex:1];
+        }else {
+            [messageStr insertAttributedString:messageImageStr atIndex:0];
+        }
+        
+        _roleLabel.attributedText = messageStr;
     }
     
 }

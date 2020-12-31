@@ -109,7 +109,7 @@
     }];
     
     //市代有直属没有非直属，省代和ceo有直属和非直属
-    if ([self.shopInfoModel.roleType isEqualToString:@"3.1"] || [self.shopInfoModel.roleType isEqualToString:@"2.1"] || [self.shopInfoModel.roleType isEqualToString:@"3"] || [self.shopInfoModel.roleType isEqualToString:@"4"]) {
+    if ([self.shopInfoModel.roleType isEqualToString:@"3.1"] || [self.shopInfoModel.roleType isEqualToString:@"2.1"] || [self.shopInfoModel.roleType isEqualToString:@"3"] || [self.shopInfoModel.roleType isEqualToString:@"4"]|| [self.shopInfoModel.roleType isEqualToString:@"5"]) {
         self.titleArray = @[@"直属成员",@"非直属成员"];
         self.tabBar.layout.adjustContentCellsCenter = YES;
         [self initSubView];

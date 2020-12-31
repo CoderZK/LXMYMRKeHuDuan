@@ -121,7 +121,21 @@
     if (self.tousuModel) {
         self.textView.text = self.tousuModel.commend;
     }
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_back"] style:UIBarButtonItemStyleDone target:self action:@selector(baseLeftBtnClick)];
+    leftItem.tintColor = CharacterDarkColor;
+        //        leftItem.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10);
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
 }
+
+- (void)baseLeftBtnClick {
+    if (self.backBlock != nil) {
+        self.backBlock();
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 /**
  view添加子视图

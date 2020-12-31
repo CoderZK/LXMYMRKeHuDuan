@@ -111,6 +111,8 @@
 
 @property (nonatomic, strong) NSString *top_status;
 
+@property (nonatomic, strong) NSString *suType;
+
 @end
 
 
@@ -267,7 +269,7 @@
 
 @property (nonatomic, strong) NSString *order_info;/* 备注 */
 
-
+@property (nonatomic, strong) NSString *suType;
 
 @property (nonatomic, assign) CGFloat orderHeight;/* 备注高度 */
 
@@ -396,7 +398,7 @@
 @property (nonatomic, strong) NSString *saleM;/* 完成金额 */
 
 @property (nonatomic, strong) NSString *id;/* 列表id */
-
+@property (nonatomic, strong) NSString *suType;
 @end
 
 @interface LxmMyYeJiListModel1 : NSObject
@@ -479,7 +481,8 @@
 @property (nonatomic, strong) NSString *group_score;
 @property (nonatomic, strong) NSString *telephone;
 @property (nonatomic, strong) NSString *sex;
-
+@property (nonatomic, strong) NSString *suType;
+@property (nonatomic, strong) NSString *su_type;
 @end
 
 @interface LxmMyTeamListModel1 : NSObject
@@ -527,6 +530,9 @@
 @property (nonatomic, strong) NSString *monthM;/* 本月 */
 
 @property (nonatomic, strong) NSString *totalM;/* 累计 */
+
+@property (nonatomic, strong) NSString *suType;
+
 
 @end
 
@@ -707,6 +713,7 @@
 @property (nonatomic, strong) NSString *roleType;/* 角色*/
 
 @property (nonatomic, strong) NSString *id;/* 名字*/
+@property (nonatomic, strong) NSString *suType;
 
 @end
 

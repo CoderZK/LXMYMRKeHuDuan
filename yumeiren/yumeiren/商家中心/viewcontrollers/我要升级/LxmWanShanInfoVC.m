@@ -302,6 +302,9 @@
         LxmShopVC *vc = [[LxmShopVC alloc] init];
         vc.roleType = [NSString stringWithFormat:@"%@",self.model.roleType];
         self.model.suType = self.isSuXuan ? @"1":@"2";
+        if ([LxmTool ShareTool].userModel.suType.intValue == 1) {
+            self.model.suType = @"1";
+        }
         vc.shengjiModel = self.model;
         
         vc.isDeep = YES;
@@ -501,6 +504,11 @@
     
     [alertView addAction:[UIAlertAction actionWithTitle:@"继续申请" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         LxmPublishTouSuVC *vc = [[LxmPublishTouSuVC alloc] initWithTableViewStyle:UITableViewStyleGrouped type:LxmPublishTouSuVC_type_shenqingdaili];
+        
+        vc.backBlock = ^{
+            selfWeak.isSuXuan = NO;
+        };
+        
         vc.shenqingDailiBlock = ^(NSString *reason, NSString *ids) {
             NSLog(@"%@---%@",reason,ids);
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -562,7 +570,7 @@
 -(void)showMiYaoTX {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"秘钥" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField*userNameTextField = alertController.textFields.firstObject;
         NSLog(@"支付密码：%@",userNameTextField.text);

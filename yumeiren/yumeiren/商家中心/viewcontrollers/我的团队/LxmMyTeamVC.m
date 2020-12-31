@@ -737,7 +737,7 @@
     } else {
         switch (_otherInfoModel.roleType.intValue) {
             case -1:
-                [_bottomView1.roleButton setTitle:@"无" forState:UIControlStateNormal];
+                [_bottomView1.roleButton setTitle:@"无身份" forState:UIControlStateNormal];
                 break;
             case 0:
                 [_bottomView1.roleButton setTitle:@"vip门店" forState:UIControlStateNormal];
@@ -759,6 +759,14 @@
                 break;
         }
     }
+
+    if (otherInfoModel.suType.intValue == 1) {
+
+        [_bottomView1.roleButton setImage:[UIImage imageNamed:@"ss"] forState:UIControlStateNormal];
+
+
+    }
+    _bottomView1.roleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
 }
 

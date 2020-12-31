@@ -31,7 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *bottomV;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftTwoCon;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftBottomCon;
+@property (weak, nonatomic) IBOutlet UILabel *leftFiveLB;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftFiveYCons;
+@property (weak, nonatomic) IBOutlet UILabel *rightNumThreeLB;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftFiveCons;
 @property(nonatomic,assign)NSInteger type; // 1 经理
 
 @property(nonatomic,assign)BOOL isJingLi; // 100 月 101 季

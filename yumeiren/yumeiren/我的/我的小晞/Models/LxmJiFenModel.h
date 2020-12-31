@@ -39,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)CGFloat finishMoney;
 @property(nonatomic,assign)CGFloat targetMoney;
 @property(nonatomic,assign)CGFloat inviteUserNum;
+@property(nonatomic,assign)CGFloat inviteCeoNum;
+@property(nonatomic,assign)CGFloat inviteToCeoBox;
 
 
 @property(nonatomic,strong)NSString * other_info;

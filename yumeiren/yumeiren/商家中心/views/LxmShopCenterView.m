@@ -125,6 +125,8 @@
 - (UIButton *)roleButton {
     if (!_roleButton) {
         _roleButton = [[UIButton alloc] init];
+        [_roleButton setTitleColor:MainColor forState:UIControlStateNormal];
+        _roleButton.titleLabel.font = [UIFont systemFontOfSize:12];
         [_roleButton addTarget:self action:@selector(likeShengjiClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _roleButton;
@@ -173,42 +175,106 @@
     } else if ([_infoModel.roleType isEqualToString:@"3.1"]) {
            _roleLabel.text = @"   小红包系列-CEO   ";
     }else if ([_infoModel.roleType isEqualToString:@"1.05"]) {
-        _roleLabel.text = @"   优秀门店   ";
- } else{
+     
+        
+        NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];
+            
+            //NSTextAttachment可以将要插入的图片作为特殊字符处理
+            NSTextAttachment *messageAttach = [[NSTextAttachment alloc] init];
+            //定义图片内容及位置和大小
+            messageAttach.image = [UIImage imageNamed:@"ss"];
+            messageAttach.bounds = CGRectMake(0, -2.5, 15, 15);
+            //创建带有图片的富文本
+            NSAttributedString *messageImageStr = [NSAttributedString attributedStringWithAttachment:messageAttach];
+   //         [messageStr appendAttributedString:messageImageStr];
+            
+            //富文本中的文字
+           NSString *messageText = @"   优秀门店   ";
+        
+        if (infoModel.suType.intValue == 1) {
+            NSAttributedString *messageTextStr = [[NSAttributedString alloc] initWithString:messageText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:MainColor}];
+            [messageStr appendAttributedString:messageTextStr];
+        
+            if (messageStr.length >= 2) {
+                [messageStr insertAttributedString:messageImageStr atIndex:2];
+            }else {
+                [messageStr insertAttributedString:messageImageStr atIndex:0];
+            }
+            _roleLabel.attributedText = messageStr;
+        }else {
+            _roleLabel.text = messageText;
+        }
+        
+ } else {
+     
+            
+     NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];
+         
+         //NSTextAttachment可以将要插入的图片作为特殊字符处理
+         NSTextAttachment *messageAttach = [[NSTextAttachment alloc] init];
+         //定义图片内容及位置和大小
+         messageAttach.image = [UIImage imageNamed:@"ss"];
+         messageAttach.bounds = CGRectMake(0, -2.5, 15, 15);
+         //创建带有图片的富文本
+         NSAttributedString *messageImageStr = [NSAttributedString attributedStringWithAttachment:messageAttach];
+//         [messageStr appendAttributedString:messageImageStr];
+         
+         //富文本中的文字
+        NSString *messageText = @"  ";
         switch (_infoModel.roleType.intValue) {
             case -1: {
-                _roleLabel.text = @"   立刻升级   ";
+                messageText = @"    立刻升级   ";
             }
                 break;
             case 0: {
-                _roleLabel.text = @"   vip门店   ";
+                messageText = @"   vip门店   ";
             }
                 break;
             case 1: {
-                _roleLabel.text = @"   高级门店   ";
+                messageText = @"   高级门店   ";
             }
                 break;
             case 2: {
-                _roleLabel.text = @"   市服务商   ";
+                messageText = @"   市服务商   ";
             }
                 break;
             case 3: {
                 if ([LxmTool ShareTool].userModel.topStatus.intValue == 1) {
-                    _roleLabel.text = @"   联合创始人   ";
+                    messageText = @"   联合创始人   ";
                 }else {
-                    _roleLabel.text = @"   省服务商   ";
+                    messageText = @"   省服务商   ";
                 }
-                
+
             }
                 break;
             case 4: {
-                _roleLabel.text = @"   CEO   ";
+                messageText = @"   CEO   ";
             }
                 break;
-                
+            
+            case 5: {
+                messageText = @"   总经销商   ";
+            }
+                break;
+
             default:
                 break;
         }
+    
+     if (infoModel.suType.intValue == 1) {
+         NSAttributedString *messageTextStr = [[NSAttributedString alloc] initWithString:messageText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:MainColor}];
+         [messageStr appendAttributedString:messageTextStr];
+     
+         if (messageStr.length >= 2) {
+             [messageStr insertAttributedString:messageImageStr atIndex:2];
+         }else {
+             [messageStr insertAttributedString:messageImageStr atIndex:0];
+         }
+         _roleLabel.attributedText = messageStr;
+     }else {
+         _roleLabel.text = messageText;
+     }
+     
     }
 }
 
@@ -254,36 +320,104 @@
     } else if ([_shopInfoModel.roleType isEqualToString:@"3.1"]) {
         _roleLabel.text = @"   小红包系列-CEO   ";
     }else if ([_shopInfoModel.roleType isEqualToString:@"1.05"]) {
-        _roleLabel.text = @"   优秀门店   ";
-    } else {
-        switch (_shopInfoModel.roleType.intValue) {
-            case -1:
-                _roleLabel.text = @"   无身份   ";
-                break;
-            case 0:
-                 _roleLabel.text = @"   vip门店   ";
-                break;
-            case 1:
-                _roleLabel.text = @"   高级门店   ";
-                break;
-            case 2:
-                _roleLabel.text = @"   市服务商   ";
-                break;
-            case 3:
-                
-                if ([LxmTool ShareTool].userModel.topStatus.intValue == 1) {
-                    _roleLabel.text = @"   联合创始人   ";
-                }else {
-                    _roleLabel.text = @"   省服务商   ";
-                }
-                break;
-            case 4:
-                _roleLabel.text = @"   CEO   ";
-                break;
-                
-            default:
-                break;
+//        _roleLabel.text = @"   优秀门店   ";
+        
+        NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];
+            
+            //NSTextAttachment可以将要插入的图片作为特殊字符处理
+            NSTextAttachment *messageAttach = [[NSTextAttachment alloc] init];
+            //定义图片内容及位置和大小
+            messageAttach.image = [UIImage imageNamed:@"ss"];
+            messageAttach.bounds = CGRectMake(0, -2.5, 15, 15);
+            //创建带有图片的富文本
+            NSAttributedString *messageImageStr = [NSAttributedString attributedStringWithAttachment:messageAttach];
+   //         [messageStr appendAttributedString:messageImageStr];
+            
+            //富文本中的文字
+           NSString *messageText = @"   优秀门店   ";
+        
+        if (_shopInfoModel.suType.intValue == 1) {
+            NSAttributedString *messageTextStr = [[NSAttributedString alloc] initWithString:messageText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:MainColor}];
+            [messageStr appendAttributedString:messageTextStr];
+            if (messageStr.length >= 2) {
+                [messageStr insertAttributedString:messageImageStr atIndex:2];
+            }else {
+                [messageStr insertAttributedString:messageImageStr atIndex:0];
+            }
+            
+            _roleLabel.attributedText = messageStr;
+        }else {
+            _roleLabel.text = messageText;
         }
+        
+    } else {
+        
+        NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];
+            
+            //NSTextAttachment可以将要插入的图片作为特殊字符处理
+            NSTextAttachment *messageAttach = [[NSTextAttachment alloc] init];
+            //定义图片内容及位置和大小
+            messageAttach.image = [UIImage imageNamed:@"ss"];
+            messageAttach.bounds = CGRectMake(0, -2.5, 15, 15);
+            //创建带有图片的富文本
+            NSAttributedString *messageImageStr = [NSAttributedString attributedStringWithAttachment:messageAttach];
+           
+            
+          
+        
+        //富文本中的文字
+       NSString *messageText = @"";
+       switch (shopInfoModel.roleType.intValue) {
+           case -1: {
+               messageText = @"    立刻升级   ";
+           }
+               break;
+           case 0: {
+               messageText = @"   vip门店   ";
+           }
+               break;
+           case 1: {
+               messageText = @"   高级门店   ";
+           }
+               break;
+           case 2: {
+               messageText = @"   市服务商   ";
+           }
+               break;
+           case 3: {
+               if ([LxmTool ShareTool].userModel.topStatus.intValue == 1) {
+                   messageText = @"   联合创始人   ";
+               }else {
+                   messageText = @"   省服务商   ";
+               }
+
+           }
+               break;
+           case 4: {
+               messageText = @"   CEO   ";
+           }
+               break;
+           case 5: {
+               messageText = @"   总经销商   ";
+           }
+               break;
+           default:
+               break;
+       }
+   
+    if (shopInfoModel.suType.intValue == 1) {
+        NSAttributedString *messageTextStr = [[NSAttributedString alloc] initWithString:messageText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:MainColor}];
+        [messageStr appendAttributedString:messageTextStr];
+    
+        if (messageStr.length >= 2) {
+            [messageStr insertAttributedString:messageImageStr atIndex:2];
+        }else {
+            [messageStr insertAttributedString:messageImageStr atIndex:0];
+        }
+        _roleLabel.attributedText = messageStr;
+    }else {
+        _roleLabel.text = messageText;
+    }
     }
 }
 
@@ -486,7 +620,7 @@
 - (void)setShopInfoModel:(LxmShopCenterUserInfoModel *)shopInfoModel {
     _shopInfoModel = shopInfoModel;
     //CEO、省代有月和季度考核；市代是月度考核
-    if ([_shopInfoModel.roleType isEqualToString:@"3"] || [_shopInfoModel.roleType isEqualToString:@"4"] || [_shopInfoModel.roleType isEqualToString:@"2.1"]  || [_shopInfoModel.roleType isEqualToString:@"3.1"] ) {
+    if ([_shopInfoModel.roleType isEqualToString:@"3"] || [_shopInfoModel.roleType isEqualToString:@"4"]|| [_shopInfoModel.roleType isEqualToString:@"5"] || [_shopInfoModel.roleType isEqualToString:@"2.1"]  || [_shopInfoModel.roleType isEqualToString:@"3.1"] ) {
         _bgView.hidden = _leftButton.hidden = _rightButton.hidden = NO;
         _yueButton.hidden = YES;
     } else if ([_shopInfoModel.roleType isEqualToString:@"2"] || [_shopInfoModel.roleType isEqualToString:@"1.1"] ) {
@@ -678,7 +812,7 @@
     if (!_leftButton) {
         _leftButton = [[LxmShopCenterButton alloc] init];
         _leftButton.textLabel.text = @"当季完成(元)";
-        _leftButton.numLabel.text = @"188";
+        _leftButton.numLabel.text = @"0";
     }
     return _leftButton;
 }
@@ -695,7 +829,7 @@
     if (!_rightButton) {
         _rightButton = [[LxmShopCenterButton alloc] init];
         _rightButton.textLabel.text = @"当季目标(元)";
-        _rightButton.numLabel.text = @"75";
+        _rightButton.numLabel.text = @"0";
     }
     return _rightButton;
 }

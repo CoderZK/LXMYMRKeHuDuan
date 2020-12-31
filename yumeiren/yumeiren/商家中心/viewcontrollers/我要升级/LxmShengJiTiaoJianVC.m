@@ -205,7 +205,7 @@
         } else {
             self.headerView.shengjiButton.hidden = NO;
             self.headerView.shengjiButton.userInteractionEnabled = YES;
-            if ([self.model.roleType isEqualToString:@"3"] || [self.model.roleType isEqualToString:@"4"] || [self.model.roleType isEqualToString:@"2.1"] || [self.model.roleType isEqualToString:@"3.1"]) {
+            if ([self.model.roleType isEqualToString:@"3"] || [self.model.roleType isEqualToString:@"4"]|| [self.model.roleType isEqualToString:@"5"] || [self.model.roleType isEqualToString:@"2.1"] || [self.model.roleType isEqualToString:@"3.1"]) {
                 [self.headerView.shengjiButton setTitle:@"申请审核" forState:UIControlStateNormal];
             } else {
                 [self.headerView.shengjiButton setTitle:@"立即升级" forState:UIControlStateNormal];
@@ -218,7 +218,7 @@
     }
     
     self.headerView.agreeButton.hidden = YES;
-    if ([self.model.roleType isEqualToString:@"2"] || [self.model.roleType isEqualToString:@"3"] || [self.model.roleType isEqualToString:@"4"] || [self.model.roleType isEqualToString:@"1.1"] || [self.model.roleType isEqualToString:@"2.1"] || [self.model.roleType isEqualToString:@"3.1"]) {
+    if ([self.model.roleType isEqualToString:@"2"] || [self.model.roleType isEqualToString:@"3"] || [self.model.roleType isEqualToString:@"4"] || [self.model.roleType isEqualToString:@"5"] ||[self.model.roleType isEqualToString:@"1.1"] || [self.model.roleType isEqualToString:@"2.1"] || [self.model.roleType isEqualToString:@"3.1"]) {
         if (state == 0 || state == 1 || state == 2 || state == 3 || state == 7 || state == 8) {
             self.headerView.agreeButton.hidden = NO;
         }
@@ -261,6 +261,9 @@
                 _headerView.iconImgView.image = [UIImage imageNamed:@"shengdai"];
                 break;
             case 4: {
+                _headerView.iconImgView.image = [UIImage imageNamed:@"ceo1"];
+            }
+            case 5: {
                 _headerView.iconImgView.image = [UIImage imageNamed:@"ceo1"];
             }
                 break;
@@ -490,7 +493,7 @@
                 } else {
                     if ([self.model.roleType isEqualToString:@"3"] || [self.model.roleType isEqualToString:@"2.1"] ) {
                         [selfWeak becomeShengjiDaili];
-                    } else if ([self.model.roleType isEqualToString:@"4"] || [self.model.roleType isEqualToString:@"3.1"]) {
+                    } else if ([self.model.roleType isEqualToString:@"4"] || [self.model.roleType isEqualToString:@"5"] || [self.model.roleType isEqualToString:@"3.1"]) {
                         [selfWeak becomeCEO];
                     } else {
                         if (self.model.checkType.intValue == 4) {//直接完善信息购物
