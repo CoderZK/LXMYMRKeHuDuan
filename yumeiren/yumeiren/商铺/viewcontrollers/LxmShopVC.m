@@ -322,6 +322,9 @@
     }else {
         dict[@"noVip"] = @"1";
     }
+    if (self.shengjiModel.suType.length > 0) {
+        dict[@"su_type"] = self.shengjiModel.suType;
+    }
     [LxmNetworking networkingPOST:good_first_type_list parameters:dict returnClass:LxmSuCaiContentTypeRootModel.class success:^(NSURLSessionDataTask *task, LxmSuCaiContentTypeRootModel *responseObject) {
         [SVProgressHUD dismiss];
         if (responseObject.key.integerValue == 1000) {

@@ -997,6 +997,8 @@
             });
         } else if (self.type == LxmPayVC_type_shengjigouwu) {
             [LxmEventBus sendEvent:@"jiesuanSuccess" data:nil];
+            [[LxmTool ShareTool] delAllGoods];
+            
             [self popvc];
         } else{
             

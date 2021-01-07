@@ -766,7 +766,10 @@
 
 
     }
-    _bottomView1.roleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _bottomView1.roleButton.layer.cornerRadius = 3;
+    _bottomView1.roleButton.layer.borderColor = MainColor.CGColor;
+    _bottomView1.roleButton.layer.borderWidth = 0.5;
+//    _bottomView1.roleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
 }
 

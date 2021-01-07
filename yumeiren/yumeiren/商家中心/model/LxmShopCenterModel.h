@@ -202,6 +202,7 @@
 @property (nonatomic, strong) NSString *num;/* 商品数量 */
 
 @property (nonatomic, strong) NSString *proxy_price;/* 商品代理价 */
+@property (nonatomic, strong) NSString *down_price;
 
 @end
 

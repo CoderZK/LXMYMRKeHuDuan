@@ -305,6 +305,11 @@
         if ([LxmTool ShareTool].userModel.suType.intValue == 1) {
             self.model.suType = @"1";
         }
+        
+        if (self.model.roleType.doubleValue == 2 || self.model.roleType.doubleValue == 3 || self.model.roleType.doubleValue == 4) {
+            self.model.suType = @"3";
+        }
+        
         vc.shengjiModel = self.model;
         
         vc.isDeep = YES;
@@ -360,7 +365,12 @@
             dict[@"su_type"] = @"1";
             dict[@"su_code"] = self.miYaoStr;
         }else {
-            dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+            
+            if (self.model.roleType.doubleValue == 2 || self.model.roleType.doubleValue == 3 || self.model.roleType.doubleValue == 4) {
+                dict[@"su_type"] = @"3";
+            }else {
+                dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+            }
         }
         if (self.recommend_code.isValid) {
             dict[@"recommend_code"] = self.recommend_code;
@@ -459,7 +469,14 @@
                         dict[@"su_type"] = @"1";
                         dict[@"su_code"] = self.miYaoStr;
                     }else {
-                        dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+                        
+                        if (self.model.roleType.doubleValue == 2 || self.model.roleType.doubleValue == 3 || self.model.roleType.doubleValue == 4) {
+                            dict[@"su_type"] = @"3";
+                        }else {
+                            dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+                        }
+                        
+                        
                     }
                     if (self.recommend_code.isValid) {
                         dict[@"recommend_code"] = self.recommend_code;
@@ -494,9 +511,9 @@
     
     WeakObj(self);
     NSString * str = @"您好，由于区域保护内有其它合作店家，系统无法录入，敬请谅解；是否继续申请代理 ?";
-    if ([LxmTool ShareTool].userModel.suType.intValue == 1 || self.isSuXuan) {
-        //束轩
-        str = @"您好，由于区域保护内有\"束轩\"其它合作店家，系统无法录入，敬请谅解；是否继续申请代理 ?";
+    if (([LxmTool ShareTool].userModel.suType.intValue == 1 || self.isSuXuan) && self.model.roleType.intValue < 2) {
+        //其它代理
+        str = @"您好，由于区域保护内有\"其它系列\"，系统无法录入，敬请谅解；是否继续申请代理 ?";
         
     }
     
@@ -529,7 +546,12 @@
                 dict[@"su_code"] = self.miYaoStr;
            
             }else {
-                dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+                
+                if (self.model.roleType.doubleValue == 2 || self.model.roleType.doubleValue == 3 || self.model.roleType.doubleValue == 4) {
+                    dict[@"su_type"] = @"3";
+                }else {
+                    dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+                }
             }
             
             if (self.recommend_code.isValid) {
@@ -553,8 +575,8 @@
         
         [selfWeak.navigationController pushViewController:vc animated:YES];
     }]];
-    if ([LxmTool ShareTool].userModel.suType.intValue == 2 && self.isSuXuan == NO) {
-        [alertView addAction:[UIAlertAction actionWithTitle:@"申请束宣" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    if ([LxmTool ShareTool].userModel.suType.intValue == 2 && self.isSuXuan == NO && self.model.roleType.intValue < 2) {
+        [alertView addAction:[UIAlertAction actionWithTitle:@"申请其它系列" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             self.isSuXuan = YES;
             [self showMiYaoTX];
             //

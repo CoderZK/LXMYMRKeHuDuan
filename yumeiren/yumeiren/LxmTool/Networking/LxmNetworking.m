@@ -31,6 +31,11 @@
     [mDict setValue:device forKey:@"deviceId"];
     [mDict setValue:@1 forKey:@"deviceType"];
     
+    if ([LxmTool ShareTool].isLogin) {
+        mDict[@"token"] = [LxmTool ShareTool].session_token;
+    }
+    
+    
     return [manager POST:urlStr parameters:mDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([[responseObject objectForKey:@"key"] integerValue] == 1001) {
             //用户未登录
@@ -66,6 +71,9 @@
     NSString *device = [NSString stringWithFormat:@"%@",[[UIDevice currentDevice] identifierForVendor]];
     [mDict setValue:device forKey:@"deviceId"];
     [mDict setValue:@1 forKey:@"deviceType"];
+    if ([LxmTool ShareTool].isLogin) {
+        mDict[@"token"] = [LxmTool ShareTool].session_token;
+    }
     return [manager GET:urlStr parameters:mDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
             id obj = responseObject;
@@ -95,6 +103,9 @@
     NSString *device = [NSString stringWithFormat:@"%@",[[UIDevice currentDevice] identifierForVendor]];
     [mDict setValue:device forKey:@"device_id"];
     [mDict setValue:@1 forKey:@"channel"];
+    if ([LxmTool ShareTool].isLogin) {
+        mDict[@"token"] = [LxmTool ShareTool].session_token;
+    }
     NSString *version = [NSString stringWithFormat:@"V%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
     [mDict setValue:version forKey:@"version"];
     NSString *mdSignature = [NSString stringToMD5:[NSString stringWithFormat:@"%@%@%@%@",device,@1,version,[device substringFromIndex:device.length-5]]];
@@ -140,7 +151,9 @@
     [mDict setValue:version forKey:@"version"];
     NSString *mdSignature = [NSString stringToMD5:[NSString stringWithFormat:@"%@%@%@%@",device,@1,version,[device substringFromIndex:device.length-5]]];
     [mDict setValue:[NSString stringWithFormat:@"%@1",mdSignature] forKey:@"signature"];
-    
+    if ([LxmTool ShareTool].isLogin) {
+        mDict[@"token"] = [LxmTool ShareTool].session_token;
+    }
     [manager POST:urlStr parameters:mDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         if (image1) {
             [formData appendPartWithFileData:UIImageJPEGRepresentation(image1, 0.5) name:name1 fileName:@"123.jpg" mimeType:@"image/jpeg"];
@@ -187,6 +200,9 @@
     [mDict setValue:@1 forKey:@"channel"];
     NSString *version = [NSString stringWithFormat:@"V%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
     [mDict setValue:version forKey:@"version"];
+    if ([LxmTool ShareTool].isLogin) {
+        mDict[@"token"] = [LxmTool ShareTool].session_token;
+    }
     NSString *mdSignature = [NSString stringToMD5:[NSString stringWithFormat:@"%@%@%@%@",device,@1,version,[device substringFromIndex:device.length-5]]];
     [mDict setValue:[NSString stringWithFormat:@"%@1",mdSignature] forKey:@"signature"];
     

@@ -231,6 +231,11 @@
                 cell = [[LxmYiJianBuHuoGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmYiJianBuHuoGoodsCell"];
             }
             cell.isHaveSelect = YES;
+//            if (indexPath.section - 2 < self.rootModel.result.map.orders.count) {
+//                cell.isXiaJi = YES;
+//            }else {
+//                cell.isXiaJi = NO;
+//            }
             cell.orderModel = self.dataArr[indexPath.section - 2].sub[indexPath.row - 2];
             return cell;
         }

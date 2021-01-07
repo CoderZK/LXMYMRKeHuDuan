@@ -389,6 +389,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = SESSION_TOKEN;
     dict[@"infoType"] = self.isClass ? @2 : @1;
+    
     [LxmNetworking networkingPOST:hot_words parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         if ([responseObject[@"key"] integerValue] == 1000) {
@@ -425,6 +426,8 @@
     }
     if (self.shengjiModel.suType.length > 0) {
         dict[@"su_type"] = self.shengjiModel.suType;
+    }else {
+        dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
     }
     WeakObj(self);
     [LxmNetworking networkingPOST:group_good_list parameters:dict returnClass:LxmShopListRootModel.class success:^(NSURLSessionDataTask *task, LxmShopListRootModel *responseObject) {
@@ -475,6 +478,7 @@
     }
     dict[@"pageNum"] = @(self.page);
     dict[@"pageSize"] = @10;
+    
     WeakObj(self);
     [LxmNetworking networkingPOST:course_list parameters:dict returnClass:LxmClassRootModel.class success:^(NSURLSessionDataTask *task, LxmClassRootModel *responseObject) {
         StrongObj(self);

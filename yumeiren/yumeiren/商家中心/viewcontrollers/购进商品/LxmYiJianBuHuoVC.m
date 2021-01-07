@@ -1049,6 +1049,12 @@
     CGFloat f1 = _orderModel.proxy_price.doubleValue;
     NSInteger d1 = _orderModel.proxy_price.integerValue;
     
+    if (self.isXiaJi) {
+        f1 = _orderModel.down_price.doubleValue;
+        d1 = _orderModel.down_price.integerValue;
+    }
+    
+    
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:f1==d1 ? [NSString stringWithFormat:@"¥%ld ",d1] : [NSString stringWithFormat:@"¥%.2f ",f1] attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15],NSForegroundColorAttributeName:MainColor}];
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:f==d ? [NSString stringWithFormat:@"¥%ld ",d] : [NSString stringWithFormat:@"¥%.2f ",f] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:CharacterLightGrayColor,NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle | NSUnderlinePatternSolid)}];
     [att appendAttributedString:str];

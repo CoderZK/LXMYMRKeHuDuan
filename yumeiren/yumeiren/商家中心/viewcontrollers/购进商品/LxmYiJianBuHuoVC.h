@@ -50,6 +50,8 @@
 
 @property (nonatomic, assign) bool isHaveSelect;//是否有选择按钮
 
+@property (nonatomic, assign) bool isXiaJi;//是否是下级,下级展示down_price
+
 @end
 
 @interface LxmYiJianBuHuoDanFootView : UIControl

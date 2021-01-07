@@ -67,11 +67,11 @@
     [self.roleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.detailLabel.mas_bottom).offset(10);
         make.leading.equalTo(self).offset(20);
-        make.width.equalTo(@120);
-        make.height.equalTo(@50);
+//        make.width.equalTo(@120);
+        make.height.equalTo(@20);
     }];
     [self.roleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.leading.equalTo(self.roleButton);
+        make.top.leading.trailing.equalTo(self.roleButton);
         make.height.equalTo(@24);
     }];
 }
