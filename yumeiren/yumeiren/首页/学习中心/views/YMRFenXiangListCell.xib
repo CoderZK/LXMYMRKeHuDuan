@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="KGk-i7-Jjw" customClass="YMRFenXiangListCell">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="467" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-bz-bXF">
+                        <rect key="frame" x="15" y="15" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="moY-ZL-e18"/>
+                            <constraint firstAttribute="height" constant="35" id="ywq-2f-32P"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEe-c0-xmc">
+                        <rect key="frame" x="60" y="15" width="35.5" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="yr3-UE-HQt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHU-TP-KTH">
+                        <rect key="frame" x="105.5" y="25" width="46" height="15"/>
+                        <color key="backgroundColor" red="1" green="0.77254901960784317" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="Dox-lf-ZVg"/>
+                            <constraint firstAttribute="height" constant="15" id="mRG-Rz-k1R"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                        <state key="normal" title="Lv88" image="xingxing"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPq-zA-aNP">
+                        <rect key="frame" x="60" y="50" width="31" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="4iN-6I-jsr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST7-57-RZJ">
+                        <rect key="frame" x="0.0" y="159.5" width="467" height="0.5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="v4K-Jw-QYa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gPq-zA-aNP" firstAttribute="leading" secondItem="fEe-c0-xmc" secondAttribute="leading" id="Ahg-UG-2g0"/>
+                    <constraint firstItem="gdp-bz-bXF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Mcd-69-B7p"/>
+                    <constraint firstItem="XHU-TP-KTH" firstAttribute="centerY" secondItem="gdp-bz-bXF" secondAttribute="centerY" id="R9p-eu-QGa"/>
+                    <constraint firstItem="fEe-c0-xmc" firstAttribute="centerY" secondItem="gdp-bz-bXF" secondAttribute="centerY" id="SSa-VZ-bYi"/>
+                    <constraint firstItem="XHU-TP-KTH" firstAttribute="leading" secondItem="fEe-c0-xmc" secondAttribute="trailing" constant="10" id="V0e-6v-pb7"/>
+                    <constraint firstItem="gdp-bz-bXF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="bzb-Jt-clA"/>
+                    <constraint firstItem="fEe-c0-xmc" firstAttribute="leading" secondItem="gdp-bz-bXF" secondAttribute="trailing" constant="10" id="d9g-hN-e3H"/>
+                    <constraint firstItem="gPq-zA-aNP" firstAttribute="top" secondItem="fEe-c0-xmc" secondAttribute="bottom" id="dAk-yd-9ON"/>
+                    <constraint firstAttribute="trailing" secondItem="ST7-57-RZJ" secondAttribute="trailing" id="gCt-qG-3N9"/>
+                    <constraint firstAttribute="bottom" secondItem="ST7-57-RZJ" secondAttribute="bottom" id="nHb-Cn-92e"/>
+                    <constraint firstItem="ST7-57-RZJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qgj-rR-NcP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="headBt" destination="gdp-bz-bXF" id="btf-n9-NZb"/>
+                <outlet property="levelBt" destination="XHU-TP-KTH" id="tu2-Iu-V2e"/>
+                <outlet property="linev" destination="ST7-57-RZJ" id="MrQ-sa-gTQ"/>
+                <outlet property="nameLB" destination="fEe-c0-xmc" id="iRf-mc-aR1"/>
+                <outlet property="timeLB" destination="gPq-zA-aNP" id="Wbo-Ig-aL9"/>
+            </connections>
+            <point key="canvasLocation" x="-107.97101449275362" y="33.482142857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="xingxing" width="9" height="9"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

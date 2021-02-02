@@ -31,5 +31,5 @@
 #import "LxmHomeModel.h"
 
 #import "UITableViewCell+SendTachCellEnent.h"
-
+#import "ALCAudioTool.h"
 #endif /* LxmHeader_h */

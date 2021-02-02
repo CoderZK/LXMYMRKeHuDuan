@@ -243,6 +243,20 @@
 		588589B5256CD0A90015D2FA /* UITableViewCell+SendTachCellEnent.m in Sources */ = {isa = PBXBuildFile; fileRef = 588589B4256CD0A90015D2FA /* UITableViewCell+SendTachCellEnent.m */; };
 		588EFC71256B44A200F37B70 /* YMRShowGengXinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588EFC70256B44A200F37B70 /* YMRShowGengXinView.m */; };
 		588EFC74256B44D700F37B70 /* YMRTiShiShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588EFC73256B44D700F37B70 /* YMRTiShiShowView.m */; };
+		589332DA25C8D696008E4887 /* YMRShowLuYinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332D925C8D696008E4887 /* YMRShowLuYinView.m */; };
+		589332DD25C8DBC6008E4887 /* YMRLuYinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332DC25C8DBC6008E4887 /* YMRLuYinView.m */; };
+		589332E725C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332E625C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m */; };
+		589332EB25C8F811008E4887 /* YMRWenZhangListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332E925C8F811008E4887 /* YMRWenZhangListCell.m */; };
+		589332EC25C8F811008E4887 /* YMRWenZhangListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589332EA25C8F811008E4887 /* YMRWenZhangListCell.xib */; };
+		589332F025C8FE47008E4887 /* YMRFenXiangListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332EE25C8FE47008E4887 /* YMRFenXiangListCell.m */; };
+		589332F125C8FE47008E4887 /* YMRFenXiangListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589332EF25C8FE47008E4887 /* YMRFenXiangListCell.xib */; };
+		589332F425C8FE69008E4887 /* YMRWenZhangDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332F325C8FE69008E4887 /* YMRWenZhangDetailTVC.m */; };
+		589332F725C90501008E4887 /* YMRFenXiangNeiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332F625C90501008E4887 /* YMRFenXiangNeiView.m */; };
+		58C90A3425C936E800B6C386 /* YMRAddMusicTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C90A3325C936E800B6C386 /* YMRAddMusicTVC.m */; };
+		58C90A3825C9370200B6C386 /* YMRAddMusicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C90A3625C9370200B6C386 /* YMRAddMusicCell.m */; };
+		58C90A3925C9370200B6C386 /* YMRAddMusicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58C90A3725C9370200B6C386 /* YMRAddMusicCell.xib */; };
+		58C90A3C25C93D3100B6C386 /* ALCAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C90A3B25C93D3100B6C386 /* ALCAudioTool.m */; };
+		58CE21FA25C92ABF00B76AF3 /* YMRGenDuTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CE21F925C92ABF00B76AF3 /* YMRGenDuTV.m */; };
 		5F38F6922428E20A00AE62E9 /* LxmPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F38F6912428E20A00AE62E9 /* LxmPlayer.m */; };
 /* End PBXBuildFile section */
 
@@ -703,7 +717,32 @@
 		588EFC70256B44A200F37B70 /* YMRShowGengXinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShowGengXinView.m; sourceTree = "<group>"; };
 		588EFC72256B44D700F37B70 /* YMRTiShiShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRTiShiShowView.h; sourceTree = "<group>"; };
 		588EFC73256B44D700F37B70 /* YMRTiShiShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRTiShiShowView.m; sourceTree = "<group>"; };
+		589332D825C8D696008E4887 /* YMRShowLuYinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRShowLuYinView.h; sourceTree = "<group>"; };
+		589332D925C8D696008E4887 /* YMRShowLuYinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShowLuYinView.m; sourceTree = "<group>"; };
+		589332DB25C8DBC6008E4887 /* YMRLuYinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRLuYinView.h; sourceTree = "<group>"; };
+		589332DC25C8DBC6008E4887 /* YMRLuYinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRLuYinView.m; sourceTree = "<group>"; };
+		589332E525C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRXueXiWenZhangListTVC.h; sourceTree = "<group>"; };
+		589332E625C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRXueXiWenZhangListTVC.m; sourceTree = "<group>"; };
+		589332E825C8F811008E4887 /* YMRWenZhangListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRWenZhangListCell.h; sourceTree = "<group>"; };
+		589332E925C8F811008E4887 /* YMRWenZhangListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRWenZhangListCell.m; sourceTree = "<group>"; };
+		589332EA25C8F811008E4887 /* YMRWenZhangListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMRWenZhangListCell.xib; sourceTree = "<group>"; };
+		589332ED25C8FE47008E4887 /* YMRFenXiangListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRFenXiangListCell.h; sourceTree = "<group>"; };
+		589332EE25C8FE47008E4887 /* YMRFenXiangListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRFenXiangListCell.m; sourceTree = "<group>"; };
+		589332EF25C8FE47008E4887 /* YMRFenXiangListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMRFenXiangListCell.xib; sourceTree = "<group>"; };
+		589332F225C8FE69008E4887 /* YMRWenZhangDetailTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRWenZhangDetailTVC.h; sourceTree = "<group>"; };
+		589332F325C8FE69008E4887 /* YMRWenZhangDetailTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRWenZhangDetailTVC.m; sourceTree = "<group>"; };
+		589332F525C90501008E4887 /* YMRFenXiangNeiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRFenXiangNeiView.h; sourceTree = "<group>"; };
+		589332F625C90501008E4887 /* YMRFenXiangNeiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRFenXiangNeiView.m; sourceTree = "<group>"; };
 		589848F524A9EED1004059FC /* 涵曦测试Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "涵曦测试Debug.entitlements"; sourceTree = "<group>"; };
+		58C90A3225C936E800B6C386 /* YMRAddMusicTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRAddMusicTVC.h; sourceTree = "<group>"; };
+		58C90A3325C936E800B6C386 /* YMRAddMusicTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRAddMusicTVC.m; sourceTree = "<group>"; };
+		58C90A3525C9370200B6C386 /* YMRAddMusicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRAddMusicCell.h; sourceTree = "<group>"; };
+		58C90A3625C9370200B6C386 /* YMRAddMusicCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRAddMusicCell.m; sourceTree = "<group>"; };
+		58C90A3725C9370200B6C386 /* YMRAddMusicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMRAddMusicCell.xib; sourceTree = "<group>"; };
+		58C90A3A25C93D3100B6C386 /* ALCAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALCAudioTool.h; sourceTree = "<group>"; };
+		58C90A3B25C93D3100B6C386 /* ALCAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCAudioTool.m; sourceTree = "<group>"; };
+		58CE21F825C92ABF00B76AF3 /* YMRGenDuTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRGenDuTV.h; sourceTree = "<group>"; };
+		58CE21F925C92ABF00B76AF3 /* YMRGenDuTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRGenDuTV.m; sourceTree = "<group>"; };
 		5F38F6902428E20A00AE62E9 /* LxmPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmPlayer.h; sourceTree = "<group>"; };
 		5F38F6912428E20A00AE62E9 /* LxmPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1062,6 +1101,7 @@
 		4078928922D4691D00716C1C /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				589332E225C8F77F008E4887 /* 学习中心 */,
 				5885884924CEA76F00847BBA /* 积分商城 */,
 				40D7F27323FFDD64005D4CC0 /* 培训课堂 */,
 				4015E99C22E5E45B00B91764 /* 投诉中心 */,
@@ -1659,6 +1699,54 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		589332E225C8F77F008E4887 /* 学习中心 */ = {
+			isa = PBXGroup;
+			children = (
+				589332E425C8F796008E4887 /* views */,
+				589332E325C8F78E008E4887 /* VC */,
+			);
+			path = "学习中心";
+			sourceTree = "<group>";
+		};
+		589332E325C8F78E008E4887 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				589332E525C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.h */,
+				589332E625C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m */,
+				589332F225C8FE69008E4887 /* YMRWenZhangDetailTVC.h */,
+				589332F325C8FE69008E4887 /* YMRWenZhangDetailTVC.m */,
+				58CE21F825C92ABF00B76AF3 /* YMRGenDuTV.h */,
+				58CE21F925C92ABF00B76AF3 /* YMRGenDuTV.m */,
+				58C90A3225C936E800B6C386 /* YMRAddMusicTVC.h */,
+				58C90A3325C936E800B6C386 /* YMRAddMusicTVC.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		589332E425C8F796008E4887 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				589332E825C8F811008E4887 /* YMRWenZhangListCell.h */,
+				589332E925C8F811008E4887 /* YMRWenZhangListCell.m */,
+				589332EA25C8F811008E4887 /* YMRWenZhangListCell.xib */,
+				589332ED25C8FE47008E4887 /* YMRFenXiangListCell.h */,
+				589332EE25C8FE47008E4887 /* YMRFenXiangListCell.m */,
+				589332EF25C8FE47008E4887 /* YMRFenXiangListCell.xib */,
+				589332F525C90501008E4887 /* YMRFenXiangNeiView.h */,
+				589332F625C90501008E4887 /* YMRFenXiangNeiView.m */,
+				589332D825C8D696008E4887 /* YMRShowLuYinView.h */,
+				589332D925C8D696008E4887 /* YMRShowLuYinView.m */,
+				589332DB25C8DBC6008E4887 /* YMRLuYinView.h */,
+				589332DC25C8DBC6008E4887 /* YMRLuYinView.m */,
+				58C90A3525C9370200B6C386 /* YMRAddMusicCell.h */,
+				58C90A3625C9370200B6C386 /* YMRAddMusicCell.m */,
+				58C90A3725C9370200B6C386 /* YMRAddMusicCell.xib */,
+				58C90A3A25C93D3100B6C386 /* ALCAudioTool.h */,
+				58C90A3B25C93D3100B6C386 /* ALCAudioTool.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		5F38F68F2428E1F300AE62E9 /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -1748,14 +1836,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589332F125C8FE47008E4887 /* YMRFenXiangListCell.xib in Resources */,
 				40E48494230A705A007793DB /* audio-visual_play.png in Resources */,
 				4078924D22D4441000716C1C /* LaunchScreen.storyboard in Resources */,
 				4078924A22D4441000716C1C /* Assets.xcassets in Resources */,
 				40B4F23E22F27E290077823C /* icon_fullscreen.png in Resources */,
+				589332EC25C8F811008E4887 /* YMRWenZhangListCell.xib in Resources */,
 				587F739924EE56C40030B620 /* LxmZhuanChuJiFenVC.xib in Resources */,
 				4078924822D4440C00716C1C /* Main.storyboard in Resources */,
 				40E48496230A7072007793DB /* icon_sliderImage@2x.png in Resources */,
 				40E48492230A7044007793DB /* audio_pause.png in Resources */,
+				58C90A3925C9370200B6C386 /* YMRAddMusicCell.xib in Resources */,
 				400158BD230FD0DE00AC5BA3 /* mx_pic_selected_yes@2x.png in Resources */,
 				40C3A23022EAE1D300F3E510 /* mx_picker_back_image@2x.png in Resources */,
 				587F73AE24EE57830030B620 /* LxmJiFenDetailOneCell.xib in Resources */,
@@ -1836,6 +1927,7 @@
 				40E431A02317879600B1AE41 /* LxmZhuanYuEVC.m in Sources */,
 				587F739524EE56B10030B620 /* LxmJiFenDeatilOneTVC.m in Sources */,
 				584CDC2324CFCBCB00C32A75 /* LxmMineJiFenTVC.m in Sources */,
+				589332EB25C8F811008E4887 /* YMRWenZhangListCell.m in Sources */,
 				40DC053B22E98BE900570241 /* LxmTiXianVC.m in Sources */,
 				4015E9A522E5F5F600B91764 /* LxmPublishTouSuVC.m in Sources */,
 				400C6C7822E04D6C008C59C9 /* LxmAboutUSVC.m in Sources */,
@@ -1865,6 +1957,8 @@
 				584CDC2724CFD3D500C32A75 /* LxmJiFenOneCell.m in Sources */,
 				404391E92334BC8600099137 /* LxmRenZhengProtocolVC.m in Sources */,
 				402F935122E6FE7B009F5E06 /* LxmAddAddressVC.m in Sources */,
+				589332F025C8FE47008E4887 /* YMRFenXiangListCell.m in Sources */,
+				58C90A3C25C93D3100B6C386 /* ALCAudioTool.m in Sources */,
 				40BDB80722E03DAC00FBFE70 /* LxmLoginVC.m in Sources */,
 				4061A81C22E2ECB0004D127C /* LxmJieDanPlatTabbarController.m in Sources */,
 				407892B122D47D6B00716C1C /* LxmShopView.m in Sources */,
@@ -1873,6 +1967,7 @@
 				400C83D222F1336200AB2874 /* MLYPhotoCell.m in Sources */,
 				402C823C22E19277005B5AC1 /* LxmPublishView.m in Sources */,
 				40E2F93622F8079C008A7881 /* LxmJieDanMyPublishDetailVC.m in Sources */,
+				58C90A3825C9370200B6C386 /* YMRAddMusicCell.m in Sources */,
 				587F738F24EE56510030B620 /* LxmMineJiFenXiaJiTVC.m in Sources */,
 				5F38F6922428E20A00AE62E9 /* LxmPlayer.m in Sources */,
 				40C3A23522EAE1D300F3E510 /* MXPhotoPickerController.m in Sources */,
@@ -1893,6 +1988,7 @@
 				405A8E7322E1C36C00D5CA3A /* LxmBandPhoneVC.m in Sources */,
 				40F4BF0922E84D7E00C48BA2 /* LxmSubMyTeamVC.m in Sources */,
 				40F1AF3422E5895C00D78186 /* LxmZiTiVC.m in Sources */,
+				589332DD25C8DBC6008E4887 /* YMRLuYinView.m in Sources */,
 				407892BD22D47DCA00716C1C /* LxmShopCarView.m in Sources */,
 				4078929322D4713E00716C1C /* LxmUserInfoModel.m in Sources */,
 				407892C022D47DDF00716C1C /* LxmMineView.m in Sources */,
@@ -1925,6 +2021,7 @@
 				40D7F27923FFDFA5005D4CC0 /* LxmSubInfoClassVC.m in Sources */,
 				40B3267622F4266300F7DA81 /* LxmJiaJiaAlertView.m in Sources */,
 				587F73B724EE57BB0030B620 /* LxmMineJiFenMingXiOneCell.m in Sources */,
+				58C90A3425C936E800B6C386 /* YMRAddMusicTVC.m in Sources */,
 				588EFC71256B44A200F37B70 /* YMRShowGengXinView.m in Sources */,
 				5885884E24CEA7CA00847BBA /* LxmJiFenShopFatherVC.m in Sources */,
 				40CC3C3323137C4700D380F1 /* LxmPublishSuccessAlertView.m in Sources */,
@@ -1940,10 +2037,12 @@
 				400C83D322F1336200AB2874 /* MLYPhoto.m in Sources */,
 				407892AB22D47D3700716C1C /* LxmHomeView.m in Sources */,
 				40DC052622E9509C00570241 /* LxmWanShanInfoVC.m in Sources */,
+				58CE21FA25C92ABF00B76AF3 /* YMRGenDuTV.m in Sources */,
 				400460F522E8858600142850 /* LxmSeeOtherInfoVC.m in Sources */,
 				4078924222D4440C00716C1C /* AppDelegate.m in Sources */,
 				587F73A624EE57050030B620 /* LxmLiShiXiaoXiVC.m in Sources */,
 				4015E99F22E5E47700B91764 /* LxmTouSuCenterVC.m in Sources */,
+				589332DA25C8D696008E4887 /* YMRShowLuYinView.m in Sources */,
 				40DC052E22E9597500570241 /* LxmQianBaoMessageVC.m in Sources */,
 				587F73AD24EE57830030B620 /* LxmJiFenDetailOneCell.m in Sources */,
 				40DC054122E99EC900570241 /* LxmSelectBankVC.m in Sources */,
@@ -1966,6 +2065,7 @@
 				4040B05722F8510300292A5F /* LxmJieDanMyAcceptDetailVC.m in Sources */,
 				40C3A22F22EAE1D300F3E510 /* UIViewController+MXPhotoPicker.m in Sources */,
 				400460F822E88D8100142850 /* LxmUserInfoView.m in Sources */,
+				589332E725C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m in Sources */,
 				4019530822FBF2450093ABF0 /* LxmShengJiProtocolAlertView.m in Sources */,
 				40E4319D23177CFF00B1AE41 /* LxmKeTangNoAlertView.m in Sources */,
 				40E4848E230A3413007793DB /* LxmWebViewController.m in Sources */,
@@ -2003,6 +2103,8 @@
 				407892B722D47DA000716C1C /* LxmShopCenterView.m in Sources */,
 				4061A83422E35120004D127C /* LxmJieDanImageCollectionViewCell.m in Sources */,
 				40F4BF0C22E85A2000C48BA2 /* LxmSeeOtherKuCunVC.m in Sources */,
+				589332F725C90501008E4887 /* YMRFenXiangNeiView.m in Sources */,
+				589332F425C8FE69008E4887 /* YMRWenZhangDetailTVC.m in Sources */,
 				40A9CA1722EEE1E800D34273 /* LxmNetworking.m in Sources */,
 				40DAA18E22E9DD600060259E /* LxmJiaoYIRecordVC.m in Sources */,
 				40DC053E22E9979A00570241 /* LxmBankListVC.m in Sources */,
