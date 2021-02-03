@@ -255,6 +255,7 @@
 		58926B1F25CA8163008FB84A /* YMRWenZhangJiFenListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B1D25CA8163008FB84A /* YMRWenZhangJiFenListCell.m */; };
 		58926B2025CA8163008FB84A /* YMRWenZhangJiFenListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58926B1E25CA8163008FB84A /* YMRWenZhangJiFenListCell.xib */; };
 		58926B2325CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B2225CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m */; };
+		58926B2625CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B2525CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.m */; };
 		589332DA25C8D696008E4887 /* YMRShowLuYinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332D925C8D696008E4887 /* YMRShowLuYinView.m */; };
 		589332DD25C8DBC6008E4887 /* YMRLuYinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332DC25C8DBC6008E4887 /* YMRLuYinView.m */; };
 		589332E725C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332E625C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m */; };
@@ -750,6 +751,8 @@
 		58926B1E25CA8163008FB84A /* YMRWenZhangJiFenListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMRWenZhangJiFenListCell.xib; sourceTree = "<group>"; };
 		58926B2125CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRWenZhangYiWanChengListTVC.h; sourceTree = "<group>"; };
 		58926B2225CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRWenZhangYiWanChengListTVC.m; sourceTree = "<group>"; };
+		58926B2425CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRWenZhangJiFenGuiZeView.h; sourceTree = "<group>"; };
+		58926B2525CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRWenZhangJiFenGuiZeView.m; sourceTree = "<group>"; };
 		589332D825C8D696008E4887 /* YMRShowLuYinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRShowLuYinView.h; sourceTree = "<group>"; };
 		589332D925C8D696008E4887 /* YMRShowLuYinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShowLuYinView.m; sourceTree = "<group>"; };
 		589332DB25C8DBC6008E4887 /* YMRLuYinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRLuYinView.h; sourceTree = "<group>"; };
@@ -1797,6 +1800,8 @@
 				58926B1C25CA8163008FB84A /* YMRWenZhangJiFenListCell.h */,
 				58926B1D25CA8163008FB84A /* YMRWenZhangJiFenListCell.m */,
 				58926B1E25CA8163008FB84A /* YMRWenZhangJiFenListCell.xib */,
+				58926B2425CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.h */,
+				58926B2525CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -2025,6 +2030,7 @@
 				402C823C22E19277005B5AC1 /* LxmPublishView.m in Sources */,
 				40E2F93622F8079C008A7881 /* LxmJieDanMyPublishDetailVC.m in Sources */,
 				58C90A3825C9370200B6C386 /* YMRAddMusicCell.m in Sources */,
+				58926B2625CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.m in Sources */,
 				587F738F24EE56510030B620 /* LxmMineJiFenXiaJiTVC.m in Sources */,
 				5F38F6922428E20A00AE62E9 /* LxmPlayer.m in Sources */,
 				40C3A23522EAE1D300F3E510 /* MXPhotoPickerController.m in Sources */,

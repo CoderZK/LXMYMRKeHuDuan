@@ -13,6 +13,7 @@
 #import "YMRJiFenGuiListTVC.h"
 #import "YMRWenZhangYiWanChengListTVC.h"
 #import "YMRXueXiWenZhangListTVC.h"
+#import "YMRWenZhangJiFenGuiZeView.h"
 @interface YMRXueXiJiHuaTVC ()
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)UIButton *headBt,*leveBt;
@@ -283,6 +284,8 @@
 //规则
 - (void)guizeAction {
     
+    YMRWenZhangJiFenGuiZeView * guiZeView = [[YMRWenZhangJiFenGuiZeView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+    [guiZeView show];
     
     
     
