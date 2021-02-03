@@ -243,6 +243,18 @@
 		588589B5256CD0A90015D2FA /* UITableViewCell+SendTachCellEnent.m in Sources */ = {isa = PBXBuildFile; fileRef = 588589B4256CD0A90015D2FA /* UITableViewCell+SendTachCellEnent.m */; };
 		588EFC71256B44A200F37B70 /* YMRShowGengXinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588EFC70256B44A200F37B70 /* YMRShowGengXinView.m */; };
 		588EFC74256B44D700F37B70 /* YMRTiShiShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588EFC73256B44D700F37B70 /* YMRTiShiShowView.m */; };
+		58926AF325CA2F70008FB84A /* YMRShareXinDeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926AF225CA2F70008FB84A /* YMRShareXinDeVC.m */; };
+		58926AF625CA36D0008FB84A /* YMRXueXiJiHuaTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926AF525CA36D0008FB84A /* YMRXueXiJiHuaTVC.m */; };
+		58926B0C25CA65F6008FB84A /* YMRRenWuOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B0A25CA65F6008FB84A /* YMRRenWuOneCell.m */; };
+		58926B0D25CA65F6008FB84A /* YMRRenWuOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58926B0B25CA65F6008FB84A /* YMRRenWuOneCell.xib */; };
+		58926B1125CA6608008FB84A /* YMRRenWuTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B0F25CA6608008FB84A /* YMRRenWuTwoCell.m */; };
+		58926B1225CA6608008FB84A /* YMRRenWuTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58926B1025CA6608008FB84A /* YMRRenWuTwoCell.xib */; };
+		58926B1525CA6627008FB84A /* YMRRenWuSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B1425CA6627008FB84A /* YMRRenWuSectionView.m */; };
+		58926B1825CA6E40008FB84A /* YMRRenWuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B1725CA6E40008FB84A /* YMRRenWuTableViewCell.m */; };
+		58926B1B25CA80DD008FB84A /* YMRJiFenGuiListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B1A25CA80DD008FB84A /* YMRJiFenGuiListTVC.m */; };
+		58926B1F25CA8163008FB84A /* YMRWenZhangJiFenListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B1D25CA8163008FB84A /* YMRWenZhangJiFenListCell.m */; };
+		58926B2025CA8163008FB84A /* YMRWenZhangJiFenListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58926B1E25CA8163008FB84A /* YMRWenZhangJiFenListCell.xib */; };
+		58926B2325CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B2225CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m */; };
 		589332DA25C8D696008E4887 /* YMRShowLuYinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332D925C8D696008E4887 /* YMRShowLuYinView.m */; };
 		589332DD25C8DBC6008E4887 /* YMRLuYinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332DC25C8DBC6008E4887 /* YMRLuYinView.m */; };
 		589332E725C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 589332E625C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m */; };
@@ -717,6 +729,27 @@
 		588EFC70256B44A200F37B70 /* YMRShowGengXinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShowGengXinView.m; sourceTree = "<group>"; };
 		588EFC72256B44D700F37B70 /* YMRTiShiShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRTiShiShowView.h; sourceTree = "<group>"; };
 		588EFC73256B44D700F37B70 /* YMRTiShiShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRTiShiShowView.m; sourceTree = "<group>"; };
+		58926AF125CA2F70008FB84A /* YMRShareXinDeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRShareXinDeVC.h; sourceTree = "<group>"; };
+		58926AF225CA2F70008FB84A /* YMRShareXinDeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShareXinDeVC.m; sourceTree = "<group>"; };
+		58926AF425CA36D0008FB84A /* YMRXueXiJiHuaTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRXueXiJiHuaTVC.h; sourceTree = "<group>"; };
+		58926AF525CA36D0008FB84A /* YMRXueXiJiHuaTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRXueXiJiHuaTVC.m; sourceTree = "<group>"; };
+		58926B0925CA65F6008FB84A /* YMRRenWuOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRRenWuOneCell.h; sourceTree = "<group>"; };
+		58926B0A25CA65F6008FB84A /* YMRRenWuOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRRenWuOneCell.m; sourceTree = "<group>"; };
+		58926B0B25CA65F6008FB84A /* YMRRenWuOneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMRRenWuOneCell.xib; sourceTree = "<group>"; };
+		58926B0E25CA6608008FB84A /* YMRRenWuTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRRenWuTwoCell.h; sourceTree = "<group>"; };
+		58926B0F25CA6608008FB84A /* YMRRenWuTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRRenWuTwoCell.m; sourceTree = "<group>"; };
+		58926B1025CA6608008FB84A /* YMRRenWuTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMRRenWuTwoCell.xib; sourceTree = "<group>"; };
+		58926B1325CA6627008FB84A /* YMRRenWuSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRRenWuSectionView.h; sourceTree = "<group>"; };
+		58926B1425CA6627008FB84A /* YMRRenWuSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRRenWuSectionView.m; sourceTree = "<group>"; };
+		58926B1625CA6E40008FB84A /* YMRRenWuTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRRenWuTableViewCell.h; sourceTree = "<group>"; };
+		58926B1725CA6E40008FB84A /* YMRRenWuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRRenWuTableViewCell.m; sourceTree = "<group>"; };
+		58926B1925CA80DD008FB84A /* YMRJiFenGuiListTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRJiFenGuiListTVC.h; sourceTree = "<group>"; };
+		58926B1A25CA80DD008FB84A /* YMRJiFenGuiListTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRJiFenGuiListTVC.m; sourceTree = "<group>"; };
+		58926B1C25CA8163008FB84A /* YMRWenZhangJiFenListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRWenZhangJiFenListCell.h; sourceTree = "<group>"; };
+		58926B1D25CA8163008FB84A /* YMRWenZhangJiFenListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRWenZhangJiFenListCell.m; sourceTree = "<group>"; };
+		58926B1E25CA8163008FB84A /* YMRWenZhangJiFenListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMRWenZhangJiFenListCell.xib; sourceTree = "<group>"; };
+		58926B2125CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRWenZhangYiWanChengListTVC.h; sourceTree = "<group>"; };
+		58926B2225CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRWenZhangYiWanChengListTVC.m; sourceTree = "<group>"; };
 		589332D825C8D696008E4887 /* YMRShowLuYinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRShowLuYinView.h; sourceTree = "<group>"; };
 		589332D925C8D696008E4887 /* YMRShowLuYinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShowLuYinView.m; sourceTree = "<group>"; };
 		589332DB25C8DBC6008E4887 /* YMRLuYinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRLuYinView.h; sourceTree = "<group>"; };
@@ -1717,8 +1750,16 @@
 				589332F325C8FE69008E4887 /* YMRWenZhangDetailTVC.m */,
 				58CE21F825C92ABF00B76AF3 /* YMRGenDuTV.h */,
 				58CE21F925C92ABF00B76AF3 /* YMRGenDuTV.m */,
+				58926AF125CA2F70008FB84A /* YMRShareXinDeVC.h */,
+				58926AF225CA2F70008FB84A /* YMRShareXinDeVC.m */,
 				58C90A3225C936E800B6C386 /* YMRAddMusicTVC.h */,
 				58C90A3325C936E800B6C386 /* YMRAddMusicTVC.m */,
+				58926AF425CA36D0008FB84A /* YMRXueXiJiHuaTVC.h */,
+				58926AF525CA36D0008FB84A /* YMRXueXiJiHuaTVC.m */,
+				58926B1925CA80DD008FB84A /* YMRJiFenGuiListTVC.h */,
+				58926B1A25CA80DD008FB84A /* YMRJiFenGuiListTVC.m */,
+				58926B2125CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.h */,
+				58926B2225CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1743,6 +1784,19 @@
 				58C90A3725C9370200B6C386 /* YMRAddMusicCell.xib */,
 				58C90A3A25C93D3100B6C386 /* ALCAudioTool.h */,
 				58C90A3B25C93D3100B6C386 /* ALCAudioTool.m */,
+				58926B0925CA65F6008FB84A /* YMRRenWuOneCell.h */,
+				58926B0A25CA65F6008FB84A /* YMRRenWuOneCell.m */,
+				58926B0B25CA65F6008FB84A /* YMRRenWuOneCell.xib */,
+				58926B0E25CA6608008FB84A /* YMRRenWuTwoCell.h */,
+				58926B0F25CA6608008FB84A /* YMRRenWuTwoCell.m */,
+				58926B1025CA6608008FB84A /* YMRRenWuTwoCell.xib */,
+				58926B1325CA6627008FB84A /* YMRRenWuSectionView.h */,
+				58926B1425CA6627008FB84A /* YMRRenWuSectionView.m */,
+				58926B1625CA6E40008FB84A /* YMRRenWuTableViewCell.h */,
+				58926B1725CA6E40008FB84A /* YMRRenWuTableViewCell.m */,
+				58926B1C25CA8163008FB84A /* YMRWenZhangJiFenListCell.h */,
+				58926B1D25CA8163008FB84A /* YMRWenZhangJiFenListCell.m */,
+				58926B1E25CA8163008FB84A /* YMRWenZhangJiFenListCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1843,12 +1897,15 @@
 				40B4F23E22F27E290077823C /* icon_fullscreen.png in Resources */,
 				589332EC25C8F811008E4887 /* YMRWenZhangListCell.xib in Resources */,
 				587F739924EE56C40030B620 /* LxmZhuanChuJiFenVC.xib in Resources */,
+				58926B1225CA6608008FB84A /* YMRRenWuTwoCell.xib in Resources */,
 				4078924822D4440C00716C1C /* Main.storyboard in Resources */,
 				40E48496230A7072007793DB /* icon_sliderImage@2x.png in Resources */,
 				40E48492230A7044007793DB /* audio_pause.png in Resources */,
 				58C90A3925C9370200B6C386 /* YMRAddMusicCell.xib in Resources */,
+				58926B0D25CA65F6008FB84A /* YMRRenWuOneCell.xib in Resources */,
 				400158BD230FD0DE00AC5BA3 /* mx_pic_selected_yes@2x.png in Resources */,
 				40C3A23022EAE1D300F3E510 /* mx_picker_back_image@2x.png in Resources */,
+				58926B2025CA8163008FB84A /* YMRWenZhangJiFenListCell.xib in Resources */,
 				587F73AE24EE57830030B620 /* LxmJiFenDetailOneCell.xib in Resources */,
 				584CDC2824CFD3D500C32A75 /* LxmJiFenOneCell.xib in Resources */,
 				400158BB230FD0CE00AC5BA3 /* mx_pic_selected_no@2x.png in Resources */,
@@ -1978,6 +2035,7 @@
 				40C3A22E22EAE1D300F3E510 /* MXImagePreviewCell.m in Sources */,
 				40B86283236C034500464A13 /* LxmYiJianBuHuoVC.m in Sources */,
 				40810026244FDCE10043F9D6 /* LxmSubNianDuKaoHeVC.m in Sources */,
+				58926B1B25CA80DD008FB84A /* YMRJiFenGuiListTVC.m in Sources */,
 				4078927222D466DC00716C1C /* BaseTableViewController.m in Sources */,
 				587F739224EE56950030B620 /* LxmMineJifenMingXiTVC.m in Sources */,
 				587F738A24EE27ED0030B620 /* LxmJiFenModel.m in Sources */,
@@ -1996,6 +2054,7 @@
 				40C3A20222EAA88200F3E510 /* LxmMyOrderDetailVC.m in Sources */,
 				40F1AF1D22E53FCF00D78186 /* LxmUserInfoVC.m in Sources */,
 				4078925022D4441000716C1C /* main.m in Sources */,
+				58926B1125CA6608008FB84A /* YMRRenWuTwoCell.m in Sources */,
 				587F73A024EE56DF0030B620 /* LxmMineJiFenXiaJiSubTVC.m in Sources */,
 				40EB08A32318EA7D00F226B6 /* LxmAddressPickerView.m in Sources */,
 				4078929922D472CB00716C1C /* LxmHomeVC.m in Sources */,
@@ -2004,6 +2063,7 @@
 				587F739A24EE56C40030B620 /* LxmZhuanChuJiFenVC.m in Sources */,
 				40F1AF3D22E59BA900D78186 /* LxmJieSuanView.m in Sources */,
 				4078929F22D47CC700716C1C /* LxmShopCenterVC.m in Sources */,
+				58926AF325CA2F70008FB84A /* YMRShareXinDeVC.m in Sources */,
 				4061A82522E2ED79004D127C /* LxmJieDanMyViewController.m in Sources */,
 				40CE68912302906F0057E8F1 /* LxmYearMonthPickerView.m in Sources */,
 				4061A83A22E35858004D127C /* LxmSettingVC.m in Sources */,
@@ -2029,6 +2089,7 @@
 				407892BA22D47DB700716C1C /* LxmShopCarModel.m in Sources */,
 				40DC054422E9AC1800570241 /* LxmXuanZeBankVC.m in Sources */,
 				40FA4F6F2406025500F10B72 /* LxmJianFeiShengJiVC.m in Sources */,
+				58926B1F25CA8163008FB84A /* YMRWenZhangJiFenListCell.m in Sources */,
 				40DD820222FA7507001347A3 /* LxmMineModel.m in Sources */,
 				40F7EE2D2315341000DF3E18 /* LxmSelectAreaVC.m in Sources */,
 				403C0C6A23069952004F9FB1 /* LxmWuLiuInfoVC.m in Sources */,
@@ -2066,6 +2127,7 @@
 				40C3A22F22EAE1D300F3E510 /* UIViewController+MXPhotoPicker.m in Sources */,
 				400460F822E88D8100142850 /* LxmUserInfoView.m in Sources */,
 				589332E725C8F7BA008E4887 /* YMRXueXiWenZhangListTVC.m in Sources */,
+				58926B0C25CA65F6008FB84A /* YMRRenWuOneCell.m in Sources */,
 				4019530822FBF2450093ABF0 /* LxmShengJiProtocolAlertView.m in Sources */,
 				40E4319D23177CFF00B1AE41 /* LxmKeTangNoAlertView.m in Sources */,
 				40E4848E230A3413007793DB /* LxmWebViewController.m in Sources */,
@@ -2081,6 +2143,7 @@
 				40B56D2222ED4F15000EB3BB /* LxmRegisterNextVC.m in Sources */,
 				4052B71E233230620041596E /* LxmReadProtocolVC.m in Sources */,
 				4019530E22FC09690093ABF0 /* LxmFaceBookVC.m in Sources */,
+				58926B2325CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m in Sources */,
 				4061A83122E33ED3004D127C /* LxmMyKefuAlertView.m in Sources */,
 				587F73B224EE579C0030B620 /* LxmJiFenDetailTwoCell.m in Sources */,
 				4078927722D466DC00716C1C /* LxmURLDefine.m in Sources */,
@@ -2090,7 +2153,9 @@
 				587F737E24EE27460030B620 /* LxmMineYeJiKaoTVC.m in Sources */,
 				5885885124CEA7ED00847BBA /* LxmJiFenShopSubVC.m in Sources */,
 				40810023244FD97B0043F9D6 /* LxmNianDuKaoHeVC.m in Sources */,
+				58926AF625CA36D0008FB84A /* YMRXueXiJiHuaTVC.m in Sources */,
 				40F4BEFC22E8292300C48BA2 /* LxmSubCaiGouAndXiaoShouVC.m in Sources */,
+				58926B1825CA6E40008FB84A /* YMRRenWuTableViewCell.m in Sources */,
 				407892A522D47CF200716C1C /* LxmMineVC.m in Sources */,
 				4061C5D122E06CEE006F631F /* LxmFenLeiView.m in Sources */,
 				40DC053822E982E900570241 /* LxmChongZhiVC.m in Sources */,
@@ -2118,6 +2183,7 @@
 				40F1AF2D22E56AFA00D78186 /* LxmGouJinGoodsVC.m in Sources */,
 				402F934222E6A409009F5E06 /* LxmGoodsDetailVC.m in Sources */,
 				4008AF7C236EC03300D505EE /* YYWeakProxy.m in Sources */,
+				58926B1525CA6627008FB84A /* YMRRenWuSectionView.m in Sources */,
 				40C3A22C22EAE1D300F3E510 /* MXImageListController.m in Sources */,
 				4052B7212332462C0041596E /* LxmTiXianZhongVC.m in Sources */,
 				40F4BEF922E804B700C48BA2 /* LxmSubOrderChaXunVC.m in Sources */,

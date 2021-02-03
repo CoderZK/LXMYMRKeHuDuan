@@ -26,6 +26,7 @@
 #import "LxmInfoClassVC.h"
 #import "YMRShowGengXinView.h"
 #import "YMRXueXiWenZhangListTVC.h"
+#import "YMRXueXiJiHuaTVC.h"
 @interface LxmHomeVC ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
 
 @property (nonatomic, strong) UIButton *rightButton;//导航栏右侧按钮
@@ -257,10 +258,15 @@
         }
         break;
         case 1: {//素材中心
-            LxmSuCaiTabBarVC *vc = [[LxmSuCaiTabBarVC alloc] init];
-            vc.navigationItem.title = @"分类";
+            
+            YMRXueXiJiHuaTVC * vc =[[YMRXueXiJiHuaTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+            
+//            LxmSuCaiTabBarVC *vc = [[LxmSuCaiTabBarVC alloc] init];
+//            vc.navigationItem.title = @"分类";
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2: {//投诉中心

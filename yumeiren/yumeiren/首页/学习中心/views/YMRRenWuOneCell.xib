@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="KGk-i7-Jjw" customClass="YMRRenWuOneCell">
+            <rect key="frame" x="0.0" y="0.0" width="361" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="361" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8f-pK-3Zn">
+                        <rect key="frame" x="15" y="5" width="331" height="64"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-xv-hCp">
+                                <rect key="frame" x="10" y="22" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="em0-Ta-XGu"/>
+                                    <constraint firstAttribute="width" constant="20" id="wDS-y0-kKZ"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="renwu"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZ7-9q-wWW">
+                                <rect key="frame" x="40" y="15.5" width="36" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D7-5w-JHV">
+                                <rect key="frame" x="40" y="32.5" width="31" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlg-rj-low">
+                                <rect key="frame" x="241" y="17" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Mzy-tj-aza"/>
+                                    <constraint firstAttribute="width" constant="80" id="QWR-kC-fGe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="去完成"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mlg-rj-low" secondAttribute="trailing" constant="10" id="Dty-m9-Lk3"/>
+                            <constraint firstItem="mIg-xv-hCp" firstAttribute="leading" secondItem="A8f-pK-3Zn" secondAttribute="leading" constant="10" id="Ldc-8F-Ohm"/>
+                            <constraint firstItem="mIg-xv-hCp" firstAttribute="centerY" secondItem="A8f-pK-3Zn" secondAttribute="centerY" id="OMm-wv-S6i"/>
+                            <constraint firstItem="Mlg-rj-low" firstAttribute="centerY" secondItem="A8f-pK-3Zn" secondAttribute="centerY" id="QNf-Pz-UUt"/>
+                            <constraint firstItem="2D7-5w-JHV" firstAttribute="leading" secondItem="mIg-xv-hCp" secondAttribute="trailing" constant="10" id="QyD-HM-s16"/>
+                            <constraint firstItem="bZ7-9q-wWW" firstAttribute="leading" secondItem="mIg-xv-hCp" secondAttribute="trailing" constant="10" id="cX6-I8-J7M"/>
+                            <constraint firstItem="bZ7-9q-wWW" firstAttribute="centerY" secondItem="mIg-xv-hCp" secondAttribute="centerY" constant="-8" id="w0O-dp-80o"/>
+                            <constraint firstItem="2D7-5w-JHV" firstAttribute="centerY" secondItem="mIg-xv-hCp" secondAttribute="centerY" constant="8" id="y3Z-7v-U3h"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="A8f-pK-3Zn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="1Ed-LG-Db3"/>
+                    <constraint firstAttribute="trailing" secondItem="A8f-pK-3Zn" secondAttribute="trailing" constant="15" id="Qam-an-nhS"/>
+                    <constraint firstItem="A8f-pK-3Zn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Wpj-rs-yee"/>
+                    <constraint firstAttribute="bottom" secondItem="A8f-pK-3Zn" secondAttribute="bottom" constant="5" id="sBB-HO-0QS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="backV" destination="A8f-pK-3Zn" id="y6y-fj-Szc"/>
+                <outlet property="confirmBt" destination="Mlg-rj-low" id="OPd-yy-L3U"/>
+                <outlet property="leftBt" destination="mIg-xv-hCp" id="fr7-Pi-Afs"/>
+                <outlet property="tiemLB" destination="2D7-5w-JHV" id="JhF-we-Bnd"/>
+                <outlet property="titleLB" destination="bZ7-9q-wWW" id="v2K-Oh-Ih6"/>
+            </connections>
+            <point key="canvasLocation" x="-344" y="81"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="renwu" width="20" height="21"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

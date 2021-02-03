@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,copy)void(^clickButtonBlock)(NSInteger index);
 
+@property(nonatomic,assign)BOOL showViewOne;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

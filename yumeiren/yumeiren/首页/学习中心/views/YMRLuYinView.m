@@ -36,6 +36,7 @@
         UIButton * playBt = [[UIButton alloc] initWithFrame:CGRectMake(15, 5, 30, 30)];
         [playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
         [vone addSubview:playBt];
+        [playBt addTarget:self action:@selector(playMP3Action:) forControlEvents:UIControlEventTouchUpInside];
         
         self.playBt = playBt;
         self.playListBt = [[UIButton alloc] init];
@@ -235,10 +236,27 @@
             make.top.equalTo(self.saveBt.mas_bottom);
         }];
         
+        self.whiteViewOne.hidden = YES;
         
         
     }
     return self;
+}
+
+- (void)playMP3Action:(UIButton *)button {
+    if ([button.currentImage isEqual:[UIImage imageNamed:@"zantingnei"]]) {
+        [[ALCAudioTool shareTool] pauaseMp3];
+        [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
+    }else {
+        [[ALCAudioTool shareTool] palyMp3];
+        [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)setShowViewOne:(BOOL)showViewOne {
+    _showViewOne = showViewOne;
+    self.whiteViewOne.hidden = !showViewOne;
+    [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
 }
 
 - (void)sliderValChanged {
@@ -267,7 +285,10 @@
         //试听
         [[ALCAudioTool shareTool] pauaseRecord];
         [[ALCAudioTool shareTool] playRecord];
-        [self.luYinBt setImage:[UIImage imageNamed:@"zanting"] forState:UIControlStateNormal];
+        [[ALCAudioTool shareTool] pauaseMp3];
+        [self.luYinBt setBackgroundImage:[UIImage imageNamed:@"zanting"] forState:UIControlStateNormal];
+        [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
+        
     }else if (button.tag == 102) {
         AVAuthorizationStatus videoAuthStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
         if (videoAuthStatus == AVAuthorizationStatusNotDetermined) {
@@ -284,26 +305,35 @@
         if ([button.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyin"]] || [button.currentBackgroundImage isEqual:[UIImage imageNamed:@"zanting"]]) {
             // 开始录音
             [[ALCAudioTool shareTool] startRecord];
+            [[ALCAudioTool shareTool] palyMp3];
+            [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
             WeakObj(self);
             [[ALCAudioTool shareTool] setAveragePowerBlock:^(CGFloat averagePower, NSInteger timeNumber) {
                 selfWeak.timeLB.text = [NSString stringWithFormat:@"正在跟读%02ld:%02ld",timeNumber/60,timeNumber%60];
             }];
             
-            [button setImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
         }else if ([button.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyinzhong"]]) {
             // 暂停录音
             [[ALCAudioTool shareTool] pauaseRecord];
-            [self.luYinBt setImage:[UIImage imageNamed:@"zanting"] forState:UIControlStateNormal];
+            [[ALCAudioTool shareTool] palyMp3];
+            [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
+            [self.luYinBt setBackgroundImage:[UIImage imageNamed:@"zanting"] forState:UIControlStateNormal];
         }
         
     }else if (button.tag == 103) {
         
         [[ALCAudioTool shareTool] reStartRecord];
-        [self.luYinBt setImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
+        [[ALCAudioTool shareTool] stopMp3];
+        [self.luYinBt setBackgroundImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
+        self.showViewOne = NO;
+        [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
     } else if (button.tag == 104){
         // 保存
         [[ALCAudioTool shareTool] stopRecord];
-        
+        if (self.clickButtonBlock != nil) {
+            self.clickButtonBlock(button.tag);
+        }
     }
 
 }

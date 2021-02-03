@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)playRecord;
 - (void)stopPlayRecord;
 - (BOOL)isNodata;
+- (void)stopAll;
+//本地音频播放
+@property (nonatomic,strong) AVAudioPlayer *avaudioPlayer;
+@property(nonatomic,strong)AVAudioPlayer *player;
 //音频录制
 @property (nonatomic,strong) AVAudioRecorder *avaudioRecorder;
 
@@ -34,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat soundValue;
 - (void)pauaseMp3;
 - (void)palyMp3;
+- (void)stopMp3;
 @end
 
 NS_ASSUME_NONNULL_END

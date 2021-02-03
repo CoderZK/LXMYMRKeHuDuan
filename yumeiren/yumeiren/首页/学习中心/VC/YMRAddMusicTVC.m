@@ -44,7 +44,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (self.sendMusicBlock != nil) {
-        self.sendMusicBlock(@"http://m10.music.126.net/20210202170542/2e0fd5b8990fd84f6d2b400787f82f8b/ymusic/0799/f368/4d01/df9cb41f2ce16c6806e23b6b858948cd.mp3");
+        self.sendMusicBlock(@"http://mp.333ttt.com/mp3music/86762.mp3");
         [self.navigationController popViewControllerAnimated:YES];
     }
     

@@ -10,6 +10,7 @@
 #import "YMRLuYinView.h"
 #import "YMRAddMusicTVC.h"
 #import "ALCAudioTool.h"
+#import "YMRShareXinDeVC.h"
 @interface YMRGenDuTV ()
 @property(nonatomic,strong)YMRLuYinView *luYinView;
 @property(nonatomic,assign)BOOL isBack;
@@ -23,8 +24,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.isBack = YES;
-    [[ALCAudioTool shareTool] stopRecord];
+    [[ALCAudioTool shareTool] stopAll];
     
 }
 
@@ -52,6 +52,7 @@
             vc.hidesBottomBarWhenPushed = YES;
             vc.sendMusicBlock = ^(NSString * _Nonnull musicStr) {
                 [[ALCAudioTool shareTool] palyMp3WithNSSting:musicStr isLocality:NO];
+                selfWeak.luYinView.showViewOne = YES;
             };
             [selfWeak.navigationController pushViewController:vc animated:YES];
             
@@ -60,7 +61,9 @@
             [[ALCAudioTool shareTool] playRecord];
         }else if (index == 104) {
             //保存
-            
+            YMRShareXinDeVC * vc =[[YMRShareXinDeVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [selfWeak.navigationController pushViewController:vc animated:YES];
         }
     };
    

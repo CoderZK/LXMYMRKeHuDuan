@@ -13,8 +13,7 @@ static ALCAudioTool *tool = nil;
 @interface ALCAudioTool()<AVAudioRecorderDelegate,AVAudioPlayerDelegate>
 
 
-//本地音频播放
-@property (nonatomic,strong) AVAudioPlayer *avaudioPlayer;
+
 //背景
 @property (nonatomic,strong) UIImageView *viewBg;
 
@@ -43,7 +42,7 @@ static ALCAudioTool *tool = nil;
 @property(nonatomic,strong)NSData *audioData;
 @property(nonatomic,assign)NSInteger timeNumber;
 
-@property(nonatomic,strong)AVAudioPlayer *player;
+
 
 
 @end
@@ -374,7 +373,7 @@ static ALCAudioTool *tool = nil;
         NSError * error;
         [[AVAudioSession sharedInstance] overrideOutputAudioPort:(AVAudioSessionPortOverrideSpeaker) error:&error];;
         self.player.numberOfLoops = 0;
-        self.player.volume = 1;
+        self.player.volume = 0.2;
         [self.player play];
         self.player.delegate = self;
         
@@ -392,8 +391,23 @@ static ALCAudioTool *tool = nil;
 }
 
 - (void)palyMp3 {
-    if (self.player != nil) {
+    if (self.player != nil && self.player.isPlaying == NO) {
         [self.player play];
+    }
+}
+
+- (void)stopMp3 {
+    if (self.player != nil && self.player.isPlaying) {
+        [self.player stop];
+    }
+}
+
+- (void)stopAll {
+    if (self.player != nil && self.player.isPlaying) {
+        [self.player stop];
+    }
+    if (self.avaudioPlayer != nil && self.avaudioPlayer.isPlaying) {
+        [self.avaudioPlayer stop];
     }
 }
 

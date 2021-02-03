@@ -35,6 +35,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 #define NavigationSpace (kDevice_Is_iPhoneX ? 88 : 64)
 
+#define sstatusHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
 //文字三种颜色
 #define CharacterDarkColor [UIColor colorWithRed:56/255.0 green:56/255.0 blue:56/255.0 alpha:1]
 #define CharacterGrayColor [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
@@ -69,6 +71,19 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
  主色调
  */
 #define MainColor [UIColor colorWithRed:253/255.0 green:58/255.0 blue:88/255.0 alpha:1]
+
+#define leve1Color RGB(255,186,66)
+#define leve2Color RGB(112,141,249)
+#define leve3Color RGB(108,192,251)
+#define leve4Color RGB(255,148,85)
+#define leve5Color RGB(165,128,235)
+#define leve6Color RGB(32,132,247)
+#define leve7Color RGB(99,220,163)
+#define leve8Color RGB(255,120,110)
+#define leve9Color RGB(255,106,168)
+#define leve10Color RGB(239,90,107)
+
+
 
 #define WeakObj(_obj)    __weak typeof(_obj) _obj##Weak = _obj;
 #define StrongObj(_obj)  typeof(_obj##Weak) _obj = _obj##Weak;
