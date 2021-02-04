@@ -18,7 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *centerImageV;
 @property (weak, nonatomic) IBOutlet UIImageView *rightImageV;
 @property (weak, nonatomic) IBOutlet UIView *backV;
-
+@property(nonatomic,strong)YMRXueXiModel *model;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightCons;
 @end
 
 NS_ASSUME_NONNULL_END

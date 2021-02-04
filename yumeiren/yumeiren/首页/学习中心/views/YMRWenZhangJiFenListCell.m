@@ -21,4 +21,21 @@
     // Configure the view for the selected state
 }
 
+- (void)setModel:(YMRXueXiModel *)model {
+    _model = model;
+    
+    self.numberLB.text = [NSString stringWithFormat:@"+%@",model.score];
+    self.timeLB.text = model.createTime;
+    if (model.infoType.intValue == 1) {
+        self.nameLB.text = @"每日完成任务获得";
+    }else if (model.infoType.intValue == 2) {
+        self.nameLB.text = @"连续一周完成任务获得";
+    }else if (model.infoType.intValue == 3) {
+        self.nameLB.text = @"连续一个月完成任务获得";
+    }else if (model.infoType.intValue == 4) {
+        self.nameLB.text = @"连续一个季度完成任务获得";
+    }
+ 
+}
+
 @end

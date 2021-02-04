@@ -90,6 +90,8 @@
 
 - (NSMutableAttributedString *)getMutableAttributeStringWithFont:(int)fontSize lineSpace:(int)lineSpace textColor:(UIColor *)color fontTwo:(int)fontTwo nsrange:(NSRange )range fontThtree:(int)fontThtree nsrangethree:(NSRange )rangeThree;
 
+- (NSMutableAttributedString *)getMutableAttributeStringWithFont:(int)fontSize lineSpace:(int)lineSpace textColor:(UIColor *)color textColorTwo:(UIColor *)colorTwo nsrange:(NSRange )range;
+
 - (NSMutableAttributedString * )getjiFenOrMoneyWithPrice:(NSString *)price withSorce:(NSString *)sorce;
 
 - (NSMutableAttributedString * )getAttributedString;
@@ -98,6 +100,6 @@
 
 //MM月dd日 HH:mm
 - (NSString *)getIntervalToMMdd;
-
++ (NSTimeInterval)audioDurationFromURL:(NSString *)url;
 
 @end

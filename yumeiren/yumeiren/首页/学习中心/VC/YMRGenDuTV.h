@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YMRGenDuTV : BaseTableViewController
-
+@property (nonatomic, strong) LxmClassDetailModel *detailModel;
+@property(nonatomic,strong)NSString *articleId;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)UIButton *musicBt,*shiTingBt,*luYinBt,*chongduBt,*saveBt;
 
 @property(nonatomic,copy)void(^clickButtonBlock)(NSInteger index);
+@property(nonatomic,copy)void(^sendDataBlock)(NSInteger timeNumber,NSData * data);
 
 @property(nonatomic,assign)BOOL showViewOne;
 

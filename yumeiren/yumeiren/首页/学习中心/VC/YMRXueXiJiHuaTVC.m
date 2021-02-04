@@ -14,6 +14,8 @@
 #import "YMRWenZhangYiWanChengListTVC.h"
 #import "YMRXueXiWenZhangListTVC.h"
 #import "YMRWenZhangJiFenGuiZeView.h"
+#import "YMRWenZhangDetailTVC.h"
+#import "YMRPaiHangListTVC.h"
 @interface YMRXueXiJiHuaTVC ()
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)UIButton *headBt,*leveBt;
@@ -21,6 +23,7 @@
 
 @property(nonatomic,strong)UIView *whiteV;
 @property(nonatomic,strong)UIView *pViewOne,*pViewTwo;
+@property(nonatomic,strong)YMRXueXiModel *homeModel;
 
 
 @end
@@ -55,11 +58,64 @@
     [self.tableView registerClass:[YMRRenWuSectionView class] forHeaderFooterViewReuseIdentifier:@"head"];
     self.tableView.backgroundColor = [UIColor whiteColor];
     
+    [self loadIndexData];
+    
 }
+
+/**
+ 获取首页数据
+ */
+- (void)loadIndexData {
+    [SVProgressHUD show];
+    WeakObj(self);
+    [LxmNetworking networkingPOST:card_page_index parameters:@{@"token" : SESSION_TOKEN} returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [selfWeak endRefrish];
+        if ([responseObject[@"key"] integerValue] == 1000) {
+            self.homeModel = [YMRXueXiModel mj_objectWithKeyValues:responseObject[@"result"]];
+          
+            [self.headBt sd_setBackgroundImageWithURL:[NSURL URLWithString:[LxmTool ShareTool].userModel.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"moren"] options:SDWebImageRetryFailed];
+            self.nameLb.text = [LxmTool ShareTool].userModel.username;
+            
+            [self.leveBt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"leve%d",self.homeModel.map.levelNum.intValue]] forState:UIControlStateNormal];
+
+            [self.leveBt setTitle:[NSString stringWithFormat:@"Lv%d",self.homeModel.map.levelNum.intValue] forState:UIControlStateNormal];
+            
+            
+            
+            self.leveBt.backgroundColor = colorArr[self.homeModel.map.levelNum.intValue];
+            if (self.homeModel.map.levelNum.intValue == 10) {
+                self.r0LB.hidden = self.r1LB.hidden = self.r2LB.hidden = self.r3LB.hidden = self.r4LB.hidden = YES;
+             
+                [self.pViewTwo mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.width.equalTo(@(ScreenW - 60));
+                }];
+            }else {
+                self.r0LB.hidden = self.r1LB.hidden = self.r2LB.hidden = self.r3LB.hidden = self.r4LB.hidden = NO;
+                self.r1LB.text = [NSString stringWithFormat:@"Lv%d",self.homeModel.map.levelNum.intValue+1];
+                self.r3LB.text = [NSString stringWithFormat:@"%d",self.homeModel.map.upScore.intValue - self.homeModel.map.score.intValue];
+                self.danqianJiFenLB.text =  self.jiFenLB.text = self.homeModel.map.score;
+                
+                CGFloat ww = (self.homeModel.map.score.floatValue - self.homeModel.map.cuScore.floatValue) / (self.homeModel.map.upScore.floatValue - self.homeModel.map.cuScore.floatValue) * (ScreenW - 60);
+                [self.pViewTwo mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.width.equalTo(@(ww));
+                }];
+                
+            }
+            
+            
+            [selfWeak.tableView reloadData];
+        } else {
+            [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [selfWeak endRefrish];
+    }];
+}
+
 
 - (void)initHeadView {
     
-    self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, 300)];
+    self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, 300 + StateBarH)];
     self.headView.backgroundColor = [UIColor whiteColor];
     UIImageView * imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, 210)];
     imageV.image = [UIImage imageNamed:@"shareback"];
@@ -87,13 +143,13 @@
     [self.headView addSubview:self.headBt];
     [self.headBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headView).offset(15);
-        make.top.equalTo(self.headView).offset(70);
+        make.top.equalTo(self.headView).offset(50+StateBarH);
         make.width.height.equalTo(@55);
     }];
     
     self.nameLb = [[UILabel alloc] init];
     self.nameLb.textColor = [UIColor whiteColor];
-    self.nameLb.font = [UIFont systemFontOfSize:25];
+    self.nameLb.font = [UIFont systemFontOfSize:18];
     self.nameLb.text = @"Dasj沙拉";
     [self.headView addSubview:self.nameLb];
     [self.nameLb mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,13 +175,13 @@
     }];
     
     
-    UIView * whiteV = [[UIView alloc] initWithFrame:CGRectMake(15, 295-150, ScreenW - 30, 150)];
+    UIView * whiteV = [[UIView alloc] initWithFrame:CGRectMake(15, 295+StateBarH-150, ScreenW - 30, 150)];
     whiteV.backgroundColor = [UIColor whiteColor];
     whiteV.layer.cornerRadius = 10;
     [self.headView addSubview:whiteV];
     
     
-    self.whiteV = [[UIView alloc] initWithFrame:CGRectMake(15, 295-150, ScreenW - 30, 150)];
+    self.whiteV = [[UIView alloc] initWithFrame:CGRectMake(15, 295+StateBarH-150, ScreenW - 30, 150)];
     self.whiteV.backgroundColor = [UIColor whiteColor];
     self.whiteV.layer.cornerRadius = 10;
     self.whiteV.clipsToBounds = YES;
@@ -216,12 +272,12 @@
         make.top.equalTo(self.pViewOne.mas_bottom).offset(5);
         
     }];
-    self.jiFenLB = [[UILabel alloc] init];
-    self.jiFenLB.font = [UIFont systemFontOfSize:12];
-    self.jiFenLB.text = @"12";
-    self.jiFenLB.textColor = MainColor;
-    [self.whiteV addSubview:self.jiFenLB];
-    [self.jiFenLB mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.danqianJiFenLB = [[UILabel alloc] init];
+    self.danqianJiFenLB.font = [UIFont systemFontOfSize:12];
+    self.danqianJiFenLB.text = @"12";
+    self.danqianJiFenLB.textColor = MainColor;
+    [self.whiteV addSubview:self.danqianJiFenLB];
+    [self.danqianJiFenLB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(lb2.mas_right);
         make.top.equalTo(lb2);
     }];
@@ -285,6 +341,7 @@
 - (void)guizeAction {
     
     YMRWenZhangJiFenGuiZeView * guiZeView = [[YMRWenZhangJiFenGuiZeView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+    guiZeView.remark = self.homeModel.map.reasonDes;
     [guiZeView show];
     
     
@@ -313,8 +370,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         return 70;
+    }else {
+        if (self.homeModel.list.count == 0) {
+            return 400;
+        }else {
+            return 70*self.homeModel.list.count+10;
+        }
     }
-    return 70*10+10;
+   
     
 }
 
@@ -330,13 +393,16 @@
     YMRRenWuSectionView * headV = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"head"];
     if (section == 0) {
         headV.rightBt.hidden = headV.rigthImageV.hidden = headV.rightLB.hidden = NO;
-        [headV.rightBt  addTarget:self action:@selector(headAction:) forControlEvents:UIControlEventTouchUpInside];
+        headV.rightLB.text = @"已完成任务";
         headV.leftLB.text = @"每日任务";
     }else {
         headV.rightBt.hidden = headV.rigthImageV.hidden = headV.rightLB.hidden = YES;
+        headV.rightLB.text = @"更多排行";
         headV.leftLB.text = @"排行榜";
     }
+    
     headV.rightBt.tag = 100+ section;
+    [headV.rightBt  addTarget:self action:@selector(headAction:) forControlEvents:UIControlEventTouchUpInside];
     return headV;
 }
 
@@ -345,9 +411,14 @@
     if (indexPath.section == 0) {
         YMRRenWuOneCell * cell =[tableView dequeueReusableCellWithIdentifier:@"YMRRenWuOneCell" forIndexPath:indexPath];
         [cell.confirmBt  addTarget:self action:@selector(quwanAction) forControlEvents:UIControlEventTouchUpInside];
+        cell.model = self.homeModel.map;
         return cell;
     }else {
         YMRRenWuTableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"YMRRenWuTableViewCell" forIndexPath:indexPath];
+        cell.dataArr = self.homeModel.list;
+        
+        
+        
         return cell;
     }
     
@@ -369,15 +440,30 @@
         YMRWenZhangYiWanChengListTVC * vc =[[YMRWenZhangYiWanChengListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+    }else {
+        YMRPaiHangListTVC * vc =[[YMRPaiHangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }
 
 // 点击去完成呢个
 - (void)quwanAction {
-    YMRXueXiWenZhangListTVC * vc =[[YMRXueXiWenZhangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if (self.homeModel.map.finishStatus.intValue == 1) {
+        YMRWenZhangDetailTVC * vc =[[YMRWenZhangDetailTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.articleId = self.homeModel.map.articleId;
+        vc.finishStatus = self.homeModel.map.finishStatus;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else {
+        YMRXueXiWenZhangListTVC * vc =[[YMRXueXiWenZhangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    
 }
 
 @end

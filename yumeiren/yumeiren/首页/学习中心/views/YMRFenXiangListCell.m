@@ -27,6 +27,35 @@
     
 }
 
+- (void)setModel:(YMRXueXiModel *)model {
+    _model = model;
+    [self.headBt sd_setBackgroundImageWithURL:[NSURL URLWithString:model.user_head] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"moren"] options:SDWebImageRetryFailed];
+    self.nameLB.text = model.username;
+    self.timeLB.text = [model.createTime getIntervalToFXXTNoHHmmime];
+    [self.levelBt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"leve%d",model.level_num.intValue]] forState:UIControlStateNormal];
+
+    [self.levelBt setTitle:[NSString stringWithFormat:@"Lv%d",model.level_num.intValue] forState:UIControlStateNormal];
+    
+    self.levelBt.backgroundColor = colorArr[model.level_num.intValue];
+    
+    if (model.one_work.length > 0 ) {
+        self.leftView.hidden = NO;
+        NSInteger timeOne = [NSString audioDurationFromURL:model.one_work];
+        self.leftView.rightLB.text = [NSString stringWithFormat:@"%02ld:%02ld",timeOne / 60,timeOne % 60];
+    }else {
+        self.leftView.hidden = YES;
+    }
+    if (model.two_work.length > 0) {
+        self.rightView.hidden = NO;
+        NSInteger timeOne = [NSString audioDurationFromURL:model.two_work];
+        self.rightView.rightLB.text = [NSString stringWithFormat:@"%02ld:%02ld",timeOne / 60,timeOne % 60];
+    }else {
+        self.rightView.hidden = YES;
+    }
+    
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

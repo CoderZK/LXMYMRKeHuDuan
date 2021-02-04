@@ -722,43 +722,53 @@
     _bottomView1.nameLabel.text = _otherInfoModel.username;
     _bottomView1.detailLabel.text = [NSString stringWithFormat:@"手机号: %@ 授权码:%@",_otherInfoModel.telephone,_otherInfoModel.recommendCode];
     [_bottomView1.headerImgView sd_setImageWithURL:[NSURL URLWithString:_otherInfoModel.userHead] placeholderImage:[UIImage imageNamed:@"moren"]];
-    if ([_otherInfoModel.roleType isEqualToString:@"-0.5"]){
-        [_bottomView1.roleButton setTitle:@"小红包系列-vip会员" forState:UIControlStateNormal];
-    } else if ([_otherInfoModel.roleType isEqualToString:@"-0.4"]) {
-        [_bottomView1.roleButton setTitle:@"小红包系列-高级会员" forState:UIControlStateNormal];
-    } else if ([_otherInfoModel.roleType isEqualToString:@"-0.3"]) {
-        [_bottomView1.roleButton setTitle:@"小红包系列-荣誉会员" forState:UIControlStateNormal];
-    } else if ([_otherInfoModel.roleType isEqualToString:@"1.1"]) {
-        [_bottomView1.roleButton setTitle:@"小红包系列-市服务商" forState:UIControlStateNormal];
-    } else if ([_otherInfoModel.roleType isEqualToString:@"2.1"]) {
-        [_bottomView1.roleButton setTitle:@"小红包系列-省服务商" forState:UIControlStateNormal];
-    } else if ([_otherInfoModel.roleType isEqualToString:@"3.1"]) {
-        [_bottomView1.roleButton setTitle:@"小红包系列-CEO" forState:UIControlStateNormal];
-    } else {
-        switch (_otherInfoModel.roleType.intValue) {
-            case -1:
-                [_bottomView1.roleButton setTitle:@"无身份" forState:UIControlStateNormal];
-                break;
-            case 0:
-                [_bottomView1.roleButton setTitle:@"vip门店" forState:UIControlStateNormal];
-                break;
-            case 1:
-                [_bottomView1.roleButton setTitle:@"高级门店" forState:UIControlStateNormal];
-                break;
-            case 2:
-                [_bottomView1.roleButton setTitle:@"市服务商" forState:UIControlStateNormal];
-                break;
-            case 3:
-                [_bottomView1.roleButton setTitle:@"省服务商" forState:UIControlStateNormal];
-                break;
-            case 4:
-                [_bottomView1.roleButton setTitle:@"CEO" forState:UIControlStateNormal];
-                break;
-                
-            default:
-                break;
+    
+    NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+    NSString * rName = @"";
+    for (YMRRoleTypeModel * rModel in roleArr) {
+        if ([_otherInfoModel.roleType isEqualToString: rModel.role]) {
+            rName = rModel.name;
+            break;
         }
     }
+    [_bottomView1.roleButton setTitle:rName forState:UIControlStateNormal];
+//    if ([_otherInfoModel.roleType isEqualToString:@"-0.5"]){
+//        [_bottomView1.roleButton setTitle:@"小红包系列-vip会员" forState:UIControlStateNormal];
+//    } else if ([_otherInfoModel.roleType isEqualToString:@"-0.4"]) {
+//        [_bottomView1.roleButton setTitle:@"小红包系列-高级会员" forState:UIControlStateNormal];
+//    } else if ([_otherInfoModel.roleType isEqualToString:@"-0.3"]) {
+//        [_bottomView1.roleButton setTitle:@"小红包系列-荣誉会员" forState:UIControlStateNormal];
+//    } else if ([_otherInfoModel.roleType isEqualToString:@"1.1"]) {
+//        [_bottomView1.roleButton setTitle:@"小红包系列-市服务商" forState:UIControlStateNormal];
+//    } else if ([_otherInfoModel.roleType isEqualToString:@"2.1"]) {
+//        [_bottomView1.roleButton setTitle:@"小红包系列-省服务商" forState:UIControlStateNormal];
+//    } else if ([_otherInfoModel.roleType isEqualToString:@"3.1"]) {
+//        [_bottomView1.roleButton setTitle:@"小红包系列-CEO" forState:UIControlStateNormal];
+//    } else {
+//        switch (_otherInfoModel.roleType.intValue) {
+//            case -1:
+//                [_bottomView1.roleButton setTitle:@"无身份" forState:UIControlStateNormal];
+//                break;
+//            case 0:
+//                [_bottomView1.roleButton setTitle:@"vip门店" forState:UIControlStateNormal];
+//                break;
+//            case 1:
+//                [_bottomView1.roleButton setTitle:@"高级门店" forState:UIControlStateNormal];
+//                break;
+//            case 2:
+//                [_bottomView1.roleButton setTitle:@"市服务商" forState:UIControlStateNormal];
+//                break;
+//            case 3:
+//                [_bottomView1.roleButton setTitle:@"省服务商" forState:UIControlStateNormal];
+//                break;
+//            case 4:
+//                [_bottomView1.roleButton setTitle:@"CEO" forState:UIControlStateNormal];
+//                break;
+//                
+//            default:
+//                break;
+//        }
+//    }
 
     if (otherInfoModel.suType.intValue == 1) {
 

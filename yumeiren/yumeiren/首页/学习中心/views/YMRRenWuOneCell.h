@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *confirmBt;
 @property (weak, nonatomic) IBOutlet UIButton *leftBt;
 @property (weak, nonatomic) IBOutlet UIView *backV;
-
+@property(nonatomic,strong)YMRXueXiModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

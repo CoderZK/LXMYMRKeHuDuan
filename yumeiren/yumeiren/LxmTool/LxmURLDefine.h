@@ -15,11 +15,13 @@
 
 
 //测试
-//#define Base_URL @"http://appnew.hkymr.com:8989"
+#define Base_URL @"http://appnew.hkymr.com:8989"
 
 //正式
-#define Base_URL @"https://appnew.hkymr.com"
+//#define Base_URL @"https://appnew.hkymr.com"
 
+//骑牛云的上传地址
+#define QiNiuYunUploadURL @"http://upload.qiniup.com/"
 
 
 
@@ -591,6 +593,46 @@
  确认收到小煜接口
  */
 #define my_group_total_sale  Base_URL"/app/user/my_group_total_sale"
+
+/**
+ 获得积分明细列表
+ */
+#define card_score_record_list  Base_URL"/app/user/card_score_record_list"
+
+/**
+ 分享列表
+ */
+#define article_work_list  Base_URL"/app/user/article_work_list"
+
+/**
+ 每日完成任务
+ */
+#define get_qiniu_token  Base_URL"/app/user/get_qiniu_token"
+
+/**
+ 每日完成任务
+ */
+#define do_card_work  Base_URL"/app/user/do_card_work"
+
+/**
+ 打卡主页
+ */
+#define card_page_index  Base_URL"/app/user/card_page_index"
+
+/**
+ 排行列表
+ */
+#define user_card_score_list  Base_URL"/app/user/user_card_score_list"
+
+/**
+ 已完成列表
+ */
+#define finish_work_list  Base_URL"/app/user/finish_work_list"
+/**
+ 背景音乐列表
+ */
+#define back_music_list  Base_URL"/app/user/back_music_list"
+
 
 
 

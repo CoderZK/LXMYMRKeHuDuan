@@ -615,19 +615,28 @@
                                     //减肥项内部升级操作
                                     YMRTiShiShowView * tiShiView = [[YMRTiShiShowView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
                                     NSString * str = @"";
-                                    if (roletype == -0.3) {
-                                        str = @"小红包系列-市服务商";
-                                    }else if (roletype == -0.4) {
-                                        str = @"小红包系列-荣誉会员";
-                                    }else if (roletype == -0.5) {
-                                        str = @"小红包系列-高级会员";
-                                    }else if (roletype == 1.1) {
-                                        str = @"小红包系列-省服务商";
-                                    }else if (roletype == 2.1) {
-                                        str = @"小红包系列-CEO";
-                                    }else if (roletype == 3.1) {
-                                        str = @"CEO-vip门店";
+                                    
+                                    NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+                                    for (YMRRoleTypeModel * rModel in roleArr) {
+                                        if ([LxmTool.ShareTool.userModel.roleType isEqualToString: rModel.role]) {
+                                            str = [NSString stringWithFormat:@" %@ ",rModel.name];
+                                            break;
+                                        }
                                     }
+                                    
+//                                    if (roletype == -0.3) {
+//                                        str = @"小红包系列-市服务商";
+//                                    }else if (roletype == -0.4) {
+//                                        str = @"小红包系列-荣誉会员";
+//                                    }else if (roletype == -0.5) {
+//                                        str = @"小红包系列-高级会员";
+//                                    }else if (roletype == 1.1) {
+//                                        str = @"小红包系列-省服务商";
+//                                    }else if (roletype == 2.1) {
+//                                        str = @"小红包系列-CEO";
+//                                    }else if (roletype == 3.1) {
+//                                        str = @"CEO-vip门店";
+//                                    }
                                     tiShiView.desStr = [NSString stringWithFormat:@"您的下单金额为%0.2f满足%@升级条件是否需要升级?",selfWeak.proxyPrice,str];
                                     
                                     [tiShiView show];

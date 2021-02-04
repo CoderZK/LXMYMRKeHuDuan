@@ -11,7 +11,7 @@
 @interface YMRLuYinView()
 
 
-
+@property (nonatomic, assign) NSInteger timeNumer;
 
 @end
 
@@ -310,6 +310,7 @@
             WeakObj(self);
             [[ALCAudioTool shareTool] setAveragePowerBlock:^(CGFloat averagePower, NSInteger timeNumber) {
                 selfWeak.timeLB.text = [NSString stringWithFormat:@"正在跟读%02ld:%02ld",timeNumber/60,timeNumber%60];
+                selfWeak.timeNumer = timeNumber;
             }];
             
             [button setBackgroundImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
@@ -329,11 +330,23 @@
         self.showViewOne = NO;
         [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
     } else if (button.tag == 104){
+        
+        if (self.timeNumer <= 0) {
+            [SVProgressHUD showErrorWithStatus:@"无录音"];
+            return;
+        }
+        WeakObj(self);
         // 保存
         [[ALCAudioTool shareTool] stopRecord];
-        if (self.clickButtonBlock != nil) {
-            self.clickButtonBlock(button.tag);
-        }
+        
+        [[ALCAudioTool shareTool] setStatusBlock:^(BOOL isFinsh, NSData * _Nonnull mediaData) {
+            if (selfWeak.sendDataBlock != nil) {
+                self.sendDataBlock(selfWeak.timeNumer, mediaData);
+            }
+        }];
+        
+        
+       
     }
 
 }

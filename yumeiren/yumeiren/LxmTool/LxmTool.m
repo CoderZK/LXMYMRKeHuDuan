@@ -47,6 +47,26 @@ static LxmTool * __tool = nil;
     return token ? token : @"";
 }
 
+- (void)setRoleTypeName:(NSString *)roleTypeName {
+    [[NSUserDefaults standardUserDefaults] setObject:roleTypeName forKey:@"roleTypeName"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)roleTypeName {
+    NSString *roleTypeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"roleTypeName"];
+    return roleTypeName ? roleTypeName : @"";
+}
+
+- (void)setRoleTypeNameList:(NSArray *)roleTypeNameList {
+    [[NSUserDefaults standardUserDefaults] setObject:roleTypeNameList forKey:@"roleTypeNameList"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSArray *)roleTypeNameList {
+    NSArray *roleTypeNameList = [[NSUserDefaults standardUserDefaults] objectForKey:@"roleTypeNameList"];
+    return roleTypeNameList ? roleTypeNameList : @[];
+}
+
 - (void)setSession_uid:(NSString *)session_uid {
     [[NSUserDefaults standardUserDefaults] setObject:session_uid forKey:@"session_uid"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -61,6 +81,15 @@ static LxmTool * __tool = nil;
 }
 - (NSString *)deviceToken {
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
+}
+
+-(void)setQiNiu_token:(NSString *)qiNiu_token {
+    [[NSUserDefaults standardUserDefaults] setObject:qiNiu_token forKey:@"qiNiu_token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)qiNiu_token {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"qiNiu_token"];
 }
 
 - (void)setUserModel:(LxmUserInfoModel *)userModel{
@@ -291,5 +320,50 @@ static LxmTool * __tool = nil;
         }];
     }
 }
+
+
+- (void)palyMp3WithNSSting:(NSString *)meidaStr isLocality:(BOOL )isLocality {
+    if (isLocality) {
+        
+    }else {
+        
+        NSURL * url = [[NSURL alloc] initWithString:meidaStr];
+        NSData * data = [[NSData alloc] initWithContentsOfURL:url];
+        self.player = [[AVAudioPlayer alloc] initWithData:data fileTypeHint:AVFileTypeMPEGLayer3 error:nil];
+        self.player.delegate = self;
+        NSError * error;
+        [[AVAudioSession sharedInstance] overrideOutputAudioPort:(AVAudioSessionPortOverrideSpeaker) error:&error];;
+        self.player.numberOfLoops = -1;
+        self.player.volume = 0.2;
+        [self.player prepareToPlay];
+        [self.player play];
+        
+        
+    }
+    
+    
+}
+
+- (void)setSoundValue:(CGFloat)soundValue {
+    self.player.volume = [NSString stringWithFormat:@"%0.1f",soundValue].floatValue;
+}
+
+- (void)pauaseMp3 {
+    [self.player pause];
+}
+
+- (void)palyMp3 {
+    if (self.player != nil && self.player.isPlaying == NO) {
+        [self.player play];
+    }
+}
+
+- (void)stopMp3 {
+    if (self.player != nil && self.player.isPlaying) {
+        [self.player stop];
+    }
+}
+
+
 
 @end

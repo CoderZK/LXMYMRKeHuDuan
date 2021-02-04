@@ -157,43 +157,52 @@
     _sexCell.subTitleLabel.text = [LxmTool ShareTool].userModel.sex.intValue == 0 ? @"未知" : [LxmTool ShareTool].userModel.sex.intValue == 1 ? @"男" : @"女";
     [_wechatCell addTarget:self action:@selector(wechatClick) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView reloadData];
-    if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
-        _yhdjCell.textField.text = @"小红包系列-vip会员";
-    } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
-        _yhdjCell.textField.text = @"小红包系列-高级会员";
-    } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
-        _yhdjCell.textField.text = @"小红包系列-荣誉会员";
-    } else {
-        switch ([LxmTool ShareTool].userModel.roleType.intValue) {
-                
-            case -1: {
-                [self.yhdjCell addTarget:self action:@selector(shengjirightnow) forControlEvents:UIControlEventTouchUpInside];
-                 _yhdjCell.textField.text = @"立即升级";
-            }
-            case 0: {
-//                [self.yhdjCell addTarget:self action:@selector(shengjirightnow) forControlEvents:UIControlEventTouchUpInside];
-                 _yhdjCell.textField.text = @"vip门店";
-            }
-                break;
-            case 1:
-                _yhdjCell.textField.text = @"县代";
-                break;
-            case 2:
-                _yhdjCell.textField.text = @"市代";
-                break;
-            case 3:
-                _yhdjCell.textField.text = @"省代";
-                break;
-            case 4:
-                _yhdjCell.textField.text = @"CEO";
-                break;
-            case 5:
-                _yhdjCell.textField.text = @"总经销商";
-                break;
-            default:
-                break;
+    
+    NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+    for (YMRRoleTypeModel * rModel in roleArr) {
+        if ([[LxmTool ShareTool].userModel.roleType isEqualToString: rModel.role]) {
+            _yhdjCell.textField.text = [NSString stringWithFormat:@" %@ ",rModel.name];
+            break;
         }
     }
+    
+//    if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
+//        _yhdjCell.textField.text = @"小红包系列-vip会员";
+//    } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
+//        _yhdjCell.textField.text = @"小红包系列-高级会员";
+//    } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]) {
+//        _yhdjCell.textField.text = @"小红包系列-荣誉会员";
+//    } else {
+//        switch ([LxmTool ShareTool].userModel.roleType.intValue) {
+//                
+//            case -1: {
+//                [self.yhdjCell addTarget:self action:@selector(shengjirightnow) forControlEvents:UIControlEventTouchUpInside];
+//                 _yhdjCell.textField.text = @"立即升级";
+//            }
+//            case 0: {
+////                [self.yhdjCell addTarget:self action:@selector(shengjirightnow) forControlEvents:UIControlEventTouchUpInside];
+//                 _yhdjCell.textField.text = @"vip门店";
+//            }
+//                break;
+//            case 1:
+//                _yhdjCell.textField.text = @"县代";
+//                break;
+//            case 2:
+//                _yhdjCell.textField.text = @"市代";
+//                break;
+//            case 3:
+//                _yhdjCell.textField.text = @"省代";
+//                break;
+//            case 4:
+//                _yhdjCell.textField.text = @"CEO";
+//                break;
+//            case 5:
+//                _yhdjCell.textField.text = @"总经销商";
+//                break;
+//            default:
+//                break;
+//        }
+//    }
     
 }
 

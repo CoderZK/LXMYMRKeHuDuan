@@ -1,21 +1,20 @@
 //
-//  YMRJiFenGuiListTVC.m
+//  YMRPaiHangListTVC.m
 //  yumeiren
 //
-//  Created by zk on 2021/2/3.
+//  Created by zk on 2021/2/4.
 //  Copyright © 2021 李晓满. All rights reserved.
 //
 
-#import "YMRJiFenGuiListTVC.h"
-#import "YMRWenZhangJiFenListCell.h"
-@interface YMRJiFenGuiListTVC ()
+#import "YMRPaiHangListTVC.h"
+#import "YMRRenWuTwoCell.h"
+@interface YMRPaiHangListTVC ()
 @property(nonatomic,strong)NSMutableArray<YMRXueXiModel *> *dataArr;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) LxmEmptyView *emptyView;//空界面
 @end
 
-@implementation YMRJiFenGuiListTVC
-
+@implementation YMRPaiHangListTVC
 - (LxmEmptyView *)emptyView {
     if (!_emptyView) {
         _emptyView = [[LxmEmptyView alloc] init];
@@ -25,19 +24,17 @@
     }
     return _emptyView;
 }
-
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
-    self.navigationItem.title = @"积分明细";
-    [self.tableView registerNib:[UINib nibWithNibName:@"YMRWenZhangJiFenListCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
-    
+    self.navigationItem.title = @"排行榜";
+    [self.tableView registerNib:[UINib nibWithNibName:@"YMRRenWuTwoCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.view addSubview:self.emptyView];
     [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.leading.trailing.equalTo(self.view);
     }];
+    
     self.dataArr = [NSMutableArray array];
     self.page = 1;
     [self loadData];
@@ -66,7 +63,7 @@
     dict[@"token"] = SESSION_TOKEN;
     dict[@"pageNum"] =  @(self.page);
     dict[@"pageSize"] = @10;
-    [LxmNetworking networkingPOST:score_user_list parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [LxmNetworking networkingPOST:user_card_score_list parameters:dict returnClass:LxmMyTeamListRootModel.class success:^(NSURLSessionDataTask *task, id responseObject) {
         [self endRefrish];
         if ([responseObject[@"key"] intValue] == 1000) {
             if (self.page == 1) {
@@ -95,12 +92,23 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75;
+    
+    return 70;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    YMRWenZhangJiFenListCell * cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    YMRRenWuTwoCell * cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.model = self.dataArr[indexPath.row];
+    if (indexPath.row <3) {
+        [cell.numberBt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"dnegji%ld",indexPath.row]] forState:UIControlStateNormal];
+        [cell.numberBt setTitle:@"" forState:UIControlStateNormal];
+        cell.imageV.image = [UIImage imageNamed:[NSString stringWithFormat:@"left%ld",indexPath.row]];
+    }else {
+        [cell.numberBt setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        cell.imageV.image = [UIImage imageNamed:@""];
+        [cell.numberBt setTitle:[NSString stringWithFormat:@"%ld",indexPath.row +1] forState:UIControlStateNormal];
+    }
     return cell;
     
 }

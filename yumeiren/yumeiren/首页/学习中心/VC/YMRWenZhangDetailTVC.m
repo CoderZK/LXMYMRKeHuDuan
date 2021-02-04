@@ -9,8 +9,15 @@
 #import "YMRWenZhangDetailTVC.h"
 #import "YMRFenXiangListCell.h"
 #import "YMRGenDuTV.h"
+//#import "LxmClassInfoTitleCell.h"
+#import "LxmClassInfoDetailVC.h"
+#import "YMRNoDaTaCell.h"
 @interface YMRWenZhangDetailTVC ()
 @property(nonatomic,strong)UIView * bottomV;
+@property(nonatomic,strong)NSMutableArray<YMRXueXiModel *> *dataArr;
+@property (nonatomic, assign) NSInteger page;
+
+@property (nonatomic, strong) LxmClassDetailModel *detailModel;
 @end
 
 @implementation YMRWenZhangDetailTVC
@@ -22,10 +29,71 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"YMRFenXiangListCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+   
     [self initBottomView];
+    self.dataArr = [NSMutableArray array];
+    self.page = 1;
+    [self loadData];
+    WeakObj(self);
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        StrongObj(self);
+        self.page = 1;
+        [self loadData];
+    }];
+    
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        StrongObj(self);
+        self.page ++;
+        [self loadData];
+    }];
+    [self getData];
+    
+}
+//获取文章详情
+- (void)getData {
+    [SVProgressHUD show];
+    WeakObj(self);
+    [LxmNetworking networkingPOST:course_detail parameters:@{@"token":SESSION_TOKEN, @"id":self.articleId} returnClass:LxmClassDetailRootModel.class success:^(NSURLSessionDataTask *task, LxmClassDetailRootModel *responseObject) {
+        [SVProgressHUD dismiss];
+        if (responseObject.key.intValue == 1000) {
+            selfWeak.detailModel = responseObject.result.data;
+            [self.tableView reloadData];
+        } else {
+            [UIAlertController showAlertWithmessage:responseObject.message];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
+}
+
+- (void)loadData  {
+
+    [SVProgressHUD show];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = SESSION_TOKEN;
+    dict[@"pageNum"] =  @(self.page);
+    dict[@"pageSize"] = @10;
+    dict[@"articleId"] = self.articleId;
+    [LxmNetworking networkingPOST:article_work_list parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self endRefrish];
+        if ([responseObject[@"key"] intValue] == 1000) {
+            if (self.page == 1) {
+                [self.dataArr removeAllObjects];
+            }
+            NSArray<YMRXueXiModel *> * arr = [YMRXueXiModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"][@"list"]];
+            [self.dataArr addObjectsFromArray:arr];
+          
+            [self.tableView reloadData];
+        } else {
+            [UIAlertController showAlertWithmessage:responseObject[@"message"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self endRefrish];
+    }];
     
     
 }
+
 
 - (void)initBottomView  {
     
@@ -71,26 +139,51 @@
     
     YMRGenDuTV * vc =[[YMRGenDuTV alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
     vc.hidesBottomBarWhenPushed = YES;
+    vc.articleId = self.articleId;
+    vc.detailModel = self.detailModel;
     [self.navigationController pushViewController:vc animated:YES];
     
     
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    if (section == 0) {
+        return 2;
+    }else {
+        if (self.dataArr.count == 0) {
+            return 1;
+        }else {
+            return self.dataArr.count;
+        }
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            return self.detailModel.titleH;
+        }  else{
+            return self.detailModel.contentH;
+        }
+    }else {
+        if (self.dataArr.count == 0){
+            return 300;
+        }
+        return 145;
+    }
     
-    return 145;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 0.01;
+    }
     return 60;
 }
 
@@ -116,20 +209,53 @@
         
         
     }
+    view.clipsToBounds = YES;
     return view;
     
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    YMRFenXiangListCell * cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    return cell;
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            LxmClassInfoTitleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LxmClassInfoTitleCell"];
+            if (!cell) {
+                cell = [[LxmClassInfoTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmClassInfoTitleCell"];
+            }
+            cell.detailModel = self.detailModel;
+            return cell;
+        } else {
+            LxmClassInfoDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LxmClassInfoDetailCell"];
+            if (!cell) {
+                cell = [[LxmClassInfoDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmClassInfoDetailCell"];
+            }
+            cell.detailModel = self.detailModel;
+            return cell;
+        }
+    }else {
+        
+        if (self.dataArr.count == 0) {
+            YMRNoDaTaCell * cell = [tableView dequeueReusableCellWithIdentifier:@"YMRNoDaTaCell"];
+            if (!cell) {
+                cell = [[YMRNoDaTaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YMRNoDaTaCell"];
+            }
+            return cell;
+        }else {
+            YMRFenXiangListCell * cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+            cell.model = self.dataArr[indexPath.row];
+            return cell;
+        }
+        
+    }
+   
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    if (self.dataArr.count == 0) {
+        return;
+    }
     
 }
 

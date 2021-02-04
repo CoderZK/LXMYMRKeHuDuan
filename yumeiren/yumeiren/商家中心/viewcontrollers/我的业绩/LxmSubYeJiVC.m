@@ -306,45 +306,54 @@
     _yejiModel = yejiModel;
     self.nameLabel.text = _yejiModel.username;
     [self.headerImgView sd_setImageWithURL:[NSURL URLWithString:_yejiModel.userHead] placeholderImage:[UIImage imageNamed:@"moren"]];
-    if ([_yejiModel.roleType isEqualToString:@"-0.5"]){
-        self.rankLabel.text = @" 小红包系列-vip会员 ";
-    } else if ([_yejiModel.roleType isEqualToString:@"-0.4"]) {
-        self.rankLabel.text = @" 小红包系列-高级会员 ";
-    } else if ([_yejiModel.roleType isEqualToString:@"-0.3"]) {
-        self.rankLabel.text = @" 小红包系列-荣誉会员 ";
-    } else if ([_yejiModel.roleType isEqualToString:@"1.1"]) {
-        self.rankLabel.text = @" 小红包系列-市服务商 ";
-    } else if ([_yejiModel.roleType isEqualToString:@"2.1"]) {
-        self.rankLabel.text = @" 小红包系列-省服务商 ";
-    } else if ([_yejiModel.roleType isEqualToString:@"3.1"]) {
-        self.rankLabel.text = @" 小红包系列-CEO";
-    } else {
-        switch (_yejiModel.roleType.intValue) {
-            case -1:
-                self.rankLabel.text = @" 无 ";
-                break;
-            case 0:
-                self.rankLabel.text = @" vip门店 ";
-                break;
-            case 1:
-                self.rankLabel.text = @" 高级门店 ";
-                break;
-            case 2:
-                self.rankLabel.text = @" 市服务商 ";
-                break;
-            case 3:
-                self.rankLabel.text = @" 省服务商 ";
-                break;
-            case 4:
-                self.rankLabel.text = @" CEO ";
-                break;
-            case 5:
-                self.rankLabel.text = @" 总经销商 ";
-                break;
-            default:
-                break;
+    
+    NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+    for (YMRRoleTypeModel * rModel in roleArr) {
+        if ([_yejiModel.roleType isEqualToString: rModel.role]) {
+            self.rankLabel.text = [NSString stringWithFormat:@" %@ ",rModel.name];
+            break;
         }
     }
+    
+//    if ([_yejiModel.roleType isEqualToString:@"-0.5"]){
+//        self.rankLabel.text = @" 小红包系列-vip会员 ";
+//    } else if ([_yejiModel.roleType isEqualToString:@"-0.4"]) {
+//        self.rankLabel.text = @" 小红包系列-高级会员 ";
+//    } else if ([_yejiModel.roleType isEqualToString:@"-0.3"]) {
+//        self.rankLabel.text = @" 小红包系列-荣誉会员 ";
+//    } else if ([_yejiModel.roleType isEqualToString:@"1.1"]) {
+//        self.rankLabel.text = @" 小红包系列-市服务商 ";
+//    } else if ([_yejiModel.roleType isEqualToString:@"2.1"]) {
+//        self.rankLabel.text = @" 小红包系列-省服务商 ";
+//    } else if ([_yejiModel.roleType isEqualToString:@"3.1"]) {
+//        self.rankLabel.text = @" 小红包系列-CEO";
+//    } else {
+//        switch (_yejiModel.roleType.intValue) {
+//            case -1:
+//                self.rankLabel.text = @" 无 ";
+//                break;
+//            case 0:
+//                self.rankLabel.text = @" vip门店 ";
+//                break;
+//            case 1:
+//                self.rankLabel.text = @" 高级门店 ";
+//                break;
+//            case 2:
+//                self.rankLabel.text = @" 市服务商 ";
+//                break;
+//            case 3:
+//                self.rankLabel.text = @" 省服务商 ";
+//                break;
+//            case 4:
+//                self.rankLabel.text = @" CEO ";
+//                break;
+//            case 5:
+//                self.rankLabel.text = @" 总经销商 ";
+//                break;
+//            default:
+//                break;
+//        }
+//    }
     
     
     NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];

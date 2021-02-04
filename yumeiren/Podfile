@@ -25,5 +25,6 @@ pod 'UMCCommonLog'
 pod 'UMCShare/Social/ReducedWeChat'
 pod 'UMCShare/Social/ReducedQQ'
 pod 'UMCPush'
+pod "Qiniu", "~> 8.1"
 
 end

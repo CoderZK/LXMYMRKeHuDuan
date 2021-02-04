@@ -22,10 +22,13 @@ PODS:
     - AMapFoundation-NO-IDFA (~> 1.4)
   - AMapSearch-NO-IDFA (6.9.0):
     - AMapFoundation-NO-IDFA (~> 1.4)
+  - HappyDNS (0.3.17)
   - IQKeyboardManager (5.0.8)
   - Masonry (1.1.0)
   - MJExtension (3.0.17)
   - MJRefresh (3.2.0)
+  - Qiniu (8.1.2):
+    - HappyDNS (~> 0.3.17)
   - SDCycleScrollView (1.80):
     - SDWebImage (>= 5.0.0)
   - SDWebImage (5.0.6):
@@ -57,6 +60,7 @@ DEPENDENCIES:
   - Masonry
   - MJExtension
   - MJRefresh
+  - Qiniu (~> 8.1)
   - SDCycleScrollView (~> 1.80)
   - SVProgressHUD-0.8.1
   - TYPagerController
@@ -84,6 +88,8 @@ SPEC REPOS:
     - TYPagerController
   trunk:
     - AlipaySDK-iOS
+    - HappyDNS
+    - Qiniu
     - UMCCommon
     - UMCCommonLog
     - UMCPush
@@ -97,10 +103,12 @@ SPEC CHECKSUMS:
   AMapFoundation-NO-IDFA: 9088085827c831811bb0fd3afd96b99963a7cf71
   AMapLocation-NO-IDFA: d7792c8c516f415e186f1bc25946f1a58ca6a583
   AMapSearch-NO-IDFA: 264999e6c149383a8f164c2fe49b51513e93d674
+  HappyDNS: 848ef73e24f2b0e2752064223ce2dc0dd88900ea
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  Qiniu: 227df98daf83303c3684bce92b8dbcf7689c59fe
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
@@ -111,6 +119,6 @@ SPEC CHECKSUMS:
   UMCShare: a4a95fbdd61ecce5b6751d8c9ed9b519e80fcbc9
   WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
 
-PODFILE CHECKSUM: d91ef0aacc1c1a39495f26e2820c9910ab7604c6
+PODFILE CHECKSUM: 0aff398ba6e8fbdb3bd0458f66ed7aa7f655e715
 
 COCOAPODS: 1.9.3

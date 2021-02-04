@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YMRRenWuTableViewCell : UITableViewCell
-
+@property(nonatomic,strong)NSArray<YMRXueXiModel *> *dataArr;
 @end
 
 NS_ASSUME_NONNULL_END

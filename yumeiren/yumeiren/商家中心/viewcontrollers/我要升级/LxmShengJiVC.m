@@ -41,33 +41,41 @@
     self.navigationItem.leftBarButtonItem.tintColor = UIColor.whiteColor;
     void(^roleBlock)(void) = ^(void){
         
-        if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]){
-            self.navigationItem.title = @" 当前等级-小红包系列-vip会员 ";
-        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.4"]) {
-            self.navigationItem.title = @" 当前等级-小红包系列-高级会员 ";
-        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.3"]) {
-            self.navigationItem.title = @" 当前等级-小红包系列-荣誉会员 ";
-        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"1.1"]) {
-            self.navigationItem.title = @" 当前等级-小红包系列-市服务商 ";
-        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"2.1"]) {
-            self.navigationItem.title = @" 当前等级-小红包系列-省服务商 ";
-        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"3.1"]) {
-            self.navigationItem.title = @" 当前等级-小红包系列-CEO";
-        } else {
-            if ([LxmTool ShareTool].userModel.roleType.floatValue == -1) {
-                self.navigationItem.title = @"当前等级-无";
-            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 0){
-                self.navigationItem.title = @"当前等级-vip门店";
-            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 1){
-                self.navigationItem.title = @"当前等级-高级门店";
-            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 2){
-                self.navigationItem.title = @"当前等级-市服务商";
-            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 3){
-                self.navigationItem.title = @"当前等级-省服务商";
-            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 4){
-                self.navigationItem.title = @"当前等级-CEO";
+        NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+        for (YMRRoleTypeModel * rModel in roleArr) {
+            if ([[LxmTool ShareTool].userModel.roleType isEqualToString: rModel.role]) {
+                self.navigationItem.title = [NSString stringWithFormat:@" 当前等级-%@ ",rModel.name];
+                break;
             }
         }
+        
+//        if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.5"]){
+//            self.navigationItem.title = @" 当前等级-小红包系列-vip会员 ";
+//        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.4"]) {
+//            self.navigationItem.title = @" 当前等级-小红包系列-高级会员 ";
+//        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"-0.3"]) {
+//            self.navigationItem.title = @" 当前等级-小红包系列-荣誉会员 ";
+//        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"1.1"]) {
+//            self.navigationItem.title = @" 当前等级-小红包系列-市服务商 ";
+//        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"2.1"]) {
+//            self.navigationItem.title = @" 当前等级-小红包系列-省服务商 ";
+//        } else if ([[LxmTool ShareTool].userModel.roleType isEqualToString:@"3.1"]) {
+//            self.navigationItem.title = @" 当前等级-小红包系列-CEO";
+//        } else {
+//            if ([LxmTool ShareTool].userModel.roleType.floatValue == -1) {
+//                self.navigationItem.title = @"当前等级-无";
+//            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 0){
+//                self.navigationItem.title = @"当前等级-vip门店";
+//            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 1){
+//                self.navigationItem.title = @"当前等级-高级门店";
+//            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 2){
+//                self.navigationItem.title = @"当前等级-市服务商";
+//            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 3){
+//                self.navigationItem.title = @"当前等级-省服务商";
+//            } else if ([LxmTool ShareTool].userModel.roleType.floatValue == 4){
+//                self.navigationItem.title = @"当前等级-CEO";
+//            }
+//        }
     };
     WeakObj(self);
     [selfWeak loadMyUserInfoWithOkBlock:^{

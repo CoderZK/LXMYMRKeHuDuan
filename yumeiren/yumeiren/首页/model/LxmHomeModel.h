@@ -419,6 +419,8 @@
 
 @property (nonatomic, strong) NSString *checkV;
 @property (nonatomic, strong) NSString *version,*versionInfo;
+@property(nonatomic,strong)NSArray *roleTypeNameList;
+@property(nonatomic,strong)NSString *roleTypeName;
 
 @end
 
@@ -499,6 +501,7 @@
 @interface LxmClassDetailDataModel : NSObject
 
 @property (nonatomic, strong) LxmClassDetailModel *data;
+@property(nonatomic,strong)NSString *token;
 
 @end
 

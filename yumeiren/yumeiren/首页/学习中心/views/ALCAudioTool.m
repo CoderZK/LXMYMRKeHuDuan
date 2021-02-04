@@ -316,7 +316,7 @@ static ALCAudioTool *tool = nil;
     [[AVAudioSession sharedInstance] overrideOutputAudioPort:(AVAudioSessionPortOverrideSpeaker) error:&error];;
     self.avaudioPlayer.numberOfLoops = 0;
     self.avaudioPlayer.volume =1;
-    
+    [self.avaudioPlayer prepareToPlay];
     [self.avaudioPlayer play];
 
 
@@ -368,14 +368,15 @@ static ALCAudioTool *tool = nil;
         
         NSURL * url = [[NSURL alloc] initWithString:meidaStr];
         NSData * data = [[NSData alloc] initWithContentsOfURL:url];
-        self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
-
+        self.player = [[AVAudioPlayer alloc] initWithData:data  error:nil];
+        self.player.delegate = self;
         NSError * error;
         [[AVAudioSession sharedInstance] overrideOutputAudioPort:(AVAudioSessionPortOverrideSpeaker) error:&error];;
-        self.player.numberOfLoops = 0;
+        self.player.numberOfLoops = -1;
         self.player.volume = 0.2;
+        [self.player prepareToPlay];
         [self.player play];
-        self.player.delegate = self;
+        
         
     }
     

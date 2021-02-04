@@ -334,6 +334,8 @@
             if (selfWeak.homeModel.checkV.intValue == 1) {
                 [self showTishi];
             }
+            [LxmTool ShareTool].roleTypeName = selfWeak.homeModel.roleTypeName;
+            [LxmTool ShareTool].roleTypeNameList = selfWeak.homeModel.roleTypeNameList;
             NSMutableArray *temp = [NSMutableArray array];
             for (LxmHomeBannerModel *model in selfWeak.homeModel.banners) {
                 [temp addObject:model.pic];

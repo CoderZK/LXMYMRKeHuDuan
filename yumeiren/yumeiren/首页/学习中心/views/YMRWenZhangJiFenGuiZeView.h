@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YMRWenZhangJiFenGuiZeView : UIView
 - (void)show;
 - (void)diss;
+@property(nonatomic,strong)NSString *remark;
 @end
 
 NS_ASSUME_NONNULL_END

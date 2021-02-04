@@ -861,45 +861,53 @@
    
     _nameLabel.text = _orderModel.t_name;
     _phoneLabel.text = _orderModel.t_tel;
-    if ([_orderModel.role_type isEqualToString:@"-0.5"]){
-           _rankLabel.text = @" 小红包系列-vip会员 ";
-    } else if ([_orderModel.role_type isEqualToString:@"-0.4"]) {
-           _rankLabel.text = @" 小红包系列-高级会员 ";
-    } else if ([_orderModel.role_type isEqualToString:@"-0.3"]) {
-           _rankLabel.text = @" 小红包系列-荣誉会员 ";
-    } else if ([_orderModel.role_type isEqualToString:@"1.1"]) {
-            _rankLabel.text = @" 小红包系列-市服务商 ";
-    } else if ([_orderModel.role_type isEqualToString:@"2.1"]) {
-            _rankLabel.text = @" 小红包系列-省服务商 ";
-    } else if ([_orderModel.role_type isEqualToString:@"3.1"]) {
-            _rankLabel.text = @" 小红包系列-CEO ";
-    } else {
-        switch (_orderModel.role_type.intValue) {
-            case -1:
-                _rankLabel.text = @" 无 ";
-                break;
-            case 0:
-                _rankLabel.text = @" vip门店 ";
-                break;
-            case 1:
-                _rankLabel.text = @" 高级门店 ";
-                break;
-            case 2:
-                _rankLabel.text = @" 市服务商 ";
-                break;
-            case 3:
-                _rankLabel.text = @" 省服务商 ";
-                break;
-            case 4:
-                _rankLabel.text = @" CEO ";
-                break;
-            case 5:
-                _rankLabel.text = @" 总经销商 ";
-                break;
-            default:
-                break;
+    NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+    for (YMRRoleTypeModel * rModel in roleArr) {
+        if ([_orderModel.role_type isEqualToString: rModel.role]) {
+            _rankLabel.text = [NSString stringWithFormat:@" %@ ",rModel.name];
+            break;
         }
     }
+    
+//    if ([_orderModel.role_type isEqualToString:@"-0.5"]){
+//           _rankLabel.text = @" 小红包系列-vip会员";
+//    } else if ([_orderModel.role_type isEqualToString:@"-0.4"]) {
+//           _rankLabel.text = @" 小红包系列-高级会员 ";
+//    } else if ([_orderModel.role_type isEqualToString:@"-0.3"]) {
+//           _rankLabel.text = @" 小红包系列-荣誉会员 ";
+//    } else if ([_orderModel.role_type isEqualToString:@"1.1"]) {
+//            _rankLabel.text = @" 小红包系列-市服务商 ";
+//    } else if ([_orderModel.role_type isEqualToString:@"2.1"]) {
+//            _rankLabel.text = @" 小红包系列-省服务商 ";
+//    } else if ([_orderModel.role_type isEqualToString:@"3.1"]) {
+//            _rankLabel.text = @" 小红包系列-CEO ";
+//    } else {
+//        switch (_orderModel.role_type.intValue) {
+//            case -1:
+//                _rankLabel.text = @" 无 ";
+//                break;
+//            case 0:
+//                _rankLabel.text = @" vip门店 ";
+//                break;
+//            case 1:
+//                _rankLabel.text = @" 高级门店 ";
+//                break;
+//            case 2:
+//                _rankLabel.text = @" 市服务商 ";
+//                break;
+//            case 3:
+//                _rankLabel.text = @" 省服务商 ";
+//                break;
+//            case 4:
+//                _rankLabel.text = @" CEO ";
+//                break;
+//            case 5:
+//                _rankLabel.text = @" 总经销商 ";
+//                break;
+//            default:
+//                break;
+//        }
+//    }
      
     NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];
         

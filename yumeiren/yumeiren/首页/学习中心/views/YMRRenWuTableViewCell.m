@@ -11,9 +11,22 @@
 
 @interface YMRRenWuTableViewCell()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *TV;
+@property (nonatomic, strong) LxmEmptyView *emptyView;//空界面
+
+
 @end
 
 @implementation YMRRenWuTableViewCell
+
+- (LxmEmptyView *)emptyView {
+    if (!_emptyView) {
+        _emptyView = [[LxmEmptyView alloc] init];
+        _emptyView.textLabel.text = @"您当前没有数据";
+        _emptyView.imgView.image = [UIImage imageNamed:@"weikong"];
+        _emptyView.hidden = YES;
+    }
+    return _emptyView;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -60,6 +73,11 @@
         [self.TV registerNib:[UINib nibWithNibName:@"YMRRenWuTwoCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
         self.TV.separatorStyle = UITableViewCellSeparatorStyleNone;
         
+        [self.contentView addSubview:self.emptyView];
+        [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.bottom.equalTo(self.contentView);
+        }];
+        
         
     }
     return self;
@@ -70,7 +88,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,6 +99,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YMRRenWuTwoCell * cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.model = self.dataArr[indexPath.row];
+    
+    if (indexPath.row <3) {
+        [cell.numberBt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"dnegji%ld",indexPath.row]] forState:UIControlStateNormal];
+        [cell.numberBt setTitle:@"" forState:UIControlStateNormal];
+        cell.imageV.image = [UIImage imageNamed:[NSString stringWithFormat:@"left%ld",indexPath.row]];
+    }else {
+        [cell.numberBt setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        cell.imageV.image = [UIImage imageNamed:@""];
+        [cell.numberBt setTitle:[NSString stringWithFormat:@"%ld",indexPath.row +1] forState:UIControlStateNormal];
+    }
+    
     return cell;
     
 }
@@ -90,6 +120,17 @@
     
     
 }
+
+- (void)setDataArr:(NSArray<YMRXueXiModel *> *)dataArr {
+    _dataArr = dataArr;
+    if (self.dataArr.count == 0) {
+        self.emptyView.hidden = NO;
+    }else {
+        self.emptyView.hidden = YES;
+    }
+    [self.TV reloadData];
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

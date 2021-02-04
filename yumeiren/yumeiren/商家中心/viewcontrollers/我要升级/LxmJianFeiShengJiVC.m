@@ -49,7 +49,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"小红包系列";
+    self.navigationItem.title = [LxmTool ShareTool].roleTypeName;
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

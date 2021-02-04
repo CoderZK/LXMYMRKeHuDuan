@@ -90,12 +90,12 @@
     }
     if (self.shengjiModel) {
         if ( ([self.roleType isEqualToString:@"-0.5"] || [self.roleType isEqualToString:@"-0.4"] || [self.roleType isEqualToString:@"-0.3"] || [self.roleType isEqualToString:@"1.1"] || [self.roleType isEqualToString:@"2.1"] || [self.roleType isEqualToString:@"3.1"]) && goodModel.special_type.intValue != 2) {
-            [SVProgressHUD showErrorWithStatus:@"不属于小红包系列商品，无法购买"];
+            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"不属于%@商品，无法购买",[LxmTool ShareTool].roleTypeName]];
             return;
         }
     } else {
         if (([LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.5"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.4"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1.1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2.1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3.1"]) && goodModel.special_type.intValue != 2) {
-            [SVProgressHUD showErrorWithStatus:@"不属于小红包系列商品，无法购买"];
+            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"不属于%@商品，无法购买",[LxmTool ShareTool].roleTypeName]];
             return;
         }
     }
@@ -195,12 +195,12 @@
     }else {
         if (self.shengjiModel) {
             if ( ([self.roleType isEqualToString:@"-0.5"] || [self.roleType isEqualToString:@"-0.4"] || [self.roleType isEqualToString:@"-0.3"] || [self.roleType isEqualToString:@"1.1"] || [self.roleType isEqualToString:@"2.1"] || [self.roleType isEqualToString:@"3.1"]) && goodModel.special_type.intValue != 2) {
-                [SVProgressHUD showErrorWithStatus:@"不属于小红包系列商品，无法购买"];
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"不属于%@商品，无法购买",[LxmTool ShareTool].roleTypeName]];
                 return;
             }
         } else {
             if (([LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.5"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.4"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"-0.3"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"1.1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"2.1"] || [LxmTool.ShareTool.userModel.roleType isEqualToString:@"3.1"]) && goodModel.special_type.intValue != 2) {
-                [SVProgressHUD showErrorWithStatus:@"不属于小红包系列商品，无法购买"];
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"不属于%@商品，无法购买",[LxmTool ShareTool].roleTypeName]];
                 return;
             }
         }

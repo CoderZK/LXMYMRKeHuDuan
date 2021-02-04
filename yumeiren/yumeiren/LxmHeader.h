@@ -32,4 +32,9 @@
 
 #import "UITableViewCell+SendTachCellEnent.h"
 #import "ALCAudioTool.h"
+#import "YMRXueXiModel.h"
+#import "YMRRoleTypeModel.h"
+
+#import <QiniuSDK.h>
+
 #endif /* LxmHeader_h */

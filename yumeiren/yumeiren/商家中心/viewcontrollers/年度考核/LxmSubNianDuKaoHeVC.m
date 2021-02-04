@@ -354,47 +354,55 @@
     _timeLabel.text = [NSString stringWithFormat:@"年度考核计算周期: %@-%@", beginStr, endStr];
     _stateLabel.text = _model.in_money.doubleValue >= _model.yearMoney.doubleValue ? @"已完成" : @"未完成";
     _iconImgView.image = [UIImage imageNamed:_model.in_money.doubleValue >= _model.yearMoney.doubleValue ? @"jiesuo_y" : @"jiesuo_n"];
-   
-    if ([_model.roleType isEqualToString:@"-0.5"]) {
-        _roleLabel.text = @"   小红包系列-vip会员   ";
-    } else if ([_model.roleType isEqualToString:@"-0.4"]) {
-        _roleLabel.text = @"   小红包系列-高级会员   ";
-    } else if ([_model.roleType isEqualToString:@"-0.3"]) {
-        _roleLabel.text = @"   小红包系列-荣誉会员   ";
-    } else if ([_model.roleType isEqualToString:@"1.1"]) {
-        _roleLabel.text = @"   小红包系列-市服务商   ";
-    } else if ([_model.roleType isEqualToString:@"2.1"]) {
-        _roleLabel.text = @"   小红包系列-省服务商   ";
-    } else if ([_model.roleType isEqualToString:@"3.1"]) {
-        _roleLabel.text = @"   小红包系列-CEO   ";
-    } else {
-        switch (_model.roleType.intValue) {
-            case -1:
-                _roleLabel.text = @"   无身份   ";
-                break;
-            case 0:
-                 _roleLabel.text = @"   vip门店   ";
-                break;
-            case 1:
-                _roleLabel.text = @"   高级门店   ";
-                break;
-            case 2:
-                _roleLabel.text = @"   市服务商   ";
-                break;
-            case 3:
-                _roleLabel.text = @"   省服务商   ";
-                break;
-            case 4:
-                _roleLabel.text = @"   CEO   ";
-                break;
-            case 5:
-                _roleLabel.text = @"   总经销商   ";
-                break;
-                
-            default:
-                break;
+    
+    NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+    for (YMRRoleTypeModel * rModel in roleArr) {
+        if ([_model.roleType isEqualToString: rModel.role]) {
+            _roleLabel.text = [NSString stringWithFormat:@" %@ ",rModel.name];
+            break;
         }
     }
+   
+//    if ([_model.roleType isEqualToString:@"-0.5"]) {
+//        _roleLabel.text = @"   小红包系列-vip会员   ";
+//    } else if ([_model.roleType isEqualToString:@"-0.4"]) {
+//        _roleLabel.text = @"   小红包系列-高级会员   ";
+//    } else if ([_model.roleType isEqualToString:@"-0.3"]) {
+//        _roleLabel.text = @"   小红包系列-荣誉会员   ";
+//    } else if ([_model.roleType isEqualToString:@"1.1"]) {
+//        _roleLabel.text = @"   小红包系列-市服务商   ";
+//    } else if ([_model.roleType isEqualToString:@"2.1"]) {
+//        _roleLabel.text = @"   小红包系列-省服务商   ";
+//    } else if ([_model.roleType isEqualToString:@"3.1"]) {
+//        _roleLabel.text = @"   小红包系列-CEO   ";
+//    } else {
+//        switch (_model.roleType.intValue) {
+//            case -1:
+//                _roleLabel.text = @"   无身份   ";
+//                break;
+//            case 0:
+//                 _roleLabel.text = @"   vip门店   ";
+//                break;
+//            case 1:
+//                _roleLabel.text = @"   高级门店   ";
+//                break;
+//            case 2:
+//                _roleLabel.text = @"   市服务商   ";
+//                break;
+//            case 3:
+//                _roleLabel.text = @"   省服务商   ";
+//                break;
+//            case 4:
+//                _roleLabel.text = @"   CEO   ";
+//                break;
+//            case 5:
+//                _roleLabel.text = @"   总经销商   ";
+//                break;
+//                
+//            default:
+//                break;
+//        }
+//    }
     
     NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] init];
         

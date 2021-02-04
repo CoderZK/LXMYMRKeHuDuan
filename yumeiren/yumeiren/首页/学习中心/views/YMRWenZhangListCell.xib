@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wed-Ya-ezb">
                         <rect key="frame" x="15" y="10" width="442" height="97"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YJ0-kT-d0t">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YJ0-kT-d0t">
                                 <rect key="frame" x="10" y="10" width="120" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="clG-Jn-7sQ"/>
@@ -90,10 +90,13 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="backV" destination="wed-Ya-ezb" id="r6l-bj-hxO"/>
+                <outlet property="centerCons" destination="MeZ-ze-rfL" id="Sbc-EZ-reu"/>
                 <outlet property="centerImageV" destination="x3c-nE-BBV" id="D4w-ad-0gz"/>
                 <outlet property="imageV" destination="YJ0-kT-d0t" id="4PY-zg-TZ2"/>
+                <outlet property="leftCons" destination="SBz-HR-GAg" id="DZV-bL-YTr"/>
                 <outlet property="leftImageV" destination="JhL-US-aWg" id="iu1-rP-znQ"/>
                 <outlet property="numberLB" destination="GQo-Nb-WG0" id="Usl-cC-6nA"/>
+                <outlet property="rightCons" destination="gc5-mH-e0Z" id="P9s-ZW-1VJ"/>
                 <outlet property="rightImageV" destination="oOU-aE-4wh" id="9t4-ie-goa"/>
                 <outlet property="titleLB" destination="teU-2t-zh7" id="zeW-Ts-3WU"/>
             </connections>

@@ -60,7 +60,7 @@
         lB.font = [UIFont boldSystemFontOfSize:18];
         lB.text = @"规则明细";
         lB.textAlignment = NSTextAlignmentCenter;
-        lB.textColor = RGB(255, 97, 119);
+//        lB.textColor = RGB(255, 97, 119);
         [self.whiteV addSubview:lB];
         [lB mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self);
@@ -76,7 +76,7 @@
         [redView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(lB);
             make.height.equalTo(@6);
-            make.top.equalTo(lB.mas_bottom).offset(-3);
+            make.top.equalTo(lB.mas_bottom).offset(-5);
         }];
         
         self.scrollView = [[UIScrollView alloc] init];
@@ -96,7 +96,8 @@
   
         [self.scrollView addSubview:self.titleLB];
         [self.titleLB mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.top.bottom.equalTo(self.scrollView);
+            make.left.right.top.equalTo(self.scrollView);
+            make.height.equalTo(@20);
         }];
         
         
@@ -104,6 +105,16 @@
     return self;
 }
 
+- (void)setRemark:(NSString *)remark {
+    _remark = remark;
+    self.titleLB.text = remark;
+    CGFloat hh = [remark getSizeWithMaxSize:CGSizeMake(ScreenW - 150, 10000) withFontSize:14].height;
+    [self.titleLB mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(hh));
+    }];
+    self.scrollView.contentSize = CGSizeMake(ScreenW - 150, hh);
+    
+}
 
 
 - (void)show {

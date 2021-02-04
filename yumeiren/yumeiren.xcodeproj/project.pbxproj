@@ -243,6 +243,10 @@
 		588589B5256CD0A90015D2FA /* UITableViewCell+SendTachCellEnent.m in Sources */ = {isa = PBXBuildFile; fileRef = 588589B4256CD0A90015D2FA /* UITableViewCell+SendTachCellEnent.m */; };
 		588EFC71256B44A200F37B70 /* YMRShowGengXinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588EFC70256B44A200F37B70 /* YMRShowGengXinView.m */; };
 		588EFC74256B44D700F37B70 /* YMRTiShiShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588EFC73256B44D700F37B70 /* YMRTiShiShowView.m */; };
+		588FC98725CB7CA600C2F818 /* YMRXueXiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 588FC98625CB7CA600C2F818 /* YMRXueXiModel.m */; };
+		588FC98A25CBB88400C2F818 /* YMRPaiHangListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 588FC98925CBB88400C2F818 /* YMRPaiHangListTVC.m */; };
+		588FC98D25CBC5AF00C2F818 /* YMRRoleTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 588FC98C25CBC5AF00C2F818 /* YMRRoleTypeModel.m */; };
+		588FC99025CBD78D00C2F818 /* YMRNoDaTaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 588FC98F25CBD78D00C2F818 /* YMRNoDaTaCell.m */; };
 		58926AF325CA2F70008FB84A /* YMRShareXinDeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926AF225CA2F70008FB84A /* YMRShareXinDeVC.m */; };
 		58926AF625CA36D0008FB84A /* YMRXueXiJiHuaTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926AF525CA36D0008FB84A /* YMRXueXiJiHuaTVC.m */; };
 		58926B0C25CA65F6008FB84A /* YMRRenWuOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58926B0A25CA65F6008FB84A /* YMRRenWuOneCell.m */; };
@@ -730,6 +734,14 @@
 		588EFC70256B44A200F37B70 /* YMRShowGengXinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShowGengXinView.m; sourceTree = "<group>"; };
 		588EFC72256B44D700F37B70 /* YMRTiShiShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRTiShiShowView.h; sourceTree = "<group>"; };
 		588EFC73256B44D700F37B70 /* YMRTiShiShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRTiShiShowView.m; sourceTree = "<group>"; };
+		588FC98525CB7CA600C2F818 /* YMRXueXiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRXueXiModel.h; sourceTree = "<group>"; };
+		588FC98625CB7CA600C2F818 /* YMRXueXiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRXueXiModel.m; sourceTree = "<group>"; };
+		588FC98825CBB88400C2F818 /* YMRPaiHangListTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRPaiHangListTVC.h; sourceTree = "<group>"; };
+		588FC98925CBB88400C2F818 /* YMRPaiHangListTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRPaiHangListTVC.m; sourceTree = "<group>"; };
+		588FC98B25CBC5AE00C2F818 /* YMRRoleTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRRoleTypeModel.h; sourceTree = "<group>"; };
+		588FC98C25CBC5AF00C2F818 /* YMRRoleTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRRoleTypeModel.m; sourceTree = "<group>"; };
+		588FC98E25CBD78D00C2F818 /* YMRNoDaTaCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRNoDaTaCell.h; sourceTree = "<group>"; };
+		588FC98F25CBD78D00C2F818 /* YMRNoDaTaCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRNoDaTaCell.m; sourceTree = "<group>"; };
 		58926AF125CA2F70008FB84A /* YMRShareXinDeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRShareXinDeVC.h; sourceTree = "<group>"; };
 		58926AF225CA2F70008FB84A /* YMRShareXinDeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShareXinDeVC.m; sourceTree = "<group>"; };
 		58926AF425CA36D0008FB84A /* YMRXueXiJiHuaTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRXueXiJiHuaTVC.h; sourceTree = "<group>"; };
@@ -1735,9 +1747,21 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		588FC98425CB7C9100C2F818 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				588FC98525CB7CA600C2F818 /* YMRXueXiModel.h */,
+				588FC98625CB7CA600C2F818 /* YMRXueXiModel.m */,
+				588FC98B25CBC5AE00C2F818 /* YMRRoleTypeModel.h */,
+				588FC98C25CBC5AF00C2F818 /* YMRRoleTypeModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		589332E225C8F77F008E4887 /* 学习中心 */ = {
 			isa = PBXGroup;
 			children = (
+				588FC98425CB7C9100C2F818 /* model */,
 				589332E425C8F796008E4887 /* views */,
 				589332E325C8F78E008E4887 /* VC */,
 			);
@@ -1763,6 +1787,8 @@
 				58926B1A25CA80DD008FB84A /* YMRJiFenGuiListTVC.m */,
 				58926B2125CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.h */,
 				58926B2225CA83BA008FB84A /* YMRWenZhangYiWanChengListTVC.m */,
+				588FC98825CBB88400C2F818 /* YMRPaiHangListTVC.h */,
+				588FC98925CBB88400C2F818 /* YMRPaiHangListTVC.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1802,6 +1828,8 @@
 				58926B1E25CA8163008FB84A /* YMRWenZhangJiFenListCell.xib */,
 				58926B2425CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.h */,
 				58926B2525CA858D008FB84A /* YMRWenZhangJiFenGuiZeView.m */,
+				588FC98E25CBD78D00C2F818 /* YMRNoDaTaCell.h */,
+				588FC98F25CBD78D00C2F818 /* YMRNoDaTaCell.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1982,6 +2010,7 @@
 				40763861233C466D0051D0DC /* LxmShenQingReasonAlertView.m in Sources */,
 				4061A83722E353D4004D127C /* LxmJiedanMyAcceptVC.m in Sources */,
 				40B3267322F3D0BA00F7DA81 /* LxmDataPickerView.m in Sources */,
+				588FC99025CBD78D00C2F818 /* YMRNoDaTaCell.m in Sources */,
 				40C3A24F22EAF5B900F3E510 /* LxmMyBaoZhengJinVC.m in Sources */,
 				40D7F27623FFDDED005D4CC0 /* LxmInfoClassVC.m in Sources */,
 				4078927322D466DC00716C1C /* BaseViewController.m in Sources */,
@@ -2003,6 +2032,7 @@
 				407C73E022F5D48300E4F8E8 /* LxmPlayerManager.m in Sources */,
 				407892AE22D47D5500716C1C /* LxmShopModel.m in Sources */,
 				40A5831322E73BC200F48EBF /* LxmBuHuoOrderVC.m in Sources */,
+				588FC98725CB7CA600C2F818 /* YMRXueXiModel.m in Sources */,
 				4004610022E89C3400142850 /* LxmYeJiVC.m in Sources */,
 				4078929C22D472F100716C1C /* LxmShopVC.m in Sources */,
 				4078927B22D4676400716C1C /* LxmTabBarVC.m in Sources */,
@@ -2070,6 +2100,7 @@
 				40F1AF3D22E59BA900D78186 /* LxmJieSuanView.m in Sources */,
 				4078929F22D47CC700716C1C /* LxmShopCenterVC.m in Sources */,
 				58926AF325CA2F70008FB84A /* YMRShareXinDeVC.m in Sources */,
+				588FC98D25CBC5AF00C2F818 /* YMRRoleTypeModel.m in Sources */,
 				4061A82522E2ED79004D127C /* LxmJieDanMyViewController.m in Sources */,
 				40CE68912302906F0057E8F1 /* LxmYearMonthPickerView.m in Sources */,
 				4061A83A22E35858004D127C /* LxmSettingVC.m in Sources */,
@@ -2137,6 +2168,7 @@
 				4019530822FBF2450093ABF0 /* LxmShengJiProtocolAlertView.m in Sources */,
 				40E4319D23177CFF00B1AE41 /* LxmKeTangNoAlertView.m in Sources */,
 				40E4848E230A3413007793DB /* LxmWebViewController.m in Sources */,
+				588FC98A25CBB88400C2F818 /* YMRPaiHangListTVC.m in Sources */,
 				407892A822D47D1800716C1C /* LxmHomeModel.m in Sources */,
 				40F1AF2022E554A400D78186 /* LxmKuCunVC.m in Sources */,
 				405A8E6722E1A67300D5CA3A /* LxmLoginView.m in Sources */,

@@ -83,7 +83,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define leve9Color RGB(255,106,168)
 #define leve10Color RGB(239,90,107)
 
-
+#define colorArr @[leve1Color,leve1Color,leve2Color,leve3Color,leve4Color,leve5Color,leve6Color,leve7Color,leve8Color,leve9Color,leve10Color]
 
 #define WeakObj(_obj)    __weak typeof(_obj) _obj##Weak = _obj;
 #define StrongObj(_obj)  typeof(_obj##Weak) _obj = _obj##Weak;

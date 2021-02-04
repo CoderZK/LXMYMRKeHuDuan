@@ -30,6 +30,34 @@
     
 }
 
+- (void)setModel:(YMRXueXiModel *)model {
+    _model = model;
+    if (model.finishStatus.intValue == 0) {
+        self.confirmBt.hidden = YES;
+        self.titleLB.text = @"今日无任务";
+    }else if (model.finishStatus.intValue == 1){
+        self.confirmBt.hidden = NO;
+        [self.confirmBt setTitle:@"去完成" forState:UIControlStateNormal];
+    }else {
+        [self.confirmBt setTitle:@"已完成" forState:UIControlStateNormal];
+        self.confirmBt.hidden = NO;
+    }
+    NSString * str = [NSString stringWithFormat:@"完成跟读文章可获得%d积分",model.dayCardScore.intValue];
+    NSRange range = [str rangeOfString:[NSString stringWithFormat:@"%d",model.dayCardScore.intValue]];;
+    if ([model.shareWord isEqualToString:@"文章"]) {
+        self.titleLB.attributedText = [str getMutableAttributeStringWithFont:14 lineSpace:0 textColor:CharacterDarkColor textColorTwo:MainColor nsrange:range];
+    }else if ([model.shareWord isEqualToString:@"无"]){
+        self.titleLB.text = @"今日无任务";
+    }else {
+        self.titleLB.attributedText = [str getMutableAttributeStringWithFont:14 lineSpace:0 textColor:CharacterDarkColor textColorTwo:MainColor nsrange:range];
+    }
+    
+    NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"YYYY/MM/dd"];
+    self.tiemLB.text = [formatter stringFromDate:[NSDate date]];
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

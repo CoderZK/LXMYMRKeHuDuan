@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *leveBt;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLB;
 @property (weak, nonatomic) IBOutlet UIView *lineV;
+@property(nonatomic,strong)YMRXueXiModel *model;
 
 @end
 

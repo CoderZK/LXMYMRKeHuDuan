@@ -26,6 +26,20 @@
     
 }
 
+- (void)setModel:(YMRXueXiModel *)model {
+    _model = model;
+    [self.headBt sd_setBackgroundImageWithURL:[NSURL URLWithString:model.user_head] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"moren"] options:SDWebImageRetryFailed];
+    self.nameLB.text = model.username;
+    [self.leveBt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"leve%d",model.level_num.intValue]] forState:UIControlStateNormal];
+
+    [self.leveBt setTitle:[NSString stringWithFormat:@"Lv%d",model.level_num.intValue] forState:UIControlStateNormal];
+    
+    self.leveBt.backgroundColor = colorArr[model.level_num.intValue];
+    
+    self.scoreLB.text = model.score;
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

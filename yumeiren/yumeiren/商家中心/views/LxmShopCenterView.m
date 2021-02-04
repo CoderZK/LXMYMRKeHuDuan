@@ -162,18 +162,27 @@
         default:
             break;
     }
+    
+    NSArray<YMRRoleTypeModel *> *roleArr = [YMRRoleTypeModel mj_objectArrayWithKeyValuesArray:[LxmTool ShareTool].roleTypeNameList];
+    for (YMRRoleTypeModel * rModel in roleArr) {
+        if ([_infoModel.roleType isEqualToString: rModel.role]) {
+            _roleLabel.text = [NSString stringWithFormat:@" %@ ",rModel.name];
+            break;
+        }
+    }
+    
     if ([_infoModel.roleType isEqualToString:@"-0.5"]) {
-        _roleLabel.text = @"   小红包系列-vip会员   ";
+//        _roleLabel.text = @"   小红包系列-vip会员   ";
     } else if ([_infoModel.roleType isEqualToString:@"-0.4"]) {
-        _roleLabel.text = @"   小红包系列-高级会员   ";
+//        _roleLabel.text = @"   小红包系列-高级会员   ";
     } else if ([_infoModel.roleType isEqualToString:@"-0.3"]) {
-        _roleLabel.text = @"   小红包系列-荣誉会员   ";
+//        _roleLabel.text = @"   小红包系列-荣誉会员   ";
     } else if ([_infoModel.roleType isEqualToString:@"1.1"]) {
-           _roleLabel.text = @"   小红包系列-市服务商   ";
+//           _roleLabel.text = @"   小红包系列-市服务商   ";
     } else if ([_infoModel.roleType isEqualToString:@"2.1"]) {
-           _roleLabel.text = @"   小红包系列-省服务商   ";
+//           _roleLabel.text = @"   小红包系列-省服务商   ";
     } else if ([_infoModel.roleType isEqualToString:@"3.1"]) {
-           _roleLabel.text = @"   小红包系列-CEO   ";
+//           _roleLabel.text = @"   小红包系列-CEO   ";
     }else if ([_infoModel.roleType isEqualToString:@"1.05"]) {
      
         
@@ -189,7 +198,7 @@
    //         [messageStr appendAttributedString:messageImageStr];
             
             //富文本中的文字
-           NSString *messageText = @"   优秀门店   ";
+            NSString *messageText = [NSString stringWithFormat:@" %@ ",_roleLabel.text];
         
         if (infoModel.suType.intValue == 1) {
             NSAttributedString *messageTextStr = [[NSAttributedString alloc] initWithString:messageText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:MainColor}];
@@ -220,46 +229,46 @@
 //         [messageStr appendAttributedString:messageImageStr];
          
          //富文本中的文字
-        NSString *messageText = @"  ";
-        switch (_infoModel.roleType.intValue) {
-            case -1: {
-                messageText = @"    立刻升级   ";
-            }
-                break;
-            case 0: {
-                messageText = @"   vip门店   ";
-            }
-                break;
-            case 1: {
-                messageText = @"   高级门店   ";
-            }
-                break;
-            case 2: {
-                messageText = @"   市服务商   ";
-            }
-                break;
-            case 3: {
-                if ([LxmTool ShareTool].userModel.topStatus.intValue == 1) {
-                    messageText = @"   联合创始人   ";
-                }else {
-                    messageText = @"   省服务商   ";
-                }
-
-            }
-                break;
-            case 4: {
-                messageText = @"   CEO   ";
-            }
-                break;
-            
-            case 5: {
-                messageText = @"   总经销商   ";
-            }
-                break;
-
-            default:
-                break;
-        }
+        NSString *messageText = [NSString stringWithFormat:@" %@ ",_roleLabel.text];
+//        switch (_infoModel.roleType.intValue) {
+//            case -1: {
+//                messageText = @"    立刻升级   ";
+//            }
+//                break;
+//            case 0: {
+//                messageText = @"   vip门店   ";
+//            }
+//                break;
+//            case 1: {
+//                messageText = @"   高级门店   ";
+//            }
+//                break;
+//            case 2: {
+//                messageText = @"   市服务商   ";
+//            }
+//                break;
+//            case 3: {
+//                if ([LxmTool ShareTool].userModel.topStatus.intValue == 1) {
+//                    messageText = @"   联合创始人   ";
+//                }else {
+//                    messageText = @"   省服务商   ";
+//                }
+//
+//            }
+//                break;
+//            case 4: {
+//                messageText = @"   CEO   ";
+//            }
+//                break;
+//            
+//            case 5: {
+//                messageText = @"   总经销商   ";
+//            }
+//                break;
+//
+//            default:
+//                break;
+//        }
     
      if (infoModel.suType.intValue == 1) {
          NSAttributedString *messageTextStr = [[NSAttributedString alloc] initWithString:messageText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:MainColor}];

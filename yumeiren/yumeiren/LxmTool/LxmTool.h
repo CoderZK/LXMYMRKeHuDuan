@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LxmUserInfoModel.h"
 #import "LxmHomeModel.h"
-
+#import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 @interface LxmTool : NSObject
 +(LxmTool *)ShareTool;
 
@@ -52,7 +53,14 @@
 @property(nonatomic,strong)NSString * session_uid;
 @property(nonatomic,strong)NSString * session_token;
 
+@property(nonatomic,strong)NSString * qiNiu_token;
+
+@property(nonatomic,strong)NSArray *roleTypeNameList;
+@property(nonatomic,strong)NSString *roleTypeName;
 @property (nonatomic,strong)LxmUserInfoModel * userModel;
+
+
+
 
 //推送token
 @property(nonatomic,strong)NSString * deviceToken;
@@ -61,5 +69,12 @@
 
 
 -(void)uploadDeviceToken;
+
+@property(nonatomic,strong)AVAudioPlayer *player;
+- (void)palyMp3WithNSSting:(NSString *)meidaStr isLocality:(BOOL )isLocality;
+@property (nonatomic, assign) CGFloat soundValue;
+- (void)pauaseMp3;
+- (void)palyMp3;
+- (void)stopMp3;
 
 @end
