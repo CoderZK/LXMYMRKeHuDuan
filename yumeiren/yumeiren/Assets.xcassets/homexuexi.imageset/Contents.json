@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "fenxiang.png",
+      "filename" : "homexuexi.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "homexuexi@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "homexuexi@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

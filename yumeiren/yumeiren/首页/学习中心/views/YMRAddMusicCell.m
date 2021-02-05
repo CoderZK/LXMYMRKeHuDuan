@@ -26,13 +26,8 @@
     self.titleLB.text = model.title;
     
     YMRXueXiModel *mm = [YMRXueXiModel mj_objectWithKeyValues:[model.backUrl mj_JSONObject]];
+    self.timeLB.text = [NSString stringWithFormat:@"%02d:%02d",mm.time.intValue/60,mm.time.intValue%60];
     
-    if ([mm.time containsString:@"."]) {
-        NSArray<NSString *> * arr = [mm.time componentsSeparatedByString:@"."];
-        self.timeLB.text = [NSString stringWithFormat:@"%02d:%02d",arr[0].intValue,[arr lastObject].intValue * 6];
-    }else{
-        self.timeLB.text = [NSString stringWithFormat:@"%02d:00",mm.time.intValue];
-    }
    
     
 }

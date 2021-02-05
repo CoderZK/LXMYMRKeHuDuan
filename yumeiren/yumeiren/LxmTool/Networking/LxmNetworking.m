@@ -295,5 +295,26 @@
 
 
 
+/**
+ 上传频或者音频
+ */
++(void)NetWorkingUpLoadMP3:(NSString *)urlStr fileData:(NSData *)fileData andFileName:(NSString *)fileName parameters:(id)parameters success:(SuccessBlock)success failure:(FailureBlock)failure {
+    AFHTTPSessionManager * manager = [self manager];
+    [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        if (fileData) {
+            [formData appendPartWithFileData:fileData name:@"file" fileName:[NSString stringWithFormat:@"%0.0f.mp3",[[NSDate date] timeIntervalSince1970]] mimeType:@"application/octet-stream"];
+        }
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            success(task,responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showSuccessWithStatus:@"网络异常"];
+        if (failure) {
+            failure(task,error);
+        }
+    }];
+}
+
 
 @end

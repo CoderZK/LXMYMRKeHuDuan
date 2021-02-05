@@ -35,7 +35,7 @@
     if (model.finishStatus.intValue == 0) {
         self.confirmBt.hidden = YES;
         self.titleLB.text = @"今日无任务";
-    }else if (model.finishStatus.intValue == 1){
+    }else if (model.finishStatus.intValue == 1 || model.finishStatus.intValue == 3){
         self.confirmBt.hidden = NO;
         [self.confirmBt setTitle:@"去完成" forState:UIControlStateNormal];
     }else {

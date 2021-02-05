@@ -21,7 +21,7 @@
 //#define Base_URL @"https://appnew.hkymr.com"
 
 //骑牛云的上传地址
-#define QiNiuYunUploadURL @"http://upload.qiniup.com/"
+#define QiNiuYunURL @"https://vedio.hkymr.com/"
 
 
 

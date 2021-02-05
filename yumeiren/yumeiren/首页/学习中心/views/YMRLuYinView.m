@@ -244,6 +244,12 @@
 }
 
 - (void)playMP3Action:(UIButton *)button {
+    
+//    if (![[ALCAudioTool shareTool].avaudioRecorder isRecording]) {
+//        [SVProgressHUD showErrorWithStatus:@"请先开启录音"];
+//        return;
+//    }
+    
     if ([button.currentImage isEqual:[UIImage imageNamed:@"zantingnei"]]) {
         [[ALCAudioTool shareTool] pauaseMp3];
         [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
@@ -256,7 +262,7 @@
 - (void)setShowViewOne:(BOOL)showViewOne {
     _showViewOne = showViewOne;
     self.whiteViewOne.hidden = !showViewOne;
-    [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
+//    [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
 }
 
 - (void)sliderValChanged {
@@ -305,8 +311,6 @@
         if ([button.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyin"]] || [button.currentBackgroundImage isEqual:[UIImage imageNamed:@"zanting"]]) {
             // 开始录音
             [[ALCAudioTool shareTool] startRecord];
-            [[ALCAudioTool shareTool] palyMp3];
-            [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
             WeakObj(self);
             [[ALCAudioTool shareTool] setAveragePowerBlock:^(CGFloat averagePower, NSInteger timeNumber) {
                 selfWeak.timeLB.text = [NSString stringWithFormat:@"正在跟读%02ld:%02ld",timeNumber/60,timeNumber%60];

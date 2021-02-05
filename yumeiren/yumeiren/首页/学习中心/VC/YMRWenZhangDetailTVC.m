@@ -29,8 +29,9 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"YMRFenXiangListCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-   
-    [self initBottomView];
+    if (self.finishStatus.intValue != 2) {
+        [self initBottomView];
+    }
     self.dataArr = [NSMutableArray array];
     self.page = 1;
     [self loadData];

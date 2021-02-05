@@ -212,6 +212,9 @@
 		40F4BF0F22E85C9F00C48BA2 /* LxmTuanDuiSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4BF0E22E85C9F00C48BA2 /* LxmTuanDuiSearchVC.m */; };
 		40F7EE2D2315341000DF3E18 /* LxmSelectAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F7EE2C2315341000DF3E18 /* LxmSelectAreaVC.m */; };
 		40FA4F6F2406025500F10B72 /* LxmJianFeiShengJiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FA4F6E2406025500F10B72 /* LxmJianFeiShengJiVC.m */; };
+		582BF52525CD2EFF003E8481 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582BF52225CD2EFF003E8481 /* lame.framework */; };
+		582BF52625CD2EFF003E8481 /* ConvertAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 582BF52325CD2EFF003E8481 /* ConvertAudioFile.m */; };
+		582BF52C25CD44BA003E8481 /* YMRShowBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 582BF52B25CD44BA003E8481 /* YMRShowBackView.m */; };
 		584CDC2324CFCBCB00C32A75 /* LxmMineJiFenTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 584CDC2224CFCBCB00C32A75 /* LxmMineJiFenTVC.m */; };
 		584CDC2724CFD3D500C32A75 /* LxmJiFenOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 584CDC2524CFD3D500C32A75 /* LxmJiFenOneCell.m */; };
 		584CDC2824CFD3D500C32A75 /* LxmJiFenOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 584CDC2624CFD3D500C32A75 /* LxmJiFenOneCell.xib */; };
@@ -679,6 +682,11 @@
 		40F7EE2C2315341000DF3E18 /* LxmSelectAreaVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmSelectAreaVC.m; sourceTree = "<group>"; };
 		40FA4F6D2406025500F10B72 /* LxmJianFeiShengJiVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJianFeiShengJiVC.h; sourceTree = "<group>"; };
 		40FA4F6E2406025500F10B72 /* LxmJianFeiShengJiVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmJianFeiShengJiVC.m; sourceTree = "<group>"; };
+		582BF52225CD2EFF003E8481 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
+		582BF52325CD2EFF003E8481 /* ConvertAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvertAudioFile.m; sourceTree = "<group>"; };
+		582BF52425CD2EFF003E8481 /* ConvertAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvertAudioFile.h; sourceTree = "<group>"; };
+		582BF52A25CD44BA003E8481 /* YMRShowBackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRShowBackView.h; sourceTree = "<group>"; };
+		582BF52B25CD44BA003E8481 /* YMRShowBackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRShowBackView.m; sourceTree = "<group>"; };
 		584CDC2124CFCBCB00C32A75 /* LxmMineJiFenTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmMineJiFenTVC.h; sourceTree = "<group>"; };
 		584CDC2224CFCBCB00C32A75 /* LxmMineJiFenTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxmMineJiFenTVC.m; sourceTree = "<group>"; };
 		584CDC2424CFD3D500C32A75 /* LxmJiFenOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxmJiFenOneCell.h; sourceTree = "<group>"; };
@@ -811,6 +819,7 @@
 				40E484AA230A7D91007793DB /* CoreText.framework in Frameworks */,
 				40E484A8230A7D88007793DB /* QuartzCore.framework in Frameworks */,
 				40E484A4230A7D75007793DB /* SystemConfiguration.framework in Frameworks */,
+				582BF52525CD2EFF003E8481 /* lame.framework in Frameworks */,
 				40E484A2230A7D6D007793DB /* libz.tbd in Frameworks */,
 				40E484A0230A7D65007793DB /* libc++.tbd in Frameworks */,
 				40B4F24222F283130077823C /* AVKit.framework in Frameworks */,
@@ -1652,6 +1661,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		582BF52025CD2EFF003E8481 /* ConvertAudio */ = {
+			isa = PBXGroup;
+			children = (
+				582BF52125CD2EFF003E8481 /* Lame */,
+				582BF52325CD2EFF003E8481 /* ConvertAudioFile.m */,
+				582BF52425CD2EFF003E8481 /* ConvertAudioFile.h */,
+			);
+			path = ConvertAudio;
+			sourceTree = "<group>";
+		};
+		582BF52125CD2EFF003E8481 /* Lame */ = {
+			isa = PBXGroup;
+			children = (
+				582BF52225CD2EFF003E8481 /* lame.framework */,
+			);
+			path = Lame;
+			sourceTree = "<group>";
+		};
 		587F737824EE27070030B620 /* 我的小晞 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1761,6 +1788,7 @@
 		589332E225C8F77F008E4887 /* 学习中心 */ = {
 			isa = PBXGroup;
 			children = (
+				582BF52025CD2EFF003E8481 /* ConvertAudio */,
 				588FC98425CB7C9100C2F818 /* model */,
 				589332E425C8F796008E4887 /* views */,
 				589332E325C8F78E008E4887 /* VC */,
@@ -1806,6 +1834,8 @@
 				589332F625C90501008E4887 /* YMRFenXiangNeiView.m */,
 				589332D825C8D696008E4887 /* YMRShowLuYinView.h */,
 				589332D925C8D696008E4887 /* YMRShowLuYinView.m */,
+				582BF52A25CD44BA003E8481 /* YMRShowBackView.h */,
+				582BF52B25CD44BA003E8481 /* YMRShowBackView.m */,
 				589332DB25C8DBC6008E4887 /* YMRLuYinView.h */,
 				589332DC25C8DBC6008E4887 /* YMRLuYinView.m */,
 				58C90A3525C9370200B6C386 /* YMRAddMusicCell.h */,
@@ -2172,6 +2202,7 @@
 				407892A822D47D1800716C1C /* LxmHomeModel.m in Sources */,
 				40F1AF2022E554A400D78186 /* LxmKuCunVC.m in Sources */,
 				405A8E6722E1A67300D5CA3A /* LxmLoginView.m in Sources */,
+				582BF52C25CD44BA003E8481 /* YMRShowBackView.m in Sources */,
 				405A8E6A22E1B91B00D5CA3A /* LxmForgetPasswordVC.m in Sources */,
 				4010ADFC2320E13C005F63CA /* LxmDetailAddressVC.m in Sources */,
 				40F1AF2E22E56AFA00D78186 /* LxmGouJinShangPinVC.m in Sources */,
@@ -2204,6 +2235,7 @@
 				587F739D24EE56D70030B620 /* LxmMineTeamJiFenMingXiTVC.m in Sources */,
 				409BFAC022E1626500F2FF8A /* LxmPanButton.m in Sources */,
 				407892B722D47DA000716C1C /* LxmShopCenterView.m in Sources */,
+				582BF52625CD2EFF003E8481 /* ConvertAudioFile.m in Sources */,
 				4061A83422E35120004D127C /* LxmJieDanImageCollectionViewCell.m in Sources */,
 				40F4BF0C22E85A2000C48BA2 /* LxmSeeOtherKuCunVC.m in Sources */,
 				589332F725C90501008E4887 /* YMRFenXiangNeiView.m in Sources */,
@@ -2382,6 +2414,9 @@
 					"$(PROJECT_DIR)/yumeiren/分享",
 					"$(PROJECT_DIR)/yumeiren/分享和推送",
 					"$(PROJECT_DIR)/yumeiren/我的/viewcontrollers/实名认证/身份证银行卡Framework/非上架",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心/RecorderDemo/ConvertAudio/Lame",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心/ConvertAudio/Lame",
 				);
 				GCC_PREFIX_HEADER = yumeiren/PrefixHeader.pch;
 				INFOPLIST_FILE = yumeiren/Info.plist;
@@ -2425,6 +2460,9 @@
 					"$(PROJECT_DIR)/yumeiren/分享",
 					"$(PROJECT_DIR)/yumeiren/分享和推送",
 					"$(PROJECT_DIR)/yumeiren/我的/viewcontrollers/实名认证/身份证银行卡Framework/非上架",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心/RecorderDemo/ConvertAudio/Lame",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心/ConvertAudio/Lame",
 				);
 				GCC_PREFIX_HEADER = yumeiren/PrefixHeader.pch;
 				INFOPLIST_FILE = yumeiren/Info.plist;

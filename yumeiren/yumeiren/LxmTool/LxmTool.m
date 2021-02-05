@@ -75,6 +75,14 @@ static LxmTool * __tool = nil;
      return [[NSUserDefaults standardUserDefaults] objectForKey:@"session_uid"];
 }
 
+- (void)setShareWord:(NSString *)shareWord {
+    [[NSUserDefaults standardUserDefaults] setObject:shareWord forKey:@"shareWord"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (NSString *)shareWord {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"shareWord"];
+}
+
 - (void)setDeviceToken:(NSString *)deviceToken {
     [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:@"deviceToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -322,47 +330,6 @@ static LxmTool * __tool = nil;
 }
 
 
-- (void)palyMp3WithNSSting:(NSString *)meidaStr isLocality:(BOOL )isLocality {
-    if (isLocality) {
-        
-    }else {
-        
-        NSURL * url = [[NSURL alloc] initWithString:meidaStr];
-        NSData * data = [[NSData alloc] initWithContentsOfURL:url];
-        self.player = [[AVAudioPlayer alloc] initWithData:data fileTypeHint:AVFileTypeMPEGLayer3 error:nil];
-        self.player.delegate = self;
-        NSError * error;
-        [[AVAudioSession sharedInstance] overrideOutputAudioPort:(AVAudioSessionPortOverrideSpeaker) error:&error];;
-        self.player.numberOfLoops = -1;
-        self.player.volume = 0.2;
-        [self.player prepareToPlay];
-        [self.player play];
-        
-        
-    }
-    
-    
-}
-
-- (void)setSoundValue:(CGFloat)soundValue {
-    self.player.volume = [NSString stringWithFormat:@"%0.1f",soundValue].floatValue;
-}
-
-- (void)pauaseMp3 {
-    [self.player pause];
-}
-
-- (void)palyMp3 {
-    if (self.player != nil && self.player.isPlaying == NO) {
-        [self.player play];
-    }
-}
-
-- (void)stopMp3 {
-    if (self.player != nil && self.player.isPlaying) {
-        [self.player stop];
-    }
-}
 
 
 

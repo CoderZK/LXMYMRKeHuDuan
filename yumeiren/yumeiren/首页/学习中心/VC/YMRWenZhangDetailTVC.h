@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YMRWenZhangDetailTVC : BaseTableViewController
-@property(nonatomic,strong)NSString *finishStatus,*articleId;
+@property(nonatomic,strong)NSString *finishStatus,*articleId,*shareWord;
+@property(nonatomic,assign)BOOL isZhouMo;
 
 
 @end

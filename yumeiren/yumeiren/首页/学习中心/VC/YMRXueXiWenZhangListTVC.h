@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YMRXueXiWenZhangListTVC : BaseTableViewController
-
+@property(nonatomic,strong)NSString *finishStatus;
 @end
 
 NS_ASSUME_NONNULL_END

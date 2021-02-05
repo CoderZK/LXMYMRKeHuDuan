@@ -16,6 +16,7 @@
 #import "YMRWenZhangJiFenGuiZeView.h"
 #import "YMRWenZhangDetailTVC.h"
 #import "YMRPaiHangListTVC.h"
+#import "YMRShareXinDeVC.h"
 @interface YMRXueXiJiHuaTVC ()
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)UIButton *headBt,*leveBt;
@@ -33,6 +34,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    
+    [self loadIndexData];
 
 }
 
@@ -58,7 +61,7 @@
     [self.tableView registerClass:[YMRRenWuSectionView class] forHeaderFooterViewReuseIdentifier:@"head"];
     self.tableView.backgroundColor = [UIColor whiteColor];
     
-    [self loadIndexData];
+ 
     
 }
 
@@ -456,10 +459,24 @@
         vc.hidesBottomBarWhenPushed = YES;
         vc.articleId = self.homeModel.map.articleId;
         vc.finishStatus = self.homeModel.map.finishStatus;
+        if ([self.homeModel.map.shareWord isEqualToString:@"无"]) {
+            vc.isZhouMo = YES;
+        }else {
+            vc.isZhouMo = NO;
+        }
+        vc.shareWord = self.homeModel.map.shareWord;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (self.homeModel.map.finishStatus.intValue == 3) {
+        YMRShareXinDeVC * vc =[[YMRShareXinDeVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.articleId = self.homeModel.map.articleId;
+        vc.finishStatus = self.homeModel.map.finishStatus;
+        vc.shareWord = self.homeModel.map.shareWord;
         [self.navigationController pushViewController:vc animated:YES];
     }else {
         YMRXueXiWenZhangListTVC * vc =[[YMRXueXiWenZhangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
         vc.hidesBottomBarWhenPushed = YES;
+        vc.finishStatus = self.homeModel.map.finishStatus;
         [self.navigationController pushViewController:vc animated:YES];
     }
     

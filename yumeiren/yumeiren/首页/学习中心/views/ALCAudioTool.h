@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 //本地音频播放
 @property (nonatomic,strong) AVAudioPlayer *avaudioPlayer;
 @property(nonatomic,strong)AVAudioPlayer *player;
+@property(nonatomic,assign)NSInteger timeNumber;
 //音频录制
 @property (nonatomic,strong) AVAudioRecorder *avaudioRecorder;
 
@@ -39,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pauaseMp3;
 - (void)palyMp3;
 - (void)stopMp3;
+
+@property(nonatomic,assign)BOOL isRecoreder;
+
 @end
 
 NS_ASSUME_NONNULL_END

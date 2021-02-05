@@ -179,6 +179,12 @@
         } else if (indexPath.item == 3) {
             buttonItem.itemLabel.text = @"接单平台";
             buttonItem.itemImgView.image = [UIImage imageNamed:@"gywm"];
+            
+            if (self.currentRole >= 3 ) {
+                buttonItem.itemLabel.text = @"学习分享";
+                buttonItem.itemImgView.image = [UIImage imageNamed:@"homexuexi"];
+            }
+            
         } else {
             buttonItem.itemLabel.text = @"培训课堂";
             buttonItem.itemImgView.image = [UIImage imageNamed:@"pxkt"];

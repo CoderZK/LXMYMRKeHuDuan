@@ -66,15 +66,9 @@
 @property(nonatomic,strong)NSString * deviceToken;
 
 @property(nonatomic,strong)NSString * pushToken;
-
+@property(nonatomic,strong)NSString * shareWord;
 
 -(void)uploadDeviceToken;
 
-@property(nonatomic,strong)AVAudioPlayer *player;
-- (void)palyMp3WithNSSting:(NSString *)meidaStr isLocality:(BOOL )isLocality;
-@property (nonatomic, assign) CGFloat soundValue;
-- (void)pauaseMp3;
-- (void)palyMp3;
-- (void)stopMp3;
 
 @end

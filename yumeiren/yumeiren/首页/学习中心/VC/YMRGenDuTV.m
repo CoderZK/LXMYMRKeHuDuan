@@ -12,10 +12,12 @@
 #import "ALCAudioTool.h"
 #import "YMRShareXinDeVC.h"
 #import "LxmClassInfoDetailVC.h"
+#import "YMRShowBackView.h"
+#import "YMRXueXiJiHuaTVC.h"
 @interface YMRGenDuTV ()
 @property(nonatomic,strong)YMRLuYinView *luYinView;
 @property(nonatomic,assign)BOOL isBack;
-@property(nonatomic,strong)AVAudioPlayer *audioPlay;
+@property (nonatomic, assign) NSInteger timeNumber;
 @end
 
 @implementation YMRGenDuTV
@@ -26,7 +28,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[ALCAudioTool shareTool] stopAll];
+    
+    
+    if (self.isBack == NO) {
+        [[ALCAudioTool shareTool] stopAll];
+    }
+   
     
 }
 
@@ -36,6 +43,49 @@
 
     [self initBottomView];
     [self getQiNiuToken];
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_back"] style:UIBarButtonItemStyleDone target:self action:@selector(baseLeftBtnClick)];
+    leftItem.tintColor = CharacterDarkColor;
+        //        leftItem.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10);
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
+}
+
+- (void)baseLeftBtnClick {
+    
+    if ([self.luYinView.luYinBt.currentBackgroundImage isEqual:[UIImage imageNamed:@"zanting"]] || [self.luYinView.luYinBt.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyinzhong"]]) {
+        
+        WeakObj(self);
+        YMRShowBackView * view  = [[YMRShowBackView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+        [view show];
+        view.clickGoBlock = ^(NSInteger tag) {
+            if (tag == 101) {
+                
+                [[ALCAudioTool shareTool] reStartRecord];
+                [[ALCAudioTool shareTool] stopMp3];
+                [selfWeak.luYinView.luYinBt setBackgroundImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
+                selfWeak.luYinView.showViewOne = NO;
+                [selfWeak.luYinView.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }else {
+                
+                for (UIViewController * vc in  self.navigationController.childViewControllers) {
+                    if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
+                        [self.navigationController popToViewController:vc animated:YES];
+                        break;
+                    }
+                }
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        };
+        
+        
+    }else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
     
 }
 
@@ -59,8 +109,10 @@
 //                [selfWeak palyWithMust:musicStr];
                 
                 [[ALCAudioTool shareTool] palyMp3WithNSSting:musicStr isLocality:NO];
+                [selfWeak.luYinView.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
                 selfWeak.luYinView.showViewOne = YES;
             };
+            selfWeak.isBack = YES;
             [selfWeak.navigationController pushViewController:vc animated:YES];
             
         }else if (index == 101) {
@@ -76,55 +128,72 @@
     };
     self.luYinView.sendDataBlock = ^(NSInteger timeNumber, NSData * _Nonnull data) {
         [selfWeak uploadVedioWithData:data];
+        selfWeak.timeNumber = timeNumber;
+        [ALCAudioTool shareTool].timeNumber = 0;
+        [selfWeak.luYinView.luYinBt setBackgroundImage:[UIImage imageNamed:@"luyin"] forState:UIControlStateNormal];
+//        [SVProgressHUD show];
     };
    
 }
 
-- (void)palyWithMust:(NSString *)str  {
-     NSError * error;
-          //初始化播放器对象
-//      self.audioPlay = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:str] error:&error];
-    self.audioPlay = [[AVAudioPlayer alloc] initWithData: [NSData dataWithContentsOfURL:[NSURL URLWithString:str]] error:&error];
-          //设置声音的大小
-    self.audioPlay.volume = 0.5;//范围为（0到1）；
-          //设置循环次数，如果为负数，就是无限循环
-    self.audioPlay.numberOfLoops =-1;
-          //设置播放进度
-    self.audioPlay.currentTime = 0;
-          //准备播放
-          [self.audioPlay prepareToPlay];
-          [self.audioPlay play];
-}
 
 
 - (void)uploadVedioWithData:(NSData *)data {
-    [SVProgressHUD showWithStatus:@"音频上传中..."];
+    WeakObj(self);
+//    [SVProgressHUD show];
+    NSString * token = [LxmTool ShareTool].qiNiu_token;
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
-    [upManager putData:data key:@"5JQLMS9FK-jx_i8QpKKoGZZy5Cz4p85_a1scuCsG" token:[LxmTool ShareTool].qiNiu_token
+    [upManager putData:data key:[NSString stringWithFormat:@"%0.0f.mp3", [[NSDate date] timeIntervalSince1970]] token:token
     complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         NSLog(@"%@", info);
         NSLog(@"%@", resp);
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
+        [selfWeak upLoadOneWorkWith:[NSString stringWithFormat:@"%@%@",QiNiuYunURL,resp[@"key"]]];
     } option:nil];
     
-//    [LxmNetworking NetWorkingUpLoad:QiNiuYunUploadURL fileData:data andFileName:@"file" parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-//        [SVProgressHUD dismiss];
-//        if ([responseObject[@"key"] integerValue] == 1000) {
-//
-//        } else {
-//            [SVProgressHUD dismiss];
-//            [UIAlertController showAlertWithmessage:responseObject[@"message"]];
-//        }
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        [SVProgressHUD dismiss];
-//    }];
-    
+
 
 }
 
 
-- (void)getQiNiuToken {
+- (void)upLoadOneWorkWith:(NSString *)url  {
     
+    [SVProgressHUD show];
+    NSMutableDictionary * dict = @{}.mutableCopy;
+    dict[@"token"] = SESSION_TOKEN;
+    dict[@"oneWork"] = [@{@"url":url,@"time":@(self.timeNumber)} mj_JSONString];
+    dict[@"articleId"] = self.articleId;
+    [LxmNetworking networkingPOST:do_card_work parameters:dict returnClass:LxmClassDetailRootModel.class success:^(NSURLSessionDataTask *task, LxmClassDetailRootModel *responseObject) {
+        [SVProgressHUD dismiss];
+        if (responseObject.key.intValue == 1000) {
+            
+            [SVProgressHUD showSuccessWithStatus:@"跟读成功"];
+            if (![[LxmTool ShareTool].shareWord isEqualToString:@"无"]) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    YMRShareXinDeVC * vc =[[YMRShareXinDeVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    vc.articleId = self.articleId;
+                    vc.shareWord = [LxmTool ShareTool].shareWord;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                });
+                
+                
+            }
+            
+        } else {
+            [UIAlertController showAlertWithmessage:responseObject.message];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
+    
+    
+}
+
+- (void)getQiNiuToken {
+   
     [LxmNetworking networkingPOST:get_qiniu_token parameters:@{@"token":SESSION_TOKEN} returnClass:LxmClassDetailRootModel.class success:^(NSURLSessionDataTask *task, LxmClassDetailRootModel *responseObject) {
         [SVProgressHUD dismiss];
         if (responseObject.key.intValue == 1000) {

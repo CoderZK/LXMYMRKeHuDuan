@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YMRShareXinDeVC : BaseViewController
-
+@property(nonatomic,strong)NSString *finishStatus,*articleId,*shareWord;
+@property(nonatomic,assign)BOOL isZhouMo;
 @end
 
 NS_ASSUME_NONNULL_END

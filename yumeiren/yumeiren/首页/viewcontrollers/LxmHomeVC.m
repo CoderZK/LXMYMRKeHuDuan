@@ -247,26 +247,24 @@
     switch (index) {
         case 0: {//关于我们
             
-            YMRXueXiWenZhangListTVC * vc =[[YMRXueXiWenZhangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            
-//            LxmWebViewController *vc = [[LxmWebViewController alloc] init];
-//            vc.navigationItem.title = @"关于我们";
-//            vc.loadUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Base_URL,@"/aboutMe.html"]];
+//            YMRXueXiWenZhangListTVC * vc =[[YMRXueXiWenZhangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+//            vc.hidesBottomBarWhenPushed = YES;
 //            [self.navigationController pushViewController:vc animated:YES];
+            
+            LxmWebViewController *vc = [[LxmWebViewController alloc] init];
+            vc.navigationItem.title = @"关于我们";
+            vc.loadUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Base_URL,@"/aboutMe.html"]];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         break;
         case 1: {//素材中心
             
-            YMRXueXiJiHuaTVC * vc =[[YMRXueXiJiHuaTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+            
+            
+            LxmSuCaiTabBarVC *vc = [[LxmSuCaiTabBarVC alloc] init];
+            vc.navigationItem.title = @"分类";
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
-            
-//            LxmSuCaiTabBarVC *vc = [[LxmSuCaiTabBarVC alloc] init];
-//            vc.navigationItem.title = @"分类";
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2: {//投诉中心
@@ -298,9 +296,18 @@
             break;
         case 3: {//接单平台
             if ([LxmTool ShareTool].userModel.roleType.integerValue >= 2) {
-                LxmJieDanPlatTabbarController *vc = [LxmJieDanPlatTabbarController new];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
+                
+                if ([LxmTool ShareTool].userModel.roleType.integerValue >= 3) {
+                    YMRXueXiJiHuaTVC * vc =[[YMRXueXiJiHuaTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }else {
+                    LxmJieDanPlatTabbarController *vc = [LxmJieDanPlatTabbarController new];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                
+                
             } else {//培训课堂
                 
                 LxmInfoClassVC *vc = [LxmInfoClassVC new];

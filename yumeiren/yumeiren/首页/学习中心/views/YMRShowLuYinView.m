@@ -58,7 +58,7 @@
         
         UILabel * lB =[[UILabel alloc] init];
         lB.font = [UIFont boldSystemFontOfSize:18];
-        lB.text = @"你的录音以保存";
+        lB.text = @"你的录音已保存";
         lB.textAlignment = NSTextAlignmentCenter;
         lB.textColor = RGB(255, 97, 119);
         [self addSubview:lB];

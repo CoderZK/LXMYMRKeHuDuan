@@ -53,5 +53,5 @@ typedef void(^FailureBlock)(NSURLSessionDataTask * task,NSError * error);
 +(void)NetWorkingUpLoad:(NSString *)urlStr fileData:(NSData *)fileData andFileName:(NSString *)fileName parameters:(id)parameters success:(SuccessBlock)success failure:(FailureBlock)failure;
 
 
-
++(void)NetWorkingUpLoadMP3:(NSString *)urlStr fileData:(NSData *)fileData andFileName:(NSString *)fileName parameters:(id)parameters success:(SuccessBlock)success failure:(FailureBlock)failure;
 @end

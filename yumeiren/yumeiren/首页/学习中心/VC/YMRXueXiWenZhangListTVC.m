@@ -115,6 +115,7 @@
     YMRWenZhangDetailTVC * vc =[[YMRWenZhangDetailTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
     vc.hidesBottomBarWhenPushed = YES;
     vc.articleId = self.dataArr[indexPath.row].ID;
+    vc.finishStatus = self.finishStatus;
     [self.navigationController pushViewController:vc animated:YES];
 
 }
