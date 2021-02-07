@@ -354,7 +354,12 @@
         cell.imageView.image = [UIImage imageNamed:@"md_local"];
         AMapPOI *poi = self.locations[indexPath.row];
         NSString *str = [NSString stringWithFormat:@"%@%@%@%@",poi.province,poi.city,poi.district,poi.address];
+        
         NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:str];
+        
+        
+        
+        
         [att setColor:[UIColor colorWithRed:255/255.0 green:211/255.0 blue:206/255.0 alpha:1] forSubText:self.request.keywords];
         cell.textLabel.attributedText = att;
         return cell;
@@ -482,7 +487,6 @@
         [SVProgressHUD showErrorWithStatus:@"请输入门店地址!"];
         return;
     }
-    
     AMapGeocodeSearchRequest *geo = [[AMapGeocodeSearchRequest alloc] init];
     geo.address = address;
     [self.search AMapGeocodeSearch:geo];
@@ -725,8 +729,14 @@
 - (void)setModel:(LxmMenDianChaXunListModel *)model {
     _model = model;
     _titleLabel.text = _model.show_name;
+    if (model.su_type.intValue == 1) {
+        _titleLabel.text = [NSString stringWithFormat:@"(束轩门店)%@",_model.show_name];
+    }
     _distanceLabel.text = [NSString stringWithFormat:@"%ldm",_model.distance.integerValue];
     _detailLabel.text = [NSString stringWithFormat:@"%@%@%@%@",_model.province,_model.city,_model.district,_model.address_detail];
+   
 }
+
+//- (NSData *)convertCAFtoAMR:(NSString *)fielPath;
 
 @end

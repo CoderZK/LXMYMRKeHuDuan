@@ -8,7 +8,9 @@
 
 #import "ALCAudioTool.h"
 #import "ConvertAudioFile.h"
-#define kRecordAudioFile @"myRecord.caf"
+#import <lame/lame.h>
+#import "LGAudioKit.h"
+#define kRecordAudioFile @"audio"
 #define ETRECORD_RATE 96000
 static ALCAudioTool *tool = nil;
 
@@ -50,6 +52,8 @@ static ALCAudioTool *tool = nil;
 @property(nonatomic,assign)BOOL isPlayingMap3;
 
 @property(nonatomic,strong)NSString *pathNameStr;
+
+@property(nonatomic,assign)BOOL isPlayMp3Now;
 
 @end
 
@@ -246,18 +250,32 @@ static ALCAudioTool *tool = nil;
 {
     NSMutableDictionary *configure = [NSMutableDictionary dictionary];
     
-    //设置录音格式
-    [configure setObject:@(kAudioFormatAppleIMA4) forKey:AVFormatIDKey];
-    //设置录音采样率(Hz) 如：AVSampleRateKey==8000/44100/96000（影响音频的质量）
-    [configure setObject:@8000 forKey:AVSampleRateKey];
-    //设置通道
-    [configure setObject:@1 forKey:AVNumberOfChannelsKey];
-    //设置采样点位数 ，分别 8、16、24、32
-    [configure setObject:@32 forKey:AVLinearPCMBitDepthKey];
-    //是否使用浮点数采样
-    [configure setObject:@(YES) forKey:AVLinearPCMIsFloatKey];
-    //设置录音质量:中等质量
-    [configure setObject:@(AVAudioQualityMax) forKey:AVEncoderAudioQualityKey];
+//    //设置录音格式
+//    [configure setObject:@(kAudioFormatAppleIMA4) forKey:AVFormatIDKey];
+//    //设置录音采样率(Hz) 如：AVSampleRateKey==8000/44100/96000（影响音频的质量）
+//    [configure setObject:@44100 forKey:AVSampleRateKey];
+//    //设置通道
+//    [configure setObject:@2 forKey:AVNumberOfChannelsKey];
+//    //设置采样点位数 ，分别 8、16、24、32
+//    [configure setObject:@32 forKey:AVLinearPCMBitDepthKey];
+//    //是否使用浮点数采样
+//    [configure setObject:@(YES) forKey:AVLinearPCMIsFloatKey];
+//    //设置录音质量:中等质量
+//    [configure setObject:@(AVAudioQualityHigh) forKey:AVEncoderAudioQualityKey];
+    
+    [configure setValue:[NSNumber numberWithInt:kAudioFormatLinearPCM]
+                forKey:AVFormatIDKey];
+    //采样率
+    [configure setValue:[NSNumber numberWithFloat:44100.0]
+                forKey:AVSampleRateKey]; // 44100.0 11025.0
+    //通道数
+    [configure setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
+    //线性采样位数
+    //[recordSettings setValue :[NSNumber numberWithInt:16] forKey:
+    //AVLinearPCMBitDepthKey];
+    //音频质量,采样质量
+    [configure setValue:[NSNumber numberWithInt:AVAudioQualityMin]
+                forKey:AVEncoderAudioQualityKey];
     
     // ... 其他设置
     return configure;
@@ -336,7 +354,20 @@ static ALCAudioTool *tool = nil;
     NSError *error = nil;
     
     //     self.avaudioPlayer = [[AVAudioPlayer alloc] initWithData:self.audioData error:&error];
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    NSString *urlStr=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    urlStr=[urlStr stringByAppendingPathComponent:kRecordAudioFile];
+    
+    if (![manager fileExistsAtPath:urlStr]) {
+        return;
+    }
+    
     self.avaudioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[self getSavePath] error:&error];
+    
+    
+    
     
     //设置代理
     self.avaudioPlayer.delegate = self;
@@ -364,16 +395,8 @@ static ALCAudioTool *tool = nil;
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
 {
     
-    NSMutableDictionary * recordSetting = [NSMutableDictionary dictionary];
-    [recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];//
-    [recordSetting setValue:[NSNumber numberWithFloat:8000] forKey:AVSampleRateKey];//采样率
-    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];//声音通道，这里必须为双通道
-    [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];//音频质量
-    [recordSetting setValue:@32 forKey:AVLinearPCMBitDepthKey];
-    [recordSetting setValue:@(YES) forKey:AVLinearPCMIsFloatKey];
-    [recordSetting setValue:@(YES) forKey:AVLinearPCMIsFloatKey];
-    [recordSetting setValue:@(AVAudioQualityMax) forKey:AVEncoderAudioQualityKey];
 
+    
     
     NSString *cafFilePath = recorder.url.path;    //caf文件路径
     NSLog(@"\n录音文件位置%@",cafFilePath);
@@ -383,12 +406,12 @@ static ALCAudioTool *tool = nil;
     
     WeakObj(self);
     
-    [ConvertAudioFile conventToMp3WithCafFilePath:cafFilePath mp3FilePath:urlStr sampleRate:8000 callback:^(BOOL result) {
-       
+    [ConvertAudioFile conventToMp3WithCafFilePath:cafFilePath mp3FilePath:urlStr sampleRate:44100 callback:^(BOOL result) {
+
         NSLog(@"%@",@"录音转码成功");
-        
+
         selfWeak.audioData = [NSData dataWithContentsOfFile:urlStr];
-        
+
         if (selfWeak.statusBlock != nil) {
             selfWeak.statusBlock(NO,selfWeak.audioData);
         }
@@ -396,13 +419,70 @@ static ALCAudioTool *tool = nil;
         NSLog(@"录音完成");
     }];
     
-   
     
-    
+//    self.audioData = [NSData dataWithContentsOfFile:cafFilePath];
+//
+//    if (selfWeak.statusBlock != nil) {
+//        selfWeak.statusBlock(NO,selfWeak.audioData);
+//    }
+//    [selfWeak.avaudioRecorder deleteRecording];
     
     
     
 }//录音完成
+
+- (void)audio_PCMtoMP3:(NSString *)soucePath andDesPath:(NSString *)desPath {
+    NSLog(@"开始转换");
+    
+    @try {
+        int read, write;
+        
+        FILE *pcm = fopen([soucePath cStringUsingEncoding:1],
+                          "rb"); // source 被转换的音频文件位置
+        fseek(pcm, 4 * 1024, SEEK_CUR); // skip file header
+        FILE *mp3 = fopen([desPath cStringUsingEncoding:1],
+                          "wb"); // output 输出生成的Mp3文件位置
+        
+        const int PCM_SIZE = 8192;
+        const int MP3_SIZE = 8192;
+        short int pcm_buffer[PCM_SIZE * 2];
+        unsigned char mp3_buffer[MP3_SIZE];
+        
+        lame_t lame = lame_init();
+        lame_set_in_samplerate(lame, 44100.0);
+        lame_set_VBR(lame, vbr_default);
+        lame_init_params(lame);
+        
+        do {
+            read = (int)fread(pcm_buffer, 2 * sizeof(short int), PCM_SIZE, pcm);
+            if (read == 0)
+                write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
+            else
+                write = lame_encode_buffer_interleaved(lame, pcm_buffer, read,
+                                                       mp3_buffer, MP3_SIZE);
+            
+            fwrite(mp3_buffer, write, 1, mp3);
+            
+        } while (read != 0);
+        
+        lame_close(lame);
+        fclose(mp3);
+        fclose(pcm);
+    } @catch (NSException *exception) {
+        NSLog(@"%@", [exception description]);
+    } @finally {
+        NSLog(@"MP3生成成功");
+        
+            self.audioData = [NSData dataWithContentsOfFile:desPath];
+        
+            if (self.statusBlock != nil) {
+                self.statusBlock(NO,self.audioData);
+            }
+            [self.avaudioRecorder deleteRecording];
+    }
+}
+
+
 
 #pragma mark - AVAudioPlayer  Delegate
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -412,54 +492,50 @@ static ALCAudioTool *tool = nil;
 }//播放器完成
 
 - (void)palyMp3WithNSSting:(NSString *)meidaStr isLocality:(BOOL )isLocality {
-    if (isLocality) {
-        
-    }else {
-        
-        
-        
-        //        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-        //
-        //        [[AVAudioSession sharedInstance] setActive:YES error:nil];
-        
-        NSURL * url = [[NSURL alloc] initWithString:[meidaStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]]];
-        //        NSData * data = [[NSData alloc] initWithContentsOfURL:url];
-        //        self.player = [[AVAudioPlayer alloc] initWithData:data  error:nil];
-        //        self.player.delegate = self;
-        //
-        //        self.avPlayer =  [[AVPlayer alloc] initWithURL:url];
-        //        self.avPlayer.volume = 0.2;
-        //        AVPlayerLayer * jj = nil;
-        //        [self.avPlayer play];
-        //        NSError * error;
-        //        [[AVAudioSession sharedInstance] overrideOutputAudioPort:(AVAudioSessionPortOverrideSpeaker) error:&error];
-        //        NSLog(@"error===== %@",error);
-        //
-        //        self.player.numberOfLoops = -1;
-        //        self.player.volume = 0.2;
-        //        [self.player prepareToPlay];
-        //        [self.player play];
-        
-        
-        AVURLAsset *movieAsset    = [[AVURLAsset alloc]initWithURL:url options:nil];
-        self.mp3PlayerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
-        [self.mp3PlayerItem addObserver:self forKeyPath:@"status" options:0 context:NULL];
-        self.avPlayer = [AVPlayer playerWithPlayerItem:self.mp3PlayerItem];
-        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
-        self.avPlayer.volume = 0.2;
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-        
-        [self.avPlayer setAllowsExternalPlayback:YES];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        NSError * error;
-        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
-        
-        
-        
-        
-        
-    }
+    self.isPlayMp3Now = isLocality;
+    
+    
+    
+    
+    //        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    //
+    //        [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    
+//    NSURL * url = [[NSURL alloc] initWithString:[meidaStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]]];
+    NSURL * url = [[NSURL alloc] initWithString:meidaStr];
+    //        NSData * data = [[NSData alloc] initWithContentsOfURL:url];
+    //        self.player = [[AVAudioPlayer alloc] initWithData:data  error:nil];
+    //        self.player.delegate = self;
+    //
+    //        self.avPlayer =  [[AVPlayer alloc] initWithURL:url];
+    //        self.avPlayer.volume = 0.2;
+    //        AVPlayerLayer * jj = nil;
+    //        [self.avPlayer play];
+    //        NSError * error;
+    //        [[AVAudioSession sharedInstance] overrideOutputAudioPort:(AVAudioSessionPortOverrideSpeaker) error:&error];
+    //        NSLog(@"error===== %@",error);
+    //
+    //        self.player.numberOfLoops = -1;
+    //        self.player.volume = 0.2;
+    //        [self.player prepareToPlay];
+    //        [self.player play];
+    
+    
+    AVURLAsset *movieAsset    = [[AVURLAsset alloc]initWithURL:url options:nil];
+    self.mp3PlayerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
+    [self.mp3PlayerItem addObserver:self forKeyPath:@"status" options:0 context:NULL];
+    self.avPlayer = [AVPlayer playerWithPlayerItem:self.mp3PlayerItem];
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
+    self.avPlayer.volume = 0.2;
+    playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    
+    [self.avPlayer setAllowsExternalPlayback:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    NSError * error;
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
+    
+    
     
     
 }
@@ -475,8 +551,14 @@ static ALCAudioTool *tool = nil;
     {
         if (AVPlayerItemStatusReadyToPlay == self.avPlayer.currentItem.status)
         {
-            [self.avPlayer pause];
-            self.isPlayingMap3 = NO;
+            if (self.isPlayMp3Now) {
+                [self.avPlayer play];
+                self.isPlayingMap3 = YES;
+            }else {
+                [self.avPlayer pause];
+                self.isPlayingMap3 = NO;
+            }
+            
         }
     }
 }

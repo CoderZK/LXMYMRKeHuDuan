@@ -38,21 +38,33 @@
     
     self.levelBt.backgroundColor = colorArr[model.level_num.intValue];
     
+    YMRXueXiModel * leftM = [YMRXueXiModel mj_objectWithKeyValues:[model.one_work mj_JSONObject]];
+    YMRXueXiModel * rightM = [YMRXueXiModel mj_objectWithKeyValues:[model.one_work mj_JSONObject]];
     if (model.one_work.length > 0 ) {
         self.leftView.hidden = NO;
-        NSInteger timeOne = [NSString audioDurationFromURL:model.one_work];
+        NSInteger timeOne = leftM.time.intValue;
         self.leftView.rightLB.text = [NSString stringWithFormat:@"%02ld:%02ld",timeOne / 60,timeOne % 60];
     }else {
         self.leftView.hidden = YES;
     }
     if (model.two_work.length > 0) {
         self.rightView.hidden = NO;
-        NSInteger timeOne = [NSString audioDurationFromURL:model.two_work];
+        NSInteger timeOne = rightM.time.intValue;
         self.rightView.rightLB.text = [NSString stringWithFormat:@"%02ld:%02ld",timeOne / 60,timeOne % 60];
     }else {
         self.rightView.hidden = YES;
     }
     
+    if (model.leftIsPlaying) {
+        self.leftView.imgV.image = [UIImage imageNamed:@"zantingnei"];
+    }else {
+        self.leftView.imgV.image = [UIImage imageNamed:@"laba"];
+    }
+    if (model.rightIsPlaying) {
+        self.rightView.imgV.image = [UIImage imageNamed:@"zantingnei"];
+    }else {
+        self.rightView.imgV.image = [UIImage imageNamed:@"laba"];
+    }
     
 }
 

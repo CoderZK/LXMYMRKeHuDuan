@@ -2432,9 +2432,10 @@
 					"$(PROJECT_DIR)/yumeiren/分享/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心/Class/Vendor/AMR/lib",
 				);
 				MARKETING_VERSION = 3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren99;
 				PRODUCT_NAME = "煜美人";
 				PROVISIONING_PROFILE_SPECIFIER = yumeirencom;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2478,9 +2479,10 @@
 					"$(PROJECT_DIR)/yumeiren/分享/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/yumeiren/首页/学习中心/Class/Vendor/AMR/lib",
 				);
 				MARKETING_VERSION = 3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren99;
 				PRODUCT_NAME = "煜美人";
 				PROVISIONING_PROFILE_SPECIFIER = kk_dis_yumeiren;
 				TARGETED_DEVICE_FAMILY = 1;

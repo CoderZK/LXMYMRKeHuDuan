@@ -321,7 +321,7 @@
         }else if ([button.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyinzhong"]]) {
             // 暂停录音
             [[ALCAudioTool shareTool] pauaseRecord];
-            [[ALCAudioTool shareTool] palyMp3];
+            [[ALCAudioTool shareTool] pauaseMp3];
             [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
             [self.luYinBt setBackgroundImage:[UIImage imageNamed:@"zanting"] forState:UIControlStateNormal];
         }

@@ -62,6 +62,8 @@
             if (tag == 101) {
                 
                 [[ALCAudioTool shareTool] reStartRecord];
+                [[ALCAudioTool shareTool] delectPath];
+                [ALCAudioTool shareTool].timeNumber = 0;
                 [[ALCAudioTool shareTool] stopMp3];
                 [selfWeak.luYinView.luYinBt setBackgroundImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
                 selfWeak.luYinView.showViewOne = NO;
@@ -140,16 +142,21 @@
 
 - (void)uploadVedioWithData:(NSData *)data {
     WeakObj(self);
-//    [SVProgressHUD show];
-    NSString * token = [LxmTool ShareTool].qiNiu_token;
-    QNUploadManager *upManager = [[QNUploadManager alloc] init];
-    [upManager putData:data key:[NSString stringWithFormat:@"%0.0f.mp3", [[NSDate date] timeIntervalSince1970]] token:token
-    complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        NSLog(@"%@", info);
-        NSLog(@"%@", resp);
-//        [SVProgressHUD dismiss];
-        [selfWeak upLoadOneWorkWith:[NSString stringWithFormat:@"%@%@",QiNiuYunURL,resp[@"key"]]];
-    } option:nil];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD show];
+        NSString * token = [LxmTool ShareTool].qiNiu_token;
+        QNUploadManager *upManager = [[QNUploadManager alloc] init];
+        [upManager putData:data key:[NSString stringWithFormat:@"%0.0f.mp3", [[NSDate date] timeIntervalSince1970]] token:token
+        complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+            NSLog(@"%@", info);
+            NSLog(@"%@", resp);
+            [SVProgressHUD dismiss];
+            [selfWeak upLoadOneWorkWith:[NSString stringWithFormat:@"%@%@",QiNiuYunURL,resp[@"key"]]];
+        } option:nil];
+    });
+    
+   
     
 
 
@@ -168,7 +175,7 @@
         if (responseObject.key.intValue == 1000) {
             
             [SVProgressHUD showSuccessWithStatus:@"跟读成功"];
-            if (![[LxmTool ShareTool].shareWord isEqualToString:@"无"]) {
+            if (![[LxmTool ShareTool].shareWord isEqualToString:@"无"] && ![[LxmTool ShareTool].shareWord isEqualToString:@"文章"]) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
                     YMRShareXinDeVC * vc =[[YMRShareXinDeVC alloc] init];
@@ -179,6 +186,17 @@
                     
                 });
                 
+                
+            }else {
+                
+                for (UIViewController * vc in  self.navigationController.childViewControllers) {
+                    if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
+                        [self.navigationController popToViewController:vc animated:YES];
+                        break;
+                    }
+                }
+                
+                [self.navigationController popViewControllerAnimated:YES];
                 
             }
             

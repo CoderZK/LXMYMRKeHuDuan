@@ -24,6 +24,20 @@
     }
     return _emptyView;
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[ALCAudioTool shareTool] pauaseMp3];
+    
+    for (YMRXueXiModel * mm in self.dataArr) {
+        mm.leftIsPlaying = mm.rightIsPlaying = NO;
+    }
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"已完成任务";
@@ -103,7 +117,52 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YMRFenXiangListCell * cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.model = self.dataArr[indexPath.row];
+    cell.leftView.actionBt.tag = (indexPath.row+1);
+    cell.rightView.actionBt.tag = -(indexPath.row+1);
+    [cell.leftView.actionBt addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.rightView.actionBt addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+    
+}
+
+
+- (void)playAction:(UIButton *)button {
+    NSInteger tag = button.tag;
+    if (tag < 0) {
+        tag = -tag;
+    }
+    YMRXueXiModel * model = self.dataArr[tag-1];
+    for (YMRXueXiModel * modelNei in self.dataArr) {
+        if ([model isEqual:modelNei]) {
+            if (button.tag < 0) {
+                // 点击的右边
+                
+                if (model.rightIsPlaying == NO) {
+                    YMRXueXiModel * rightM = [YMRXueXiModel mj_objectWithKeyValues:[model.two_work mj_JSONObject]];
+                    [[ALCAudioTool shareTool] palyMp3WithNSSting:rightM.url isLocality:YES];
+              
+                }else {
+                    [[ALCAudioTool shareTool] pauaseMp3];
+                }
+                model.rightIsPlaying = !model.rightIsPlaying;
+                model.leftIsPlaying = NO;
+            }else {
+                // 点击的左边
+                if (model.leftIsPlaying == NO) {
+                    YMRXueXiModel * leftM = [YMRXueXiModel mj_objectWithKeyValues:[model.one_work mj_JSONObject]];
+                    [[ALCAudioTool shareTool] palyMp3WithNSSting:leftM.url isLocality:YES];
+                   
+                }else {
+                    [[ALCAudioTool shareTool] pauaseMp3];
+                }
+                model.leftIsPlaying = !model.leftIsPlaying;
+                model.rightIsPlaying = NO;
+            }
+        }else {
+            modelNei.leftIsPlaying = modelNei.rightIsPlaying = NO;
+        }
+    }
+    [self.tableView reloadData];
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

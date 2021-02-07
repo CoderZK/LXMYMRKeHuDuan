@@ -288,6 +288,8 @@
 
 @property (nonatomic, assign) CGFloat cellH;
 
+@property (nonatomic, strong) NSString *su_type;
+
 @end
 
 @interface LxmMenDianChaXunModel : NSObject

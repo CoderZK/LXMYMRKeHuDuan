@@ -61,7 +61,11 @@ NS_ASSUME_NONNULL_BEGIN
 //@property(nonatomic,strong)NSString *<#TF#>;
 //@property(nonatomic,strong)NSString *<#TF#>;
 //@property(nonatomic,strong)NSString *<#TF#>;
-//@property(nonatomic,strong)NSString *<#TF#>;
+//@property(nonatomic,strong)NSString *;
+
+@property(nonatomic,assign)BOOL leftIsPlaying;
+@property(nonatomic,assign)BOOL rightIsPlaying;
+
 @end
 
 NS_ASSUME_NONNULL_END

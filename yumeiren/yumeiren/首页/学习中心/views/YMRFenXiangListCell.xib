@@ -24,7 +24,6 @@
                             <constraint firstAttribute="width" constant="35" id="moY-ZL-e18"/>
                             <constraint firstAttribute="height" constant="35" id="ywq-2f-32P"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEe-c0-xmc">
                         <rect key="frame" x="60" y="15" width="35.5" height="35"/>

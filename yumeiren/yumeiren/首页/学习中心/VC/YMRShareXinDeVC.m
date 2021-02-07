@@ -12,6 +12,7 @@
 #import "ALCAudioTool.h"
 #import "YMRShowBackView.h"
 #import "YMRXueXiJiHuaTVC.h"
+#import "YMRShowLuYinView.h"
 @interface YMRShareXinDeVC ()
 @property(nonatomic,strong)YMRLuYinView *luYinView;
 @property(nonatomic,strong)UILabel *titleLB;
@@ -92,6 +93,13 @@
         
         
     }else {
+        for (UIViewController * vc in  self.navigationController.childViewControllers) {
+            if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
+                [self.navigationController popToViewController:vc animated:YES];
+                break;
+            }
+        }
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
     
@@ -174,20 +182,25 @@
         [SVProgressHUD dismiss];
         if (responseObject.key.intValue == 1000) {
             
-            [SVProgressHUD showSuccessWithStatus:@"跟读成功"];
-            if (![[LxmTool ShareTool].shareWord isEqualToString:@"无"]) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    
-                    YMRShareXinDeVC * vc =[[YMRShareXinDeVC alloc] init];
-                    vc.hidesBottomBarWhenPushed = YES;
-                    vc.articleId = self.articleId;
-                    vc.shareWord = [LxmTool ShareTool].shareWord;
-                    [self.navigationController pushViewController:vc animated:YES];
-                    
-                });
+           
+            YMRShowLuYinView * vv = [[YMRShowLuYinView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+            vv.desStr  = @"心得分享成功";
+            [vv show];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
+                for (UIViewController * vc in  self.navigationController.childViewControllers) {
+                    if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
+                        [self.navigationController popToViewController:vc animated:YES];
+                        break;
+                    }
+                }
                 
-            }
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            });
+            
+           
             
         } else {
             [UIAlertController showAlertWithmessage:responseObject.message];

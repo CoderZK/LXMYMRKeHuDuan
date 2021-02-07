@@ -247,24 +247,26 @@
     switch (index) {
         case 0: {//关于我们
             
-//            YMRXueXiWenZhangListTVC * vc =[[YMRXueXiWenZhangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
-            
-            LxmWebViewController *vc = [[LxmWebViewController alloc] init];
-            vc.navigationItem.title = @"关于我们";
-            vc.loadUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Base_URL,@"/aboutMe.html"]];
+            YMRXueXiWenZhangListTVC * vc =[[YMRXueXiWenZhangListTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+            vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+            
+//            LxmWebViewController *vc = [[LxmWebViewController alloc] init];
+//            vc.navigationItem.title = @"关于我们";
+//            vc.loadUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Base_URL,@"/aboutMe.html"]];
+//            [self.navigationController pushViewController:vc animated:YES];
         }
         break;
         case 1: {//素材中心
             
-            
-            
-            LxmSuCaiTabBarVC *vc = [[LxmSuCaiTabBarVC alloc] init];
-            vc.navigationItem.title = @"分类";
+            YMRXueXiJiHuaTVC * vc =[[YMRXueXiJiHuaTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+            
+//            LxmSuCaiTabBarVC *vc = [[LxmSuCaiTabBarVC alloc] init];
+//            vc.navigationItem.title = @"分类";
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2: {//投诉中心

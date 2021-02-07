@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pauaseMp3;
 - (void)palyMp3;
 - (void)stopMp3;
-
+- (void)delectPath;
 @property(nonatomic,assign)BOOL isRecoreder;
 
 @end

@@ -27,8 +27,8 @@
         [self.whiteV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self).offset(-30);
             make.centerX.equalTo(self);
-            make.width.equalTo(@180);
-            make.height.equalTo(@250);
+            make.width.equalTo(@250);
+            make.height.equalTo(@180);
         }];
         
         UIButton * closeBt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
@@ -46,21 +46,21 @@
         [button addTarget:self action:@selector(diss) forControlEvents:UIControlEventTouchUpInside];
         
         UIImageView * imgV = [[UIImageView alloc] init];
-        imgV.image = [UIImage imageNamed:@"180"];
+        imgV.image = [UIImage imageNamed:@"181"];
         [self addSubview:imgV];
         
         [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.whiteV).offset(-40);
-            make.width.equalTo(self.whiteV);
+            make.top.equalTo(self.whiteV).offset(40);
             make.centerX.equalTo(self);
-            make.height.equalTo(@70);
+            make.height.equalTo(@42);
+            make.width.equalTo(@70);
         }];
         
         UILabel * lB =[[UILabel alloc] init];
         lB.font = [UIFont boldSystemFontOfSize:18];
         lB.text = @"你的录音已保存";
         lB.textAlignment = NSTextAlignmentCenter;
-        lB.textColor = RGB(255, 97, 119);
+//        lB.textColor = RGB(255, 97, 119);
         [self addSubview:lB];
         self.titleLB = lB;
         [lB mas_makeConstraints:^(MASConstraintMaker *make) {
