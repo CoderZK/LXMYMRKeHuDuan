@@ -38,9 +38,11 @@
     }else if (model.finishStatus.intValue == 1 || model.finishStatus.intValue == 3){
         self.confirmBt.hidden = NO;
         [self.confirmBt setTitle:@"去完成" forState:UIControlStateNormal];
+        self.confirmBt.backgroundColor = MainColor;
     }else {
         [self.confirmBt setTitle:@"已完成" forState:UIControlStateNormal];
         self.confirmBt.hidden = NO;
+        self.confirmBt.backgroundColor = CharacterLightGrayColor;
     }
     NSString * str = [NSString stringWithFormat:@"完成跟读文章可获得%d积分",model.dayCardScore.intValue];
     NSRange range = [str rangeOfString:[NSString stringWithFormat:@"%d",model.dayCardScore.intValue]];;

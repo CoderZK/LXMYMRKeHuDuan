@@ -25,7 +25,8 @@
     _model = model;
     
     self.numberLB.text = [NSString stringWithFormat:@"+%@",model.score];
-    self.timeLB.text = model.createTime;
+    self.numberLB.textColor = MainColor;
+    self.timeLB.text = [model.createTime getIntervalToZHXLongTime];
     if (model.infoType.intValue == 1) {
         self.nameLB.text = @"每日完成任务获得";
     }else if (model.infoType.intValue == 2) {

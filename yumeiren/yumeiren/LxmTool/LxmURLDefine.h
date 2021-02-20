@@ -15,10 +15,10 @@
 
 
 //测试
-#define Base_URL @"http://appnew.hkymr.com:8989"
+//#define Base_URL @"http://appnew.hkymr.com:8989"
 
 //正式
-//#define Base_URL @"https://appnew.hkymr.com"
+#define Base_URL @"https://appnew.hkymr.com"
 
 //骑牛云的上传地址
 #define QiNiuYunURL @"https://vedio.hkymr.com/"

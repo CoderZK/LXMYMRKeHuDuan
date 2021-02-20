@@ -53,13 +53,17 @@
 
 - (void)baseLeftBtnClick {
     
+    
+//    if ([ALCAudioTool shareTool].isHavedata) {
+        
+
     if ([self.luYinView.luYinBt.currentBackgroundImage isEqual:[UIImage imageNamed:@"zanting"]] || [self.luYinView.luYinBt.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyinzhong"]]) {
         
         WeakObj(self);
         YMRShowBackView * view  = [[YMRShowBackView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
         [view show];
         view.clickGoBlock = ^(NSInteger tag) {
-            if (tag == 101) {
+            if (tag == 100) {
                 
                 [[ALCAudioTool shareTool] reStartRecord];
                 [[ALCAudioTool shareTool] delectPath];
@@ -71,11 +75,12 @@
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }else {
-                
+                [[ALCAudioTool shareTool] delectPath];
                 for (UIViewController * vc in  self.navigationController.childViewControllers) {
                     if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
                         [self.navigationController popToViewController:vc animated:YES];
-                        break;
+                       
+                        return;;
                     }
                 }
                 
@@ -175,6 +180,8 @@
         if (responseObject.key.intValue == 1000) {
             
             [SVProgressHUD showSuccessWithStatus:@"跟读成功"];
+            [[ALCAudioTool shareTool] delectPath];
+            [[ALCAudioTool shareTool] stopAll];
             if (![[LxmTool ShareTool].shareWord isEqualToString:@"无"] && ![[LxmTool ShareTool].shareWord isEqualToString:@"文章"]) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
@@ -192,7 +199,7 @@
                 for (UIViewController * vc in  self.navigationController.childViewControllers) {
                     if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
                         [self.navigationController popToViewController:vc animated:YES];
-                        break;
+                        return;;
                     }
                 }
                 

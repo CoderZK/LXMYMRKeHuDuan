@@ -52,7 +52,7 @@
         make.centerX.centerY.equalTo(self.view);
     }];
     
-    self.titleLB.text = self.shareWord;
+    self.titleLB.text = [NSString stringWithFormat:@"今日分享: %@",[LxmTool ShareTool].shareWord];;
     
     [self initBottomView];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_back"] style:UIBarButtonItemStyleDone target:self action:@selector(baseLeftBtnClick)];
@@ -64,26 +64,34 @@
 
 - (void)baseLeftBtnClick {
     
+//    if ([ALCAudioTool shareTool].isHavedata) {
+        
+
+
     if ([self.luYinView.luYinBt.currentBackgroundImage isEqual:[UIImage imageNamed:@"zanting"]] || [self.luYinView.luYinBt.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyinzhong"]]) {
         
         WeakObj(self);
         YMRShowBackView * view  = [[YMRShowBackView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
         [view show];
         view.clickGoBlock = ^(NSInteger tag) {
-            if (tag == 101) {
+            if (tag == 100) {
                 
                 [[ALCAudioTool shareTool] reStartRecord];
+                [[ALCAudioTool shareTool] delectPath];
+                [ALCAudioTool shareTool].timeNumber = 0;
                 [[ALCAudioTool shareTool] stopMp3];
                 [selfWeak.luYinView.luYinBt setBackgroundImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
                 selfWeak.luYinView.showViewOne = NO;
                 [selfWeak.luYinView.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
+                [self.navigationController popViewControllerAnimated:YES];
                 
             }else {
-                
+                [[ALCAudioTool shareTool] delectPath];
                 for (UIViewController * vc in  self.navigationController.childViewControllers) {
                     if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
                         [self.navigationController popToViewController:vc animated:YES];
-                        break;
+                       
+                        return;;
                     }
                 }
                 
@@ -96,7 +104,7 @@
         for (UIViewController * vc in  self.navigationController.childViewControllers) {
             if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
                 [self.navigationController popToViewController:vc animated:YES];
-                break;
+                return;
             }
         }
         
@@ -186,21 +194,18 @@
             YMRShowLuYinView * vv = [[YMRShowLuYinView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
             vv.desStr  = @"心得分享成功";
             [vv show];
-            
+            [[ALCAudioTool shareTool] delectPath];
+            [[ALCAudioTool shareTool] stopAll];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
+            
                 for (UIViewController * vc in  self.navigationController.childViewControllers) {
                     if ([vc isKindOfClass:[YMRXueXiJiHuaTVC class]]) {
                         [self.navigationController popToViewController:vc animated:YES];
-                        break;
+                        return;
                     }
                 }
-                
                 [self.navigationController popViewControllerAnimated:YES];
-                
             });
-            
-           
             
         } else {
             [UIAlertController showAlertWithmessage:responseObject.message];

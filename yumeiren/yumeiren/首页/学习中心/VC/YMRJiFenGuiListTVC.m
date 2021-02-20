@@ -66,7 +66,7 @@
     dict[@"token"] = SESSION_TOKEN;
     dict[@"pageNum"] =  @(self.page);
     dict[@"pageSize"] = @10;
-    [LxmNetworking networkingPOST:score_user_list parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [LxmNetworking networkingPOST:card_score_record_list parameters:dict returnClass:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self endRefrish];
         if ([responseObject[@"key"] intValue] == 1000) {
             if (self.page == 1) {

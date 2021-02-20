@@ -2403,7 +2403,7 @@
 				CODE_SIGN_ENTITLEMENTS = "yumeiren/涵曦测试Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = B5NNLAT6HF;
 				ENABLE_BITCODE = NO;
@@ -2434,8 +2434,8 @@
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/yumeiren/首页/学习中心/Class/Vendor/AMR/lib",
 				);
-				MARKETING_VERSION = 3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren99;
+				MARKETING_VERSION = 3.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
 				PRODUCT_NAME = "煜美人";
 				PROVISIONING_PROFILE_SPECIFIER = yumeirencom;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2451,7 +2451,7 @@
 				CODE_SIGN_ENTITLEMENTS = yumeiren/yumeiren.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = B5NNLAT6HF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2481,8 +2481,8 @@
 					"$(PROJECT_DIR)/yumeiren/分享和推送/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/yumeiren/首页/学习中心/Class/Vendor/AMR/lib",
 				);
-				MARKETING_VERSION = 3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren99;
+				MARKETING_VERSION = 3.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.biuwork.yumeiren;
 				PRODUCT_NAME = "煜美人";
 				PROVISIONING_PROFILE_SPECIFIER = kk_dis_yumeiren;
 				TARGETED_DEVICE_FAMILY = 1;

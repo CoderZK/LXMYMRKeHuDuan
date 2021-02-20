@@ -42,8 +42,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
             landmarkName = "-palyMp3WithNSSting:isLocality:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,8 +58,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/YMRLuYinView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-playMP3Action:"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,8 +74,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "-palyMp3"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,8 +90,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/VC/YMRGenDuTV.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-upLoadOneWorkWith:"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,41 +106,9 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/VC/YMRGenDuTV.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-baseLeftBtnClick"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EA4B106B-1FA7-4542-9D0A-D75D2B2E2A57"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/YMRShowBackView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "-action:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A4FE6BBC-EC0E-4878-AA3A-85EC49ADBE41"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/YMRShowBackView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-action:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,8 +154,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
+            startingLineNumber = "591"
+            endingLineNumber = "591"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,8 +170,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
+            startingLineNumber = "588"
+            endingLineNumber = "588"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,8 +234,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/VC/YMRGenDuTV.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-uploadVedioWithData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,8 +250,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "-audioRecorderDidFinishRecording:successfully:"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,9 +266,153 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "-audioRecorderDidFinishRecording:successfully:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8603AEEC-8E8F-4FF0-845E-0CBF2A0395E3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/VC/YMRXueXiJiHuaTVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-loadIndexData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A377CF5C-8671-436E-A7EF-689DFFEFF388"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/VC/YMRShareXinDeVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-upLoadOneWorkWith:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A377CF5C-8671-436E-A7EF-689DFFEFF388 - 972157f888f369c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[YMRShareXinDeVC upLoadOneWorkWith:]"
+                  moduleName = "&#x715c;&#x7f8e;&#x4eba;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E9%A6%96%E9%A1%B5/%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%BF%83/VC/YMRShareXinDeVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "624">
+               </Location>
+               <Location
+                  uuid = "A377CF5C-8671-436E-A7EF-689DFFEFF388 - f0f0af8c602d0db2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[YMRShareXinDeVC upLoadOneWorkWith:]_block_invoke"
+                  moduleName = "&#x715c;&#x7f8e;&#x4eba;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E9%A6%96%E9%A1%B5/%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%BF%83/VC/YMRShareXinDeVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "36BED304-0269-44BB-A041-E99821F226AC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "-isHavedata"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19AA6995-6236-41F1-A62B-2A6521B9F1DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/VC/YMRGenDuTV.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-baseLeftBtnClick"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29A6E99E-8983-4A66-88E2-43870037C904"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-delectPath"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE972D18-3BB5-4274-BFA8-28759325E202"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "-delectPath"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "852805F5-1AA7-49E4-966C-BB068DE0E3F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x5b66;&#x4e60;&#x4e2d;&#x5fc3;/views/ALCAudioTool.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "-getSavePath"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

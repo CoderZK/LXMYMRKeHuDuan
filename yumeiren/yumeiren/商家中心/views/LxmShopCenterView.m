@@ -1371,10 +1371,11 @@
     
     _desLabel.text = [NSString stringWithFormat:@"年度考核计算周期: %@-%@", beginStr, endStr];
     if ( [_model.roleType isEqualToString:@"2.1"] || [_model.roleType isEqualToString:@"3"] ) {
-        _desLabel1.text = @"说明:年度业绩目标六十万元，业绩不达标系统将自动降级并扣除保证金！";
+        _desLabel1.text = @"说明:年度业绩目标六十万元，业绩不达标系统将自动降级并扣除保证金！\n尊敬的客户您好！\n公司实行年度考核规则，自加盟之日起一年之内累计返单未达到3万元，系统将自动取消店铺区域保护，请您及时查看本年度返单情况，感谢您的配合！";
     } else {
-        _desLabel1.text = @"";
+        _desLabel1.text = @"尊敬的客户您好！\n公司实行年度考核规则，自加盟之日起一年之内累计返单未达到3万元，系统将自动取消店铺区域保护，请您及时查看本年度返单情况，感谢您的配合！";
     }
+    
 }
 
 @end

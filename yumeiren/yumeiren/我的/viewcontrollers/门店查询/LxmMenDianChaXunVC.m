@@ -448,7 +448,7 @@
 //    dict[@"end_latitude"] = [NSString stringWithFormat:@"%.6f",right.latitude];
     dict[@"shop_name"] = name;
     dict[@"address_detail"] = address;
-    dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
+//    dict[@"su_type"] = [LxmTool ShareTool].userModel.suType;
     [SVProgressHUD show];
     [LxmNetworking networkingPOST:select_store parameters:dict returnClass:LxmMenDianChaXunRootModel.class success:^(NSURLSessionDataTask *task, LxmMenDianChaXunRootModel *responseObject) {
         [SVProgressHUD dismiss];

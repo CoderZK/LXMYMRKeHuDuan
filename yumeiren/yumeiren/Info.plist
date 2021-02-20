@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>煜美人学习</string>
+	<string>煜美人</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -134,6 +134,8 @@
 	<string>煜美人在首页下载素材图片时需要访问您的相机,以便及时保存您喜爱的美图!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>煜美人在进行个人安全认证时需要访问您的相册,更方便的获取您的身份证图片</string>
+	<key>UIBackgroundModes</key>
+	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

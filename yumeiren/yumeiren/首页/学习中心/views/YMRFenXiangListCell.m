@@ -17,8 +17,9 @@
     self.levelBt.clipsToBounds = YES;
     
     self.leftView = [[YMRFenXiangNeiView alloc] initWithFrame:CGRectMake(60, 80, (ScreenW - 80)/2, 50)];
+    self.leftView.titleLB.text = @"文章跟读音频";
     self.rightView = [[YMRFenXiangNeiView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.leftView.frame)+10, 80, (ScreenW - 80)/2, 50)];
-    
+    self.rightView.titleLB.text = @"分享心得音频";
     [self.contentView addSubview:self.leftView];
     [self.contentView addSubview:self.rightView];
     

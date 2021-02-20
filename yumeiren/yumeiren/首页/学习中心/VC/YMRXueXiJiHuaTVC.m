@@ -78,7 +78,7 @@
           
             [self.headBt sd_setBackgroundImageWithURL:[NSURL URLWithString:[LxmTool ShareTool].userModel.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"moren"] options:SDWebImageRetryFailed];
             self.nameLb.text = [LxmTool ShareTool].userModel.username;
-            
+            [LxmTool ShareTool].shareWord = self.homeModel.map.shareWord;
             [self.leveBt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"leve%d",self.homeModel.map.levelNum.intValue]] forState:UIControlStateNormal];
 
             [self.leveBt setTitle:[NSString stringWithFormat:@"Lv%d",self.homeModel.map.levelNum.intValue] forState:UIControlStateNormal];
@@ -306,7 +306,7 @@
     
     self.r2LB = [[UILabel alloc] init];
     self.r2LB.font = [UIFont systemFontOfSize:12];
-    self.r2LB.text = @"积分";
+    self.r2LB.text = @"还差";
     [self.whiteV addSubview:self.r2LB];
     [self.r2LB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.r3LB.mas_left);
@@ -415,13 +415,12 @@
         YMRRenWuOneCell * cell =[tableView dequeueReusableCellWithIdentifier:@"YMRRenWuOneCell" forIndexPath:indexPath];
         [cell.confirmBt  addTarget:self action:@selector(quwanAction) forControlEvents:UIControlEventTouchUpInside];
         cell.model = self.homeModel.map;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else {
         YMRRenWuTableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"YMRRenWuTableViewCell" forIndexPath:indexPath];
         cell.dataArr = self.homeModel.list;
-        
-        
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     
@@ -454,7 +453,10 @@
 // 点击去完成呢个
 - (void)quwanAction {
     
-    if (self.homeModel.map.finishStatus.intValue == 1) {
+    
+    
+    
+    if (self.homeModel.map.finishStatus.intValue == 1 && self.homeModel.map.articleId.length > 0) {
         YMRWenZhangDetailTVC * vc =[[YMRWenZhangDetailTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
         vc.hidesBottomBarWhenPushed = YES;
         vc.articleId = self.homeModel.map.articleId;
@@ -466,7 +468,19 @@
         }
         vc.shareWord = self.homeModel.map.shareWord;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if (self.homeModel.map.finishStatus.intValue == 3) {
+    }else if (self.homeModel.map.finishStatus.intValue == 2 && self.homeModel.map.articleId.length > 0) {
+        YMRWenZhangDetailTVC * vc =[[YMRWenZhangDetailTVC alloc] initWithTableViewStyle:(UITableViewStyleGrouped)];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.articleId = self.homeModel.map.articleId;
+        vc.finishStatus = self.homeModel.map.finishStatus;
+        if ([self.homeModel.map.shareWord isEqualToString:@"无"]) {
+            vc.isZhouMo = YES;
+        }else {
+            vc.isZhouMo = NO;
+        }
+        vc.shareWord = self.homeModel.map.shareWord;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if (self.homeModel.map.finishStatus.intValue == 3 && self.homeModel.map.articleId.length > 0) {
         YMRShareXinDeVC * vc =[[YMRShareXinDeVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.articleId = self.homeModel.map.articleId;

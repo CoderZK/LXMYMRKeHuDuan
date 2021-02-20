@@ -9,7 +9,6 @@
 #import "ALCAudioTool.h"
 #import "ConvertAudioFile.h"
 #import <lame/lame.h>
-#import "LGAudioKit.h"
 #define kRecordAudioFile @"audio"
 #define ETRECORD_RATE 96000
 static ALCAudioTool *tool = nil;
@@ -221,30 +220,51 @@ static ALCAudioTool *tool = nil;
 
 - (void)delectPath  {
     
+    self.timer.fireDate = [NSDate distantFuture];
+    self.timeNumber = 0;
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentsDirectory = [paths lastObject];
     
-    
+   
     
     NSFileManager *fileMgr = [NSFileManager defaultManager];
     
-    NSString *MapLayerDataPath = [documentsDirectory stringByAppendingPathComponent:@"kRecordAudioFile"];
+    NSString *MapLayerDataPath = [documentsDirectory stringByAppendingPathComponent:kRecordAudioFile];
     
     BOOL bRet = [fileMgr fileExistsAtPath:MapLayerDataPath];
     
     if (bRet) {
         
         //
-        
+        self.timeNumber = 0;
+        _avaudioRecorder = nil;
         NSError *err;
         
         [fileMgr removeItemAtPath:MapLayerDataPath error:&err];
+        
+        NSLog(@"%@",err);
         
     }
     
 }
 
+
+- (BOOL)isHavedata {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths lastObject];
+    
+   
+    
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    NSString *MapLayerDataPath = [documentsDirectory stringByAppendingPathComponent:kRecordAudioFile];
+    
+    BOOL bRet = [fileMgr fileExistsAtPath:MapLayerDataPath];
+    return bRet;
+}
 
 - (NSMutableDictionary*)recordConfigure
 {
@@ -291,6 +311,18 @@ static ALCAudioTool *tool = nil;
 
 - (void)startRecord
 {
+    
+//    NSFileManager *manager = [NSFileManager defaultManager];
+//    
+//    NSString *urlStr=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    urlStr=[urlStr stringByAppendingPathComponent:kRecordAudioFile];
+//    
+//    if (![manager fileExistsAtPath:urlStr]) {
+//        NSError *error = nil;
+//        _avaudioRecorder = [[AVAudioRecorder alloc]initWithURL:[self getSavePath] settings:[self recordConfigure] error:&error];
+//    }
+    
+    
     if (![self.avaudioRecorder isRecording]) {
         [self.avaudioRecorder record];
         self.timer.fireDate = [NSDate distantPast];

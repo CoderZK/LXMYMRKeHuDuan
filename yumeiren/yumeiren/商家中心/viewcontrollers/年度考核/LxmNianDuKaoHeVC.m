@@ -97,8 +97,8 @@
         str1 = @"说明:年度业绩目标六十万元，业绩不达标系统将自动降级并扣除保证金！\n尊敬的客户您好！\n公司实行年度考核规则，自加盟之日起一年之内累计返单未达到3万元，系统将自动取消店铺区域保护，请您及时查看本年度返单情况，感谢您的配合！";
         hh1 = [str1 getSizeWithMaxSize:CGSizeMake(ScreenW - 30, 9999) withFontSize:14].height + 20;
     } else {
-        str1 = @"";
-        hh1 = 10;
+        str1 = @"尊敬的客户您好！\n公司实行年度考核规则，自加盟之日起一年之内累计返单未达到3万元，系统将自动取消店铺区域保护，请您及时查看本年度返单情况，感谢您的配合！";
+        hh1 = [str1 getSizeWithMaxSize:CGSizeMake(ScreenW - 30, 9999) withFontSize:14].height + 20;
     }
     
     hh = [str getSizeWithMaxSize:CGSizeMake(ScreenW - 30, 9999) withFontSize:14].height;

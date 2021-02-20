@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reStartRecord;
 - (void)playRecord;
 - (void)stopPlayRecord;
-- (BOOL)isNodata;
+- (BOOL)isHavedata;
 - (void)stopAll;
 //本地音频播放
 @property (nonatomic,strong) AVAudioPlayer *avaudioPlayer;

@@ -156,6 +156,7 @@
         
         self.shiTingBt = [[UIButton alloc] init];
         [self.shiTingBt setBackgroundImage:[UIImage imageNamed:@"shiting"] forState:UIControlStateNormal];
+        [self.shiTingBt setBackgroundImage:[UIImage imageNamed:@"shiting"] forState:UIControlStateHighlighted];
         [self.whiteViewTwo addSubview:self.shiTingBt];
         self.shiTingBt.tag = 101;
         [self.shiTingBt addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
@@ -177,6 +178,7 @@
         
         self.musicBt = [[UIButton alloc] init];
         [self.musicBt setBackgroundImage:[UIImage imageNamed:@"peiyue"] forState:UIControlStateNormal];
+        [self.musicBt setBackgroundImage:[UIImage imageNamed:@"peiyue"] forState:UIControlStateHighlighted];
         [self.whiteViewTwo addSubview:self.musicBt];
         self.musicBt.tag = 100;
         [self.musicBt addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
@@ -197,6 +199,7 @@
         
         self.chongduBt = [[UIButton alloc] init];
         [self.chongduBt setBackgroundImage:[UIImage imageNamed:@"chongxin"] forState:UIControlStateNormal];
+        [self.chongduBt setBackgroundImage:[UIImage imageNamed:@"chongxin"] forState:UIControlStateHighlighted];
         [self.whiteViewTwo addSubview:self.chongduBt];
         self.chongduBt.tag = 103;
         [self.chongduBt addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
@@ -218,6 +221,7 @@
         
         self.saveBt = [[UIButton alloc] init];
         [self.saveBt setBackgroundImage:[UIImage imageNamed:@"baocun"] forState:UIControlStateNormal];
+        [self.saveBt setBackgroundImage:[UIImage imageNamed:@"baocun"] forState:UIControlStateHighlighted];
         [self.whiteViewTwo addSubview:self.saveBt];
         self.saveBt.tag = 104;
         [self.saveBt addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
@@ -311,6 +315,8 @@
         if ([button.currentBackgroundImage isEqual:[UIImage imageNamed:@"luyin"]] || [button.currentBackgroundImage isEqual:[UIImage imageNamed:@"zanting"]]) {
             // 开始录音
             [[ALCAudioTool shareTool] startRecord];
+            [[ALCAudioTool shareTool] palyMp3];
+            [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
             WeakObj(self);
             [[ALCAudioTool shareTool] setAveragePowerBlock:^(CGFloat averagePower, NSInteger timeNumber) {
                 selfWeak.timeLB.text = [NSString stringWithFormat:@"正在跟读%02ld:%02ld",timeNumber/60,timeNumber%60];
@@ -327,12 +333,13 @@
         }
         
     }else if (button.tag == 103) {
+        [[ALCAudioTool shareTool] delectPath];
         
         [[ALCAudioTool shareTool] reStartRecord];
         [[ALCAudioTool shareTool] stopMp3];
         [self.luYinBt setBackgroundImage:[UIImage imageNamed:@"luyinzhong"] forState:UIControlStateNormal];
         self.showViewOne = NO;
-        [self.playBt setImage:[UIImage imageNamed:@"neiPlay"] forState:UIControlStateNormal];
+        [self.playBt setImage:[UIImage imageNamed:@"zantingnei"] forState:UIControlStateNormal];
     } else if (button.tag == 104){
         
         if (self.timeNumer <= 0) {
@@ -345,6 +352,7 @@
         
         [[ALCAudioTool shareTool] setStatusBlock:^(BOOL isFinsh, NSData * _Nonnull mediaData) {
             if (selfWeak.sendDataBlock != nil) {
+               
                 self.sendDataBlock(selfWeak.timeNumer, mediaData);
             }
         }];
