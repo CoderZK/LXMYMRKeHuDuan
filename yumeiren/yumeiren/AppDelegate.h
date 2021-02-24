@@ -13,6 +13,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, assign) BOOL isRotation;
+
+@property(nonatomic,strong)AppDelegate *delegate;
 
 @end
 

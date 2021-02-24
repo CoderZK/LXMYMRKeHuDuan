@@ -10,7 +10,7 @@
 #import "LxmPlayer.h"
 #import "LxmMoviePlayerView.h"
 #import "LxmFullScreenViewController.h"
-
+#import "AppDelegate.h"
 @interface LxmClassInfoDetailVC ()
 
 @property (nonatomic, strong) UIView *lineView;//线
@@ -409,13 +409,13 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         _playView = [[LxmMoviePlayerView alloc] init];
         _playView.delegate = self;
-        [self addSubview:_playView];
+        [self.contentView addSubview:_playView];
         [_playView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
         }];
         
         _coverImgView = [UIImageView new];
-        [self addSubview:_coverImgView];
+        [self.contentView addSubview:_coverImgView];
         [_coverImgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
         }];
@@ -455,21 +455,54 @@
 
 -(void)LxmMoviePlayerView:(LxmMoviePlayerView *)view clickBtnAt:(LxmMoviePlayerViewBtnType)type {
     if (type == LxmMoviePlayerViewBtnType_rotate) {
-        if (_playView.superview == self) {
+        if (_playView.superview.superview == self) {
             LxmFullScreenViewController *vc = [LxmFullScreenViewController new];
             vc.player = self.playView;
+            _fullScreenVC = vc;
+            WeakObj(self);
             vc.dismissBlock = ^{
-                [self.playView removeFromSuperview];
-                [self addSubview:self.playView];
-                [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.edges.equalTo(self);
+                [selfWeak.playView removeFromSuperview];
+                [selfWeak.contentView addSubview:selfWeak.playView];
+                [selfWeak.playView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.edges.equalTo(selfWeak.contentView);
                 }];
             };
-            [[UIViewController topViewController] presentViewController:vc animated:NO completion:nil];
-            self.fullScreenVC = vc;
+            
+            UIViewController * tvc = [UIViewController topViewController];
+            NSLog(@"%@",tvc);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _fullScreenVC = vc;
+                AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                app.isRotation = YES;
+                [self interfaceOrientation:UIInterfaceOrientationLandscapeLeft];
+                [tvc presentViewController:vc animated:NO completion:nil];
+                
+               
+                
+                
+            });
+            
+            
         } else {
             [self.fullScreenVC close];
         }
+    }
+}
+
+
+
+- (void)interfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    //强制转换
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = orientation;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
     }
 }
 

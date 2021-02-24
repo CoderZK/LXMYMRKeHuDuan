@@ -36,5 +36,6 @@
 #import "YMRRoleTypeModel.h"
 
 #import <QiniuSDK.h>
+#import "AppDelegate.h"
 
 #endif /* LxmHeader_h */

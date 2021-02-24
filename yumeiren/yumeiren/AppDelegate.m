@@ -38,7 +38,6 @@
 
 #import "LxmMyBaoZhengJinVC.h"
 #import "LxmMineJiFenXiaJiTVC.h"
-
 //role_province和role_ceo  申请省代申请CEO,加个字段up_message，申请理由
 
  //虞美人苹果账号密码 joofzu@163.com Vv11223344
@@ -83,10 +82,20 @@
     
     [[AMapServices sharedServices] setApiKey:AMapKey];
     [[AMapServices sharedServices] setEnableHTTPS:YES];
-    
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+    if (self.isRotation) {
+        //可以针对不同的界面创建不同的值，进行返回
+        return UIInterfaceOrientationMaskLandscape;
+    }
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 - (void)initPush {
     //向微信注册,发起支付必须注册
@@ -126,6 +135,11 @@
         }
     }];
 }
+
+
+
+
+
 
 
 //在用户接受推送通知后系统会调用

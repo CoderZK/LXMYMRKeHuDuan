@@ -40,7 +40,7 @@
     self.levelBt.backgroundColor = colorArr[model.level_num.intValue];
     
     YMRXueXiModel * leftM = [YMRXueXiModel mj_objectWithKeyValues:[model.one_work mj_JSONObject]];
-    YMRXueXiModel * rightM = [YMRXueXiModel mj_objectWithKeyValues:[model.one_work mj_JSONObject]];
+    YMRXueXiModel * rightM = [YMRXueXiModel mj_objectWithKeyValues:[model.two_work mj_JSONObject]];
     if (model.one_work.length > 0 ) {
         self.leftView.hidden = NO;
         NSInteger timeOne = leftM.time.intValue;

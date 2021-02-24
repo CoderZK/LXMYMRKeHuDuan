@@ -526,18 +526,38 @@
         if (_playerView.superview == _playerBaseView) {
             LxmFullScreenViewController *vc = [LxmFullScreenViewController new];
             vc.player = _playerView;
+            WeakObj(self);
             vc.dismissBlock = ^{
                 [_playerView removeFromSuperview];
-                [self.playerBaseView addSubview:_playerView];
+                [selfWeak.playerBaseView addSubview:_playerView];
                 [_playerView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.edges.equalTo(self.playerBaseView);
+                    make.edges.equalTo(selfWeak.playerBaseView);
                 }];
             };
             _fullScreenVC = vc;
+            AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            app.isRotation = YES;
+            [self interfaceOrientation:UIInterfaceOrientationLandscapeLeft];
             [[UIViewController topViewController] presentViewController:vc animated:NO completion:nil];
         } else {
             [_fullScreenVC close];
         }
+    }
+}
+
+
+- (void)interfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    //强制转换
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = orientation;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
     }
 }
 

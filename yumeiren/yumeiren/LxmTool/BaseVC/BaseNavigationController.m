@@ -18,6 +18,8 @@
     }
     return self;
 }
+
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -25,6 +27,9 @@
     }
     return self;
 }
+
+
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     //设置背景图,把导航栏黑线去掉
