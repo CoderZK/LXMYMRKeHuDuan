@@ -90,13 +90,13 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x57f9;&#x8bad;&#x8bfe;&#x5802;/LxmClassInfoDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "-LxmMoviePlayerView:clickBtnAt:"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F4292F11-1FB2-47A2-8B50-FDAC9377658B - eae8e510c2c80bf6"
+                  uuid = "F4292F11-1FB2-47A2-8B50-FDAC9377658B - eae8e510c2c80821"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -106,12 +106,12 @@
                   urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E9%A6%96%E9%A1%B5/%E5%9F%B9%E8%AE%AD%E8%AF%BE%E5%A0%82/LxmClassInfoDetailVC.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "480"
-                  endingLineNumber = "480"
-                  offsetFromSymbolStart = "708">
+                  startingLineNumber = "497"
+                  endingLineNumber = "497"
+                  offsetFromSymbolStart = "736">
                </Location>
                <Location
-                  uuid = "F4292F11-1FB2-47A2-8B50-FDAC9377658B - eae8e510c2c80bf6"
+                  uuid = "F4292F11-1FB2-47A2-8B50-FDAC9377658B - eae8e510c2c80821"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -121,9 +121,9 @@
                   urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E9%A6%96%E9%A1%B5/%E5%9F%B9%E8%AE%AD%E8%AF%BE%E5%A0%82/LxmClassInfoDetailVC.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "480"
-                  endingLineNumber = "480"
-                  offsetFromSymbolStart = "772">
+                  startingLineNumber = "497"
+                  endingLineNumber = "497"
+                  offsetFromSymbolStart = "812">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -138,8 +138,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x57f9;&#x8bad;&#x8bfe;&#x5802;/LxmClassInfoDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
             landmarkName = "-LxmMoviePlayerView:clickBtnAt:"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,8 +154,8 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x57f9;&#x8bad;&#x8bfe;&#x5802;/LxmClassInfoDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "471"
-            endingLineNumber = "471"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "-LxmMoviePlayerView:clickBtnAt:"
             landmarkType = "7">
          </BreakpointContent>
@@ -211,22 +211,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9B7AFEC6-54F7-4254-A896-22DA51E49212"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/LxmTool/Networking/LxmNetworking.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "+networkingPOST:parameters:returnClass:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4FB4721F-F639-47A4-B5F0-2778EA4F69FC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -266,13 +250,13 @@
             filePath = "yumeiren/&#x9996;&#x9875;/&#x57f9;&#x8bad;&#x8bfe;&#x5802;/LxmClassInfoDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "-LxmMoviePlayerView:clickBtnAt:"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "47A59487-E101-44F0-94B2-80891CAE27E0 - eae8e510c2c834d9"
+                  uuid = "47A59487-E101-44F0-94B2-80891CAE27E0 - eae8e510c2c80a72"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -282,23 +266,23 @@
                   urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E9%A6%96%E9%A1%B5/%E5%9F%B9%E8%AE%AD%E8%AF%BE%E5%A0%82/LxmClassInfoDetailVC.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "473"
-                  endingLineNumber = "473"
+                  startingLineNumber = "484"
+                  endingLineNumber = "484"
                   offsetFromSymbolStart = "524">
                </Location>
                <Location
-                  uuid = "47A59487-E101-44F0-94B2-80891CAE27E0 - 45571c71d343ccbc"
+                  uuid = "47A59487-E101-44F0-94B2-80891CAE27E0 - 45571c7122e24b12"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__55-[LxmClassInfoVideoCell LxmMoviePlayerView:clickBtnAt:]_block_invoke.397"
+                  symbolName = "__55-[LxmClassInfoVideoCell LxmMoviePlayerView:clickBtnAt:]_block_invoke.416"
                   moduleName = "&#x715c;&#x7f8e;&#x4eba;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zk/Documents/LXM/Y%E8%99%9E%E7%BE%8E%E4%BA%BA%E5%AE%A2%E6%88%B7%E7%AB%AF/yumeiren/yumeiren/%E9%A6%96%E9%A1%B5/%E5%9F%B9%E8%AE%AD%E8%AF%BE%E5%A0%82/LxmClassInfoDetailVC.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "475"
-                  endingLineNumber = "475"
+                  startingLineNumber = "485"
+                  endingLineNumber = "485"
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
@@ -307,48 +291,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "96FBD36F-0D79-441B-B328-9FEC5F274BDC"
+            uuid = "F6CC5084-E200-4FEF-8394-20FAFE6D3F7F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "yumeiren/LxmTool/BaseVC/BaseViewController.m"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x57f9;&#x8bad;&#x8bfe;&#x5802;/LxmClassInfoDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-supportedInterfaceOrientations"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "-setDetailModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2245C132-E8ED-41CE-A08A-A4EDC5E99CDF"
+            uuid = "B2E32044-31A1-410E-8F1C-B71D666E80D3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "yumeiren/LxmTool/BaseVC/BaseViewController.m"
+            filePath = "yumeiren/&#x9996;&#x9875;/&#x57f9;&#x8bad;&#x8bfe;&#x5802;/LxmClassInfoDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-preferredInterfaceOrientationForPresentation"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AD509935-3407-417E-B7A6-C2A8414645B8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yumeiren/LxmTool/BaseVC/BaseViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "-shouldAutorotate"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

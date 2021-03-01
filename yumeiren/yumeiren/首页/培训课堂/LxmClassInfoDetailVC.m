@@ -390,7 +390,18 @@
 
 - (void)setDetailModel:(LxmClassDetailModel *)detailModel {
     _detailModel = detailModel;
-    _detailLabel.text = _detailModel.content;
+    
+    if (self.isHtml) {
+        NSAttributedString *attrStr = [[NSAttributedString alloc] initWithData:[detailModel.content dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+        _detailLabel.attributedText = attrStr;
+        
+        detailModel.htmlHeight = [attrStr boundingRectWithSize:CGSizeMake(ScreenW-30, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+        
+    }else {
+        _detailLabel.text = _detailModel.content;
+    }
+    
+    
 }
 
 @end

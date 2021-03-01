@@ -33,6 +33,9 @@
 
 @property (nonatomic, strong) LxmClassDetailModel *detailModel;
 
+@property(nonatomic,assign)BOOL isHtml;
+
+
 @end
 
 

@@ -15,7 +15,7 @@
 
 @property (nonatomic, assign) BOOL isRotation;
 
-@property(nonatomic,strong)AppDelegate *delegate;
+//@property(nonatomic,strong)AppDelegate *delegate;
 
 @end
 

@@ -189,8 +189,12 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             return self.detailModel.titleH;
-        }  else{
-            return self.detailModel.contentH;
+        }  else {
+//             CGFloat H = [self.detailModel.content getSizeWithMaxSize:CGSizeMake(ScreenW - 30, 9999) withFontSize:13].height;
+//            return  15 + H + 15;
+            
+            return self.detailModel.htmlHeight;
+            
         }
     }else {
         if (self.dataArr.count == 0){
@@ -251,6 +255,7 @@
             if (!cell) {
                 cell = [[LxmClassInfoDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LxmClassInfoDetailCell"];
             }
+            cell.isHtml = YES;
             cell.detailModel = self.detailModel;
             return cell;
         }

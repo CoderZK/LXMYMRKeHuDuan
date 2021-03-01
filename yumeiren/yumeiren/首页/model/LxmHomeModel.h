@@ -496,6 +496,8 @@
 
 @property (nonatomic, assign) CGFloat contentH;//内容高度
 
+@property (nonatomic, assign) CGFloat htmlHeight;//内容高度
+
 @end
 
 @interface LxmClassDetailDataModel : NSObject
